@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>NpcManager.NpcCreationAppearance.Tests</AssemblyName>
+    <RootNamespace>NpcManager.NpcCreationAppearance.Tests</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.BodyGen\NpcManager.BodyGen.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Formats.Bethesda\NpcManager.Formats.Bethesda.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.FaceGen\NpcManager.FaceGen.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Infrastructure\NpcManager.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Pipeline\NpcManager.Pipeline.csproj" />
+  </ItemGroup>
+</Project>

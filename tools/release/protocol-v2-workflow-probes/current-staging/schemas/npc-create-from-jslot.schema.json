@@ -1,0 +1,2459 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "npc create-from-jslot",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Create and independently verify one new Skyrim NPC from reviewed RaceMenu JSlot authority.",
+    "limitations": [
+      "The typed request, JSlot, copied provider closure, and output root are hash-bound. Manager writes the plugin, FaceGeom, FaceTint, supported sidecars, manifest, and package tree; static completion remains runtime-required.",
+      "Protocol v2 admits either a fresh preflight output or the complete reviewed-preflight build pair.",
+      "Provider-migration modes remain protocol v1 only."
+    ],
+    "options": [
+      {
+        "cliName": "request",
+        "jsonName": "request",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact reviewed NPC execution request path.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "request-sha256",
+        "jsonName": "request-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 of the exact request bytes.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "preset",
+        "jsonName": "preset",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact RaceMenu JSlot preset path.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "preset-sha256",
+        "jsonName": "preset-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 of the exact JSlot bytes.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "data-root",
+        "jsonName": "data-root",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Existing copied Skyrim Data root used only for admitted static inspection.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "plugins",
+        "jsonName": "plugins",
+        "valueKind": "string",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<plugin-name,...>",
+        "description": "Nonempty distinct comma-separated plugin order.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "companion-root",
+        "jsonName": "companion-root",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Existing K-local companion evidence root.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "preflight-output",
+        "jsonName": "preflight-output",
+        "valueKind": "path",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [
+          "reviewed-preflight",
+          "reviewed-preflight-sha256"
+        ],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh output selecting read-only preflight mode; conflicts with the reviewed-preflight pair.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "face-bake-authority-output",
+        "jsonName": "face-bake-authority-output",
+        "valueKind": "path",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [
+          "reviewed-preflight",
+          "reviewed-preflight-sha256"
+        ],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh canonical face-bake authority output, only with preflight mode; explicitly bind the returned path/hash and rerun ordinary preflight before build.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "reviewed-preflight",
+        "jsonName": "reviewed-preflight",
+        "valueKind": "path",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [
+          "preflight-output"
+        ],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact reviewed preflight artifact selecting static build mode.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "reviewed-preflight-sha256",
+        "jsonName": "reviewed-preflight-sha256",
+        "valueKind": "sha256",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [
+          "preflight-output"
+        ],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 required with --reviewed-preflight.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle",
+        "jsonName": "workflow-bundle",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact resumable workflow bundle input.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle-sha256",
+        "jsonName": "workflow-bundle-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 binding the workflow bundle.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-output",
+        "jsonName": "workflow-output",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh successor workflow bundle output.",
+        "aliasFor": null
+      }
+    ],
+    "inputArtifactKinds": [
+      "npc-create-request",
+      "racemenu-jslot",
+      "npc-build-preflight",
+      "workflow-bundle"
+    ],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:npc-create-preflight-result:v1",
+      "urn:actorwright:protocol-v2:npc-create-from-jslot-build-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "readWorkspace",
+        "condition": "When the exact request, preset, copied Data, plugin order, companion inputs, reviewed preflight, and workflow are admitted for the selected mode.",
+        "scope": "The exact K-local preflight or reviewed-build inputs.",
+        "trigger": null
+      },
+      {
+        "kind": "writeNewArtifact",
+        "condition": "Only after every selected-mode gate passes and any produced package is independently reopened.",
+        "scope": "The fresh preflight, package, and/or workflow output for the selected mode.",
+        "trigger": null
+      },
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "requiresFreshOutput",
+    "determinism": "deterministic",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "The exact request, JSlot, copied Data, plugin order, and companion inputs are admitted."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "established",
+        "reason": "The provider and final dependency closure are hash-bound."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "established",
+        "reason": "The canonical NPC build-preflight artifact is materialized."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "established",
+        "reason": "The promoted artifact is retained-read and independently reopened."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "notApplicable",
+        "reason": "NPC build preflight does not render a preview."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "notApplicable",
+        "reason": "NPC preflight/static build does not request visual acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "required",
+        "reason": "Game-runtime verification remains required."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "notApplicable",
+        "reason": "NPC preflight/static build performs no promotion."
+      }
+    ],
+    "transitions": [
+      {
+        "from": "analyze",
+        "to": "apply",
+        "requiredBindings": [
+          "npc-build-preflight"
+        ]
+      },
+      {
+        "from": "apply",
+        "to": "verify",
+        "requiredBindings": [
+          "npc-package-manifest"
+        ]
+      }
+    ],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [
+      {
+        "kind": "atLeastOne",
+        "options": [
+          "preflight-output",
+          "reviewed-preflight"
+        ],
+        "referencedOptions": [],
+        "condition": "Select exactly one strict mode: fresh preflight output or reviewed-preflight build.",
+        "trigger": null
+      },
+      {
+        "kind": "requiresTogether",
+        "options": [
+          "reviewed-preflight",
+          "reviewed-preflight-sha256"
+        ],
+        "referencedOptions": [],
+        "condition": "--reviewed-preflight and --reviewed-preflight-sha256 must be supplied together.",
+        "trigger": null
+      },
+      {
+        "kind": "requiredWhen",
+        "options": [
+          "preflight-output"
+        ],
+        "referencedOptions": [
+          "face-bake-authority-output"
+        ],
+        "condition": "Face-bake authority emission requires preflight authoring mode and subsequent explicit binding.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "face-bake-authority-output",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      }
+    ],
+    "inputArtifacts": [
+      {
+        "kind": "npc-create-request",
+        "schemaIds": [
+          "npc.create-from-jslot.request.v1"
+        ],
+        "description": "Exact reviewed NPC execution request.",
+        "trigger": null
+      },
+      {
+        "kind": "racemenu-jslot",
+        "schemaIds": [
+          "application/json"
+        ],
+        "description": "Exact hash-bound RaceMenu JSlot preset.",
+        "trigger": null
+      },
+      {
+        "kind": "npc-build-preflight",
+        "schemaIds": [
+          "actorwright-npc-build-preflight/1"
+        ],
+        "description": "Exact reviewed preflight admitted only in reviewed build mode.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "reviewed-preflight",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Exact hash-bound predecessor workflow bundle.",
+        "trigger": null
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "kind": "npc-build-preflight",
+        "schemaIds": [
+          "actorwright-npc-build-preflight/1"
+        ],
+        "description": "Fresh read-only preflight artifact in --preflight-output mode.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "preflight-output",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      },
+      {
+        "kind": "skyrim-face-bake-authority",
+        "schemaIds": [
+          "skyrim-face-bake-authority/1"
+        ],
+        "description": "Fresh canonical authority from exact model/carrier bytes; explicitly bind it and rerun preflight before build.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "face-bake-authority-output",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      },
+      {
+        "kind": "npc-package-manifest",
+        "schemaIds": [
+          "application/json"
+        ],
+        "description": "Fresh independently reopened static NPC package in reviewed build mode.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "reviewed-preflight",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Fresh independently verified workflow successor.",
+        "trigger": null
+      }
+    ],
+    "resultShape": "object",
+    "resultDescription": "Mode-specific protocol result: either typed preflight evidence or a statically verified package, plus workflow persistence, effects, diagnostics, and authority without runtime or visual claims."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:npc-create-preflight-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:npc-create-preflight-result:v1",
+        "title": "Actorwright protocol v2 NPC create preflight result",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "created",
+          "readyForBuild",
+          "previewReady",
+          "path",
+          "sha256",
+          "requiredGates",
+          "optionalPreview",
+          "diagnostics"
+        ],
+        "properties": {
+          "created": {
+            "type": "boolean"
+          },
+          "readyForBuild": {
+            "type": "boolean"
+          },
+          "previewReady": {
+            "type": "boolean"
+          },
+          "path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "requiredGates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/gate"
+            }
+          },
+          "optionalPreview": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/gate"
+            }
+          },
+          "dependencyClosure": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "kind",
+                "path",
+                "status"
+              ],
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "status": {
+                  "enum": [
+                    "present",
+                    "missing",
+                    "nonCanonicalPath"
+                  ]
+                },
+                "disposition": {
+                  "enum": [
+                    "platformProvided",
+                    "optionalUnavailable"
+                  ]
+                }
+              }
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          }
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "created": {
+                "const": false
+              },
+              "readyForBuild": {
+                "const": false
+              },
+              "previewReady": {
+                "const": false
+              },
+              "path": {
+                "type": "null"
+              },
+              "sha256": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "created": {
+                "const": true
+              },
+              "readyForBuild": {
+                "type": "boolean"
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              }
+            }
+          }
+        ],
+        "$defs": {
+          "gate": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "required",
+              "passed",
+              "detail"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "passed": {
+                "type": "boolean"
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1,
+                  2
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:npc-create-from-jslot-build-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:npc-create-from-jslot-build-result:v1",
+        "title": "Actorwright protocol v2 NPC create-from-JSlot build result",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "completed",
+          "status",
+          "manifestPath",
+          "manifestSize",
+          "manifestSha256",
+          "outputPlugin",
+          "targetFormId",
+          "runtimeAuthority",
+          "diagnostics"
+        ],
+        "properties": {
+          "completed": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "staticPassRuntimeRequired",
+              "refused"
+            ]
+          },
+          "manifestPath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "manifestSize": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "manifestSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "outputPlugin": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "targetFormId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{8}$"
+          },
+          "inheritedDefaults": {
+            "type": "array",
+            "uniqueItems": true,
+            "description": "Observed equality to the authenticated blank-npc-v1 template, not proof of historical inheritance. Unavailable comparison is explicitly diagnosed.",
+            "items": {
+              "enum": [
+                "class",
+                "combatStyle",
+                "aidt",
+                "packages",
+                "defaultPackageList",
+                "defaultOutfit",
+                "voice",
+                "level",
+                "namePlaceholder"
+              ]
+            }
+          },
+          "runtimeAuthority": {
+            "const": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "info",
+                    "warning",
+                    "error"
+                  ]
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "externalInstallPrepublication": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "packageManifestSha256",
+              "selectedManifestSha256",
+              "bindings",
+              "verification"
+            ],
+            "properties": {
+              "packageManifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "selectedManifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "bindings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "descriptorId",
+                    "faceGeomExclusionAttestationSha256"
+                  ],
+                  "properties": {
+                    "descriptorId": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "faceGeomExclusionAttestationSha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  }
+                }
+              },
+              "verification": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "schemaIdentifier",
+                  "packageIntegrity",
+                  "descriptorClosureValid",
+                  "descriptorIds",
+                  "currentInstallDependencyState",
+                  "installReady",
+                  "installDependencyAuthority",
+                  "runtimeAuthority",
+                  "visualAuthority",
+                  "providerObservations",
+                  "missingPrerequisites"
+                ],
+                "properties": {
+                  "schemaIdentifier": {
+                    "const": "npc.external-install-dependency-verification.v1"
+                  },
+                  "packageIntegrity": {
+                    "type": "boolean"
+                  },
+                  "descriptorClosureValid": {
+                    "type": "boolean"
+                  },
+                  "historicalSnapshotValid": {
+                    "type": "boolean"
+                  },
+                  "descriptorIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "verifiedInstallSnapshot": {
+                    "type": "object"
+                  },
+                  "currentInstallDependencyState": {
+                    "type": "string",
+                    "enum": [
+                      "not-required",
+                      "declared-unverified",
+                      "verified"
+                    ]
+                  },
+                  "installReady": {
+                    "type": "boolean"
+                  },
+                  "installDependencyAuthority": {
+                    "type": "boolean"
+                  },
+                  "runtimeAuthority": {
+                    "const": false
+                  },
+                  "visualAuthority": {
+                    "const": false
+                  },
+                  "providerObservations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "providerPlugin",
+                        "expectedSha256"
+                      ],
+                      "properties": {
+                        "providerPlugin": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "expectedSha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "currentSha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "missingPrerequisites": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "diagnosticCode",
+                        "portableIdentity",
+                        "nextAction"
+                      ],
+                      "properties": {
+                        "diagnosticCode": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "portableIdentity": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "expectedSha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "currentSha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "nextAction": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "completed": {
+                "const": false
+              },
+              "status": {
+                "const": "refused"
+              },
+              "manifestPath": {
+                "type": "null"
+              },
+              "manifestSize": {
+                "type": "null"
+              },
+              "manifestSha256": {
+                "type": "null"
+              },
+              "outputPlugin": {
+                "type": "null"
+              },
+              "targetFormId": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "completed": {
+                "const": true
+              },
+              "status": {
+                "const": "staticPassRuntimeRequired"
+              },
+              "manifestPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "manifestSize": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "manifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "outputPlugin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "targetFormId": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{8}$"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "documentSchemas": [
+    {
+      "name": "request",
+      "direction": "input",
+      "schemaIdentifier": "npc.create-from-jslot.request.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.create-from-jslot.request.v1",
+        "title": "Actorwright npc create-from-jslot request v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "edition",
+          "presetBundle",
+          "providerContext",
+          "standaloneAssets",
+          "output",
+          "identity",
+          "traits",
+          "references",
+          "stats"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "edition": {
+            "const": "skyrimse"
+          },
+          "presetBundle": {
+            "$ref": "#/$defs/presetBundle"
+          },
+          "providerContext": {
+            "$ref": "#/$defs/providerContext"
+          },
+          "standaloneAssets": {
+            "$ref": "#/$defs/standaloneAssets"
+          },
+          "wholeSkinAuthority": {
+            "$ref": "#/$defs/standaloneAssets",
+            "description": "Schema 2 existingNpcTarget only: hash-bound whole-skin authority required for schema 7 body meshes. The existing appearance writer clones private ARMO/ARMA records and preserves the source NPC identity."
+          },
+          "output": {
+            "$ref": "#/$defs/output"
+          },
+          "existingNpcTarget": {
+            "$ref": "#/$defs/existingNpcTarget"
+          },
+          "applyBodySlide": {
+            "type": "boolean",
+            "default": true,
+            "description": "Defaults to true when omitted; the loader still performs the runtime authority checks."
+          },
+          "allowInheritedMeshEmbeddedSkinTextureRoute": {
+            "type": "boolean",
+            "default": false,
+            "description": "Defaults to false when omitted; this opt-in does not replace runtime provider validation."
+          },
+          "faceGeomSkeletonAuthority": {
+            "type": "string",
+            "enum": [
+              "sourceModelWorldTranslations",
+              "identityFaceGenBones"
+            ],
+            "default": "sourceModelWorldTranslations",
+            "description": "Canonical JSON uses enum names; the private loader also retains legacy numeric enum compatibility."
+          },
+          "identity": {
+            "$ref": "#/$defs/identity"
+          },
+          "traits": {
+            "$ref": "#/$defs/traits"
+          },
+          "references": {
+            "$ref": "#/$defs/references"
+          },
+          "stats": {
+            "$ref": "#/$defs/stats"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "required": [
+                "wholeSkinAuthority"
+              ]
+            },
+            "then": {
+              "properties": {
+                "schemaVersion": {
+                  "const": 2
+                }
+              },
+              "required": [
+                "existingNpcTarget"
+              ]
+            }
+          }
+        ],
+        "oneOf": [
+          {
+            "properties": {
+              "schemaVersion": {
+                "const": 1
+              }
+            },
+            "not": {
+              "anyOf": [
+                {
+                  "properties": {
+                    "existingNpcTarget": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "existingNpcTarget"
+                  ]
+                },
+                {
+                  "properties": {
+                    "providerContext": {
+                      "properties": {
+                        "productFixtureBundle": {
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "productFixtureBundle"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "providerContext"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "properties": {
+              "schemaVersion": {
+                "const": 2
+              },
+              "existingNpcTarget": {
+                "$ref": "#/$defs/existingNpcTarget",
+                "type": "object"
+              }
+            },
+            "required": [
+              "existingNpcTarget"
+            ],
+            "not": {
+              "properties": {
+                "providerContext": {
+                  "properties": {
+                    "productFixtureBundle": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "productFixtureBundle"
+                  ]
+                }
+              },
+              "required": [
+                "providerContext"
+              ]
+            }
+          },
+          {
+            "properties": {
+              "schemaVersion": {
+                "const": 3
+              }
+            },
+            "not": {
+              "anyOf": [
+                {
+                  "properties": {
+                    "existingNpcTarget": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "existingNpcTarget"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "$defs": {
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "description": "Workspace-relative asset path. Workspace containment, reparse points, physical existence, and byte authority remain runtime checks."
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "plugin": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "formId": {
+            "type": "string",
+            "pattern": "^0x[0-9A-Fa-f]{8}$",
+            "description": "Canonical eight-digit hexadecimal FormID. Plugin-local nonzero and load-order rules remain runtime checks."
+          },
+          "formReference": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-Fa-f]{8}$"
+          },
+          "nullableFormReference": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-Fa-f]{8}$"
+          },
+          "presetBundle": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "manifestPath",
+              "manifestSha256",
+              "presetPath",
+              "presetSha256",
+              "faceGeomPath",
+              "faceGeomSha256",
+              "faceTintPath",
+              "faceTintSha256",
+              "recordAuthorityPath",
+              "recordAuthoritySha256",
+              "runtimeRoutesPath",
+              "runtimeRoutesSha256"
+            ],
+            "properties": {
+              "manifestPath": {
+                "$ref": "#/$defs/path"
+              },
+              "manifestSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "presetPath": {
+                "$ref": "#/$defs/path"
+              },
+              "presetSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "faceGeomPath": {
+                "$ref": "#/$defs/path"
+              },
+              "faceGeomSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "faceTintPath": {
+                "$ref": "#/$defs/path"
+              },
+              "faceTintSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "recordAuthorityPath": {
+                "$ref": "#/$defs/path"
+              },
+              "recordAuthoritySha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "runtimeRoutesPath": {
+                "$ref": "#/$defs/path"
+              },
+              "runtimeRoutesSha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "productFixtureBundle": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "bundleId",
+              "registryManifestSha256"
+            ],
+            "properties": {
+              "bundleId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "registryManifestSha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "providerContext": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "manifestPath": {
+                "$ref": "#/$defs/path"
+              },
+              "manifestSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "templatePlugin": {
+                "$ref": "#/$defs/path"
+              },
+              "templateSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "templateNpcFormId": {
+                "$ref": "#/$defs/formId"
+              },
+              "faceGeomCarrier": {
+                "$ref": "#/$defs/path"
+              },
+              "faceGeomSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "faceTintManifest": {
+                "$ref": "#/$defs/path"
+              },
+              "faceTintProviderRoot": {
+                "$ref": "#/$defs/path"
+              },
+              "dependencyManifest": {
+                "$ref": "#/$defs/path"
+              },
+              "productFixtureBundle": {
+                "$ref": "#/$defs/productFixtureBundle"
+              }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "manifestPath",
+                  "manifestSha256",
+                  "templatePlugin",
+                  "templateSha256",
+                  "templateNpcFormId",
+                  "faceGeomCarrier",
+                  "faceGeomSha256",
+                  "faceTintManifest",
+                  "faceTintProviderRoot",
+                  "dependencyManifest"
+                ],
+                "not": {
+                  "required": [
+                    "productFixtureBundle"
+                  ]
+                }
+              },
+              {
+                "properties": {
+                  "templateNpcFormId": {
+                    "$ref": "#/$defs/formId"
+                  },
+                  "productFixtureBundle": {
+                    "$ref": "#/$defs/productFixtureBundle"
+                  }
+                },
+                "required": [
+                  "templateNpcFormId",
+                  "productFixtureBundle"
+                ],
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "manifestPath"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "manifestSha256"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "templatePlugin"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "templateSha256"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "faceGeomCarrier"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "faceGeomSha256"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "faceTintManifest"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "faceTintProviderRoot"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "dependencyManifest"
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "standaloneAssets": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "manifestPath",
+              "manifestSha256"
+            ],
+            "properties": {
+              "manifestPath": {
+                "$ref": "#/$defs/path"
+              },
+              "manifestSha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "output": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "root",
+              "plugin"
+            ],
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/path"
+              },
+              "plugin": {
+                "$ref": "#/$defs/plugin"
+              },
+              "pluginType": {
+                "type": "string",
+                "default": "esp",
+                "enum": [
+                  "esp",
+                  "espfe"
+                ],
+                "description": "Newly allocated NPCs only. Default esp. espfe keeps the .esp file name and sets the TES4 light flag at creation without compacting owned FormIDs (0x800..0xFFF)."
+              }
+            }
+          },
+          "existingNpcTarget": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "sourcePlugin",
+              "sourcePluginSha256",
+              "targetFormId"
+            ],
+            "properties": {
+              "sourcePlugin": {
+                "$ref": "#/$defs/path"
+              },
+              "sourcePluginSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "targetFormId": {
+                "$ref": "#/$defs/formId"
+              }
+            },
+            "description": "Schema version 2 requires a non-null target; null is retained for the existing v1/v3 fixture wire shape."
+          },
+          "identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "editorId",
+              "name"
+            ],
+            "properties": {
+              "editorId": {
+                "$ref": "#/$defs/editorId"
+              },
+              "name": {
+                "$ref": "#/$defs/npcName"
+              }
+            }
+          },
+          "editorId": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "npcName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "traits": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sex",
+              "role",
+              "unique",
+              "essential",
+              "protected",
+              "respawns",
+              "autoCalcStats"
+            ],
+            "properties": {
+              "sex": {
+                "type": "string",
+                "enum": [
+                  "female",
+                  "male"
+                ]
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "civilian",
+                  "combatant",
+                  "follower",
+                  "merchant",
+                  "static-validation"
+                ]
+              },
+              "unique": {
+                "type": "boolean"
+              },
+              "essential": {
+                "type": "boolean"
+              },
+              "protected": {
+                "type": "boolean"
+              },
+              "respawns": {
+                "type": "boolean"
+              },
+              "autoCalcStats": {
+                "type": "boolean"
+              }
+            }
+          },
+          "references": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "race",
+              "voice",
+              "class",
+              "combatStyle"
+            ],
+            "properties": {
+              "race": {
+                "$ref": "#/$defs/formReference"
+              },
+              "voice": {
+                "$ref": "#/$defs/formReference"
+              },
+              "class": {
+                "$ref": "#/$defs/formReference"
+              },
+              "combatStyle": {
+                "$ref": "#/$defs/formReference"
+              },
+              "defaultOutfit": {
+                "$ref": "#/$defs/nullableFormReference"
+              }
+            }
+          },
+          "stats": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "levelMode",
+              "level",
+              "magickaOffset",
+              "staminaOffset",
+              "healthOffset",
+              "calcMinLevel",
+              "calcMaxLevel",
+              "speedMultiplier",
+              "dispositionBase",
+              "bleedoutOverride",
+              "baseHealth",
+              "baseMagicka",
+              "baseStamina",
+              "height",
+              "weight",
+              "farAwayModelDistance"
+            ],
+            "properties": {
+              "levelMode": {
+                "type": "string",
+                "enum": [
+                  "fixed",
+                  "multiplier"
+                ]
+              },
+              "level": {
+                "type": "number",
+                "minimum": 0
+              },
+              "magickaOffset": {
+                "type": "integer",
+                "minimum": -32768,
+                "maximum": 32767
+              },
+              "staminaOffset": {
+                "type": "integer",
+                "minimum": -32768,
+                "maximum": 32767
+              },
+              "healthOffset": {
+                "type": "integer",
+                "minimum": -32768,
+                "maximum": 32767
+              },
+              "calcMinLevel": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "calcMaxLevel": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "speedMultiplier": {
+                "type": "integer",
+                "minimum": -32768,
+                "maximum": 32767
+              },
+              "dispositionBase": {
+                "type": "integer",
+                "minimum": -32768,
+                "maximum": 32767
+              },
+              "bleedoutOverride": {
+                "type": "integer",
+                "minimum": -32768,
+                "maximum": 32767
+              },
+              "baseHealth": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "baseMagicka": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "baseStamina": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "height": {
+                "type": "number"
+              },
+              "weight": {
+                "type": "number"
+              },
+              "farAwayModelDistance": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "levelMode": {
+                      "const": "fixed"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "level": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 65535
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "levelMode": {
+                      "const": "multiplier"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "level": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 65.535,
+                      "multipleOf": 0.001
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "preflight",
+      "direction": "output",
+      "schemaIdentifier": "actorwright-npc-build-preflight/1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:actorwright-npc-build-preflight:1",
+        "title": "Actorwright NPC build preflight artifact v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "product",
+          "productVersion",
+          "sourceLine",
+          "executableSha256",
+          "derivationVersion",
+          "sourceRequest",
+          "sourceRequestSha256",
+          "presetSha256",
+          "race",
+          "sex",
+          "winningPluginOrder",
+          "authorities",
+          "headParts",
+          "appearance",
+          "finalDependencyClosure",
+          "requiredGates",
+          "optionalPreview",
+          "plannedOutputs",
+          "readyForBuild",
+          "previewReady",
+          "runtimeAuthority"
+        ],
+        "properties": {
+          "schema": {
+            "const": "actorwright-npc-build-preflight/1"
+          },
+          "product": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "productVersion": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "sourceLine": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "executableSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "derivationVersion": {
+            "const": 1
+          },
+          "sourceRequest": {
+            "$ref": "#/$defs/path"
+          },
+          "sourceRequestSha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "presetSha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "race": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "sex": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "winningPluginOrder": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          },
+          "authorities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/authority"
+            }
+          },
+          "headParts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/headPart"
+            }
+          },
+          "appearance": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/appearanceFact"
+            }
+          },
+          "finalDependencyClosure": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/authority"
+            }
+          },
+          "dependencyClosure": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "kind",
+                "path",
+                "status"
+              ],
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "status": {
+                  "enum": [
+                    "present",
+                    "missing",
+                    "nonCanonicalPath"
+                  ]
+                },
+                "disposition": {
+                  "enum": [
+                    "platformProvided",
+                    "optionalUnavailable"
+                  ]
+                }
+              }
+            }
+          },
+          "requiredGates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/gate"
+            }
+          },
+          "optionalPreview": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/gate"
+            }
+          },
+          "plannedOutputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/plannedOutput"
+            }
+          },
+          "readyForBuild": {
+            "type": "boolean"
+          },
+          "previewReady": {
+            "type": "boolean"
+          },
+          "runtimeAuthority": {
+            "const": false
+          }
+        },
+        "$defs": {
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "authority": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "role",
+              "origin",
+              "identity",
+              "sha256"
+            ],
+            "properties": {
+              "role": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "origin": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "identity": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "gate": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "required",
+              "passed",
+              "detail"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "passed": {
+                "type": "boolean"
+              },
+              "detail": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "headPart": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sourceIndex",
+              "sourceType",
+              "effectiveType",
+              "disposition",
+              "provider",
+              "geometryStatus",
+              "vertexLayoutStatus",
+              "topologyStatus",
+              "packedNormalStatus"
+            ],
+            "properties": {
+              "sourceIndex": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "sourceType": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "effectiveType": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "disposition": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "provider": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "geometryStatus": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "vertexLayoutStatus": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "topologyStatus": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "packedNormalStatus": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "appearanceFact": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "field",
+              "providerValue",
+              "effectiveValue",
+              "authority"
+            ],
+            "properties": {
+              "field": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "providerValue": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "effectiveValue": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "authority": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "plannedOutput": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "role",
+              "path"
+            ],
+            "properties": {
+              "role": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "path": {
+                "$ref": "#/$defs/path"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "face-bake-authority",
+      "direction": "output",
+      "schemaIdentifier": "skyrim-face-bake-authority/1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "skyrim-face-bake-authority/1",
+        "title": "Derived Skyrim face-bake authority (existing wire version 2)",
+        "description": "Canonical UTF-8 JSON uses the existing strict loader DTO order, no indentation or BOM, and hashes its exact file bytes. Derivation binds exact JSlot, copied record-plugin order, and winning loose/BSA content. loadedPlugins is the catalog-provider subsequence; recordPlugins preserves full bound record order. Model position SHA-256 is packed little-endian XYZ float bytes; model and carrier topology hashes are the existing reader's exact NiSkinPartition block hash. Carrier mapping first requires equal topology and vertex count, then a unique exact HDPT EditorID/model-shape name or a unique remaining topology match; ambiguity refuses. Model-less records, reader-admitted shaderless dummy selected roots, and independently discovered/exclusion-verified SMP forests are explicit record-only mapped roots. A dummy default/HNAM child has no existing consumable omission authority and refuses before publication. No runtime/visual authority. After emission, explicitly bind this path/SHA in the standalone faceBakeAuthority reference, rehash the execution request's standalone manifest binding, and run ordinary preflight/build. Emission does not rewrite existing inputs or pass their failed gates.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "authorityId",
+          "loadedPlugins",
+          "recordPlugins",
+          "assets",
+          "catalogConfigs",
+          "shapeTriInputs",
+          "carrierShapes",
+          "recordOnlyMappedHeadParts",
+          "optionalUnavailableExtensions"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": 2
+          },
+          "authorityId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "loadedPlugins": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/$defs/loadedPlugin"
+            }
+          },
+          "recordPlugins": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/$defs/recordPlugin"
+            }
+          },
+          "assets": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/$defs/asset"
+            }
+          },
+          "catalogConfigs": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 64,
+            "items": {
+              "$ref": "#/$defs/catalog"
+            }
+          },
+          "shapeTriInputs": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 128,
+            "items": {
+              "$ref": "#/$defs/tri"
+            }
+          },
+          "carrierShapes": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 128,
+            "items": {
+              "$ref": "#/$defs/carrier"
+            }
+          },
+          "recordOnlyMappedHeadParts": {
+            "type": "array",
+            "maxItems": 128,
+            "items": {
+              "$ref": "#/$defs/recordOnly"
+            }
+          },
+          "optionalUnavailableExtensions": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/$defs/unavailable"
+            }
+          }
+        },
+        "$defs": {
+          "order": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Contiguous zero-based row order."
+          },
+          "sha": {
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "geometrySha": {
+            "type": "string",
+            "pattern": "^(?!0{64}$)[0-9A-Fa-f]{64}$"
+          },
+          "plugin": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 255,
+            "pattern": "^[^/\\\\:|]+\\.[eE][sS][mMpPlL]$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "description": "Canonical forward-slash relative path, with no drive, empty, dot or parent components.",
+            "pattern": "^(?!/)(?!.*//)(?!.*(?:^|/)\\.{1,2}(?:/|$))[^\\\\:]+(?<!/)$"
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          },
+          "form": {
+            "type": "string",
+            "pattern": "^[^|/\\\\]+\\|0x[0-9A-Fa-f]{8}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "loadedPlugin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "order",
+              "plugin"
+            ],
+            "properties": {
+              "order": {
+                "$ref": "#/$defs/order"
+              },
+              "plugin": {
+                "$ref": "#/$defs/plugin"
+              }
+            }
+          },
+          "recordPlugin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "order",
+              "plugin",
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "order": {
+                "$ref": "#/$defs/order"
+              },
+              "plugin": {
+                "$ref": "#/$defs/plugin"
+              },
+              "path": {
+                "$ref": "#/$defs/path"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha"
+              }
+            }
+          },
+          "asset": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "order",
+              "id",
+              "providerId",
+              "providerKind",
+              "providerPath",
+              "providerSha256",
+              "assetPath",
+              "contentLength",
+              "contentSha256"
+            ],
+            "properties": {
+              "order": {
+                "$ref": "#/$defs/order"
+              },
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "providerId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "providerKind": {
+                "enum": [
+                  "loose",
+                  "bsa"
+                ]
+              },
+              "providerPath": {
+                "$ref": "#/$defs/path"
+              },
+              "providerSha256": {
+                "$ref": "#/$defs/sha"
+              },
+              "assetPath": {
+                "$ref": "#/$defs/path"
+              },
+              "contentLength": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 268435456
+              },
+              "contentSha256": {
+                "$ref": "#/$defs/sha"
+              }
+            }
+          },
+          "catalog": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "order",
+              "plugin",
+              "assetId"
+            ],
+            "description": "References a declared .ini or .slider asset beneath this plugin's meshes/actors/character/FaceGenMorphs directory. Grouped in loadedPlugins order; all assets must be used.",
+            "properties": {
+              "order": {
+                "$ref": "#/$defs/order"
+              },
+              "plugin": {
+                "$ref": "#/$defs/plugin"
+              },
+              "assetId": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          },
+          "tri": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "order",
+              "carrierShapeName",
+              "raceAssetId",
+              "chargenAssetId",
+              "meshAssetId",
+              "extendedAssetIds"
+            ],
+            "properties": {
+              "order": {
+                "$ref": "#/$defs/order"
+              },
+              "carrierShapeName": {
+                "$ref": "#/$defs/name"
+              },
+              "raceAssetId": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "chargenAssetId": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "meshAssetId": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "extendedAssetIds": {
+                "type": "array",
+                "maxItems": 128,
+                "items": {
+                  "$ref": "#/$defs/id"
+                }
+              }
+            }
+          },
+          "carrier": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "order",
+              "headPart",
+              "modelAssetId",
+              "modelShapeName",
+              "carrierShapeName",
+              "expectedModelPositionSha256",
+              "expectedModelTopologySha256",
+              "expectedCarrierTopologySha256"
+            ],
+            "properties": {
+              "order": {
+                "$ref": "#/$defs/order"
+              },
+              "headPart": {
+                "$ref": "#/$defs/form"
+              },
+              "modelAssetId": {
+                "$ref": "#/$defs/id"
+              },
+              "modelShapeName": {
+                "$ref": "#/$defs/name"
+              },
+              "carrierShapeName": {
+                "$ref": "#/$defs/name"
+              },
+              "expectedModelPositionSha256": {
+                "$ref": "#/$defs/geometrySha"
+              },
+              "expectedModelTopologySha256": {
+                "$ref": "#/$defs/geometrySha"
+              },
+              "expectedCarrierTopologySha256": {
+                "$ref": "#/$defs/geometrySha"
+              }
+            }
+          },
+          "recordOnly": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "order",
+              "headPart"
+            ],
+            "properties": {
+              "order": {
+                "$ref": "#/$defs/order"
+              },
+              "headPart": {
+                "$ref": "#/$defs/form"
+              }
+            }
+          },
+          "unavailable": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "order",
+              "assetPath"
+            ],
+            "properties": {
+              "order": {
+                "$ref": "#/$defs/order"
+              },
+              "assetPath": {
+                "$ref": "#/$defs/path"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

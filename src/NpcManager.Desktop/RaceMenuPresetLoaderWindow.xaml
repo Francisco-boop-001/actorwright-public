@@ -1,0 +1,233 @@
+<Window x:Class="NpcManager.Desktop.RaceMenuPresetLoaderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="Choose a RaceMenu preset"
+        Width="1080" Height="740" MinWidth="900" MinHeight="620"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        automation:AutomationProperties.Name="Choose a RaceMenu preset">
+    <Grid Margin="26,22,26,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,18">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Style="{StaticResource EyebrowText}" Text="RACEMENU PRESET CATALOG" />
+                <TextBlock Margin="0,5,0,0" FontSize="28" FontWeight="SemiBold"
+                           Text="Choose the appearance source" />
+                <TextBlock Margin="0,7,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                           Text="{Binding TargetSummary}" />
+            </StackPanel>
+            <Border Grid.Column="1" Padding="13,7" VerticalAlignment="Center"
+                    Background="{DynamicResource AccentDarkBrush}"
+                    BorderBrush="{DynamicResource AccentStrongBrush}"
+                    BorderThickness="1" CornerRadius="16">
+                <TextBlock Foreground="{DynamicResource AccentBrush}" FontWeight="SemiBold"
+                           Text="Static copied-provider authority" />
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="1" Margin="0,0,0,14" Padding="16"
+                Background="{DynamicResource SurfaceBrush}"
+                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+                CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="18" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}"
+                               Text="Preset folder" />
+                    <TextBlock FontFamily="Cascadia Mono, Consolas" FontSize="11"
+                               Text="{Binding PresetDirectory}" TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}"
+                               Text="Catalog state" />
+                    <TextBlock Foreground="{DynamicResource AccentBrush}" Text="{Binding Status}"
+                               TextWrapping="Wrap" automation:AutomationProperties.LiveSetting="Polite" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.9*" MinWidth="330" />
+                <ColumnDefinition Width="18" />
+                <ColumnDefinition Width="1.25*" MinWidth="420" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardBorder}" Padding="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="FilterBox" Grid.Row="0" Margin="0,0,0,10"
+                             Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
+                             automation:AutomationProperties.Name="Filter RaceMenu presets" />
+                    <CheckBox Grid.Row="1" Margin="2,0,0,10"
+                              IsEnabled="{Binding CompatibilityFilterAvailable}"
+                              IsChecked="{Binding CompatibleOnly}"
+                              Content="Show only race-compatible presets"
+                              ToolTip="{Binding CompatibilityHelp}"
+                              automation:AutomationProperties.Name="Show only race-compatible presets"
+                              automation:AutomationProperties.HelpText="{Binding CompatibilityHelp}" />
+                    <Grid Grid.Row="2">
+                        <ListBox x:Name="PresetList"
+                                 ItemsSource="{Binding VisibleEntries}"
+                                 SelectedItem="{Binding SelectedEntry}"
+                                 IsEnabled="{Binding IsNotBusy}"
+                                 MouseDoubleClick="PresetList_OnMouseDoubleClick"
+                                 automation:AutomationProperties.Name="RaceMenu preset catalog">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel>
+                                            <TextBlock FontWeight="SemiBold" Text="{Binding DisplayName}" />
+                                            <TextBlock Margin="0,4,8,0" FontSize="11"
+                                                       Foreground="{DynamicResource MutedTextBrush}"
+                                                       Text="{Binding SummaryLine}" TextWrapping="Wrap" />
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="1" VerticalAlignment="Center" FontSize="11"
+                                                   Foreground="{DynamicResource AccentBrush}"
+                                                   Text="{Binding CompatibilityLabel}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   MaxWidth="270" TextAlignment="Center" TextWrapping="Wrap"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding EmptyState}"
+                                   Visibility="{Binding HasNoVisibleEntries, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    </Grid>
+                    <TextBlock Grid.Row="3" Margin="2,10,0,0" FontSize="11"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               Text="{Binding VisibleCount}" />
+                    <ListBox Grid.Row="4" Margin="0,8,0,0" MaxHeight="64"
+                             ItemsSource="{Binding Diagnostics}"
+                             Background="Transparent" BorderThickness="0"
+                             FontSize="11"
+                             Foreground="{DynamicResource MutedTextBrush}"
+                             automation:AutomationProperties.Name="RaceMenu catalog diagnostics">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="18">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                               MaxWidth="340" TextAlignment="Center" TextWrapping="Wrap"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               Text="Select a preset to inspect its exact hash, appearance channels, and race verdict."
+                               Visibility="{Binding DetailsPromptVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel DataContext="{Binding SelectedEntry}">
+                            <TextBlock Style="{StaticResource EyebrowText}" Text="SELECTED PRESET" />
+                            <TextBlock Margin="0,5,0,2" FontSize="23" FontWeight="SemiBold"
+                                       Text="{Binding DisplayName}" />
+                            <TextBlock Margin="0,0,0,16" Foreground="{DynamicResource AccentBrush}"
+                                       Text="{Binding CompatibilityLabel}" />
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="Off-engine CharGen preview" />
+                            <Border Height="245" Margin="0,6,0,8" Padding="6"
+                                    Background="#080D13" BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1" CornerRadius="8">
+                                <Grid>
+                                    <Image Stretch="Uniform"
+                                           Source="{Binding DataContext.PreviewImagePath, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource PathToImageSource}}"
+                                           automation:AutomationProperties.Name="Selected preset off-engine CharGen preview" />
+                                    <ProgressBar Height="3" VerticalAlignment="Bottom"
+                                                 IsIndeterminate="True"
+                                                 Visibility="{Binding DataContext.IsPreviewBusy, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                </Grid>
+                            </Border>
+                            <TextBlock FontSize="11" TextWrapping="Wrap"
+                                       Text="{Binding DataContext.PreviewStatus, RelativeSource={RelativeSource AncestorType=Window}}"
+                                       automation:AutomationProperties.LiveSetting="Polite" />
+                            <TextBlock Margin="0,4,0,3" FontSize="11"
+                                       Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                       Text="{Binding DataContext.PreviewAuthority, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <TextBlock Margin="0,0,0,16" FontSize="11"
+                                       Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                       Text="{Binding DataContext.PreviewScope, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Source path" />
+                            <TextBlock Margin="0,4,0,12" FontFamily="Cascadia Mono, Consolas" FontSize="11"
+                                       Text="{Binding SourcePathText}" TextWrapping="Wrap" />
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="SHA-256" />
+                            <TextBlock Margin="0,4,0,16" FontFamily="Cascadia Mono, Consolas" FontSize="11"
+                                       Text="{Binding SourceSha256Text}" TextWrapping="Wrap" />
+                            <Border Margin="0,0,0,10" Padding="13" Background="#0E1924" CornerRadius="8">
+                                <StackPanel>
+                                    <TextBlock FontWeight="SemiBold" Text="Head and face" />
+                                    <TextBlock Margin="0,5,0,0" Text="{Binding HeadAndFaceText}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Border>
+                            <Border Margin="0,0,0,14" Padding="13" Background="#0E1924" CornerRadius="8">
+                                <StackPanel>
+                                    <TextBlock FontWeight="SemiBold" Text="Body and runtime sidecars" />
+                                    <TextBlock Margin="0,5,0,0" Text="{Binding BodyText}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Border>
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Authority diagnostics" />
+                            <TextBlock Margin="0,5,0,0" FontSize="11" Text="{Binding DiagnosticText}"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Center">
+                <CheckBox IsChecked="{Binding ApplyBodySlide}"
+                          Content="Apply BodySlide sliders"
+                          automation:AutomationProperties.Name="Apply BodySlide sliders" />
+                <TextBlock Margin="0,5,0,0" FontSize="11"
+                           Foreground="{DynamicResource MutedTextBrush}"
+                           Text="Checked by default. The accepted choice is retained in the shared build transaction." />
+                <TextBlock Margin="0,5,14,0" FontSize="11" TextWrapping="Wrap"
+                           Foreground="{DynamicResource AccentBrush}"
+                           Text="{Binding SelectionHelp}"
+                           automation:AutomationProperties.LiveSetting="Polite" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button MinWidth="110" Style="{StaticResource QuietButton}" Content="_Cancel"
+                        IsCancel="True" Click="Cancel_OnClick"
+                        automation:AutomationProperties.Name="Cancel RaceMenu preset selection" />
+                <Button MinWidth="150" Margin="10,0,0,0" Style="{StaticResource PrimaryButton}"
+                        Content="_Use preset" IsDefault="True" IsEnabled="{Binding CanAccept}"
+                        Click="Accept_OnClick"
+                        automation:AutomationProperties.Name="Use selected RaceMenu preset" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

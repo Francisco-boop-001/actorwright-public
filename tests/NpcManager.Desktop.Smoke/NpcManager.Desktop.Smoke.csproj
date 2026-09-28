@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>NpcManager.Desktop.Smoke</AssemblyName>
+    <RootNamespace>NpcManager.Desktop.Smoke</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>false</EnableWindowsTargeting>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\TestInfrastructure\SyntheticFaceGeomHairRegionsFixture.cs" Link="TestInfrastructure\SyntheticFaceGeomHairRegionsFixture.cs" />
+    <Using Remove="System.Drawing" />
+    <Using Remove="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\NpcManager.Gate1.Tests\ProductProviderFixtureEmitter.cs" Link="Fixtures\ProductProviderFixtureEmitter.cs" />
+    <Compile Include="..\TestInfrastructure\Gate1ProductProviderFixtureBridge.cs" Link="Fixtures\Gate1ProductProviderFixtureBridge.cs" />
+    <ProjectReference Include="..\..\src\NpcManager.Desktop\NpcManager.Desktop.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Infrastructure\NpcManager.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Formats.Bethesda\NpcManager.Formats.Bethesda.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.BodyGen\NpcManager.BodyGen.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Presets\NpcManager.Presets.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Rendering\NpcManager.Rendering.csproj" />
+  </ItemGroup>
+</Project>
+

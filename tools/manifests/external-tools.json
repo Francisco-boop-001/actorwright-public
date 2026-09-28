@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "pathBase": "Actorwright workspace root",
+  "provenanceStatus": "Official Blender 4.5.1 and PyNifly 27.4.0 archives and the DirectXTex texconv release executable have pinned SHA-256 digests and verified contents.",
+  "tools": [
+    {
+      "name": "Blender",
+      "version": "4.5.1-windows-x64",
+      "installPath": "tools/external/blender-4.5.1-windows-x64",
+      "downloadSource": "https://download.blender.org/release/Blender4.5/",
+      "downloadArtifactUrl": "https://download.blender.org/release/Blender4.5/blender-4.5.1-windows-x64.zip",
+      "archiveSha256": "AE2EADB2656D710FFD6CA74A899519FCCB800C7A18E6C05B6F39627E48D17AED",
+      "verifiedArtifact": {
+        "kind": "executable",
+        "path": "tools/external/blender-4.5.1-windows-x64/blender-4.5.1-windows-x64/blender.exe",
+        "length": 95998608,
+        "sha256": "B5D8EEB792FD63FDE1B06628D813B3B467BB3D54C1E5F93B5A1311CFB8DE0794"
+      },
+      "archiveLength": 399708581,
+      "archiveChecksumSource": "https://download.blender.org/release/Blender4.5/blender-4.5.1.sha256",
+      "limitation": "The full official archive digest and embedded executable digest are pinned; restore verifies both before publishing the distribution."
+    },
+    {
+      "name": "PyNifly Blender profile",
+      "version": "27.4.0",
+      "installPath": "tools/external/blender-4.5.1-pynifly-profile",
+      "downloadSource": "https://github.com/BadDogSkyrim/PyNifly/releases/tag/V27.4.0",
+      "downloadArtifactUrl": "https://github.com/BadDogSkyrim/PyNifly/releases/download/V27.4.0/io_scene_nifly.zip",
+      "archiveSha256": "296427A5E30F151223700298A7875DF2C0A61B5F422818FC7002B4F4D8DDAEE7",
+      "verifiedArtifact": {
+        "kind": "profile-file-inventory-manifest",
+        "path": "runtime/rendering/npc-preview-profile-manifest.json",
+        "length": 11806,
+        "sha256": "993BC41BF5BAA8BD177B8A38A8605A153CEFBBE4B9B423642BD47D71E404323E",
+        "verifiedInventoryFileCount": 76
+      },
+      "limitation": "The exact official release archive reproduces the committed 76-file profile inventory. Transient __pycache__ directories and .pyc files are excluded and are not installed.",
+      "archiveLength": 32006190,
+      "archiveChecksumSource": "SHA-256 measured from the official V27.4.0 release asset; all 76 non-transient files match the committed inventory."
+    },
+    {
+      "name": "DirectXTex texconv",
+      "version": "2026.5.7",
+      "installPath": "tools/external/directxtex-texconv-2026.5.7",
+      "downloadSource": "https://github.com/microsoft/DirectXTex/releases/tag/may2026",
+      "downloadArtifactUrl": "https://github.com/microsoft/DirectXTex/releases/download/may2026/texconv.exe",
+      "archiveSha256": null,
+      "verifiedArtifact": {
+        "kind": "executable",
+        "path": "tools/external/directxtex-texconv-2026.5.7/texconv.exe",
+        "length": 966480,
+        "sha256": "DCFDEC10244E02CF5037FBA089C55FB7E1326B1C8181742D77D15FA5CB5EEF06"
+      },
+      "downloadArtifactSha256": "DCFDEC10244E02CF5037FBA089C55FB7E1326B1C8181742D77D15FA5CB5EEF06",
+      "downloadArtifactLength": 966480,
+      "downloadArtifactKind": "raw executable release asset",
+      "limitation": "The official may2026 release executable is pinned directly; no ZIP archive is used."
+    }
+  ]
+}

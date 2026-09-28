@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>NpcManager.Architecture.Tests</AssemblyName>
+    <RootNamespace>NpcManager.Architecture.Tests</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\TestInfrastructure\SkyrimFinishMasterFixture.cs" Link="TestInfrastructure\SkyrimFinishMasterFixture.cs" />
+    <Compile Include="..\TestInfrastructure\SyntheticFaceGeomHairRegionsFixture.cs" Link="TestInfrastructure\SyntheticFaceGeomHairRegionsFixture.cs" />
+    <ProjectReference Include="..\..\src\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Assets\NpcManager.Assets.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.FaceGen\NpcManager.FaceGen.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Formats.Bethesda\NpcManager.Formats.Bethesda.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Infrastructure\NpcManager.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Pipeline\NpcManager.Pipeline.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Presets\NpcManager.Presets.csproj" />
+    <Compile Include="..\..\tools\fixtures\skyrim-plugin-topology\SyntheticSkyrimPluginTopology.cs" Link="Fixtures\SyntheticSkyrimPluginTopology.cs" />
+    <ProjectReference Include="..\..\src\NpcManager.Rendering\NpcManager.Rendering.csproj" />
+    <ProjectReference Include="..\NpcManager.Gate2.PipelineIntegration.Tests\NpcManager.Gate2.PipelineIntegration.Tests.csproj"
+                      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>
+

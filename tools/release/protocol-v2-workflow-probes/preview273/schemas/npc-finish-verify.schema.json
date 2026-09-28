@@ -1,0 +1,1452 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "npc finish verify",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Reopen and independently verify one published world-clean Finish Core package.",
+    "limitations": [
+      "Read-only typed/raw/package/archive verification; placementIncluded, runtimeAuthority, and visualAuthority must remain false.",
+      "Writes one fresh external static-verification artifact; runtime, visual, and promotion authority remain required."
+    ],
+    "options": [
+      {
+        "cliName": "manifest",
+        "jsonName": "manifest",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Typed value for --manifest.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "manifest-sha256",
+        "jsonName": "manifest-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<64-hex-sha256>",
+        "description": "Typed value for --manifest-sha256.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "verification-output",
+        "jsonName": "verification-output",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Typed value for --verification-output.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle",
+        "jsonName": "workflow-bundle",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact resumable workflow bundle input.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle-sha256",
+        "jsonName": "workflow-bundle-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 binding the workflow bundle.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-output",
+        "jsonName": "workflow-output",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh successor workflow bundle output.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "data-root",
+        "jsonName": "data-root",
+        "valueKind": "path",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<absolute-K-local-path>",
+        "description": "Optional external-install context; --data-root and --plugins must be supplied together.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "plugins",
+        "jsonName": "plugins",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<plugin,...>",
+        "description": "Optional complete enabled order; --data-root and --plugins must be supplied together.",
+        "aliasFor": null
+      }
+    ],
+    "inputArtifactKinds": [
+      "npc-finish-core-manifest",
+      "workflow-bundle"
+    ],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:finish-verify-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "readWorkspace",
+        "condition": "When the exact manifest, package, archive, and static evidence are verified.",
+        "scope": "workspace",
+        "trigger": null
+      },
+      {
+        "kind": "writeNewArtifact",
+        "condition": "Only after independent static verification succeeds.",
+        "scope": "k-local-output",
+        "trigger": null
+      },
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "requiresFreshOutput",
+    "determinism": "deterministic",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "The exact manifest and archive bytes are admitted."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "established",
+        "reason": "The manifest binds the source, plugin, and runtime identity."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "established",
+        "reason": "The Finish package and archive remain hash-bound."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "established",
+        "reason": "Static verification is persisted and independently reopened."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "notApplicable",
+        "reason": "Finish Verify does not render a preview."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "required",
+        "reason": "Static verification does not establish human visual acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "required",
+        "reason": "Game-runtime verification remains required."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "required",
+        "reason": "Static verification never grants promotion approval."
+      }
+    ],
+    "transitions": [
+      {
+        "from": "verify",
+        "to": "runtimeAcceptance",
+        "requiredBindings": [
+          "npc-finish-core-verification",
+          "package-archive"
+        ]
+      },
+      {
+        "from": "verify",
+        "to": "review-required",
+        "requiredBindings": [
+          "npc-finish-core-request",
+          "npc-finish-core-proposal",
+          "npc-finish-core-verification",
+          "package-archive"
+        ]
+      }
+    ],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [
+      {
+        "kind": "requiresTogether",
+        "options": [
+          "data-root",
+          "plugins"
+        ],
+        "referencedOptions": [],
+        "condition": "--data-root and --plugins must be supplied together.",
+        "trigger": null
+      }
+    ],
+    "inputArtifacts": [
+      {
+        "kind": "npc-finish-core-manifest",
+        "schemaIds": [
+          "npc.finish-core.manifest.v1",
+          "npc.finish-core.manifest.v2"
+        ],
+        "description": "Exact hash-bound published Finish Core manifest.",
+        "trigger": null
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Exact hash-bound predecessor workflow containing the Finish manifest.",
+        "trigger": null
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "kind": "npc-finish-core-verification",
+        "schemaIds": [
+          "npc.finish-core.verification.v1",
+          "npc.finish-core.verification.v2"
+        ],
+        "description": "Fresh canonical independent static-verification evidence, reopened before publication.",
+        "trigger": null
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Fresh verified workflow successor retaining the manifest and archive bindings.",
+        "trigger": null
+      }
+    ],
+    "resultShape": "object",
+    "resultDescription": "Static verification outcome, persisted evidence and workflow bindings, external install observations when supplied, diagnostics, and separate human, runtime, and promotion requirements."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:finish-verify-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:finish-verify-result:v1",
+        "title": "Actorwright protocol v2 Finish Verify result",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "verified",
+          "status",
+          "manifestPath",
+          "manifestSha256",
+          "verificationPath",
+          "verificationSize",
+          "verificationSha256",
+          "verification",
+          "diagnostics"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": "1"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "staticPassRuntimeRequired",
+              "refused",
+              null
+            ]
+          },
+          "manifestPath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "manifestSha256": {
+            "type": "string",
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "verificationPath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "verificationSize": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "verificationSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "verification": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/$defs/verification"
+              }
+            ]
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "info",
+                    "warning",
+                    "error"
+                  ]
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "verified": {
+                "const": false
+              },
+              "verificationPath": {
+                "type": "null"
+              },
+              "verificationSize": {
+                "type": "null"
+              },
+              "verificationSha256": {
+                "type": "null"
+              },
+              "verification": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "verified": {
+                "const": true
+              },
+              "status": {
+                "const": "staticPassRuntimeRequired"
+              },
+              "verificationPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "verificationSize": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "verificationSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "verification": {
+                "$ref": "#/$defs/verification"
+              }
+            }
+          }
+        ],
+        "$defs": {
+          "hash": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "plugin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "formId": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          },
+          "formReference": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "formId"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/plugin"
+              },
+              "formId": {
+                "$ref": "#/$defs/formId"
+              }
+            }
+          },
+          "runtimeIdentity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "baseNpc",
+              "placedReference",
+              "placementIncluded"
+            ],
+            "properties": {
+              "baseNpc": {
+                "$ref": "#/$defs/formReference"
+              },
+              "placedReference": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/formReference"
+                  }
+                ]
+              },
+              "placementIncluded": {
+                "type": "boolean"
+              }
+            }
+          },
+          "verification": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "status",
+              "verified",
+              "placementIncluded",
+              "runtimeAuthority",
+              "visualAuthority",
+              "typedForbiddenCounts",
+              "rawForbiddenCounts",
+              "pluginSha256",
+              "packageTreeSha256",
+              "sourcePackageTreeSha256",
+              "archiveSha256",
+              "runtimeIdentity"
+            ],
+            "properties": {
+              "schema": {
+                "const": "npc.finish-core.verification.v1"
+              },
+              "status": {
+                "const": "staticPassRuntimeRequired"
+              },
+              "verified": {
+                "const": true
+              },
+              "placementIncluded": {
+                "const": false
+              },
+              "runtimeAuthority": {
+                "const": false
+              },
+              "visualAuthority": {
+                "const": false
+              },
+              "typedForbiddenCounts": {
+                "type": "object",
+                "additionalProperties": {
+                  "const": 0
+                }
+              },
+              "rawForbiddenCounts": {
+                "type": "object",
+                "additionalProperties": {
+                  "const": 0
+                }
+              },
+              "pluginSha256": {
+                "$ref": "#/$defs/hash"
+              },
+              "packageTreeSha256": {
+                "$ref": "#/$defs/hash"
+              },
+              "sourcePackageTreeSha256": {
+                "$ref": "#/$defs/hash"
+              },
+              "archiveSha256": {
+                "$ref": "#/$defs/hash"
+              },
+              "runtimeIdentity": {
+                "$ref": "#/$defs/runtimeIdentity"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "documentSchemas": [
+    {
+      "name": "manifest-legacy",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.manifest.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.manifest.v1",
+        "title": "Actorwright Finish Core manifest v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "plugin",
+          "pluginSha256",
+          "baseNpc",
+          "requestSha256",
+          "proposalSha256",
+          "placementIncluded",
+          "runtimeAuthority",
+          "visualAuthority",
+          "packageRoot",
+          "archive",
+          "archiveSha256",
+          "sourcePackageTreeSha256",
+          "packageTreeSha256",
+          "runtimeIdentity",
+          "evidence"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.manifest.v1"
+          },
+          "plugin": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "pluginSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "baseNpc": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requestSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "proposalSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "placementIncluded": {
+            "type": "boolean"
+          },
+          "runtimeAuthority": {
+            "type": "boolean"
+          },
+          "visualAuthority": {
+            "type": "boolean"
+          },
+          "packageRoot": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "archive": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "archiveSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourcePackageTreeSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "packageTreeSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "runtimeIdentity": {
+            "type": "object"
+          },
+          "evidence": {
+            "type": "object"
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "manifest-external",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.manifest.v2",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.manifest.v2",
+        "title": "Actorwright Finish Core manifest v2",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "plugin",
+          "pluginSha256",
+          "baseNpc",
+          "requestSha256",
+          "proposalSha256",
+          "placementIncluded",
+          "runtimeAuthority",
+          "visualAuthority",
+          "packageRoot",
+          "archive",
+          "archiveSha256",
+          "sourcePackageTreeSha256",
+          "packageTreeSha256",
+          "runtimeIdentity",
+          "evidence",
+          "externalHeadParts"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.manifest.v2"
+          },
+          "plugin": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "pluginSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "baseNpc": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requestSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "proposalSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "placementIncluded": {
+            "type": "boolean"
+          },
+          "runtimeAuthority": {
+            "const": false
+          },
+          "visualAuthority": {
+            "const": false
+          },
+          "packageRoot": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "archive": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "archiveSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourcePackageTreeSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "packageTreeSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "runtimeIdentity": {
+            "type": "object"
+          },
+          "evidence": {
+            "type": "object"
+          },
+          "externalHeadParts": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "selectedManifestPath",
+              "selectedManifestSha256",
+              "descriptors",
+              "attestations",
+              "verifiedInstallSnapshot"
+            ],
+            "properties": {
+              "selectedManifestPath": {
+                "const": "Data/NPCManager/Evidence/selected-preset-dependencies.json"
+              },
+              "selectedManifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-Fa-f]{64}$"
+              },
+              "descriptors": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object"
+                }
+              },
+              "attestations": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object"
+                }
+              },
+              "verifiedInstallSnapshot": {
+                "$ref": "#/$defs/externalInstallSnapshot"
+              }
+            }
+          }
+        },
+        "$defs": {
+          "externalInstallSnapshot": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "selectedManifestSha256",
+              "descriptorIds",
+              "contextFingerprint"
+            ],
+            "properties": {
+              "selectedManifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-Fa-f]{64}$"
+              },
+              "descriptorIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[0-9A-Fa-f]{64}$"
+                }
+              },
+              "contextFingerprint": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "sha256",
+                  "observations"
+                ],
+                "properties": {
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9A-Fa-f]{64}$"
+                  },
+                  "observations": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "kind",
+                        "portableIdentity",
+                        "sha256",
+                        "byteLength",
+                        "order"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "portableIdentity": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9A-Fa-f]{64}$"
+                        },
+                        "byteLength": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "order": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "externalContextFingerprint": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sha256",
+              "observations"
+            ],
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9A-Fa-f]{64}$"
+              },
+              "observations": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "portableIdentity",
+                    "sha256",
+                    "byteLength",
+                    "order"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "portableIdentity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "order": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "verification-legacy",
+      "direction": "output",
+      "schemaIdentifier": "npc.finish-core.verification.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.verification.v1",
+        "title": "Actorwright Finish Core verification v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "status",
+          "verified",
+          "placementIncluded",
+          "runtimeAuthority",
+          "visualAuthority",
+          "pluginSha256",
+          "packageTreeSha256",
+          "sourcePackageTreeSha256",
+          "archiveSha256",
+          "typedForbiddenCounts",
+          "rawForbiddenCounts",
+          "runtimeIdentity"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.verification.v1"
+          },
+          "status": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "placementIncluded": {
+            "type": "boolean"
+          },
+          "runtimeAuthority": {
+            "type": "boolean"
+          },
+          "visualAuthority": {
+            "type": "boolean"
+          },
+          "pluginSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "packageTreeSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourcePackageTreeSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "archiveSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "typedForbiddenCounts": {
+            "type": "object"
+          },
+          "rawForbiddenCounts": {
+            "type": "object"
+          },
+          "runtimeIdentity": {
+            "type": "object"
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "verification-external",
+      "direction": "output",
+      "schemaIdentifier": "npc.finish-core.verification.v2",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.verification.v2",
+        "title": "Actorwright Finish Core verification v2",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "status",
+          "verified",
+          "placementIncluded",
+          "runtimeAuthority",
+          "visualAuthority",
+          "pluginSha256",
+          "packageTreeSha256",
+          "sourcePackageTreeSha256",
+          "archiveSha256",
+          "typedForbiddenCounts",
+          "rawForbiddenCounts",
+          "runtimeIdentity",
+          "externalHeadParts"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.verification.v2"
+          },
+          "status": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "placementIncluded": {
+            "type": "boolean"
+          },
+          "runtimeAuthority": {
+            "type": "boolean"
+          },
+          "visualAuthority": {
+            "type": "boolean"
+          },
+          "pluginSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "packageTreeSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourcePackageTreeSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "archiveSha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "typedForbiddenCounts": {
+            "type": "object"
+          },
+          "rawForbiddenCounts": {
+            "type": "object"
+          },
+          "runtimeIdentity": {
+            "type": "object"
+          },
+          "externalHeadParts": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "verification"
+            ],
+            "properties": {
+              "verification": {
+                "$ref": "#/$defs/externalInstallVerification"
+              }
+            }
+          }
+        },
+        "$defs": {
+          "externalInstallVerification": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schemaIdentifier",
+              "packageIntegrity",
+              "descriptorClosureValid",
+              "descriptorIds",
+              "currentInstallDependencyState",
+              "installReady",
+              "installDependencyAuthority",
+              "runtimeAuthority",
+              "visualAuthority",
+              "providerObservations",
+              "missingPrerequisites",
+              "historicalSnapshotValid",
+              "verifiedInstallSnapshot"
+            ],
+            "properties": {
+              "schemaIdentifier": {
+                "const": "npc.external-install-dependency-verification.v1"
+              },
+              "packageIntegrity": {
+                "type": "boolean"
+              },
+              "descriptorClosureValid": {
+                "type": "boolean"
+              },
+              "historicalSnapshotValid": {
+                "type": "boolean"
+              },
+              "descriptorIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[0-9A-Fa-f]{64}$"
+                }
+              },
+              "verifiedInstallSnapshot": {
+                "$ref": "#/$defs/externalInstallSnapshot"
+              },
+              "currentInstallDependencyState": {
+                "type": "string",
+                "enum": [
+                  "not-required",
+                  "declared-unverified",
+                  "verified"
+                ]
+              },
+              "installReady": {
+                "type": "boolean"
+              },
+              "installDependencyAuthority": {
+                "type": "boolean"
+              },
+              "runtimeAuthority": {
+                "type": "boolean"
+              },
+              "visualAuthority": {
+                "type": "boolean"
+              },
+              "providerObservations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "providerPlugin",
+                    "expectedSha256"
+                  ],
+                  "properties": {
+                    "providerPlugin": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "expectedSha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "currentSha256": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "enabled": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "missingPrerequisites": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "diagnosticCode",
+                    "portableIdentity",
+                    "nextAction"
+                  ],
+                  "properties": {
+                    "diagnosticCode": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "portableIdentity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "expectedSha256": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "currentSha256": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "enabled": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "nextAction": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "externalInstallSnapshot": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "selectedManifestSha256",
+              "descriptorIds",
+              "contextFingerprint"
+            ],
+            "properties": {
+              "selectedManifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-Fa-f]{64}$"
+              },
+              "descriptorIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[0-9A-Fa-f]{64}$"
+                }
+              },
+              "contextFingerprint": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "sha256",
+                  "observations"
+                ],
+                "properties": {
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9A-Fa-f]{64}$"
+                  },
+                  "observations": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "kind",
+                        "portableIdentity",
+                        "sha256",
+                        "byteLength",
+                        "order"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "portableIdentity": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9A-Fa-f]{64}$"
+                        },
+                        "byteLength": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "order": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "externalContextFingerprint": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sha256",
+              "observations"
+            ],
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9A-Fa-f]{64}$"
+              },
+              "observations": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "portableIdentity",
+                    "sha256",
+                    "byteLength",
+                    "order"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "portableIdentity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "order": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    }
+  ]
+}

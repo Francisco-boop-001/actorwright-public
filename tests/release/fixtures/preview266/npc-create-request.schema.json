@@ -1,0 +1,697 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:schema:npc.create-from-jslot.request.v1",
+  "title": "Actorwright npc create-from-jslot request v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "edition",
+    "presetBundle",
+    "providerContext",
+    "standaloneAssets",
+    "output",
+    "identity",
+    "traits",
+    "references",
+    "stats"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "enum": [
+        1,
+        2,
+        3
+      ]
+    },
+    "edition": {
+      "const": "skyrimse"
+    },
+    "presetBundle": {
+      "$ref": "#/$defs/presetBundle"
+    },
+    "providerContext": {
+      "$ref": "#/$defs/providerContext"
+    },
+    "standaloneAssets": {
+      "$ref": "#/$defs/standaloneAssets"
+    },
+    "output": {
+      "$ref": "#/$defs/output"
+    },
+    "existingNpcTarget": {
+      "$ref": "#/$defs/existingNpcTarget"
+    },
+    "applyBodySlide": {
+      "type": "boolean",
+      "default": true,
+      "description": "Defaults to true when omitted; the loader still performs the runtime authority checks."
+    },
+    "allowInheritedMeshEmbeddedSkinTextureRoute": {
+      "type": "boolean",
+      "default": false,
+      "description": "Defaults to false when omitted; this opt-in does not replace runtime provider validation."
+    },
+    "faceGeomSkeletonAuthority": {
+      "type": "string",
+      "enum": [
+        "sourceModelWorldTranslations",
+        "identityFaceGenBones"
+      ],
+      "default": "sourceModelWorldTranslations",
+      "description": "Canonical JSON uses enum names; the private loader also retains legacy numeric enum compatibility."
+    },
+    "identity": {
+      "$ref": "#/$defs/identity"
+    },
+    "traits": {
+      "$ref": "#/$defs/traits"
+    },
+    "references": {
+      "$ref": "#/$defs/references"
+    },
+    "stats": {
+      "$ref": "#/$defs/stats"
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        }
+      },
+      "not": {
+        "anyOf": [
+          {
+            "properties": {
+              "existingNpcTarget": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "existingNpcTarget"
+            ]
+          },
+          {
+            "properties": {
+              "providerContext": {
+                "properties": {
+                  "productFixtureBundle": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "productFixtureBundle"
+                ]
+              }
+            },
+            "required": [
+              "providerContext"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "schemaVersion": {
+          "const": 2
+        },
+        "existingNpcTarget": {
+          "$ref": "#/$defs/existingNpcTarget",
+          "type": "object"
+        }
+      },
+      "required": [
+        "existingNpcTarget"
+      ],
+      "not": {
+        "properties": {
+          "providerContext": {
+            "properties": {
+              "productFixtureBundle": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "productFixtureBundle"
+            ]
+          }
+        },
+        "required": [
+          "providerContext"
+        ]
+      }
+    },
+    {
+      "properties": {
+        "schemaVersion": {
+          "const": 3
+        }
+      },
+      "not": {
+        "anyOf": [
+          {
+            "properties": {
+              "existingNpcTarget": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "existingNpcTarget"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "description": "Workspace-relative asset path. Workspace containment, reparse points, physical existence, and byte authority remain runtime checks."
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f]{64}$"
+    },
+    "plugin": {
+      "type": "string",
+      "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+    },
+    "formId": {
+      "type": "string",
+      "pattern": "^0x[0-9A-Fa-f]{8}$",
+      "description": "Canonical eight-digit hexadecimal FormID. Plugin-local nonzero and load-order rules remain runtime checks."
+    },
+    "formReference": {
+      "type": "string",
+      "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-Fa-f]{8}$"
+    },
+    "nullableFormReference": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-Fa-f]{8}$"
+    },
+    "presetBundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestPath",
+        "manifestSha256",
+        "presetPath",
+        "presetSha256",
+        "faceGeomPath",
+        "faceGeomSha256",
+        "faceTintPath",
+        "faceTintSha256",
+        "recordAuthorityPath",
+        "recordAuthoritySha256",
+        "runtimeRoutesPath",
+        "runtimeRoutesSha256"
+      ],
+      "properties": {
+        "manifestPath": {
+          "$ref": "#/$defs/path"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "presetPath": {
+          "$ref": "#/$defs/path"
+        },
+        "presetSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "faceGeomPath": {
+          "$ref": "#/$defs/path"
+        },
+        "faceGeomSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "faceTintPath": {
+          "$ref": "#/$defs/path"
+        },
+        "faceTintSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "recordAuthorityPath": {
+          "$ref": "#/$defs/path"
+        },
+        "recordAuthoritySha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "runtimeRoutesPath": {
+          "$ref": "#/$defs/path"
+        },
+        "runtimeRoutesSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "productFixtureBundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundleId",
+        "registryManifestSha256"
+      ],
+      "properties": {
+        "bundleId": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "registryManifestSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "providerContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "manifestPath": {
+          "$ref": "#/$defs/path"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "templatePlugin": {
+          "$ref": "#/$defs/path"
+        },
+        "templateSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "templateNpcFormId": {
+          "$ref": "#/$defs/formId"
+        },
+        "faceGeomCarrier": {
+          "$ref": "#/$defs/path"
+        },
+        "faceGeomSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "faceTintManifest": {
+          "$ref": "#/$defs/path"
+        },
+        "faceTintProviderRoot": {
+          "$ref": "#/$defs/path"
+        },
+        "dependencyManifest": {
+          "$ref": "#/$defs/path"
+        },
+        "productFixtureBundle": {
+          "$ref": "#/$defs/productFixtureBundle"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "manifestPath",
+            "manifestSha256",
+            "templatePlugin",
+            "templateSha256",
+            "templateNpcFormId",
+            "faceGeomCarrier",
+            "faceGeomSha256",
+            "faceTintManifest",
+            "faceTintProviderRoot",
+            "dependencyManifest"
+          ],
+          "not": {
+            "required": [
+              "productFixtureBundle"
+            ]
+          }
+        },
+        {
+          "properties": {
+            "templateNpcFormId": {
+              "$ref": "#/$defs/formId"
+            },
+            "productFixtureBundle": {
+              "$ref": "#/$defs/productFixtureBundle"
+            }
+          },
+          "required": [
+            "templateNpcFormId",
+            "productFixtureBundle"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "manifestPath"
+                ]
+              },
+              {
+                "required": [
+                  "manifestSha256"
+                ]
+              },
+              {
+                "required": [
+                  "templatePlugin"
+                ]
+              },
+              {
+                "required": [
+                  "templateSha256"
+                ]
+              },
+              {
+                "required": [
+                  "faceGeomCarrier"
+                ]
+              },
+              {
+                "required": [
+                  "faceGeomSha256"
+                ]
+              },
+              {
+                "required": [
+                  "faceTintManifest"
+                ]
+              },
+              {
+                "required": [
+                  "faceTintProviderRoot"
+                ]
+              },
+              {
+                "required": [
+                  "dependencyManifest"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "standaloneAssets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestPath",
+        "manifestSha256"
+      ],
+      "properties": {
+        "manifestPath": {
+          "$ref": "#/$defs/path"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "plugin"
+      ],
+      "properties": {
+        "root": {
+          "$ref": "#/$defs/path"
+        },
+        "plugin": {
+          "$ref": "#/$defs/plugin"
+        }
+      }
+    },
+    "existingNpcTarget": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "sourcePlugin",
+        "sourcePluginSha256",
+        "targetFormId"
+      ],
+      "properties": {
+        "sourcePlugin": {
+          "$ref": "#/$defs/path"
+        },
+        "sourcePluginSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "targetFormId": {
+          "$ref": "#/$defs/formId"
+        }
+      },
+      "description": "Schema version 2 requires a non-null target; null is retained for the existing v1/v3 fixture wire shape."
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "editorId",
+        "name"
+      ],
+      "properties": {
+        "editorId": {
+          "$ref": "#/$defs/editorId"
+        },
+        "name": {
+          "$ref": "#/$defs/npcName"
+        }
+      }
+    },
+    "editorId": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+    },
+    "npcName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "traits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sex",
+        "role",
+        "unique",
+        "essential",
+        "protected",
+        "respawns",
+        "autoCalcStats"
+      ],
+      "properties": {
+        "sex": {
+          "type": "string",
+          "enum": [
+            "female",
+            "male"
+          ]
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "civilian",
+            "combatant",
+            "follower",
+            "merchant",
+            "static-validation"
+          ]
+        },
+        "unique": {
+          "type": "boolean"
+        },
+        "essential": {
+          "type": "boolean"
+        },
+        "protected": {
+          "type": "boolean"
+        },
+        "respawns": {
+          "type": "boolean"
+        },
+        "autoCalcStats": {
+          "type": "boolean"
+        }
+      }
+    },
+    "references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "race",
+        "voice",
+        "class",
+        "combatStyle"
+      ],
+      "properties": {
+        "race": {
+          "$ref": "#/$defs/formReference"
+        },
+        "voice": {
+          "$ref": "#/$defs/formReference"
+        },
+        "class": {
+          "$ref": "#/$defs/formReference"
+        },
+        "combatStyle": {
+          "$ref": "#/$defs/formReference"
+        },
+        "defaultOutfit": {
+          "$ref": "#/$defs/nullableFormReference"
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "levelMode",
+        "level",
+        "magickaOffset",
+        "staminaOffset",
+        "healthOffset",
+        "calcMinLevel",
+        "calcMaxLevel",
+        "speedMultiplier",
+        "dispositionBase",
+        "bleedoutOverride",
+        "baseHealth",
+        "baseMagicka",
+        "baseStamina",
+        "height",
+        "weight",
+        "farAwayModelDistance"
+      ],
+      "properties": {
+        "levelMode": {
+          "type": "string",
+          "enum": [
+            "fixed",
+            "multiplier"
+          ]
+        },
+        "level": {
+          "type": "number",
+          "minimum": 0
+        },
+        "magickaOffset": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 32767
+        },
+        "staminaOffset": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 32767
+        },
+        "healthOffset": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 32767
+        },
+        "calcMinLevel": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "calcMaxLevel": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "speedMultiplier": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 32767
+        },
+        "dispositionBase": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 32767
+        },
+        "bleedoutOverride": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 32767
+        },
+        "baseHealth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "baseMagicka": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "baseStamina": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "height": {
+          "type": "number"
+        },
+        "weight": {
+          "type": "number"
+        },
+        "farAwayModelDistance": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "levelMode": {
+                "const": "fixed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "level": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "levelMode": {
+                "const": "multiplier"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "level": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 65.535,
+                "multipleOf": 0.001
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

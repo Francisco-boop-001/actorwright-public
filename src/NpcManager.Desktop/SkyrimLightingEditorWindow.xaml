@@ -1,0 +1,198 @@
+<Window x:Class="NpcManager.Desktop.SkyrimLightingEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:NpcManager.Desktop"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="Preview lighting"
+        Width="1050" Height="740" MinWidth="900" MinHeight="640"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        PreviewKeyDown="Window_OnPreviewKeyDown"
+        automation:AutomationProperties.Name="Preview lighting editor">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0,0,0,16">
+            <TextBlock Style="{StaticResource EyebrowText}" Text="SKYRIM PREVIEW" />
+            <TextBlock Margin="0,4,0,0" FontSize="26" FontWeight="SemiBold"
+                       Text="Preview lighting" />
+            <TextBlock Margin="0,6,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                       TextWrapping="Wrap"
+                       Text="Tune a bounded off-engine light rig. Every valid edit refreshes the schematic immediately; Apply persists only after exact K-local readback." />
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.15*" MinWidth="430" />
+                <ColumnDefinition Width="18" />
+                <ColumnDefinition Width="*" MinWidth="350" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <StackPanel>
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,12">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource EyebrowText}" Text="RIG" />
+                            <Grid Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="12" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="12" />
+                                    <ColumnDefinition Width="130" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <Label Target="{Binding ElementName=PresetIdBox}" Content="Preset _ID" />
+                                    <TextBox x:Name="PresetIdBox" Text="{Binding PresetId, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="Lighting preset ID" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <Label Target="{Binding ElementName=VersionBox}" Content="_Version" />
+                                    <TextBox x:Name="VersionBox" Text="{Binding VersionText, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="Lighting preset version" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="4">
+                                    <Label Target="{Binding ElementName=AmbientBox}" Content="_Ambient intensity" />
+                                    <TextBox x:Name="AmbientBox" Text="{Binding AmbientText, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="Ambient intensity 0 to 4" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Style="{StaticResource CardBorder}">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource EyebrowText}" Text="ORDERED LIGHTS" />
+                                <Button Grid.Column="1" Style="{StaticResource QuietButton}"
+                                        Content="_Add light" Click="AddLight_OnClick"
+                                        automation:AutomationProperties.Name="Add preview light" />
+                            </Grid>
+                            <ListBox x:Name="RigList" Margin="0,10,0,12" MinHeight="92" MaxHeight="150"
+                                     ItemsSource="{Binding Lights}" SelectedItem="{Binding SelectedLight}"
+                                     DisplayMemberPath="Id"
+                                     automation:AutomationProperties.Name="Ordered preview lights" />
+                            <WrapPanel Margin="0,0,0,14">
+                                <Button Margin="0,0,8,8" Style="{StaticResource QuietButton}"
+                                        Content="_Remove" IsEnabled="{Binding CanRemove}"
+                                        Click="RemoveLight_OnClick" />
+                                <Button Margin="0,0,8,8" Style="{StaticResource QuietButton}"
+                                        Content="Move _up" IsEnabled="{Binding CanMoveUp}"
+                                        Click="MoveUp_OnClick" />
+                                <Button Margin="0,0,8,8" Style="{StaticResource QuietButton}"
+                                        Content="Move _down" IsEnabled="{Binding CanMoveDown}"
+                                        Click="MoveDown_OnClick" />
+                            </WrapPanel>
+
+                            <Grid IsEnabled="{Binding IsNotBusy}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="12" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="12" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.ColumnSpan="5" Margin="0,0,0,10">
+                                    <Label Target="{Binding ElementName=LightIdBox}" Content="Light _ID" />
+                                    <TextBox x:Name="LightIdBox" Text="{Binding SelectedLight.Id, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="Selected light ID" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,10">
+                                    <Label Target="{Binding ElementName=AzimuthBox}" Content="_Azimuth (-180..180)" />
+                                    <TextBox x:Name="AzimuthBox" Text="{Binding SelectedLight.AzimuthText, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="Selected light azimuth" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,0,0,10">
+                                    <Label Target="{Binding ElementName=ElevationBox}" Content="_Elevation (-90..90)" />
+                                    <TextBox x:Name="ElevationBox" Text="{Binding SelectedLight.ElevationText, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="Selected light elevation" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="4" Margin="0,0,0,10">
+                                    <Label Target="{Binding ElementName=IntensityBox}" Content="_Intensity (0..8)" />
+                                    <TextBox x:Name="IntensityBox" Text="{Binding SelectedLight.IntensityText, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="Selected light intensity" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="2" Grid.Column="0">
+                                    <Label Target="{Binding ElementName=RedBox}" Content="_Red (0..1)" />
+                                    <TextBox x:Name="RedBox" Text="{Binding SelectedLight.RedText, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="2" Grid.Column="2">
+                                    <Label Target="{Binding ElementName=GreenBox}" Content="_Green (0..1)" />
+                                    <TextBox x:Name="GreenBox" Text="{Binding SelectedLight.GreenText, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="2" Grid.Column="4">
+                                    <Label Target="{Binding ElementName=BlueBox}" Content="_Blue (0..1)" />
+                                    <TextBox x:Name="BlueBox" Text="{Binding SelectedLight.BlueText, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+            <StackPanel Grid.Column="2">
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="OFF-ENGINE SCHEMATIC" />
+                        <TextBlock Margin="0,5,0,10" FontSize="18" FontWeight="SemiBold"
+                                   Text="Immediate light-rig preview" />
+                        <local:SkyrimLightingPreviewControl Height="330"
+                                                            Preset="{Binding PreviewPreset}"
+                                                            automation:AutomationProperties.Name="Off-engine schematic lighting preview" />
+                        <TextBlock Margin="0,10,0,0" Text="{Binding PreviewSummary}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="0,6,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding PreviewAuthority}" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,4,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="This is not a NIF, ENB, Community Shaders, material, tint, or in-game render. Runtime authority remains false."
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+                <Border Margin="0,12,0,0" Padding="14" CornerRadius="8"
+                        Background="#251A20" BorderBrush="#704452" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Foreground="{DynamicResource DangerBrush}"
+                                   Text="{Binding ValidationMessage}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.LiveSetting="Assertive" />
+                        <TextBlock Margin="0,5,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding StatusMessage}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource QuietButton}" HorizontalAlignment="Left"
+                    Content="_Reset rig" IsEnabled="{Binding IsNotBusy}"
+                    Click="Reset_OnClick" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Margin="0,0,10,0" Style="{StaticResource QuietButton}"
+                        Content="_Cancel" Click="Cancel_OnClick"
+                        automation:AutomationProperties.Name="Cancel preview lighting edit" />
+                <Button Style="{StaticResource PrimaryButton}" Content="_Apply"
+                        IsDefault="True" IsEnabled="{Binding CanApply}"
+                        Click="Apply_OnClick"
+                        automation:AutomationProperties.Name="Apply and persist preview lighting" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

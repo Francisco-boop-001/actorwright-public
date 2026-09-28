@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>NpcManager.Application</AssemblyName>
+    <RootNamespace>NpcManager.Application</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NpcManager.Domain\NpcManager.Domain.csproj" />
+  </ItemGroup>
+</Project>

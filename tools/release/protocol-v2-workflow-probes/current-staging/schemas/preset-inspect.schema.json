@@ -1,0 +1,3789 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "preset inspect",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Inspect a LooksMenu or RaceMenu preset.",
+    "limitations": [
+      "M1 shell: feature implementation is introduced by later milestones.",
+      "Protocol v2 admits one exact hash-bound RaceMenu JSlot and requires a fresh inspection receipt output."
+    ],
+    "options": [
+      {
+        "cliName": "format",
+        "jsonName": "format",
+        "valueKind": "enum",
+        "required": true,
+        "allowedValues": [
+          "racemenu-jslot"
+        ],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "racemenu-jslot",
+        "description": "Exact preset format; strict inspection accepts only racemenu-jslot.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "edition",
+        "jsonName": "edition",
+        "valueKind": "enum",
+        "required": true,
+        "allowedValues": [
+          "skyrimse"
+        ],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "skyrimse",
+        "description": "Exact game edition admitted by the strict command.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "input",
+        "jsonName": "input",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact ordinary K-local RaceMenu JSlot input.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "input-sha256",
+        "jsonName": "input-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 of the exact input bytes.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "inspection-output",
+        "jsonName": "inspection-output",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh canonical preset-inspection receipt output.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle",
+        "jsonName": "workflow-bundle",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact resumable workflow bundle input.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle-sha256",
+        "jsonName": "workflow-bundle-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 binding the workflow bundle.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-output",
+        "jsonName": "workflow-output",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh successor workflow bundle output.",
+        "aliasFor": null
+      }
+    ],
+    "inputArtifactKinds": [
+      "racemenu-jslot",
+      "workflow-bundle"
+    ],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:preset-inspect-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "readWorkspace",
+        "condition": "When the exact JSlot source is admitted and parsed.",
+        "scope": "The exact --input file beneath the configured workspace.",
+        "trigger": null
+      },
+      {
+        "kind": "writeNewArtifact",
+        "condition": "After exact JSlot parsing reaches a typed inspection document.",
+        "scope": "The fresh exact --inspection-output receipt.",
+        "trigger": null
+      },
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "requiresFreshOutput",
+    "determinism": "deterministic",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "Exact ordinary K-local JSlot bytes and their uppercase digest are admitted."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "required",
+        "reason": "Preset inspection does not establish plugin or asset provider identity."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "established",
+        "reason": "The strict preset-inspection receipt is canonically materialized."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "established",
+        "reason": "The receipt is read back, strictly parsed, and pinned and reloaded."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "notApplicable",
+        "reason": "Preset inspection does not render a preview."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "notApplicable",
+        "reason": "Preset inspection does not request visual acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "required",
+        "reason": "Game-runtime verification remains required."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "notApplicable",
+        "reason": "Preset inspection performs no promotion."
+      }
+    ],
+    "transitions": [
+      {
+        "from": "analyze",
+        "to": "analyze",
+        "requiredBindings": [
+          "racemenu-jslot"
+        ]
+      }
+    ],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [],
+    "inputArtifacts": [
+      {
+        "kind": "racemenu-jslot",
+        "schemaIds": [
+          "application/json"
+        ],
+        "description": "Exact hash-bound RaceMenu JSlot admitted as JSON bytes.",
+        "trigger": null
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Exact hash-bound predecessor workflow bundle.",
+        "trigger": null
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "kind": "preset-inspection",
+        "schemaIds": [
+          "actorwright-preset-inspection/2"
+        ],
+        "description": "Fresh canonical preset-inspection receipt, reopened and pinned to the admitted JSlot bytes.",
+        "trigger": null
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Fresh independently verified workflow successor.",
+        "trigger": null
+      }
+    ],
+    "resultShape": "object",
+    "resultDescription": "Strict inspection outcome, canonical receipt path and digest, typed RaceMenu appearance evidence, diagnostics, workflow transition, and no runtime or visual-acceptance claim."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:preset-inspect-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:preset-inspect-result:v1",
+        "title": "Actorwright protocol v2 preset inspect result",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "format",
+          "edition",
+          "sourcePath",
+          "sourceSha256",
+          "isValid",
+          "appearance",
+          "diagnostics",
+          "inspectionPath",
+          "inspectionSize",
+          "inspectionSha256"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": "1"
+          },
+          "format": {
+            "const": "racemenu-jslot"
+          },
+          "edition": {
+            "const": "skyrimse"
+          },
+          "sourcePath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "isValid": {
+            "type": "boolean"
+          },
+          "appearance": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "gender",
+                  "headParts",
+                  "hairColor",
+                  "weight",
+                  "morphs",
+                  "bodyMorphs",
+                  "customMorphs",
+                  "sliderMorphs",
+                  "tints",
+                  "overlays",
+                  "skin",
+                  "presence",
+                  "unknownFields",
+                  "fallout4BodyMorphs",
+                  "chargenFaceMorphs",
+                  "faceBoneRegions",
+                  "facialMorphIntensity",
+                  "raceMenu",
+                  "orderedCustomMorphs"
+                ],
+                "properties": {
+                  "gender": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "headParts": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/headPart"
+                    }
+                  },
+                  "hairColor": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/hairColor"
+                      }
+                    ]
+                  },
+                  "weight": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/weight"
+                      }
+                    ]
+                  },
+                  "morphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "bodyMorphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "customMorphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "sliderMorphs": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "tints": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/tint"
+                    }
+                  },
+                  "overlays": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/overlay"
+                    }
+                  },
+                  "skin": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "presence": {
+                    "$ref": "#/$defs/presence"
+                  },
+                  "unknownFields": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/unknownField"
+                    }
+                  },
+                  "fallout4BodyMorphs": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/fallout4BodyMorphs"
+                      }
+                    ]
+                  },
+                  "chargenFaceMorphs": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/floatMap"
+                      }
+                    ]
+                  },
+                  "faceBoneRegions": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "facialMorphIntensity": {
+                    "type": "number"
+                  },
+                  "raceMenu": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/raceMenu"
+                      }
+                    ]
+                  },
+                  "orderedCustomMorphs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/customMorph"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "inspectionPath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "inspectionSize": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "inspectionSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          }
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "sourcePath": {
+                "type": "null"
+              },
+              "sourceSha256": {
+                "type": "null"
+              },
+              "isValid": {
+                "const": false
+              },
+              "appearance": {
+                "type": "null"
+              },
+              "inspectionPath": {
+                "type": "null"
+              },
+              "inspectionSize": {
+                "type": "null"
+              },
+              "inspectionSha256": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "sourcePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "isValid": {
+                "const": false
+              },
+              "appearance": {
+                "type": "null"
+              },
+              "inspectionPath": {
+                "type": "null"
+              },
+              "inspectionSize": {
+                "type": "null"
+              },
+              "inspectionSha256": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "sourcePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "appearance": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "gender",
+                  "headParts",
+                  "hairColor",
+                  "weight",
+                  "morphs",
+                  "bodyMorphs",
+                  "customMorphs",
+                  "sliderMorphs",
+                  "tints",
+                  "overlays",
+                  "skin",
+                  "presence",
+                  "unknownFields",
+                  "fallout4BodyMorphs",
+                  "chargenFaceMorphs",
+                  "faceBoneRegions",
+                  "facialMorphIntensity",
+                  "raceMenu",
+                  "orderedCustomMorphs"
+                ],
+                "properties": {
+                  "gender": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "headParts": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/headPart"
+                    }
+                  },
+                  "hairColor": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/hairColor"
+                      }
+                    ]
+                  },
+                  "weight": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/weight"
+                      }
+                    ]
+                  },
+                  "morphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "bodyMorphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "customMorphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "sliderMorphs": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "tints": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/tint"
+                    }
+                  },
+                  "overlays": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/overlay"
+                    }
+                  },
+                  "skin": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "presence": {
+                    "$ref": "#/$defs/presence"
+                  },
+                  "unknownFields": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/unknownField"
+                    }
+                  },
+                  "fallout4BodyMorphs": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/fallout4BodyMorphs"
+                      }
+                    ]
+                  },
+                  "chargenFaceMorphs": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/floatMap"
+                      }
+                    ]
+                  },
+                  "faceBoneRegions": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "facialMorphIntensity": {
+                    "type": "number"
+                  },
+                  "raceMenu": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/raceMenu"
+                      }
+                    ]
+                  },
+                  "orderedCustomMorphs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/customMorph"
+                    }
+                  }
+                }
+              },
+              "inspectionPath": {
+                "type": "null"
+              },
+              "inspectionSize": {
+                "type": "null"
+              },
+              "inspectionSha256": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "sourcePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "appearance": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "gender",
+                  "headParts",
+                  "hairColor",
+                  "weight",
+                  "morphs",
+                  "bodyMorphs",
+                  "customMorphs",
+                  "sliderMorphs",
+                  "tints",
+                  "overlays",
+                  "skin",
+                  "presence",
+                  "unknownFields",
+                  "fallout4BodyMorphs",
+                  "chargenFaceMorphs",
+                  "faceBoneRegions",
+                  "facialMorphIntensity",
+                  "raceMenu",
+                  "orderedCustomMorphs"
+                ],
+                "properties": {
+                  "gender": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "headParts": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/headPart"
+                    }
+                  },
+                  "hairColor": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/hairColor"
+                      }
+                    ]
+                  },
+                  "weight": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/weight"
+                      }
+                    ]
+                  },
+                  "morphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "bodyMorphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "customMorphs": {
+                    "$ref": "#/$defs/floatMap"
+                  },
+                  "sliderMorphs": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "tints": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/tint"
+                    }
+                  },
+                  "overlays": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/overlay"
+                    }
+                  },
+                  "skin": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "presence": {
+                    "$ref": "#/$defs/presence"
+                  },
+                  "unknownFields": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/unknownField"
+                    }
+                  },
+                  "fallout4BodyMorphs": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/fallout4BodyMorphs"
+                      }
+                    ]
+                  },
+                  "chargenFaceMorphs": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/floatMap"
+                      }
+                    ]
+                  },
+                  "faceBoneRegions": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "facialMorphIntensity": {
+                    "type": "number"
+                  },
+                  "raceMenu": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "$ref": "#/$defs/raceMenu"
+                      }
+                    ]
+                  },
+                  "orderedCustomMorphs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/customMorph"
+                    }
+                  }
+                }
+              },
+              "inspectionPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "inspectionSize": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "inspectionSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              }
+            }
+          }
+        ],
+        "$defs": {
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "floatMap": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "pluginName": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "formId": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          },
+          "identifier": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "raw",
+              "plugin",
+              "formId"
+            ],
+            "properties": {
+              "raw": {
+                "type": "string",
+                "minLength": 1
+              },
+              "plugin": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/pluginName"
+                  }
+                ]
+              },
+              "formId": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/formId"
+                  }
+                ]
+              }
+            }
+          },
+          "headPart": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "identifier",
+              "type"
+            ],
+            "properties": {
+              "identifier": {
+                "$ref": "#/$defs/identifier"
+              },
+              "type": {
+                "type": "integer"
+              }
+            }
+          },
+          "hairColor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "formIdentifier",
+              "packedRgb"
+            ],
+            "properties": {
+              "formIdentifier": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/identifier"
+                  }
+                ]
+              },
+              "packedRgb": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          },
+          "weight": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "thin",
+              "muscular",
+              "fat"
+            ],
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "thin": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "muscular": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "fat": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "tint": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "color",
+              "texture",
+              "type",
+              "percent",
+              "colorId"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "color": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "texture": {
+                "type": "string"
+              },
+              "type": {
+                "type": "integer"
+              },
+              "percent": {
+                "type": "integer"
+              },
+              "colorId": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            }
+          },
+          "overlay": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "template",
+              "priority",
+              "tint",
+              "offsetUv",
+              "scaleUv"
+            ],
+            "properties": {
+              "template": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "integer"
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "offsetUv": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "scaleUv": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "presence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "gender",
+              "headParts",
+              "hairColor",
+              "weight",
+              "morphs",
+              "bodyMorphs",
+              "tints",
+              "overlays",
+              "skin",
+              "fallout4BodyMorphs",
+              "chargenFaceMorphs",
+              "faceBoneRegions",
+              "facialMorphIntensity"
+            ],
+            "properties": {
+              "gender": {
+                "type": "boolean"
+              },
+              "headParts": {
+                "type": "boolean"
+              },
+              "hairColor": {
+                "type": "boolean"
+              },
+              "weight": {
+                "type": "boolean"
+              },
+              "morphs": {
+                "type": "boolean"
+              },
+              "bodyMorphs": {
+                "type": "boolean"
+              },
+              "tints": {
+                "type": "boolean"
+              },
+              "overlays": {
+                "type": "boolean"
+              },
+              "skin": {
+                "type": "boolean"
+              },
+              "fallout4BodyMorphs": {
+                "type": "boolean"
+              },
+              "chargenFaceMorphs": {
+                "type": "boolean"
+              },
+              "faceBoneRegions": {
+                "type": "boolean"
+              },
+              "facialMorphIntensity": {
+                "type": "boolean"
+              }
+            }
+          },
+          "unknownField": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "jsonKind"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "jsonKind": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "fallout4BodyMorphs": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "head",
+              "upperTorso",
+              "arms",
+              "lowerTorso",
+              "legs"
+            ],
+            "properties": {
+              "head": {
+                "type": "number"
+              },
+              "upperTorso": {
+                "type": "number"
+              },
+              "arms": {
+                "type": "number"
+              },
+              "lowerTorso": {
+                "type": "number"
+              },
+              "legs": {
+                "type": "number"
+              }
+            }
+          },
+          "customMorph": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "value"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              }
+            }
+          },
+          "raceMenu": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "headTexture",
+              "faceMorphPresets",
+              "sculptDivisor",
+              "sculptParts",
+              "bodyMorphsKeyed",
+              "bodyOverlays",
+              "nodeTransforms",
+              "skinOverrides",
+              "faceTextures",
+              "modNames",
+              "mods",
+              "version"
+            ],
+            "properties": {
+              "headTexture": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "faceMorphPresets": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                }
+              },
+              "sculptDivisor": {
+                "type": "integer"
+              },
+              "sculptParts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/sculptPart"
+                }
+              },
+              "bodyMorphsKeyed": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/$defs/floatMap"
+                }
+              },
+              "bodyOverlays": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/bodyOverlay"
+                }
+              },
+              "nodeTransforms": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nodeTransform"
+                }
+              },
+              "skinOverrides": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/skinOverride"
+                }
+              },
+              "faceTextures": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/faceTexture"
+                }
+              },
+              "modNames": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/pluginName"
+                }
+              },
+              "mods": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/modEntry"
+                }
+              },
+              "version": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/raceMenuVersion"
+                  }
+                ]
+              }
+            }
+          },
+          "sculptPart": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "host",
+              "vertexCount",
+              "vertices",
+              "hasVertexCount",
+              "hasData"
+            ],
+            "properties": {
+              "host": {
+                "type": "string"
+              },
+              "vertexCount": {
+                "type": "integer"
+              },
+              "vertices": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/sculptVertex"
+                }
+              },
+              "hasVertexCount": {
+                "type": "boolean"
+              },
+              "hasData": {
+                "type": "boolean"
+              }
+            }
+          },
+          "sculptVertex": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "dx",
+              "dy",
+              "dz"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "dx": {
+                "type": "number"
+              },
+              "dy": {
+                "type": "number"
+              },
+              "dz": {
+                "type": "number"
+              }
+            }
+          },
+          "bodyOverlay": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node",
+              "diffuse",
+              "normal",
+              "tint",
+              "alpha",
+              "values"
+            ],
+            "properties": {
+              "node": {
+                "type": "string"
+              },
+              "diffuse": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "normal": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "alpha": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "raceMenuValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "key",
+              "type",
+              "index",
+              "data"
+            ],
+            "properties": {
+              "key": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "integer"
+              },
+              "index": {
+                "type": "integer"
+              },
+              "data": {
+                "$ref": "#/$defs/raceMenuScalar"
+              }
+            }
+          },
+          "raceMenuScalar": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "integerValue",
+              "numberValue",
+              "stringValue",
+              "booleanValue"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "signedInteger",
+                  "floatingPoint",
+                  "text",
+                  "boolean",
+                  "null"
+                ]
+              },
+              "integerValue": {
+                "type": "integer"
+              },
+              "numberValue": {
+                "type": "number"
+              },
+              "stringValue": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "booleanValue": {
+                "type": "boolean"
+              }
+            }
+          },
+          "nodeTransform": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node",
+              "firstPerson",
+              "keySets",
+              "scale",
+              "scaleMode",
+              "position",
+              "rotationMatrix",
+              "values"
+            ],
+            "properties": {
+              "node": {
+                "type": "string"
+              },
+              "firstPerson": {
+                "type": "boolean"
+              },
+              "keySets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/transformKeySet"
+                }
+              },
+              "scale": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "scaleMode": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "position": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "rotationMatrix": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "transformKeySet": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "values"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "skinOverride": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slotMask",
+              "firstPerson",
+              "values",
+              "textures",
+              "tint",
+              "alpha"
+            ],
+            "properties": {
+              "slotMask": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "firstPerson": {
+                "type": "boolean"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              },
+              "textures": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "alpha": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "faceTexture": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "texture"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "texture": {
+                "type": "string"
+              }
+            }
+          },
+          "modEntry": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "name"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              "name": {
+                "$ref": "#/$defs/pluginName"
+              }
+            }
+          },
+          "raceMenuVersion": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "formatVersion",
+              "runtimeVersion",
+              "signature",
+              "skseVersion"
+            ],
+            "properties": {
+              "formatVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "runtimeVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "signature": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "skseVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "documentSchemas": [
+    {
+      "name": "inspection-current",
+      "direction": "output",
+      "schemaIdentifier": "actorwright-preset-inspection/2",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:actorwright-preset-inspection:2",
+        "title": "Actorwright preset inspection receipt v2",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "sourcePath",
+          "sourceSha256",
+          "format",
+          "edition",
+          "isValid",
+          "appearance",
+          "diagnostics"
+        ],
+        "properties": {
+          "schema": {
+            "const": "actorwright-preset-inspection/2"
+          },
+          "sourcePath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sourceSha256": {
+            "type": "string",
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "format": {
+            "const": "racemenu-jslot"
+          },
+          "edition": {
+            "const": "skyrimse"
+          },
+          "isValid": {
+            "type": "boolean"
+          },
+          "appearance": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "gender",
+              "headParts",
+              "hairColor",
+              "weight",
+              "morphs",
+              "bodyMorphs",
+              "customMorphs",
+              "sliderMorphs",
+              "tints",
+              "overlays",
+              "skin",
+              "presence",
+              "unknownFields",
+              "fallout4BodyMorphs",
+              "chargenFaceMorphs",
+              "faceBoneRegions",
+              "facialMorphIntensity",
+              "raceMenu",
+              "orderedCustomMorphs"
+            ],
+            "properties": {
+              "gender": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "headParts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/headPart"
+                }
+              },
+              "hairColor": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/hairColor"
+                  }
+                ]
+              },
+              "weight": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/weight"
+                  }
+                ]
+              },
+              "morphs": {
+                "$ref": "#/$defs/floatMap"
+              },
+              "bodyMorphs": {
+                "$ref": "#/$defs/floatMap"
+              },
+              "customMorphs": {
+                "$ref": "#/$defs/floatMap"
+              },
+              "sliderMorphs": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "tints": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/tint"
+                }
+              },
+              "overlays": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/overlay"
+                }
+              },
+              "skin": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "presence": {
+                "$ref": "#/$defs/presence"
+              },
+              "unknownFields": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/unknownField"
+                }
+              },
+              "fallout4BodyMorphs": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/fallout4BodyMorphs"
+                  }
+                ]
+              },
+              "chargenFaceMorphs": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/floatMap"
+                  }
+                ]
+              },
+              "faceBoneRegions": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                ]
+              },
+              "facialMorphIntensity": {
+                "type": "number"
+              },
+              "raceMenu": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/raceMenu"
+                  }
+                ]
+              },
+              "orderedCustomMorphs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/customMorph"
+                }
+              }
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          }
+        },
+        "$defs": {
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "floatMap": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "pluginName": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "formId": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          },
+          "identifier": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "raw",
+              "plugin",
+              "formId"
+            ],
+            "properties": {
+              "raw": {
+                "type": "string",
+                "minLength": 1
+              },
+              "plugin": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/pluginName"
+                  }
+                ]
+              },
+              "formId": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/formId"
+                  }
+                ]
+              }
+            }
+          },
+          "headPart": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "identifier",
+              "type"
+            ],
+            "properties": {
+              "identifier": {
+                "$ref": "#/$defs/identifier"
+              },
+              "type": {
+                "type": "integer"
+              }
+            }
+          },
+          "hairColor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "formIdentifier",
+              "packedRgb"
+            ],
+            "properties": {
+              "formIdentifier": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/identifier"
+                  }
+                ]
+              },
+              "packedRgb": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          },
+          "weight": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "thin",
+              "muscular",
+              "fat"
+            ],
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "thin": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "muscular": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "fat": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "tint": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "color",
+              "texture",
+              "type",
+              "percent",
+              "colorId"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "color": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "texture": {
+                "type": "string"
+              },
+              "type": {
+                "type": "integer"
+              },
+              "percent": {
+                "type": "integer"
+              },
+              "colorId": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            }
+          },
+          "overlay": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "template",
+              "priority",
+              "tint",
+              "offsetUv",
+              "scaleUv"
+            ],
+            "properties": {
+              "template": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "integer"
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "offsetUv": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "scaleUv": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "presence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "gender",
+              "headParts",
+              "hairColor",
+              "weight",
+              "morphs",
+              "bodyMorphs",
+              "tints",
+              "overlays",
+              "skin",
+              "fallout4BodyMorphs",
+              "chargenFaceMorphs",
+              "faceBoneRegions",
+              "facialMorphIntensity"
+            ],
+            "properties": {
+              "gender": {
+                "type": "boolean"
+              },
+              "headParts": {
+                "type": "boolean"
+              },
+              "hairColor": {
+                "type": "boolean"
+              },
+              "weight": {
+                "type": "boolean"
+              },
+              "morphs": {
+                "type": "boolean"
+              },
+              "bodyMorphs": {
+                "type": "boolean"
+              },
+              "tints": {
+                "type": "boolean"
+              },
+              "overlays": {
+                "type": "boolean"
+              },
+              "skin": {
+                "type": "boolean"
+              },
+              "fallout4BodyMorphs": {
+                "type": "boolean"
+              },
+              "chargenFaceMorphs": {
+                "type": "boolean"
+              },
+              "faceBoneRegions": {
+                "type": "boolean"
+              },
+              "facialMorphIntensity": {
+                "type": "boolean"
+              }
+            }
+          },
+          "unknownField": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "jsonKind"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "jsonKind": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "fallout4BodyMorphs": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "head",
+              "upperTorso",
+              "arms",
+              "lowerTorso",
+              "legs"
+            ],
+            "properties": {
+              "head": {
+                "type": "number"
+              },
+              "upperTorso": {
+                "type": "number"
+              },
+              "arms": {
+                "type": "number"
+              },
+              "lowerTorso": {
+                "type": "number"
+              },
+              "legs": {
+                "type": "number"
+              }
+            }
+          },
+          "customMorph": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "value"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              }
+            }
+          },
+          "raceMenu": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "headTexture",
+              "faceMorphPresets",
+              "sculptDivisor",
+              "sculptParts",
+              "bodyMorphsKeyed",
+              "bodyOverlays",
+              "nodeTransforms",
+              "skinOverrides",
+              "faceTextures",
+              "modNames",
+              "mods",
+              "version"
+            ],
+            "properties": {
+              "headTexture": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "faceMorphPresets": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                }
+              },
+              "sculptDivisor": {
+                "type": "integer"
+              },
+              "sculptParts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/sculptPart"
+                }
+              },
+              "bodyMorphsKeyed": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/$defs/floatMap"
+                }
+              },
+              "bodyOverlays": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/bodyOverlay"
+                }
+              },
+              "nodeTransforms": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nodeTransform"
+                }
+              },
+              "skinOverrides": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/skinOverride"
+                }
+              },
+              "faceTextures": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/faceTexture"
+                }
+              },
+              "modNames": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/pluginName"
+                }
+              },
+              "mods": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/modEntry"
+                }
+              },
+              "version": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/raceMenuVersion"
+                  }
+                ]
+              }
+            }
+          },
+          "sculptPart": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "host",
+              "vertexCount",
+              "vertices",
+              "hasVertexCount",
+              "hasData"
+            ],
+            "properties": {
+              "host": {
+                "type": "string"
+              },
+              "vertexCount": {
+                "type": "integer"
+              },
+              "vertices": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/sculptVertex"
+                }
+              },
+              "hasVertexCount": {
+                "type": "boolean"
+              },
+              "hasData": {
+                "type": "boolean"
+              }
+            }
+          },
+          "sculptVertex": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "dx",
+              "dy",
+              "dz"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "dx": {
+                "type": "number"
+              },
+              "dy": {
+                "type": "number"
+              },
+              "dz": {
+                "type": "number"
+              }
+            }
+          },
+          "bodyOverlay": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node",
+              "diffuse",
+              "normal",
+              "tint",
+              "alpha",
+              "values"
+            ],
+            "properties": {
+              "node": {
+                "type": "string"
+              },
+              "diffuse": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "normal": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "alpha": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "raceMenuValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "key",
+              "type",
+              "index",
+              "data"
+            ],
+            "properties": {
+              "key": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "integer"
+              },
+              "index": {
+                "type": "integer"
+              },
+              "data": {
+                "$ref": "#/$defs/raceMenuScalar"
+              }
+            }
+          },
+          "raceMenuScalar": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "integerValue",
+              "numberValue",
+              "stringValue",
+              "booleanValue"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "signedInteger",
+                  "floatingPoint",
+                  "text",
+                  "boolean",
+                  "null"
+                ]
+              },
+              "integerValue": {
+                "type": "integer"
+              },
+              "numberValue": {
+                "type": "number"
+              },
+              "stringValue": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "booleanValue": {
+                "type": "boolean"
+              }
+            }
+          },
+          "nodeTransform": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node",
+              "firstPerson",
+              "keySets",
+              "scale",
+              "scaleMode",
+              "position",
+              "rotationMatrix",
+              "values"
+            ],
+            "properties": {
+              "node": {
+                "type": "string"
+              },
+              "firstPerson": {
+                "type": "boolean"
+              },
+              "keySets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/transformKeySet"
+                }
+              },
+              "scale": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "scaleMode": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "position": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "rotationMatrix": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "transformKeySet": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "values"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "skinOverride": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slotMask",
+              "firstPerson",
+              "values",
+              "textures",
+              "tint",
+              "alpha"
+            ],
+            "properties": {
+              "slotMask": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "firstPerson": {
+                "type": "boolean"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              },
+              "textures": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "alpha": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "faceTexture": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "texture"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "texture": {
+                "type": "string"
+              }
+            }
+          },
+          "modEntry": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "name"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              "name": {
+                "$ref": "#/$defs/pluginName"
+              }
+            }
+          },
+          "raceMenuVersion": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "formatVersion",
+              "runtimeVersion",
+              "signature",
+              "skseVersion"
+            ],
+            "properties": {
+              "formatVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "runtimeVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "signature": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "skseVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "inspection-legacy-read",
+      "direction": "input",
+      "schemaIdentifier": "actorwright-preset-inspection/1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:actorwright-preset-inspection:1",
+        "title": "Actorwright preset inspection receipt v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "sourcePath",
+          "sourceSha256",
+          "format",
+          "edition",
+          "isValid",
+          "appearance",
+          "diagnostics"
+        ],
+        "properties": {
+          "schema": {
+            "const": "actorwright-preset-inspection/1"
+          },
+          "sourcePath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sourceSha256": {
+            "type": "string",
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "format": {
+            "const": "racemenu-jslot"
+          },
+          "edition": {
+            "const": "skyrimse"
+          },
+          "isValid": {
+            "type": "boolean"
+          },
+          "appearance": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "gender",
+              "headParts",
+              "hairColor",
+              "weight",
+              "morphs",
+              "bodyMorphs",
+              "customMorphs",
+              "sliderMorphs",
+              "tints",
+              "overlays",
+              "skin",
+              "presence",
+              "unknownFields",
+              "fallout4BodyMorphs",
+              "chargenFaceMorphs",
+              "faceBoneRegions",
+              "facialMorphIntensity",
+              "raceMenu",
+              "orderedCustomMorphs"
+            ],
+            "properties": {
+              "gender": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "headParts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/headPart"
+                }
+              },
+              "hairColor": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/hairColor"
+                  }
+                ]
+              },
+              "weight": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/weight"
+                  }
+                ]
+              },
+              "morphs": {
+                "$ref": "#/$defs/floatMap"
+              },
+              "bodyMorphs": {
+                "$ref": "#/$defs/floatMap"
+              },
+              "customMorphs": {
+                "$ref": "#/$defs/floatMap"
+              },
+              "sliderMorphs": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "tints": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/tint"
+                }
+              },
+              "overlays": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/overlay"
+                }
+              },
+              "skin": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "presence": {
+                "$ref": "#/$defs/presence"
+              },
+              "unknownFields": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/unknownField"
+                }
+              },
+              "fallout4BodyMorphs": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/fallout4BodyMorphs"
+                  }
+                ]
+              },
+              "chargenFaceMorphs": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/floatMap"
+                  }
+                ]
+              },
+              "faceBoneRegions": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                ]
+              },
+              "facialMorphIntensity": {
+                "type": "number"
+              },
+              "raceMenu": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/raceMenu"
+                  }
+                ]
+              },
+              "orderedCustomMorphs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/customMorph"
+                }
+              }
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          }
+        },
+        "$defs": {
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "floatMap": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "pluginName": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "formId": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          },
+          "identifier": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "raw",
+              "plugin",
+              "formId"
+            ],
+            "properties": {
+              "raw": {
+                "type": "string",
+                "minLength": 1
+              },
+              "plugin": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/pluginName"
+                  }
+                ]
+              },
+              "formId": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/formId"
+                  }
+                ]
+              }
+            }
+          },
+          "headPart": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "identifier",
+              "type"
+            ],
+            "properties": {
+              "identifier": {
+                "$ref": "#/$defs/identifier"
+              },
+              "type": {
+                "type": "integer"
+              }
+            }
+          },
+          "hairColor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "formIdentifier",
+              "packedRgb"
+            ],
+            "properties": {
+              "formIdentifier": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/identifier"
+                  }
+                ]
+              },
+              "packedRgb": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          },
+          "weight": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "thin",
+              "muscular",
+              "fat"
+            ],
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "thin": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "muscular": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "fat": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "tint": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "color",
+              "texture",
+              "type",
+              "percent",
+              "colorId"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "color": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "texture": {
+                "type": "string"
+              },
+              "type": {
+                "type": "integer"
+              },
+              "percent": {
+                "type": "integer"
+              },
+              "colorId": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            }
+          },
+          "overlay": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "template",
+              "priority",
+              "tint",
+              "offsetUv",
+              "scaleUv"
+            ],
+            "properties": {
+              "template": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "integer"
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "offsetUv": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "scaleUv": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "presence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "gender",
+              "headParts",
+              "hairColor",
+              "weight",
+              "morphs",
+              "bodyMorphs",
+              "tints",
+              "overlays",
+              "skin",
+              "fallout4BodyMorphs",
+              "chargenFaceMorphs",
+              "faceBoneRegions",
+              "facialMorphIntensity"
+            ],
+            "properties": {
+              "gender": {
+                "type": "boolean"
+              },
+              "headParts": {
+                "type": "boolean"
+              },
+              "hairColor": {
+                "type": "boolean"
+              },
+              "weight": {
+                "type": "boolean"
+              },
+              "morphs": {
+                "type": "boolean"
+              },
+              "bodyMorphs": {
+                "type": "boolean"
+              },
+              "tints": {
+                "type": "boolean"
+              },
+              "overlays": {
+                "type": "boolean"
+              },
+              "skin": {
+                "type": "boolean"
+              },
+              "fallout4BodyMorphs": {
+                "type": "boolean"
+              },
+              "chargenFaceMorphs": {
+                "type": "boolean"
+              },
+              "faceBoneRegions": {
+                "type": "boolean"
+              },
+              "facialMorphIntensity": {
+                "type": "boolean"
+              }
+            }
+          },
+          "unknownField": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "jsonKind"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "jsonKind": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "fallout4BodyMorphs": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "head",
+              "upperTorso",
+              "arms",
+              "lowerTorso",
+              "legs"
+            ],
+            "properties": {
+              "head": {
+                "type": "number"
+              },
+              "upperTorso": {
+                "type": "number"
+              },
+              "arms": {
+                "type": "number"
+              },
+              "lowerTorso": {
+                "type": "number"
+              },
+              "legs": {
+                "type": "number"
+              }
+            }
+          },
+          "customMorph": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "value"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              }
+            }
+          },
+          "raceMenu": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "headTexture",
+              "faceMorphPresets",
+              "sculptDivisor",
+              "sculptParts",
+              "bodyMorphsKeyed",
+              "bodyOverlays",
+              "nodeTransforms",
+              "skinOverrides",
+              "faceTextures",
+              "modNames",
+              "mods",
+              "version"
+            ],
+            "properties": {
+              "headTexture": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "faceMorphPresets": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                }
+              },
+              "sculptDivisor": {
+                "type": "integer"
+              },
+              "sculptParts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/sculptPart"
+                }
+              },
+              "bodyMorphsKeyed": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/$defs/floatMap"
+                }
+              },
+              "bodyOverlays": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/bodyOverlay"
+                }
+              },
+              "nodeTransforms": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nodeTransform"
+                }
+              },
+              "skinOverrides": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/skinOverride"
+                }
+              },
+              "faceTextures": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/faceTexture"
+                }
+              },
+              "modNames": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/pluginName"
+                }
+              },
+              "mods": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/modEntry"
+                }
+              },
+              "version": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/raceMenuVersion"
+                  }
+                ]
+              }
+            }
+          },
+          "sculptPart": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "host",
+              "vertexCount",
+              "vertices",
+              "hasVertexCount",
+              "hasData"
+            ],
+            "properties": {
+              "host": {
+                "type": "string"
+              },
+              "vertexCount": {
+                "type": "integer"
+              },
+              "vertices": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/sculptVertex"
+                }
+              },
+              "hasVertexCount": {
+                "type": "boolean"
+              },
+              "hasData": {
+                "type": "boolean"
+              }
+            }
+          },
+          "sculptVertex": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "dx",
+              "dy",
+              "dz"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "dx": {
+                "type": "number"
+              },
+              "dy": {
+                "type": "number"
+              },
+              "dz": {
+                "type": "number"
+              }
+            }
+          },
+          "bodyOverlay": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node",
+              "diffuse",
+              "normal",
+              "tint",
+              "alpha",
+              "values"
+            ],
+            "properties": {
+              "node": {
+                "type": "string"
+              },
+              "diffuse": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "normal": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "alpha": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "raceMenuValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "key",
+              "type",
+              "index",
+              "data"
+            ],
+            "properties": {
+              "key": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "integer"
+              },
+              "index": {
+                "type": "integer"
+              },
+              "data": {
+                "$ref": "#/$defs/raceMenuScalar"
+              }
+            }
+          },
+          "raceMenuScalar": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "integerValue",
+              "numberValue",
+              "stringValue",
+              "booleanValue"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "signedInteger",
+                  "floatingPoint",
+                  "text",
+                  "boolean",
+                  "null"
+                ]
+              },
+              "integerValue": {
+                "type": "integer"
+              },
+              "numberValue": {
+                "type": "number"
+              },
+              "stringValue": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "booleanValue": {
+                "type": "boolean"
+              }
+            }
+          },
+          "nodeTransform": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node",
+              "firstPerson",
+              "keySets",
+              "scale",
+              "scaleMode",
+              "position",
+              "rotationMatrix",
+              "values"
+            ],
+            "properties": {
+              "node": {
+                "type": "string"
+              },
+              "firstPerson": {
+                "type": "boolean"
+              },
+              "keySets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/transformKeySet"
+                }
+              },
+              "scale": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "scaleMode": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "position": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "rotationMatrix": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "transformKeySet": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "values"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              }
+            }
+          },
+          "skinOverride": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slotMask",
+              "firstPerson",
+              "values",
+              "textures",
+              "tint",
+              "alpha"
+            ],
+            "properties": {
+              "slotMask": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "firstPerson": {
+                "type": "boolean"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/raceMenuValue"
+                }
+              },
+              "textures": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "tint": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "alpha": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "faceTexture": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "texture"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "texture": {
+                "type": "string"
+              }
+            }
+          },
+          "modEntry": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "index",
+              "name"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              "name": {
+                "$ref": "#/$defs/pluginName"
+              }
+            }
+          },
+          "raceMenuVersion": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "formatVersion",
+              "runtimeVersion",
+              "signature",
+              "skseVersion"
+            ],
+            "properties": {
+              "formatVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "runtimeVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "signature": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "skseVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

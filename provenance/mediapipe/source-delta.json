@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "component": "MediaPipe custom reference-runtime native source",
+  "upstream": {
+    "repository": "https://github.com/google-ai-edge/mediapipe",
+    "commit": "f8ef212d5c962c0e853db7e59d217056b187084b",
+    "license": "Apache-2.0",
+    "archiveSha256": "dc18a99bc9021ffdc5ec4134df623f0d3b62f824edb44d9d326a708807475676",
+    "comparedFileCount": 4727
+  },
+  "comparison": {
+    "sourceDeltaPatch": {
+      "path": "source-delta.patch",
+      "sha256": "a16f0a269e8685f297bd28f96d57e80160d28e4b2337d235b76dab09475e327f",
+      "bytes": 3780
+    },
+    "method": "Byte-level file inventory against the pinned upstream source archive; hashes are SHA-256.",
+    "modifiedFiles": [
+      {
+        "path": "mediapipe/framework/api3/calculator_context.h",
+        "upstreamSha256": "62da1b7b919fa5b244856378516480846cfa8e737f41c81aafcb70139d43ac3c",
+        "reviewedBuildTreeSha256": "9c60363023dce5b79d7aa3e7970ec4b4bcfa5b9ccc7f05d80465c944259fd19a"
+      },
+      {
+        "path": "mediapipe/framework/api3/graph.h",
+        "upstreamSha256": "92dc9cbae628c005a1a10571c6f3000198f4250ba1fd1bb46b6dc1afcf35dc69",
+        "reviewedBuildTreeSha256": "aa92d10b7b9d5817eae5f5f61556e3ff10515d28c17447a6ff4bce27b0ada9e8"
+      },
+      {
+        "path": "mediapipe/framework/legacy_calculator_support.cc",
+        "upstreamSha256": "f80f1bfc81a2c2a35f7ed3aa372e09593e074ce11ee8c44fe6a8d4d784472030",
+        "reviewedBuildTreeSha256": "52a0ab3c5eec4d4edd3c361e1a839e48441f939259c1396d01c86eeb14b05e22"
+      },
+      {
+        "path": "mediapipe/gpu/gpu_service.cc",
+        "upstreamSha256": "e7e2ca3bca05b29048ffe7e5a193c5d1c1aa97602a9193c2e95a29b63e549281",
+        "reviewedBuildTreeSha256": "e1051965323154e3fafde4068edbf59495d8bbac330f2aabf0c12fbda2e74ee6"
+      },
+      {
+        "path": "mediapipe/tasks/c/BUILD",
+        "upstreamSha256": "c0719db1d5f391b6cecc993f1a7026d9a160472119aa9d338827d0c86d8d3143",
+        "reviewedBuildTreeSha256": "4636c73fbeb1858bb0deb1d4e89b6b4b3e8cb05103dc20ce12edfcccb6b4a177"
+      }
+    ],
+    "addedFiles": [
+      {
+        "path": "mediapipe/tasks/c/npc_manager_reference_exports.def",
+        "disposition": "custom export definition in reviewed build tree",
+        "bytes": 334,
+        "reviewedBuildTreeSha256": "a5ecd637b0bb3d353f62f88877dd63bda68206c744c08401d1023cfa4b0be823"
+      }
+    ],
+    "upstreamEntriesMissingFromReviewedBuildTree": [
+      "mediapipe/examples/android/solutions/facedetection/src/main/res",
+      "mediapipe/examples/android/solutions/facemesh/src/main/res",
+      "mediapipe/examples/android/solutions/hands/src/main/res"
+    ],
+    "missingEntriesNote": "The three absent entries are Android resource symlinks in the source archive."
+  },
+  "limitations": [
+    "This record and the adjacent patch recreate the reviewed six-file source delta; they are not a complete corresponding-source package or a reproducible native build recipe.",
+    "The pinned upstream source archive, reviewed build tree, and original native build logs are not included in this public snapshot.",
+    "The custom DLL static dependency and notice closure remains unresolved; see docs/third-party-licenses.md."
+  ]
+}

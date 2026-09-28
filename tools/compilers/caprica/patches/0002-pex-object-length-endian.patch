@@ -1,0 +1,26 @@
+diff --git a/Caprica/pex/PexWriter.h b/Caprica/pex/PexWriter.h
+index 026460e..1b513ad 100644
+--- a/Caprica/pex/PexWriter.h
++++ b/Caprica/pex/PexWriter.h
+@@ -69,13 +69,18 @@ struct PexWriter final : public CapricaBinaryWriter {
+   }
+ 
+   void beginObject() {
++    const auto objectStart = strm.totalAllocatedBytes();
+     objectLength = strm.make<uint32_t>();
+-    objectStartSize = strm.totalAllocatedBytes();
++    // Skyrim stores the object length including its own four-byte field.
++    // Keep upstream's little-endian length extent unchanged.
++    objectStartSize = endianness == Endianness::Little ? strm.totalAllocatedBytes() : objectStart;
+   }
+ 
+   void endObject() {
+-    assert(strm.totalAllocatedBytes() - objectStartSize <= std::numeric_limits<uint32_t>::max());
+-    *objectLength = (uint32_t)(strm.totalAllocatedBytes() - objectStartSize);
++    const auto objectSize = strm.totalAllocatedBytes() - objectStartSize;
++    assert(objectSize <= std::numeric_limits<uint32_t>::max());
++    const auto encodedSize = static_cast<uint32_t>(objectSize);
++    *objectLength = endianness == Endianness::Little ? encodedSize : byteswap(encodedSize);
+     objectLength = nullptr;
+   }
+ 

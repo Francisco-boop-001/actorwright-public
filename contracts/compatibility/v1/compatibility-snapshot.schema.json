@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:compatibility:v1:snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "formatVersion",
+    "provenance",
+    "commandCount",
+    "orderedCommandNamesSha256",
+    "commands",
+    "exitMeanings",
+    "voiceDialogueSentinels",
+    "members",
+    "requiredPackagePaths",
+    "launcher"
+  ],
+  "properties": {
+    "$schema": {"const": "urn:actorwright:compatibility:v1:snapshot"},
+    "formatVersion": {"const": 1},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "commandCount": {"type": "integer", "minimum": 1},
+    "orderedCommandNamesSha256": {"$ref": "#/$defs/sha256"},
+    "commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/command"}
+    },
+    "exitMeanings": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "meaning"],
+          "properties": {
+            "code": {"const": 0},
+            "meaning": {"const": "Success"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "meaning"],
+          "properties": {
+            "code": {"const": 1},
+            "meaning": {"const": "General failure"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "meaning"],
+          "properties": {
+            "code": {"const": 2},
+            "meaning": {"const": "Usage or schema error"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "meaning"],
+          "properties": {
+            "code": {"const": 3},
+            "meaning": {"const": "Security refusal"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "meaning"],
+          "properties": {
+            "code": {"const": 4},
+            "meaning": {"const": "Domain validation failure"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "meaning"],
+          "properties": {
+            "code": {"const": 5},
+            "meaning": {"const": "Cancellation"}
+          }
+        }
+      ],
+      "items": false
+    },
+    "voiceDialogueSentinels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "prefixItems": [
+        {"const": "npc voice discover"},
+        {"const": "npc voice import"},
+        {"const": "npc voice synthesize"},
+        {"const": "npc dialogue analyze"},
+        {"const": "npc dialogue apply"},
+        {"const": "npc dialogue verify"}
+      ],
+      "items": false
+    },
+    "members": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/member"}
+    },
+    "requiredPackagePaths": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/packagePath"}
+    },
+    "launcher": {"$ref": "#/$defs/launcher"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[A-Fa-f0-9]{40}$"},
+    "fileIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["length", "sha256"],
+      "properties": {
+        "length": {"type": "integer", "minimum": 0},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "productVersion",
+        "sourceLine",
+        "sourceTag",
+        "sourceCommit",
+        "sourceTree",
+        "releaseZip",
+        "capabilitiesSha256",
+        "candidateBundleManifestSha256",
+        "approvedBundleManifestSha256"
+      ],
+      "properties": {
+        "productVersion": {"type": "string", "minLength": 1},
+        "sourceLine": {"type": "string", "minLength": 1},
+        "sourceTag": {"type": "string", "minLength": 1},
+        "sourceCommit": {"$ref": "#/$defs/gitObject"},
+        "sourceTree": {"$ref": "#/$defs/gitObject"},
+        "releaseZip": {"$ref": "#/$defs/fileIdentity"},
+        "capabilitiesSha256": {"$ref": "#/$defs/sha256"},
+        "candidateBundleManifestSha256": {"$ref": "#/$defs/sha256"},
+        "approvedBundleManifestSha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "tokens",
+        "valueKind",
+        "arity",
+        "required",
+        "repeatable",
+        "hasDefault",
+        "defaultValue",
+        "allowedValues",
+        "caseSensitive",
+        "requires",
+        "excludes",
+        "diagnostics"
+      ],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "tokens": {"$ref": "#/$defs/stringArray"},
+        "valueKind": {"type": "string", "minLength": 1},
+        "arity": {"type": "string", "minLength": 1},
+        "required": {"type": "boolean"},
+        "repeatable": {"type": "boolean"},
+        "hasDefault": {"type": "boolean"},
+        "defaultValue": {},
+        "allowedValues": {"type": "array"},
+        "caseSensitive": {"type": "boolean"},
+        "requires": {"$ref": "#/$defs/stringArray"},
+        "excludes": {"$ref": "#/$defs/stringArray"},
+        "diagnostics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["missing", "invalid", "duplicate", "unknown"],
+          "properties": {
+            "missing": {"type": "string"},
+            "invalid": {"type": "string"},
+            "duplicate": {"type": "string"},
+            "unknown": {"type": "string"}
+          }
+        }
+      }
+    },
+    "help": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256"],
+      "properties": {"sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "schemaIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "id", "sha256"],
+      "properties": {
+        "role": {"type": "string", "minLength": 1},
+        "id": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "noInputProbe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resultClass", "exitMeaning"],
+      "properties": {
+        "resultClass": {"type": "string", "minLength": 1},
+        "exitMeaning": {"type": "string", "minLength": 1}
+      }
+    },
+    "command": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "position",
+        "name",
+        "pathTokens",
+        "aliases",
+        "options",
+        "help",
+        "protocol1",
+        "protocol2Readiness",
+        "schemas",
+        "authority",
+        "effects",
+        "recovery",
+        "noInputProbe"
+      ],
+      "properties": {
+        "position": {"type": "integer", "minimum": 0},
+        "name": {"type": "string", "minLength": 1},
+        "pathTokens": {"$ref": "#/$defs/stringArray"},
+        "aliases": {"$ref": "#/$defs/stringArray"},
+        "options": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/option"}
+        },
+        "help": {"$ref": "#/$defs/help"},
+        "protocol1": {"type": "boolean"},
+        "protocol2Readiness": {"enum": ["v2", "legacy"]},
+        "schemas": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/schemaIdentity"}
+        },
+        "authority": {"$ref": "#/$defs/stringArray"},
+        "effects": {"$ref": "#/$defs/stringArray"},
+        "recovery": {"$ref": "#/$defs/stringArray"},
+        "noInputProbe": {"$ref": "#/$defs/noInputProbe"}
+      }
+    },
+    "member": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "path", "length", "sha256"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["journey", "evidence"]},
+        "path": {"type": "string", "minLength": 1},
+        "length": {"type": "integer", "minimum": 0},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "packagePath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "role"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "role": {"type": "string", "minLength": 1}
+      }
+    },
+    "launcher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entrypoint", "shape"],
+      "properties": {
+        "entrypoint": {"type": "string", "minLength": 1},
+        "shape": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

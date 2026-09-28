@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:exchange:v1:issue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "issueId", "createdUtc", "toolVersion", "command", "requestedOutcome", "observedBehavior", "expectedBehavior", "classificationHint", "capabilitiesSha256", "sanitizedExecutionResult", "environmentFacts", "artifacts"],
+  "properties": {
+    "$schema": {"const": "urn:actorwright:exchange:v1:issue"},
+    "version": {"const": 1},
+    "issueId": {"type": "string", "pattern": "^NPCM-[0-9]{8}-[0-9]{4}$"},
+    "createdUtc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "toolVersion": {"type": "string", "minLength": 1},
+    "command": {"type": "string", "minLength": 1},
+    "requestedOutcome": {"type": "string", "minLength": 1},
+    "observedBehavior": {"type": "string", "minLength": 1},
+    "expectedBehavior": {"type": "string", "minLength": 1},
+    "classificationHint": {"enum": ["BUG", "FEATURE_REQUEST", "EXPECTED_TYPED_REFUSAL", "CONSUMER_OR_ENVIRONMENT_FAILURE", "NEEDS_MORE_EVIDENCE"]},
+    "capabilitiesSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "sanitizedExecutionResult": {"type": "object"},
+    "environmentFacts": {"type": "object"},
+    "artifacts": {"type": "array", "items": {"$ref": "#/$defs/artifact"}}
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "size", "provenance", "license", "redistributable"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+        "size": {"type": "integer", "minimum": 0},
+        "provenance": {"type": "string", "minLength": 1},
+        "license": {"type": "string", "minLength": 1},
+        "redistributable": {"const": true}
+      }
+    }
+  }
+}

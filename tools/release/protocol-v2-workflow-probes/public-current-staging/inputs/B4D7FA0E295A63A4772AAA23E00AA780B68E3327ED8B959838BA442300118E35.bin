@@ -1,0 +1,1 @@
+{"schemaVersion":1,"edition":"skyrimse","plugins":[{"name":"Skyrim.esm","order":0,"enabled":true},{"name":"ActorwrightBlankNpcProvider.esp","order":1,"enabled":true},{"name":"Probe.esp","order":2,"enabled":true}]}

@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><AssemblyName>NpcManager.Verification</AssemblyName><RootNamespace>NpcManager.Verification</RootNamespace><IsPackable>false</IsPackable></PropertyGroup>
+  <ItemGroup><ProjectReference Include="..\NpcManager.Domain\NpcManager.Domain.csproj" /></ItemGroup>
+</Project>

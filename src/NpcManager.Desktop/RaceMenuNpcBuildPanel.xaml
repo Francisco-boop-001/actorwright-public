@@ -1,0 +1,421 @@
+<UserControl x:Class="NpcManager.Desktop.RaceMenuNpcBuildPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             automation:AutomationProperties.Name="{Binding WorkspaceAutomationName}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="0,16,10,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="570" />
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="*" MinWidth="310" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Border Style="{StaticResource CardBorder}"
+                        Margin="0,0,0,14"
+                        Padding="24"
+                        Background="#112A2C"
+                        BorderBrush="#347E72">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource EyebrowText}"
+                                       Text="{Binding HeroEyebrow}" />
+                            <TextBlock Margin="0,6,28,0"
+                                       FontSize="25"
+                                       FontWeight="SemiBold"
+                                       Text="{Binding HeroTitle}"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,28,0"
+                                       MaxWidth="680"
+                                       FontSize="14"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding HeroDescription}" />
+                        </StackPanel>
+                        <Border Grid.Column="1"
+                                Padding="14,8"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource AccentDarkBrush}"
+                                BorderBrush="{DynamicResource AccentStrongBrush}"
+                                BorderThickness="1"
+                                CornerRadius="18">
+                            <TextBlock FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AccentBrush}"
+                                       Text="K-only / no overwrite" />
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel IsEnabled="{Binding IsNotBusy}">
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="1  PRESET" />
+                        <TextBlock Margin="0,5,0,4"
+                                   FontSize="19"
+                                   FontWeight="SemiBold"
+                                   Text="Choose the exact recipe" />
+                        <TextBlock Margin="0,0,0,16"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Selection binds the request bytes by SHA-256. Editing the file afterward makes review fail closed." />
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Margin="0,0,0,6"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Request file" />
+                                <TextBox Text="{Binding RequestPath, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Prepared request file" />
+                            </StackPanel>
+                            <Button Grid.Column="1"
+                                    Margin="10,24,0,0"
+                                    Style="{StaticResource QuietButton}"
+                                    Content="_Choose request"
+                                    Command="{Binding BrowseRequestCommand}"
+                                    automation:AutomationProperties.Name="Choose prepared request" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Margin="0,0,0,6"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Expected SHA-256" />
+                                <TextBox FontFamily="Cascadia Mono, Consolas"
+                                         FontSize="12"
+                                         Text="{Binding RequestSha256, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Prepared request SHA-256" />
+                            </StackPanel>
+                            <Button Grid.Column="1"
+                                    Margin="10,24,0,0"
+                                    Content="_Review request"
+                                    Command="{Binding ReviewCommand}"
+                                    automation:AutomationProperties.Name="Review prepared request" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}" Text="2  RECORDS AND ASSETS" />
+                                <TextBlock Margin="0,5,0,0"
+                                           FontSize="19"
+                                           FontWeight="SemiBold"
+                                           Text="Appearance inputs" />
+                            </StackPanel>
+                            <TextBlock Grid.Column="1"
+                                       VerticalAlignment="Bottom"
+                                       MaxWidth="320"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="{Binding SourceSummary}"
+                                       TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="Reviewed source summary" />
+                        </Grid>
+
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="{Binding BodySlideChoice}"
+                                       automation:AutomationProperties.Name="Preset BodySlide choice" />
+                            <Button Grid.Column="1" Style="{StaticResource QuietButton}"
+                                    Content="Choose from _presets"
+                                    IsEnabled="{Binding CanChoosePreset}"
+                                    Click="ChoosePreset_OnClick"
+                                    automation:AutomationProperties.Name="Choose from RaceMenu preset catalog" />
+                        </Grid>
+
+                        <Border Margin="0,0,0,10" Padding="14" Background="#0E1924" CornerRadius="8">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock FontWeight="SemiBold" Text="RaceMenu preset" />
+                                    <TextBlock Margin="0,3,0,0" FontSize="11"
+                                               Foreground="{DynamicResource AccentBrush}" Text="JSLOT" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding PresetPath}" TextWrapping="Wrap" />
+                                    <TextBlock Margin="0,5,0,0" FontFamily="Cascadia Mono, Consolas"
+                                               FontSize="11" Foreground="{DynamicResource MutedTextBrush}"
+                                               Text="{Binding PresetHash, StringFormat=SHA-256 {0}}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border Margin="0,0,0,10" Padding="14" Background="#0E1924" CornerRadius="8">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock FontWeight="SemiBold" Text="CharGen face" />
+                                    <TextBlock Margin="0,3,0,0" FontSize="11"
+                                               Foreground="{DynamicResource AccentBrush}" Text="NIF" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding CharGenPath}" TextWrapping="Wrap" />
+                                    <TextBlock Margin="0,5,0,0" FontFamily="Cascadia Mono, Consolas"
+                                               FontSize="11" Foreground="{DynamicResource MutedTextBrush}"
+                                               Text="{Binding CharGenHash, StringFormat=SHA-256 {0}}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border Padding="14" Background="#0E1924" CornerRadius="8">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock FontWeight="SemiBold" Text="Face tint" />
+                                    <TextBlock Margin="0,3,0,0" FontSize="11"
+                                               Foreground="{DynamicResource AccentBrush}" Text="DDS" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding FaceTintPath}" TextWrapping="Wrap" />
+                                    <TextBlock Margin="0,5,0,0" FontFamily="Cascadia Mono, Consolas"
+                                               FontSize="11" Foreground="{DynamicResource MutedTextBrush}"
+                                               Text="{Binding FaceTintHash, StringFormat=SHA-256 {0}}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel IsEnabled="{Binding IsNotBusy}">
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="{Binding TargetCardEyebrow}" />
+                        <TextBlock Margin="0,5,0,4"
+                                   FontSize="19"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding TargetCardTitle}" />
+                        <TextBlock Margin="0,0,0,16"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding IdentityHelpText}"
+                                   TextWrapping="Wrap" />
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Display name" />
+                                <TextBox IsReadOnly="{Binding IsExistingNpcTarget}"
+                                          Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                                          ToolTip="{Binding IdentityHelpText}"
+                                          automation:AutomationProperties.Name="Preset NPC display name"
+                                          automation:AutomationProperties.HelpText="{Binding IdentityHelpText}" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Editor ID" />
+                                <TextBox IsReadOnly="{Binding IsExistingNpcTarget}"
+                                          Text="{Binding EditorId, UpdateSourceTrigger=PropertyChanged}"
+                                          ToolTip="{Binding IdentityHelpText}"
+                                          automation:AutomationProperties.Name="Preset NPC editor ID"
+                                          automation:AutomationProperties.HelpText="{Binding IdentityHelpText}" />
+                            </StackPanel>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="190" />
+                                <ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="{Binding PluginLabel}" />
+                                <TextBox Text="{Binding PluginName, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Preset NPC plugin filename" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Fresh output folder" />
+                                <TextBox Text="{Binding OutputRoot, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Preset NPC fresh output folder" />
+                                <StackPanel Margin="0,8,0,0" Orientation="Horizontal">
+                                    <Button Style="{StaticResource QuietButton}" Content="Choose _parent"
+                                            Command="{Binding BrowseOutputCommand}"
+                                            automation:AutomationProperties.Name="Choose preset NPC output parent" />
+                                    <Button Margin="8,0,0,0" Style="{StaticResource QuietButton}" Content="_New path"
+                                            Command="{Binding NewOutputCommand}"
+                                            automation:AutomationProperties.Name="Generate a fresh preset NPC output path" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="4  PREFLIGHT" />
+                        <TextBlock Margin="0,5,0,4"
+                                   FontSize="19"
+                                   FontWeight="SemiBold"
+                                   Text="Review the production plan" />
+                        <TextBlock Margin="0,0,0,12"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding PreflightSummary}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="NPC build preflight summary" />
+                        <TextBlock Text="{Binding PreflightPath}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Reviewed NPC build preflight path" />
+                        <TextBlock Margin="0,5,0,12"
+                                   FontFamily="Cascadia Mono, Consolas"
+                                   FontSize="11"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding PreflightSha256, StringFormat=SHA-256 {0}}"
+                                   TextWrapping="Wrap" />
+                        <Button Style="{StaticResource PrimaryButton}"
+                                Content="Review _preflight"
+                                Command="{Binding ReviewPreflightCommand}"
+                                IsEnabled="{Binding CanReviewPreflight}"
+                                automation:AutomationProperties.Name="Review NPC build preflight" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14" Background="#111F2C">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="5  BUILD AND PREVIEW" />
+                        <TextBlock Margin="0,5,0,4" FontSize="21" FontWeight="SemiBold"
+                                   Text="Create the complete package" />
+                        <TextBlock Margin="0,0,0,16"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding ReadinessText}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                        <Button Style="{StaticResource PrimaryButton}"
+                                Content="{Binding BuildActionContent}"
+                                IsDefault="True"
+                                IsEnabled="{Binding CanRun}"
+                                Click="RunButton_OnClick"
+                                automation:AutomationProperties.Name="{Binding BuildActionName}"
+                                automation:AutomationProperties.HelpText="{Binding BuildActionHelpText}" />
+                        <Button Margin="0,10,0,0"
+                                Style="{StaticResource QuietButton}"
+                                Content="{Binding CancelActionContent}"
+                                Command="{Binding CancelCommand}"
+                                automation:AutomationProperties.Name="{Binding CancelActionName}" />
+                        <ProgressBar Margin="0,20,0,0"
+                                     Minimum="0" Maximum="100"
+                                     Value="{Binding ProgressPercent, Mode=OneWay}"
+                                     automation:AutomationProperties.Name="Preset NPC build progress" />
+                        <Grid Margin="0,9,0,0">
+                            <TextBlock Margin="0,0,42,0"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="{Binding Status}"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="Preset NPC build status"
+                                       automation:AutomationProperties.ItemStatus="{Binding Status}"
+                                       automation:AutomationProperties.LiveSetting="Polite" />
+                            <TextBlock HorizontalAlignment="Right"
+                                       Foreground="{DynamicResource AccentBrush}"
+                                       FontWeight="SemiBold"
+                                       Text="{Binding ProgressPercent, StringFormat={}{0}%}" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="VERIFIED OUTPUT" />
+                        <TextBlock Margin="0,5,0,14" FontSize="19" FontWeight="SemiBold"
+                                   Text="{Binding Verdict}"
+                                   automation:AutomationProperties.Name="Preset NPC build verdict"
+                                   automation:AutomationProperties.ItemStatus="{Binding Verdict}"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="NPC" />
+                        <TextBlock Margin="0,3,0,10" Text="{Binding ResultNpc}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Verified preset NPC record"
+                                   automation:AutomationProperties.ItemStatus="{Binding ResultNpc}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Plugin" />
+                        <TextBlock Margin="0,3,0,10" Text="{Binding ResultPlugin}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Verified preset NPC plugin"
+                                   automation:AutomationProperties.ItemStatus="{Binding ResultPlugin}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="FaceGeom NIF" />
+                        <TextBlock Margin="0,3,0,10" Text="{Binding ResultFaceGeom}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Verified preset NPC FaceGeom"
+                                   automation:AutomationProperties.ItemStatus="{Binding ResultFaceGeom}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="FaceTint DDS" />
+                        <TextBlock Margin="0,3,0,10" Text="{Binding ResultFaceTint}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Verified preset NPC FaceTint"
+                                   automation:AutomationProperties.ItemStatus="{Binding ResultFaceTint}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="BodyGen" />
+                        <TextBlock Margin="0,3,0,10" Text="{Binding ResultBodyGen}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Verified preset NPC BodyGen"
+                                   automation:AutomationProperties.ItemStatus="{Binding ResultBodyGen}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Runtime PEX" />
+                        <TextBlock Margin="0,3,0,10" Text="{Binding ResultPex}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Verified preset NPC runtime PEX"
+                                   automation:AutomationProperties.ItemStatus="{Binding ResultPex}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Package manifest" />
+                        <TextBlock Margin="0,3,0,0" Text="{Binding ResultPackage}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Verified preset NPC package manifest"
+                                   automation:AutomationProperties.ItemStatus="{Binding ResultPackage}" />
+                        <TextBlock Margin="0,10,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Six-view preview contact sheet" />
+                        <TextBlock Margin="0,3,0,0" Text="{Binding ResultPreview}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Verified NPC preview contact sheet"
+                                   automation:AutomationProperties.ItemStatus="{Binding ResultPreview}" />
+                        <Border Margin="0,16,0,0" Padding="11"
+                                Background="{DynamicResource AccentDarkBrush}" CornerRadius="7">
+                            <TextBlock Foreground="{DynamicResource AccentBrush}"
+                                       TextWrapping="Wrap"
+                                       Text="Static verification is complete only when shown above. Skyrim rendering and behavior still require the runtime proof kit." />
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="DIAGNOSTICS" />
+                        <ListBox Margin="0,10,0,0"
+                                 MaxHeight="210"
+                                 ItemsSource="{Binding Diagnostics}"
+                                 automation:AutomationProperties.Name="Preset NPC diagnostics"
+                                 automation:AutomationProperties.LiveSetting="Polite">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Margin="0,8,0,0"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Informational entries preserve the audit trail; errors block completion." />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

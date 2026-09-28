@@ -1,0 +1,9 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.props" />
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TestInfrastructure\StandaloneSelectorInventory.cs"
+             Link="TestInfrastructure\StandaloneSelectorInventory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestInfrastructure\TestAuthorityWorkspace.cs"
+             Link="TestInfrastructure\TestAuthorityWorkspace.cs" />
+  </ItemGroup>
+</Project>

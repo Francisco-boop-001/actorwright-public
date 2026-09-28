@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "fixtureAuthority": "synthetic-test-input-only",
+  "runtimeAuthority": false,
+  "geometry": {
+    "vertexCount": 3832,
+    "triangleCount": 7164,
+    "description": "A planar synthetic grid with deterministic positions, UVs, topology, and two-bone skin weights; it is not head geometry."
+  },
+  "fixtures": [
+    {
+      "id": "dynamic-16",
+      "path": "tests/fixtures/sse-packed-normals/dynamic-16.nif",
+      "sourceSha256": "F7FE2D182D410DB48E5346AA28410D591B2F170C5577334D30A8FE413ED5FE5E",
+      "shapeName": "SyntheticPackedNormalShape",
+      "vertexDescription": "0051A03030210044",
+      "vertexSize": 16,
+      "hasPackedNormals": true,
+      "hasTangents": true,
+      "normalOffset": 4,
+      "tangentOffset": 8,
+      "vertexCount": 3832,
+      "triangleCount": 7164,
+      "packedNormalSha256": "C22013C14A00EA20B1593398A12FF18E3BA809C7C5F9EFDC35DD18276DF7B6FF",
+      "packedTangentSha256": "8C66F3882276AB8FFE75B910D4F878DB5A5F198DC88BBB7BDF9BE519D25AFB25",
+      "firstEightBytes": "7F7FFF007FFF7F00",
+      "lastEightBytes": "FF7F7F007F7FFF00",
+      "firstTangentBytes": "FF7F7F007F7FFF00",
+      "lastTangentBytes": "7FFF7F00FF7F7F00"
+    },
+    {
+      "id": "dynamic-24",
+      "path": "tests/fixtures/sse-packed-normals/dynamic-24.nif",
+      "sourceSha256": "C26A52F5AE7206E698CD06AA3E65B9B37C647DF8E164D1581CFA671E71DF16AF",
+      "shapeName": "SyntheticPackedNormalShape",
+      "vertexDescription": "0045A00030210046",
+      "vertexSize": 24,
+      "hasPackedNormals": true,
+      "hasTangents": true,
+      "normalOffset": 4,
+      "tangentOffset": 8,
+      "vertexCount": 3832,
+      "triangleCount": 7164,
+      "packedNormalSha256": "C22013C14A00EA20B1593398A12FF18E3BA809C7C5F9EFDC35DD18276DF7B6FF",
+      "packedTangentSha256": "8C66F3882276AB8FFE75B910D4F878DB5A5F198DC88BBB7BDF9BE519D25AFB25",
+      "firstEightBytes": "7F7FFF007FFF7F00",
+      "lastEightBytes": "FF7F7F007F7FFF00",
+      "firstTangentBytes": "FF7F7F007F7FFF00",
+      "lastTangentBytes": "7FFF7F00FF7F7F00"
+    },
+    {
+      "id": "dynamic-16-no-normals",
+      "path": "tests/fixtures/sse-packed-normals/dynamic-16-no-normals.nif",
+      "sourceSha256": "C59A162D18F1E10ECD23EFD7D34E09E238368A0E8C9C8ED0323738574B5A411D",
+      "shapeName": "SyntheticPackedNormalShape",
+      "vertexDescription": "0044200010000044",
+      "vertexSize": 16,
+      "hasPackedNormals": false,
+      "hasTangents": false,
+      "normalOffset": -1,
+      "tangentOffset": -1,
+      "vertexCount": 3832,
+      "triangleCount": 7164,
+      "packedNormalSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "packedTangentSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "firstEightBytes": "",
+      "lastEightBytes": "",
+      "firstTangentBytes": "",
+      "lastTangentBytes": ""
+    }
+  ],
+  "provenance": {
+    "kind": "owned-synthetic-fixture",
+    "generator": "tests/fixtures/sse-packed-normals/generate.py",
+    "generatorSha256": "0149CFBC31CEF93CFAF8D7C5052A72BDDCEBF6DBA77E8AAC6D91266A8DE35B3D",
+    "source": "Deterministic numeric inputs only; no game or third-party NIF bytes are used.",
+    "runtimeAuthority": false
+  }
+}

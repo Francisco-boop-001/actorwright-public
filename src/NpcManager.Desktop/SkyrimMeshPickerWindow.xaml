@@ -1,0 +1,171 @@
+<Window x:Class="NpcManager.Desktop.SkyrimMeshPickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="{Binding Title}"
+        Width="1160" Height="720" MinWidth="900" MinHeight="560"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        FocusManager.FocusedElement="{Binding ElementName=FilterBox}"
+        automation:AutomationProperties.Name="Select a Skyrim NIF mesh">
+    <Grid Margin="26,22,26,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,18">
+            <TextBlock Style="{StaticResource EyebrowText}"
+                       Text="REVIEWED MESH CATALOG" />
+            <TextBlock Margin="0,5,0,0" FontSize="28"
+                       FontWeight="SemiBold" Text="{Binding Title}" />
+            <TextBlock Margin="0,7,0,0"
+                       Foreground="{DynamicResource MutedTextBrush}"
+                       Text="Choose one provider-bound .nif. The accepted value is stored relative to Meshes."
+                       TextWrapping="Wrap" />
+        </StackPanel>
+
+        <Border Grid.Row="1" Margin="0,0,0,14" Padding="14"
+                Background="{DynamicResource SurfaceRaisedBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="10">
+            <StackPanel>
+                <Label Padding="0" Target="{Binding ElementName=FilterBox}"
+                       Content="_Filter mesh paths" />
+                <TextBox x:Name="FilterBox"
+                         Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
+                         automation:AutomationProperties.Name="Filter Skyrim mesh paths"
+                         automation:AutomationProperties.HelpText="Filter by Meshes-relative path or folder" />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*" MinWidth="500" />
+                <ColumnDefinition Width="18" />
+                <ColumnDefinition Width="1*" MinWidth="320" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardBorder}"
+                    Padding="12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <ListView x:Name="MeshList"
+                                  ItemsSource="{Binding VisibleRows}"
+                                  SelectedItem="{Binding SelectedRow, Mode=TwoWay}"
+                                  Background="#0F1823" BorderThickness="0"
+                                  MouseDoubleClick="MeshList_OnMouseDoubleClick"
+                                  PreviewKeyDown="MeshList_OnPreviewKeyDown"
+                                  automation:AutomationProperties.Name="Reviewed Skyrim NIF mesh catalog">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Meshes-relative path" Width="270"
+                                                    DisplayMemberBinding="{Binding RelativePath}" />
+                                    <GridViewColumn Header="Folder" Width="170"
+                                                    DisplayMemberBinding="{Binding Folder}" />
+                                    <GridViewColumn Header="Static provider" Width="150"
+                                                    DisplayMemberBinding="{Binding Provider}" />
+                                    <GridViewColumn Header="Content SHA" Width="110"
+                                                    DisplayMemberBinding="{Binding Sha256Short}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" MaxWidth="380"
+                                   TextAlignment="Center" TextWrapping="Wrap"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding EmptyState}"
+                                   Visibility="{Binding HasNoVisibleRows, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                    </Grid>
+                    <TextBlock Grid.Row="1" Margin="2,10,0,0" FontSize="11"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               Text="{Binding VisibleCount}" />
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" Style="{StaticResource CardBorder}"
+                    Padding="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="SELECTION AND PREVIEW" />
+                        <TextBlock Margin="0,6,0,0" FontSize="17"
+                                   FontFamily="Cascadia Mono, Consolas"
+                                   Foreground="{DynamicResource AccentBrush}"
+                                   Text="{Binding SelectionPath}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Selected Meshes-relative path" />
+                        <TextBlock Margin="0,8,0,0" FontSize="11"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding SelectionProvider}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Selected static mesh provider evidence" />
+                    </StackPanel>
+
+                    <Border Grid.Row="1" Margin="0,14,0,12"
+                            Background="#09121B"
+                            BorderBrush="{DynamicResource BorderBrush}"
+                            BorderThickness="1" CornerRadius="8"
+                            ClipToBounds="True">
+                        <Grid>
+                            <TextBlock Margin="24" HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="{Binding PreviewStatus}"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="Mesh preview status"
+                                       automation:AutomationProperties.LiveSetting="Polite" />
+                            <Image Source="{Binding PreviewImagePath, Converter={StaticResource PathToImageSource}}"
+                                   Stretch="Uniform" SnapsToDevicePixels="True"
+                                   Visibility="{Binding HasPreviewImage, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   automation:AutomationProperties.Name="Off-engine selected NIF geometry preview" />
+                            <ProgressBar Height="4" VerticalAlignment="Top"
+                                         IsIndeterminate="True"
+                                         Visibility="{Binding IsPreviewBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Grid.Row="2">
+                        <TextBlock FontSize="11"
+                                   Foreground="{DynamicResource WarningBrush}"
+                                   Text="{Binding PreviewAuthority}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Mesh preview authority limitation" />
+                        <TextBlock Margin="0,8,0,0"
+                                   Foreground="{DynamicResource DangerBrush}"
+                                   Text="{Binding ValidationMessage}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.LiveSetting="Assertive" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Margin="0,16,0,0"
+                    HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button MinWidth="110" Style="{StaticResource QuietButton}"
+                    Content="_Cancel" IsCancel="True"
+                    Click="Cancel_OnClick"
+                    automation:AutomationProperties.Name="Cancel mesh selection" />
+            <Button MinWidth="150" Margin="10,0,0,0"
+                    Style="{StaticResource PrimaryButton}"
+                    Content="_Use mesh" IsDefault="True"
+                    IsEnabled="{Binding CanAccept}" Click="Accept_OnClick"
+                    automation:AutomationProperties.Name="Use selected Skyrim mesh" />
+        </StackPanel>
+    </Grid>
+</Window>

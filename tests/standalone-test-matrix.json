@@ -1,0 +1,2486 @@
+{
+  "schemaVersion": 2,
+  "scope": "preview.281-public source-derived solution test routes and default entries",
+  "tests": [
+    {
+      "id": "cli-hair-race-preflight",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": ["--test-hair-race-preflight"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Real CLI preflight accepts compatible physical root/HNAM records and refuses race-excluded root or child with exact diagnostics and no build mutation."
+    },
+    {
+      "id": "cli-native-reference-workflow",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": ["--test-native-reference-workflow"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Real licensed portrait inference, resource snapshot, nonzero native solve, accepted JSlot, CLI NPC materialization and renderer preview using pinned local native and renderer prerequisites; synthetic operator attestation carries no likeness or game authority.",
+      "timeoutSeconds": 900
+    },
+    {
+      "id": "reference-camera-neighbors",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--test-reference-camera-neighbors"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Deterministic renderer, reviewed mesh raycast and real response-matrix/solver controls for Skyrim positive-Y front and negative-X screen-right camera convention."
+    },
+    {
+      "id": "cli-face-tint-refusal-journal",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-face-tint-refusal-journal"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Real legacy face-tint refusals return typed recovery and persist redacted local records; valid apply and unrelated legacy controls remain intact."
+    },
+    {
+      "id": "cli-racemenu-path-admission",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-racemenu-path-admission"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual create normalizes admitted overlay omissions and package destinations while retaining traversal guards."
+    },
+    {
+      "id": "cli-path-convention-discovery",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-path-convention-discovery"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual schema export distinguishes CLI absolute paths, document relative paths and load-order files."
+    },
+    {
+      "id": "cli-protocol-v2-finish-reviewed",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-finish-reviewed"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Actual creation, off-engine preview and receipt-bearing Finish continuations with simulated operator attestation. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "cli-protocol-v2-finish-core",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-finish-core"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Actual V2 create-to-Finish lifecycle without review receipt, verification and guarded package transition. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "cli-inherited-defaults-aidt",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-inherited-defaults-aidt"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual create and inspect inherited-default inventory, bounded NPC AIDT patch and follower guard."
+    },
+    {
+      "id": "face-bake-diagnostic-evidence",
+      "project": "tests/NpcManager.FaceGen.Tests/NpcManager.FaceGen.Tests.csproj",
+      "arguments": [
+        "--test-face-bake-diagnostic-evidence"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic bake refusals identify inspected catalog files and missing morph bindings."
+    },
+    {
+      "id": "cli-diagnostic-input-evidence",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-diagnostic-input-evidence"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual empty reviewed workspace and overlay enum refusals include precise input evidence."
+    },
+    {
+      "id": "cli-sibling-route-recovery",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-sibling-route-recovery"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Actual create-to-Finish typed master CSTY recovery and successful rehashed supported route. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "npc-preview-physics-helpers",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-preview-physics-helpers"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Physics helper omission advisory and ordinary unresolved material refusal through renderer status validation."
+    },
+    {
+      "id": "cli-package-runtime-archive",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-package-runtime-archive"
+      ],
+      "classification": "runnable",
+      "timeoutSeconds": 600,
+      "dependencies": [],
+      "reason": "Actual product Finish package runtime-only archive, ZIP layout and hash inventory, legacy archive preservation."
+    },
+    {
+      "id": "cli-preset-resolve-load-order",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preset-resolve-load-order"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual schema1 and legacy preset resolution with copied TES4 light masks and typed malformed-input refusals."
+    },
+    {
+      "id": "cli-mixed-vertex-strides",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-mixed-vertex-strides"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual synthetic SSE dynamic/static NIF readback for all five reported vertex descriptors and exact strides."
+    },
+    {
+      "id": "cli-face-bake-authority-derivation",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-face-bake-authority-derivation"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned actual CLI face-bake-authority-derivation behavior and source preservation."
+    },
+    {
+      "id": "cli-npc-whole-skin",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-npc-whole-skin"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic actual CLI private whole-skin patch and independent shared-NPC preservation."
+    },
+    {
+      "id": "cli-existing-npc-whole-skin",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-existing-npc-whole-skin"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual synthetic schema7 whole-skin authority with schema2 existing NPC target."
+    },
+    {
+      "id": "cli-edit-package-preservation",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-edit-package-preservation"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned actual CLI edit-package-preservation behavior and source preservation."
+    },
+    {
+      "id": "cli-plugin-consolidation",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-plugin-consolidation"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned actual CLI plugin-consolidation behavior and source preservation."
+    },
+    {
+      "id": "quest-alias-placement",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-quest-alias-placement"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic quest alias placement transaction, typed reopened records and SEQ, no cell writes."
+    },
+    {
+      "id": "racemenu-private-head-texture-policy",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-racemenu-private-head-texture-policy"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Real standalone writer admits bound private DDS paths and refuses copy policies without replacing authority."
+    },
+    {
+      "id": "cli-racemenu-private-head-textures",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-racemenu-private-head-textures"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual synthetic create preserves requested private TXST paths and exact copied DDS bytes."
+    },
+    {
+      "id": "cli-racemenu-private-head-texture-refusal",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-racemenu-private-head-texture-refusal"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Actual synthetic direct private face texture request gets a field-specific policy refusal when no truthful TXST carrier exists."
+    },
+    {
+      "id": "external-facegeom-structured-exclusion",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-external-facegeom-structured-exclusion"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic five-shape carrier verifies structured contamination decisions and exact TRI evidence identities."
+    },
+    {
+      "id": "cli-plugin-audit-world-parents",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-plugin-audit-world-parents"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic bounded skeletal world parent audit with retained raw record inventory."
+    },
+    {
+      "id": "cli-plugin-audit-normalization",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-plugin-audit-normalization"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic plugin normalization preserves record bytes and full FormLink owner identities."
+    },
+    { "id": "reference-preset-array-budget", "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj", "arguments": ["--test-preset-array-budget"], "classification": "runnable", "dependencies": [], "reason": "Real PresetService parse admits a 9,000-row synthetic sculpt payload under the 65,536 $.morphs budget, refuses 70,000 rows and an 8,193-item tintInfo array with path and counts, and keeps duplicate-key refusal (WI-NPC-2)." },
+    {
+      "id": "reference-authoring-schemas",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": [
+        "--test-reference-authoring-schemas"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned real reference handler/session/transaction reference authoring schemas proof."
+    },
+    {
+      "id": "reference-intake-template",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": [
+        "--test-reference-intake-template"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned real reference handler/session/transaction reference intake template proof."
+    },
+    {
+      "id": "reference-canonical-flow",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": [
+        "--test-reference-canonical-flow"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned real reference handler/session/transaction reference canonical flow proof."
+    },
+    {
+      "id": "cli-facegeom-morph-admission",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-facegeom-morph-admission"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned synthetic facegeom extended morph admission proof; actual bake uses the provisioned local Blender/PyNifly profile."
+    },
+    {
+      "id": "cli-facegeom-source-admission",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-facegeom-source-admission"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned synthetic facegeom source admission proof; actual bake uses the provisioned local Blender/PyNifly profile."
+    },
+    {
+      "id": "cli-facegeom-actual-bake",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-facegeom-actual-bake"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned synthetic facegeom actual extended bake proof; actual bake uses the provisioned local Blender/PyNifly profile."
+    },
+    { "id": "facegen-headpart-nif-unsupported-block", "project": "tests/NpcManager.FaceGen.Tests/NpcManager.FaceGen.Tests.csproj", "arguments": ["--test-headpart-nif-unsupported-block"], "classification": "runnable", "dependencies": [], "reason": "Product-owned synthetic head-part NIFs carrying a block outside the admitted parser are refused as sse-headpart-nif-unsupported-block with type and index while truncated files keep the malformed classification (WI-NPC-6)." },
+    { "id": "facegen-extended-headpart-composition", "project": "tests/NpcManager.FaceGen.Tests/NpcManager.FaceGen.Tests.csproj", "arguments": ["--test-extended-headpart-composition"], "classification": "runnable", "dependencies": [], "reason": "Real Mutagen-authored plugin with a PNAM 71 HDPT proves the native FaceGeom build composes its shader-bound model and explicitly records a shaderless dummy lens omission (WI-NPC-3)." },
+    {
+      "id": "facegen-native-shaderless-dummy",
+      "project": "tests/NpcManager.FaceGen.Tests/NpcManager.FaceGen.Tests.csproj",
+      "arguments": [
+        "--test-native-shaderless-dummy"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned synthetic shaderless lens admission, native omission and independent record/carrier composition."
+    },
+    {
+      "id": "cli-finish-package-publication",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-finish-package-publication"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Actual create-to-Finish output must pass generic package verification with exact final inventory and unchanged sources. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "cli-wave-b-v1-transcript",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-wave-b-v1-transcript"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Integrated synthetic V1 NPC topology refusal, private HDPT repair, create, Finish verification, placement, receipt-free package review gate and plugin audit transcript. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "cli-compatibility-journey-boundaries",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-compatibility-journey-boundaries"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Compatibility journey normalization, owned-root collision, transient-source capture, and cleanup boundaries are self-contained in the K-local test workspace."
+    },
+    {
+      "id": "cli-finish-outfit-race",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-finish-outfit-race"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Actual synthetic CLI create, outfit and Finish race refusal, reviewed clone apply, and independent verification. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-npc-finish-core-outfit-race",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-outfit-race"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Synthetic copied providers prove outfit armature race admission and explicit output-owned cloning. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-npc-finish-core-combat-policy",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-combat-policy"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Synthetic Finish requests prove v3 compatibility and v4 combat-style and perk-policy validation. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "facegen-record-carrier-coherence",
+      "project": "tests/NpcManager.FaceGen.Tests/NpcManager.FaceGen.Tests.csproj",
+      "arguments": [
+        "--test-record-carrier-coherence"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic winning NPC, head-part and color records are independently bound to the emitted FaceGen carrier."
+    },
+    {
+      "id": "cli-finish-canonical-read",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-finish-canonical-read"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Synthetic actual create-to-Finish flow with pretty documents, uppercase hash text, and raw/canonical hash transport. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "cli-finish-inherited-evidence",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-finish-inherited-evidence"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Synthetic create-from-jslot style host with package-root NPCManager/Evidence members: apply relocates them under Evidence/Inherited, the manifest lists them, and separate verify passes, refuses drift and unlisted members. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "reference-session-canonical",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": [
+        "--test-reference-session-canonical"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic local reference session round trip, raw/canonical hash admission and semantic-edit refusal."
+    },
+    {
+      "id": "reference-native-loader-only",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--native-loader-only"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "The focused loader test validates the repository-tracked runtime manifest and native DLL closure, then exercises refusal and unload controls without consumer fixtures."
+    },
+    {
+      "id": "reference-session-only",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--session-only"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "This direct route invokes the same self-contained canonical session round-trip as --test-reference-session-canonical; it is separately registered to account for the distinct entrypoint dispatch."
+    },
+    {
+      "id": "reference-resource-only",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--resource-only"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2\\headpart-geometry-bases\\meshes\\KL\\High Poly Head\\FemaleHead.nif and face-bake-bases\\meshes\\KL\\High Poly Head\\FemaleHead.tri",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\01-source-copies\\fresh-export-drop\\emi2-neutral.jslot and dependency-providers\\ (Skyrim.esm, High Poly Head.esm, Improved Eyes Skyrim.esp, Koralina's Eyebrows.esp, KS Hairdo's.esp)",
+        "K:\\ExampleWorkspace\\Resources\\Screenshot\\Sofia Fergar.png"
+      ],
+      "reason": "TestCompleteResourceSnapshot resolves the authentic provider catalog, face geometry, baseline preset and source reference image from these external authorities."
+    },
+    {
+      "id": "reference-texture-profile-only",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--texture-profile-only"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\sophia-live-closure-20260723\\Data\\Textures\\!COR\\head\\femalehead.dds"
+      ],
+      "reason": "The authentic 4K texture-profile dispatch opens the hash-bound COR face texture from Sophia's live closure."
+    },
+    {
+      "id": "reference-placement-only",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--placement-only"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\sophia-live-closure-20260723\\Data\\meshes\\!COR\\Head\\FemaleHead.nif",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\sophia-live-closure-20260723\\Data\\meshes\\!COR\\Hair\\hair01.nif"
+      ],
+      "reason": "The authentic placement dispatch reads the selected COR head and hair NIFs to verify skinned head-part coordinates."
+    },
+    {
+      "id": "reference-shape-routing-only",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--shape-routing-only"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2\\headpart-geometry-bases\\meshes\\KL\\High Poly Head\\FemaleHead.nif",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\p12-009-authentic-render\\textures\\actors\\character\\female\\femalehead.dds",
+        "K:\\ExampleWorkspace\\Resources\\Screenshot\\Sofia Fergar.png"
+      ],
+      "reason": "The authentic fixture reads the High Poly Head mesh, rendered face texture and source image before testing shape-scoped solved morph routing."
+    },
+    {
+      "id": "reference-determinism-evidence",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--determinism-evidence"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2\\headpart-geometry-bases\\meshes\\KL\\High Poly Head\\FemaleHead.nif and face-bake-bases\\meshes\\KL\\High Poly Head\\FemaleHeadCharGen.tri",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\p12-009-authentic-render\\textures\\actors\\character\\female\\femalehead.dds",
+        "K:\\ExampleWorkspace\\Resources\\Screenshot\\Sofia Fergar.png"
+      ],
+      "reason": "The combined solver and authentic render determinism route requires these Skyrim mesh, morph, texture and source-image authorities."
+    },
+    {
+      "id": "reference-native-inference-evidence",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--native-inference-evidence", "<evidence-output-path>"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\ElviraFromPreset\\sources\\ref-front-1024.png",
+        "K:\\ExampleWorkspace\\projects\\ElviraFromPreset\\sources\\ref-left-1024.png",
+        "K:\\ExampleWorkspace\\projects\\ElviraFromPreset\\sources\\ref-right-1024.png",
+        "repository-tracked runtime/reference-preset manifest and admitted native DLL closure"
+      ],
+      "reason": "The direct evidence writer performs native inference on the three hash-bound Elvira reference views and requires a caller-owned output destination."
+    },
+    {
+      "id": "reference-native-loader-probe",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--native-loader-probe", "<mode>", "<runtime-root>", "<diagnostic-or-search-root>"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "NativeRuntimeLoaderTests.RunChildAsync: the parent test owns child invocation, runtime-root construction, mode arguments and process cleanup"
+      ],
+      "reason": "This internal child-process probe is not a standalone test route and must only run under its parent harness."
+    },
+    {
+      "id": "reference-authentic-resource-repro",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--authentic-resource-repro", "<intake-document>", "<reviewed-design-document>"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "caller-supplied authentic intake and reviewed-design session documents under K:\\ExampleWorkspace",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2 High Poly Head NIF and face-bake TRI authorities",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\01-source-copies\\dependency-providers and fresh-export-drop\\emi2-neutral.jslot"
+      ],
+      "reason": "The reproduction rebuilds a resource snapshot from caller-supplied authentic sessions and the external Skyrim provider authorities."
+    },
+    {
+      "id": "reference-authentic-resource-output",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--authentic-resource-output", "<intake-document>", "<reviewed-design-document>", "<snapshot-output-path>"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "caller-supplied authentic intake and reviewed-design session documents under K:\\ExampleWorkspace",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2 High Poly Head NIF and face-bake TRI authorities",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\01-source-copies\\dependency-providers and fresh-export-drop\\emi2-neutral.jslot",
+        "an absent caller-selected output path under the authorized workspace"
+      ],
+      "reason": "The reproduction writes its authentic resource snapshot to a caller-selected absent path and requires the same external session and provider authorities."
+    },
+    {
+      "id": "reference-authentic-comparison-repro",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--authentic-comparison-repro", "<intake-document>", "<reviewed-design-document>", "<resource-snapshot-document>", "<comparison-output-path>"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "caller-supplied authentic intake, reviewed-design and resource-snapshot session documents under K:\\ExampleWorkspace",
+        "the hash-bound Skyrim High Poly Head NIF/TRI and face-texture authorities referenced by the snapshot",
+        "an absent caller-selected comparison output path under the authorized workspace"
+      ],
+      "reason": "The comparison reproduction reads authentic typed sessions, renders the selected snapshot and writes artifacts to a caller-owned destination."
+    },
+    {
+      "id": "reference-authentic-matrix-benchmark",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": ["--authentic-matrix-benchmark", "<intake-document>", "<reviewed-design-document>", "<resource-snapshot-document>", "<channel-count>"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "caller-supplied authentic intake, reviewed-design and resource-snapshot session documents under K:\\ExampleWorkspace",
+        "the hash-bound Skyrim High Poly Head NIF/TRI and face-texture authorities referenced by the snapshot"
+      ],
+      "reason": "The benchmark builds a response matrix from caller-supplied authentic session documents and the external Skyrim authorities they reference."
+    },
+    {
+      "id": "architecture-output-owned-hdpt-binary",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-output-owned-hdpt-binary"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "In-memory synthetic Skyrim HDPT binary layout, three morph roles, HNAM, existing record preservation, occupied-ID/type/traversal refusals."
+    },
+    {
+      "id": "cli-output-owned-headparts",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": ["--test-output-owned-headparts"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic Skyrim HDPT proposal, CLI materialization, private copies, independent reopen and PNAM replacement. No consumer fixtures."
+    },
+    {
+      "id": "facegen-native-tri-topology",
+      "project": "tests/NpcManager.FaceGen.Tests/NpcManager.FaceGen.Tests.csproj",
+      "arguments": [
+        "--test-native-tri-topology"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Task 15 synthetic native 141/141 and 141/501 NIF/TRI bake, exact diagnostic/no-write assertions, pinned carrier hash, and non-native compatibility controls passed from the pinned SDK 10.0.301 Release build without consumer fixtures."
+    },
+    {
+      "id": "facegen-morph-plan-only",
+      "project": "tests/NpcManager.FaceGen.Tests/NpcManager.FaceGen.Tests.csproj",
+      "arguments": ["--morph-plan-only"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "The dedicated morph-plan semantics and refusal route uses product-owned synthetic shapes, channels and diagnostics; it has no consumer fixture dependency."
+    },
+    {
+      "id": "architecture-agent-protocol-registry",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-agent-protocol-registry"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-skyrim-voice-sample",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-skyrim-voice-sample"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned synthetic RIFF/WAVE fixtures cover supported PCM/float decoding, measurement, silence, resampling, and normalized output."
+    },
+    {
+      "id": "architecture-skyrim-dialogue",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-skyrim-dialogue"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic Skyrim masters and NPC plugins prove full-template dialogue allocation, native record routing, asset bindings, preservation, and independent verification."
+    },
+    {
+      "id": "architecture-skyrim-dialogue-lip",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-skyrim-dialogue-lip"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned executable fixtures exercise optional lip and FUZ tools, process failures, and exact embedded asset verification."
+    },
+    {
+      "id": "architecture-skyrim-main-workspace-raw-names",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-skyrim-main-workspace-raw-names"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained synthetic plugins cover compressed and localized typed-name fallback, strict Windows-1252 raw names, repeated leveled entries, diagnostics, and read-only preservation."
+    },
+    {
+      "id": "cli-skyrim-dialogue-end-to-end",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": ["--test-skyrim-dialogue-cli"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Real CLI composition imports a synthetic WAV, creates the full template, synthesizes through a loopback fixture, resumes, applies dialogue, and independently verifies all 78 voice assets."
+    },
+    {
+      "id": "architecture-agent-workflow-contracts",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-agent-workflow-contracts"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the repository-local Release build with SDK 10.0.301 during golden-workflow Task 1."
+    },
+    {
+      "id": "architecture-protocol-diagnostics",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-protocol-diagnostics"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-local-operation-journal",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-local-operation-journal"
+      ],
+      "classification": "runnable",
+      "timeoutSeconds": 240,
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from a fresh Release build with SDK 10.0.301 during protocol-kernel Task 7A. The canonical integration checkpoint later observed this long process-tree and storage suite still making progress at the 120-second boundary, so this row alone receives a 240-second deadline."
+    },
+    {
+      "id": "architecture-bounded-readiness-architecture",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-bounded-readiness-architecture"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-npc-preview-process-evidence",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-preview-process-evidence"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-npc-build-preflight",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-build-preflight"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-racemenu-request-loader",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-racemenu-request-loader"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-facegeom-record-appearance",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-facegeom-record-appearance"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-facegeom-packed-normals",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-facegeom-packed-normals"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-embedded-renderer-scripts",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-embedded-renderer-scripts"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-optional-runtime-root",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-optional-runtime-root"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-selected-dependency-manifest-schema",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-selected-dependency-manifest-schema"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-skyrim-plugin-topology",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-skyrim-plugin-topology"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m2-fixtures\\fo4\\Data\\M2FixtureFO4.esp"
+      ],
+      "reason": "Uses the tracked synthetic Skyrim topology pair and separately reads the copied Fallout 4 M2 fixture listed as the remaining external prerequisite."
+    },
+    {
+      "id": "architecture-interior-placement-format-spike",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-interior-placement-format-spike"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Uses the tracked deterministic synthetic topology pair and writes all temporary plugins under ActorwrightWorkspace.WorkRoot."
+    },
+    {
+      "id": "architecture-interior-placement-transaction",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-interior-placement-transaction"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-bsa-streaming",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-bsa-streaming"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic streams verify size guards, bounded incremental transfer and SHA-256 parity, short/overlong member refusal, and cancellation without output; the production BSA path is checked for streaming integration from the Actorwright.sln repository root."
+    },
+    {
+      "id": "architecture-bsa-production",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-bsa-production"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\real-modlist\\briar-armor-20260723\\Data with the three Briar NIF and three Briar DDS members asserted by the test"
+      ],
+      "reason": "Bounded execution failed because the deterministic BSA v105 production fixture did not contain the asserted six-member Briar inventory."
+    },
+    {
+      "id": "architecture-ruby-narrow-admission",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-ruby-narrow-admission"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\RubyPresetAudit\\02-normalized-resources\\ruby-fresh-build-v0.1\\provider-tree\\Data\\meshes\\Actors\\Character\\Character Assets\\LDDEyes\\Female\\LDD_FemaleEyes.nif"
+      ],
+      "reason": "Bounded execution failed at RubyNarrowAdmissionTests.cs:48 because the exact Ruby provider NIF fixture was absent."
+    },
+    {
+      "id": "architecture-ruby-cveo",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-ruby-cveo"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\RubyPresetAudit\\02-normalized-resources\\ruby-fresh-build-v0.1\\provider-tree\\Data\\meshes\\Actors\\Character\\Character Assets\\LDDEyes\\Female\\LDD_FemaleEyes.nif"
+      ],
+      "reason": "Bounded execution failed at RubyNarrowAdmissionTests.cs:48 because the exact Ruby provider NIF fixture was absent."
+    },
+    {
+      "id": "architecture-follower-finish-transaction",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-follower-finish-transaction"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\04-packages\\NpcManagerReimplementation-Brigitte-Bardot-v0.1-slot0-hardened-runtime-test-reviewed.zip",
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Bounded execution failed at SkyrimFollowerFinishProposalTests.cs:1027 because the exact reviewed Brigitte package fixture was absent. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-follower-finish-private-body",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-follower-finish-private-body"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Self-contained synthetic Bethesda plugins cover the legacy and private-body follower source graphs, dynamic placement allocation, and bounded hostile cases. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-npc-finish-core-sandbox",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-sandbox"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-npc-finish-core-sandbox-authentic",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-sandbox-authentic"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Positive sandbox admission validates the external canonical PACK record, creates a small owned synthetic master, and tests K-only admission under a separate scratch workspace. ACTORWRIGHT_TEST_SKYRIM_MASTER is read-only; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-npc-finish-core-contracts",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-contracts"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-npc-finish-core-authority",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-authority"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\04-packages\\NpcManagerReimplementation-Brigitte-Bardot-v0.1-slot0-hardened-runtime-test-reviewed.zip"
+      ],
+      "reason": "Bounded execution failed at SkyrimNpcFinishCoreAuthorityTests.cs:235 because the exact reviewed Brigitte package fixture was absent."
+    },
+    {
+      "id": "architecture-preview251-finish-authority",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-preview251-finish-authority"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Preview.251 Task 2 focused behavior table for v1/v2 Finish Core compatibility, physical authority, exact-one diagnostics, and pure master planning."
+    },
+    {
+      "id": "architecture-preview251-finish-integration",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-preview251-finish-integration"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Preview.251 Phase 2 RED table for shared physical authority/planner semantics across Analyze, Apply, and Verify. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-npc-finish-core-proposal",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-proposal"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained current-v2 Finish Core proposal fixture passed the pinned Architecture Release selector with complete aiPolicy and canonical proposal derivation."
+    },
+    {
+      "id": "architecture-npc-finish-core-binary",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-binary"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-npc-finish-core-transaction",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-transaction"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-follower-finish-placement",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-follower-finish-placement"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\tools as the legacy Python-verifier working directory",
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Bounded execution failed at SkyrimFollowerFinishPlacementTests.cs:920 with Win32 error 267 because the route-specific verifier working directory was absent. This positive flow also reads the canonical PACK record from ACTORWRIGHT_TEST_SKYRIM_MASTER and builds an owned synthetic master; the full master is read-only and not distributed; only the validated raw record enters owned scratch."
+    },
+    {
+      "id": "architecture-follower-finish-pair-contracts",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-follower-finish-pair-contracts"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Deterministic synthetic FaceGeom fixture preserves the paired-finish rewrite and verification contract without external game assets."
+    },
+    {
+      "id": "architecture-follower-finish-pair-archive-layout",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-follower-finish-pair-archive-layout"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-facegeom-hair-regions",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-facegeom-hair-regions"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "the legacy NpcManagerReimplementation project-root layout required by FindGate220ProjectRoot"
+      ],
+      "reason": "Bounded execution failed with 'The NPC Manager project root was not found' before the route-specific FaceGeom fixture could be loaded."
+    },
+    {
+      "id": "architecture-owned-directory-promotion-boundary",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-owned-directory-promotion-boundary"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local pinned Windows primitive proof for the owned-directory native-rename commit boundary."
+    },
+    {
+      "id": "architecture-hair-region-preview-source",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-hair-region-preview-source"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-hair-region-selected-source",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-hair-region-selected-source"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "the legacy NpcManagerReimplementation project-root layout required by FindGate220ProjectRoot"
+      ],
+      "reason": "Bounded execution failed with 'The NPC Manager project root was not found' before the selected-source fixture could be loaded."
+    },
+    {
+      "id": "architecture-npc-visual-source",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-source"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-npc-visual-source-sophia",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-source-sophia"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work\\sophia-jslot-manager-only-20260724-8"
+      ],
+      "reason": "Bounded execution failed because the exact Sophia visual-source work tree was absent."
+    },
+    {
+      "id": "architecture-npc-visual-source-brigitte-v01",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-source-brigitte-v01"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work\\brigitte-jslot-manager-only-20260726-1"
+      ],
+      "reason": "Bounded execution failed because the exact Brigitte v0.1 visual-source work tree was absent."
+    },
+    {
+      "id": "architecture-npc-visual-source-brigitte-paired",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-source-brigitte-paired"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work\\brigitte-sofia-paired-followers-v0.4.1-20260727"
+      ],
+      "reason": "Bounded execution failed because the exact paired-followers v0.4.1 visual-source work tree was absent."
+    },
+    {
+      "id": "architecture-npc-visual-source-brigitte-repair",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-source-brigitte-repair"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work\\brigitte-sofia-paired-followers-v0.5-20260728"
+      ],
+      "reason": "Bounded execution failed because the exact paired-followers v0.5 repair work tree was absent."
+    },
+    {
+      "id": "architecture-npc-visual-render-sophia",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-render-sophia"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\sophia-live-closure-20260723\\Data\\Skyrim.esm"
+      ],
+      "reason": "Bounded execution failed because the exact Sophia live-closure Skyrim.esm renderer authority was absent."
+    },
+    {
+      "id": "architecture-npc-visual-render-brigitte-v01",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-render-brigitte-v01"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\brigitte-live-closure-20260726\\Data\\Skyrim.esm"
+      ],
+      "reason": "Bounded execution failed because the exact Brigitte live-closure Skyrim.esm renderer authority was absent."
+    },
+    {
+      "id": "architecture-npc-visual-render-brigitte-paired",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-render-brigitte-paired"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\brigitte-live-closure-20260726\\Data\\Skyrim.esm"
+      ],
+      "reason": "Bounded execution failed because the exact paired Brigitte renderer authority was absent."
+    },
+    {
+      "id": "architecture-npc-visual-comparison",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-comparison"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "architecture-facegeom-hair-regions-renderer",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-facegeom-hair-regions-renderer"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "the legacy NpcManagerReimplementation project-root layout required by FindGate220ProjectRoot"
+      ],
+      "reason": "Bounded execution failed with 'The NPC Manager project root was not found' before the renderer fixture could be loaded."
+    },
+    {
+      "id": "architecture-actor-assembly",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-actor-assembly"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-agent-protocol-compatibility",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-agent-protocol-compatibility"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-diagnostic-exit-classification",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-diagnostic-exit-classification"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-actorwright-help",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-actorwright-help"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-protocol-v2-envelope",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-envelope"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Protocol Kernel Task 5 focused request-digest and envelope serialization selector."
+    },
+    {
+      "id": "cli-protocol-v2-discovery-kernel",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-cli"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from a fresh repository-local Release build with SDK 10.0.301 during Protocol Kernel Task 6."
+    },
+    {
+      "id": "cli-desktop-workflow-launch-binding",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-desktop-workflow-launch-binding"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed from the fresh repository-local Release build with SDK 10.0.301 during Desktop Workbench Task 1."
+    },
+    {
+      "id": "cli-runtime-script-build-identity",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-runtime-script-build-identity"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\tools\\external\\caprica-2024-06-14-patched: exact executable, boost_program_options-vc143-mt-x64-1_83.dll, fmt.dll, pugixml.dll and TESV_Papyrus_Flags.flg",
+        "K:\\ExampleWorkspace\\tools\\manifests\\caprica-2024-06-14-patched.json and caprica-2024-06-14-patched-sha256.csv: exact provenance and checksum authority"
+      ],
+      "reason": "Copies the externally owned, hash-pinned Caprica package and provenance from the named fixture roots; positive inspection and replacement/timeout/cancellation controls require those authentic bytes."
+    },
+    {
+      "id": "cli-protocol-v2-command-line",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-command-line"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed from the fresh repository-local Release build with SDK 10.0.301 during Protocol Kernel Task 4."
+    },
+    {
+      "id": "cli-protocol-v2-adapters",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-adapters"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Golden workflow Task 5 focused generic protocol-v2 adapter boundary selector."
+    },
+    {
+      "id": "cli-protocol-v2-reviewed-intake",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-reviewed-intake"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused protocol-v2 reviewed-intake persistence prerequisite."
+    },
+    {
+      "id": "cli-protocol-v2-finish-verify",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-finish-verify"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused protocol-v2 Finish Verify persistence boundary."
+    },
+    {
+      "id": "cli-protocol-v2-actor-assembly",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-actor-assembly"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused protocol-v2 Actor Assembly preflight schema, binding, and persisted-outcome boundary."
+    },
+    {
+      "id": "cli-protocol-v2-workflow-bundles",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-workflow-bundles"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused immutable protocol-v2 workflow-bundle lifecycle."
+    },
+    {
+      "id": "cli-protocol-v2-npc-create-build",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-npc-create-build"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused reviewed-preflight protocol-v2 static NPC build and package-workflow persistence."
+    },
+    {
+      "id": "cli-protocol-v2-npc-preview",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-npc-preview"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused exact-package protocol-v2 off-engine NPC preview and workflow persistence."
+    },
+    {
+      "id": "cli-golden-skyrim-workflow-resumption",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-golden-skyrim-workflow-resumption"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "ACTORWRIGHT_TEST_SKYRIM_MASTER: absolute ordinary local path to a read-only Skyrim.esm containing the unique uncompressed canonical PACK:00000000/0x0001B217 record (532 raw bytes; SHA-256 EA9C9102E0496768E535A5D2F1D8CE133761DD80CF755E9B44E25EA305F8EDDA). The full Skyrim.esm is read-only and not distributed; only the validated raw record is used in owned scratch fixtures."
+      ],
+      "reason": "Builds a Finish request from Transcript A's generated source package, adds the validated canonical PACK record to an owned synthetic master, then verifies fresh-process resumption. ACTORWRIGHT_TEST_SKYRIM_MASTER is read-only; the full master is not distributed and only the raw record enters owned scratch."
+    },
+    {
+      "id": "cli-golden-skyrim-plugin-type-parity",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-golden-skyrim-plugin-type-parity"
+      ],
+      "classification": "runnable",
+      "timeoutSeconds": 300,
+      "dependencies": [],
+      "reason": "Focused blank-route output-plugin parity: preflight refuses a non-.esp output name with the typed diagnostic before native work, and output.pluginType espfe writes a flag-only light .esp whose owned FormIDs stay uncompacted in 0x800..0xFFF."
+    },
+    {
+      "id": "cli-protocol-v2-preset-inspect",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-preset-inspect"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused protocol-v2 exact JSlot inspection and receipt-persistence slice."
+    },
+    {
+      "id": "cli-preview231-command-set",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview231-command-set"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-protocol-v2-review-finish",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-protocol-v2-review-finish"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused protocol-v2 non-Desktop review receipt and reviewed Finish workflow selector."
+    },
+    {
+      "id": "cli-rich-reviewed-intake-response",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-rich-reviewed-intake-response"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "the reviewed-intake fixture workspaceRoot must equal the configured K:\\ExampleWorkspace authority"
+      ],
+      "reason": "Bounded execution reached FaceGeomHairRegionsDocumentCodec.cs:1205 and refused the fixture because its reviewed-intake workspace root did not match configured authority."
+    },
+    {
+      "id": "cli-public-hair-region-preview-transaction",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-public-hair-region-preview-transaction"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "the legacy K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation project source and fixture layout"
+      ],
+      "reason": "Bounded execution failed in FaceGeomHairRegionsCliTests.FindProjectRoot because the legacy project root was not found."
+    },
+    {
+      "id": "cli-hair-region-source-warning",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-hair-region-source-warning"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "the legacy K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation project source and fixture layout"
+      ],
+      "reason": "Bounded execution failed in FaceGeomHairRegionsCliTests.FindProjectRoot because the legacy project root was not found."
+    },
+    {
+      "id": "cli-hair-region-preview-session-lifecycle",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-hair-region-preview-session-lifecycle"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "the legacy K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation project source and fixture layout"
+      ],
+      "reason": "Bounded execution failed in FaceGeomHairRegionsCliTests.FindProjectRoot because the legacy project root was not found."
+    },
+    {
+      "id": "cli-hair-region-public-help",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-hair-region-public-help"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "the legacy K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation project source and fixture layout"
+      ],
+      "reason": "Bounded execution failed in FaceGeomHairRegionsCliTests.FindProjectRoot because the legacy project root was not found."
+    },
+    {
+      "id": "cli-preview-runtime-composition",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview-runtime-composition"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-preview234-consumer-contracts",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview234-consumer-contracts"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-preview258-consumer-defects",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview258-consumer-defects"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused Preview.258 consumer defect repair selector for explicit NPC package kinds, raw preservation, independent verification, and FaceGen sidecar relocation."
+    },
+    {
+      "id": "cli-preview261-hair-intake-discovery",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview261-hair-intake-discovery"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution with SDK 10.0.301 during Preview.261 Task 3 Hair Regions intake discovery implementation."
+    },
+    {
+      "id": "cli-preview261-legacy-discovery",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview261-legacy-discovery"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution with SDK 10.0.301 during Preview.261 Task 2 scoped legacy workflow discovery implementation."
+    },
+    {
+      "id": "cli-preview261-v1-command-verification",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview261-v1-command-verification"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Exhaustive production-composed protocol-1 routing verification for the exact 142-command compatibility surface."
+    },
+    {
+      "id": "cli-skyrim-npc-voice",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-skyrim-npc-voice-cli"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Typed binding tests for all three protocol-1 Skyrim NPC voice commands."
+    },
+    {
+      "id": "cli-skyrim-dialogue-command-binding",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-skyrim-dialogue-command-binding"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Typed binding and mutually exclusive analyze-mode tests for all three protocol-1 Skyrim NPC dialogue commands."
+    },
+    {
+      "id": "cli-preview267-non-k-workspace-refusal",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview267-non-k-workspace-refusal"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Added with WI-1; verifies non-K discovery and typed workspace refusal."
+    },
+    {
+      "id": "cli-provider-and-hairtint-compatibility",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-provider-and-hairtint-compatibility"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    { "id": "cli-npc-extended-head-part-type", "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj", "arguments": ["--test-npc-extended-head-part-type"], "classification": "runnable", "dependencies": [], "reason": "Real CLI preflight on the golden fixture admits a record-authority binding whose headPartType is the raw PNAM 71, reports racemenu-plan-record-authority-extended-head-part-type as info, and walks the part's model into the dependency closure (WI-NPC-3)." },
+    {
+      "id": "cli-npc-build-preflight",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-npc-build-preflight"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-npc-finish-core-cli",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-core-cli"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-npc-finish-schema-contract",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-npc-finish-schema-contract"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "cli-preview251-outfit-admission",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-preview251-outfit-admission"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused Preview.251 Task 1 selector for typed outfit path admission, ordered comma-separated items, and published syntax."
+    },
+    {
+      "id": "cli-hair-region-strict-preview-evidence",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--test-hair-region-strict-preview-evidence"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "desktop-onload-images",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-onload-images"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "desktop-async-command",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-async-command"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained STA contract coverage for the shared asynchronous desktop command."
+    },
+    {
+      "id": "desktop-bounded-progress",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-bounded-progress"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "desktop-startup-failure-boundaries",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-startup-failure-boundaries"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "desktop-main-workspace-resilience",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-main-workspace-resilience"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Focused NPC workbench operation-failure persistence, accepted-state retention, and stale-command no-op boundary."
+    },
+    {
+      "id": "desktop-skyrim-npc-voice-panel",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-skyrim-npc-voice-panel"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned WPF first-render, simulated WAV drop, bound identity, authority evidence, missing-input command templates, validation, responsiveness, cancellation, and owned-service disposal."
+    },
+    {
+      "id": "desktop-hair-region-production-transaction",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-hair-region-production-transaction"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "The production transaction selector uses the deterministic synthetic FaceGeom fixture and verifies its test-owned output without external game assets."
+    },
+    {
+      "id": "desktop-npc-finish-wizard",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-npc-finish-wizard"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\src\\NpcManager.Desktop\\MainWindow.xaml"
+      ],
+      "reason": "Bounded execution failed because the exact legacy desktop XAML fixture was absent."
+    },
+    {
+      "id": "desktop-binary-consumer-startup-composition",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-binary-consumer-startup-composition"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "desktop-npc-preview-profile-authority-composition",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-npc-preview-profile-authority-composition"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "desktop-npc-build-preflight",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-npc-build-preflight"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Passed bounded direct execution from the fresh repository-local Release build produced with SDK 10.0.301 during Task 1 selector hardening."
+    },
+    {
+      "id": "desktop-hair-region-wizard-window",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-hair-region-wizard-window"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "an interactive WPF dispatcher and rendering environment that renders the HairTint wizard within the route's eight-second deadline"
+      ],
+      "reason": "Bounded execution reached FaceGeomHairRegionsWizardWindowTests.cs:738 and timed out waiting for the rendered HairTint wizard."
+    },
+    {
+      "id": "bethesda-face-routing-light-plugin-captured-hdpt",
+      "project": "tests/NpcManager.BethesdaFaceRouting.Tests/NpcManager.BethesdaFaceRouting.Tests.csproj",
+      "arguments": [
+        "--test-light-plugin-captured-hdpt-routing"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Product-owned generated plugins prove captured light 0x181915 normalizes to local 0x915, ordinary 0xBC05 stays unchanged, and absent captured 0x181916 is refused."
+    },
+    {
+      "id": "architecture-dialogue-coverage-template",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-dialogue-coverage-template"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Built-in follower-core-v1 coverage template yields a deterministic draft manifest covering the Serana-derived category set with documented condition functions, allowed vanilla EditorIDs, prompts on Custom topics, action bindings, exclusions, and the light-plugin line/topic budget; static product proof only."
+    },
+    {
+      "id": "desktop-external-smp-composition",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--test-desktop-external-smp-composition"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Synthetic composition verifies provider-neutral external-SMP services are shared by reference within each separately composed RaceMenu and native FaceGen graph, and accepted intake is forwarded to Finish analysis without claiming external-install or runtime proof."
+    },
+    {
+      "id": "architecture-preview-artifact-file-writer",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-preview-artifact-file-writer"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Verifies exact artifact bytes on success, existing-destination preservation and temporary-file cleanup on refusal, and cancellation without output residue."
+    },
+    {
+      "id": "architecture-external-headpart-contracts",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-external-headpart-contracts"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local external headpart contract proof."
+    },
+    {
+      "id": "architecture-external-headpart-route-graph",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-external-headpart-route-graph"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local bounded HDPT graph proof."
+    },
+    {
+      "id": "architecture-external-headpart-physics-binding",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-external-headpart-physics-binding"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local NIF and XML physics-binding proof."
+    },
+    {
+      "id": "architecture-external-headpart-discovery",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-external-headpart-discovery"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local provider-neutral discovery proof."
+    },
+    {
+      "id": "architecture-package-external-install",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-package-external-install"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local strict install-verification proof."
+    },
+    {
+      "id": "architecture-racemenu-standalone-schema8",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-racemenu-standalone-schema8"],
+      "classification": "runnable",
+      "dependencies": ["tests/NpcManager.Gate2.PipelineIntegration.Tests/NpcManager.Gate2.PipelineIntegration.Tests.csproj"],
+      "reason": "K-local standalone schema-8 proof; the focused Architecture build also builds the authoritative Gate2 child apphost."
+    },
+    {
+      "id": "architecture-native-facegeom-external-exclusion",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-native-facegeom-external-exclusion"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local FaceGeom exclusion proof."
+    },
+    {
+      "id": "architecture-npc-finish-core-external-contracts",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-npc-finish-core-external-contracts"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local Finish wire-contract proof."
+    },
+    {
+      "id": "architecture-jslot-external-smp-selection",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-jslot-external-smp-selection"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local JSlot selection transaction proof."
+    },
+    {
+      "id": "architecture-jslot-external-smp-first-use",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-jslot-external-smp-first-use"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local first-use JSlot selection proof."
+    },
+    {
+      "id": "architecture-npc-finish-core-external-smp",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-npc-finish-core-external-smp"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local Finish install-gate proof."
+    },
+    {
+      "id": "architecture-racemenu-schema8-materialization",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": ["--test-racemenu-schema8-materialization"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local schema-8 package proof."
+    },
+    {
+      "id": "cli-package-verify-external-install",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": ["--test-package-verify-external-install-cli"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local package CLI option proof."
+    },
+    {
+      "id": "cli-protocol-v2-external-smp",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": ["--test-protocol-v2-external-smp"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local Protocol refusal proof."
+    },
+    {
+      "id": "cli-finish-core-external-smp",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": ["--test-finish-core-external-smp-cli"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local Finish CLI and Protocol proof."
+    },
+    {
+      "id": "desktop-npc-finish-wizard-external-install",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": ["--test-npc-finish-wizard-external-install"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained K-local Desktop dependency-state proof."
+    },
+    {
+      "id": "gate2-pipeline-schema3-7-goldens",
+      "project": "tests/NpcManager.Gate2.PipelineIntegration.Tests/NpcManager.Gate2.PipelineIntegration.Tests.csproj",
+      "arguments": ["--test-racemenu-standalone-schema3-7-goldens"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Self-contained schema 3 through 7 canonical golden checks; also invoked as a child process by the Architecture schema-8 integration test."
+    },
+    {
+      "id": "gate2-pipeline-schema8-child-probe",
+      "project": "tests/NpcManager.Gate2.PipelineIntegration.Tests/NpcManager.Gate2.PipelineIntegration.Tests.csproj",
+      "arguments": ["--test-racemenu-standalone-schema8-child-probe"],
+      "classification": "fixture-bound",
+      "dependencies": ["tests/NpcManager.Architecture.Tests/RaceMenuStandaloneSchema8Tests.cs: parent-owned child-process cancellation"],
+      "reason": "Internal process-lifecycle control mode waits indefinitely for cancellation; only the Architecture parent harness owns its lifetime."
+    },
+    {
+      "id": "architecture-append-local-operation-journal-worker",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--append-local-operation-journal-worker",
+        "<root>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "tests/NpcManager.Architecture.Tests/LocalOperationJournalTests.cs parent-owned child process and scratch root"
+      ],
+      "reason": "Internal append worker is a child-process route; the parent test owns the scratch root and assertions."
+    },
+    {
+      "id": "architecture-emit-armor-addon-reference-production-fixture",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--emit-armor-addon-reference-production-fixture",
+        "<destination>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work fresh owned fixture destination"
+      ],
+      "reason": "Emits a synthetic armor/addon provider fixture to a caller-owned K workspace destination."
+    },
+    {
+      "id": "architecture-emit-armor-production-fixture",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--emit-armor-production-fixture",
+        "<destination>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work fresh owned fixture destination"
+      ],
+      "reason": "Emits a synthetic armor provider fixture to a caller-owned K workspace destination."
+    },
+    {
+      "id": "architecture-emit-authentic-hair-region-request",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--emit-authentic-hair-region-request",
+        "<analysis-root>",
+        "<load-order>",
+        "<request-output>",
+        "<preview-output>",
+        "<report-output>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation authentic reviewed hair-region analysis and load-order inputs",
+        "caller-owned request, preview, and report output paths"
+      ],
+      "reason": "Requires the authentic hash-bound hair-region analysis inputs and explicit destinations; it is an emitter for another test flow."
+    },
+    {
+      "id": "architecture-emit-hair-region-reviewed-intake",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--emit-hair-region-reviewed-intake",
+        "<data-root>",
+        "<load-order>",
+        "<intake-output>",
+        "<report-output>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation legacy project and reviewed hair-region source layout",
+        "caller-owned intake and report output paths"
+      ],
+      "reason": "Requires the authentic Data/load-order and legacy project layout to create the reviewed intake consumed by hair-region tests."
+    },
+    {
+      "id": "architecture-emit-leveled-list-production-fixture",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--emit-leveled-list-production-fixture",
+        "<destination>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work fresh owned fixture destination"
+      ],
+      "reason": "Emits a synthetic leveled-list provider fixture to a caller-owned K workspace destination."
+    },
+    {
+      "id": "architecture-emit-npc-preview-process-streams",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--emit-npc-preview-process-streams"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "tests/NpcManager.Architecture.Tests/NpcVisualPreviewProcessEvidenceTests.cs parent process drains and validates both redirected streams"
+      ],
+      "reason": "Writes oversized stdout/stderr for a parent-owned process-drain test; standalone invocation has no assertions and is not a test."
+    },
+    {
+      "id": "architecture-emit-outfit-production-fixture",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--emit-outfit-production-fixture",
+        "<destination>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work fresh owned fixture destination"
+      ],
+      "reason": "Emits a synthetic outfit provider fixture to a caller-owned K workspace destination."
+    },
+    {
+      "id": "gate1-emit-product-provider-fixture",
+      "project": "tests/NpcManager.Gate1.Tests/NpcManager.Gate1.Tests.csproj",
+      "arguments": [
+        "--emit-product-provider-fixture",
+        "<output-root>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m5-fixtures Gate 1 provider authorities",
+        "caller-owned fresh output root"
+      ],
+      "reason": "Creates the synthetic product-provider fixture consumed by Gate 1 from its tracked hash-bound test authorities."
+    },
+    {
+      "id": "architecture-emit-save-package-production-fixture",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--emit-save-package-production-fixture",
+        "<destination>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\real-modlist\\briar-armor-20260723\\Data exact six source members asserted by the emitter",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work fresh owned package destination"
+      ],
+      "reason": "Copies the exact six admitted Briar members into a caller-owned K destination; this helper supplies a downstream production test fixture."
+    },
+    {
+      "id": "architecture-fail-local-operation-journal-worker",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--fail-local-operation-journal-worker",
+        "<failure-marker>",
+        "<failure-gate>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "tests/NpcManager.Architecture.Tests/LocalOperationJournalTests.cs parent-owned child process, marker, and gate"
+      ],
+      "reason": "Internal failing worker is invoked by the parent harness, which owns its marker/gate lifecycle and failure assertions."
+    },
+    {
+      "id": "cli-follower-finish-only",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--follower-finish-only"
+      ],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Runs the synthetic follower-finish subset of the default CLI suite; its assertions overlap the focused follower-finish selector routes and add no unique behavior coverage."
+    },
+    {
+      "id": "cli-hair-regions-only",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--hair-regions-only"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation legacy source and reviewed hair-region fixture layout"
+      ],
+      "reason": "Runs the grouped hair-region CLI cases, which read authentic reviewed inputs under the legacy K workspace layout."
+    },
+    {
+      "id": "architecture-hang-local-operation-journal-descendant",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--hang-local-operation-journal-descendant",
+        "<descendant-marker>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "tests/NpcManager.Architecture.Tests/LocalOperationJournalTests.cs parent-owned descendant process and cancellation cleanup"
+      ],
+      "reason": "Intentional hanging child mode is controlled and cancelled by the parent process-lifecycle test; never launch directly."
+    },
+    {
+      "id": "architecture-hang-local-operation-journal-worker",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--hang-local-operation-journal-worker",
+        "<worker-marker>",
+        "<worker-gate>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "tests/NpcManager.Architecture.Tests/LocalOperationJournalTests.cs parent-owned worker process, marker, gate, and cancellation cleanup"
+      ],
+      "reason": "Intentional hanging child mode is controlled and cancelled by the parent process-lifecycle test; never launch directly."
+    },
+    {
+      "id": "architecture-hash-pynifly-profile",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--hash-pynifly-profile",
+        "<profile-root>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "caller-supplied PyNifly profile root with the expected directory and file closure"
+      ],
+      "reason": "Prints a hash for a caller-selected PyNifly profile and does not itself assert an expected identity."
+    },
+    {
+      "id": "architecture-inspect-npc-visual-materials",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--inspect-npc-visual-materials",
+        "<visual-nif>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "caller-supplied Skyrim visual NIF selected by an authoritative preview flow"
+      ],
+      "reason": "Inspects material records from a caller-selected NIF; meaningful output requires the authentic input owned by the invoking workflow."
+    },
+    {
+      "id": "architecture-inspect-sophia-skin-graph",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--inspect-sophia-skin-graph"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\sophia-live-closure-20260723\\Data authentic Sophia plugin and winning asset closure",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work\\sophia-jslot-manager-only-20260724-8\\Data\\SophiaLorenNpcManager.esp"
+      ],
+      "reason": "Reads the exact authentic Sophia live-closure and manager-only package to print its skin-provider graph."
+    },
+    {
+      "id": "cli-plugin-audit-only",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [
+        "--plugin-audit-only"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m2-fixtures\\sse\\Data\\M2FixtureSSE.esp"
+      ],
+      "reason": "Uses the tracked synthetic Skyrim topology pair plus the copied SSE M2 plugin at the listed external path."
+    },
+    {
+      "id": "architecture-read-skyrim-main-workspace-plugin",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--read-skyrim-main-workspace-plugin",
+        "<plugin>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies caller-selected authentic Skyrim main-workspace plugin"
+      ],
+      "reason": "Reads a caller-selected main-workspace plugin; the route has no assertion without the authorized authentic plugin input."
+    },
+    {
+      "id": "desktop-sky-gui-002-packaged-acceptance",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--sky-gui-002-packaged-acceptance",
+        "<desktop-exe>",
+        "<intake-root>",
+        "<preview-manifest>",
+        "<asset-root>",
+        "<output-root>",
+        "<screenshot-root>",
+        "<report>",
+        "<raw-report>",
+        "<negative-report>",
+        "<verifier>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation packaged executable and Skyrim.esm/Briar.esp acceptance assets",
+        "interactive Windows desktop session, screenshot destination, report destinations, and packaged verifier"
+      ],
+      "reason": "The route performs packaged GUI acceptance against prepared authentic intake, records rendered screenshots/reports, and invokes its paired verifier."
+    },
+    {
+      "id": "desktop-sky-gui-002-prepare",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--sky-gui-002-prepare",
+        "<prepared-intake-root>",
+        "<real-asset-root>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies authentic Skyrim.esm and Briar.esp asset closure",
+        "caller-owned prepared intake destination"
+      ],
+      "reason": "Copies the named authentic main-workspace inputs into an intake package for the paired GUI acceptance flow."
+    },
+    {
+      "id": "desktop-sky-gui-023-packaged-acceptance",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [
+        "--sky-gui-023-packaged-acceptance",
+        "<desktop-exe>",
+        "<source-root>",
+        "<cancelled-output>",
+        "<output-root>",
+        "<screenshot-root>",
+        "<report>",
+        "<raw-report>",
+        "<negative-report>",
+        "<verifier>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation packaged executable and authentic save-package source closure",
+        "interactive Windows desktop session, screenshot destination, report destinations, and packaged verifier"
+      ],
+      "reason": "The route performs packaged save-package GUI acceptance with cancellation/commit controls and requires the paired verifier and authentic source package."
+    },
+    {
+      "id": "architecture-test-npc-visual-compare-authentic",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-compare-authentic",
+        "<preview-image>",
+        "<comparison-image>",
+        "<kind>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work authentic preview and comparison image outputs",
+        "admitted reference-preset native runtime and renderer dependencies"
+      ],
+      "reason": "Compares caller-supplied authentic preview/comparison images using the native reference runtime and emits further comparison evidence."
+    },
+    {
+      "id": "architecture-test-npc-visual-validate",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [
+        "--test-npc-visual-validate",
+        "<image>"
+      ],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\src\\NpcManager.Desktop\\bin\\Release\\net10.0-windows\\runtime\\reference-preset authenticated native runtime closure",
+        "caller-supplied authentic preview image"
+      ],
+      "reason": "Validates a caller-supplied preview image through the admitted native visual runtime; it is a parameterized evidence route, not a self-contained selector."
+    },
+    {
+      "id": "cli-actor-assembly-only",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": ["--actor-assembly-only"],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "Runs the synthetic Actor Assembly subset of the default CLI test table; this selector overlaps the no-argument suite rather than adding a unique test."
+    },
+    {
+      "id": "desktop-viewmodel-only",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": ["--viewmodel-only"],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2\\execution-request-v5.json and execution-request.json",
+        "K:\\ExampleWorkspace\\.actorwright\\01-source-copies\\m2-fixtures\\sse\\Data and load-order-sse.json",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\src\\NpcManager.Desktop\\TypedFormIdPickerWindow.xaml",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\tests desktop viewmodel fixtures and native input/output paths"
+      ],
+      "reason": "Runs 52 desktop checks but loads authentic requests and copied-Skyrim intake from the legacy K workspace; it overlaps the 55-case default and is not hermetic."
+    },
+    {
+      "id": "default-npcmanager-architecture-tests",
+      "project": "tests/NpcManager.Architecture.Tests/NpcManager.Architecture.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation complete authentic fixture workspace",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\real-modlist\\briar-armor-20260723\\Data exact Briar NIF/DDS members",
+        "K:\\RubyPresetAudit\\02-normalized-resources\\ruby-fresh-build-v0.1\\provider-tree\\Data",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\04-packages\\NpcManagerReimplementation-Brigitte-Bardot-v0.1-slot0-hardened-runtime-test-reviewed.zip",
+        "K:\\ExampleWorkspace\\tools\\external and tools\\manifests pinned tool inputs"
+      ],
+      "reason": "The no-argument Architecture fallback runs its full authentic Skyrim, Ruby, Briar, Brigitte, and pinned-tool test set; it is broader than its synthetic focused selectors."
+    },
+    {
+      "id": "default-npcmanager-bethesdafacerouting-tests",
+      "project": "tests/NpcManager.BethesdaFaceRouting.Tests/NpcManager.BethesdaFaceRouting.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\sophia-live-closure-20260723\\Data authentic Sophia plugin/provider closure",
+        "K:\\Emi2FreshBuild authentic Emi2 plugin and provider closure",
+        "K:\\RubyPresetAudit\\02-normalized-resources\\ruby-fresh-build-v0.1\\provider-tree\\Data",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\04-packages Brigitte package authorities"
+      ],
+      "reason": "The no-argument Bethesda face-routing suite resolves real Sophia, Emi2, COR, and Ruby/Dint records and assets; its captured and synthetic controls share the same fallback run."
+    },
+    {
+      "id": "default-npcmanager-cli-tests",
+      "project": "tests/NpcManager.Cli.Tests/NpcManager.Cli.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation full authentic workspace and reviewed source layout",
+        "K:\\ExampleWorkspace\\tools\\external\\caprica-2024-06-14-patched and its pinned manifest/checksum inputs",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\04-packages\\NpcManagerReimplementation-Brigitte-Bardot-v0.1-slot0-hardened-runtime-test-reviewed.zip",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m2-fixtures\\sse and m2-fixtures\\fo4 copied-game authorities"
+      ],
+      "reason": "The no-argument CLI fallback runs its full command and workflow suite, including authentic tool-admission, package, game/Data, reviewed-workspace, and legacy hair-region cases."
+    },
+    {
+      "id": "default-npcmanager-desktop-smoke",
+      "project": "tests/NpcManager.Desktop.Smoke/NpcManager.Desktop.Smoke.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2\\execution-request-v5.json and execution-request.json",
+        "K:\\ExampleWorkspace\\.actorwright\\01-source-copies\\m2-fixtures\\sse\\Data and load-order-sse.json",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\src\\NpcManager.Desktop\\TypedFormIdPickerWindow.xaml",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m4-fixtures and m5-fixtures for desktop provider/build cases",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\tests desktop-native input/output fixtures"
+      ],
+      "reason": "The no-argument desktop suite runs 55 smoke cases, including authentic K-bound startup requests, XAML, provider fixtures, and native input/output paths; its 52-case viewmodel subset is also fixture-bound."
+    },
+    {
+      "id": "default-npcmanager-facegen-tests",
+      "project": "tests/NpcManager.FaceGen.Tests/NpcManager.FaceGen.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\sophia-live-closure-20260723\\Data\\textures\\!COR\\TintMasks\\femalehead_cheeks.dds",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\emi2-neutral.jslot and Emi2 face-texture/plugin providers",
+        "K:\\RubyPresetAudit\\02-normalized-resources\\ruby-fresh-build-v0.1\\provider-tree\\Data\\meshes\\Actors\\Character\\Character Assets\\LDDEyes\\Female\\LDD_FemaleEyes.nif",
+        "repository-tracked runtime/reference-preset manifest and admitted native DLL closure"
+      ],
+      "reason": "The no-argument FaceGen fallback includes captured COR/Emi2 data and authentic Ruby/Dint geometry/provider checks alongside synthetic morphology cases."
+    },
+    {
+      "id": "default-npcmanager-assets-tests",
+      "project": "tests/NpcManager.Assets.Tests/NpcManager.Assets.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\tests\\NpcManager.Assets.Tests\\Fixtures\\gate2-emi2-face-bake-authority.json",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m2-fixtures\\sse\\Data\\meshes\\m2-fixture\\head.nif",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m2-fixtures\\sse\\Data\\M2Fixture.bsa"
+      ],
+      "reason": "The no-argument asset suite requires its K-bound workspace policy, hash-bound M2 loose/BSA providers, and authentic Emi2 face-bake authority."
+    },
+    {
+      "id": "default-npcmanager-facegeomorchestration-tests",
+      "project": "tests/NpcManager.FaceGeomOrchestration.Tests/NpcManager.FaceGeomOrchestration.Tests.csproj",
+      "arguments": [],
+      "classification": "runnable",
+      "dependencies": [],
+      "reason": "The parameterless entrypoint runs deterministic synthetic fixtures under its repository-local owned work root."
+    },
+    {
+      "id": "default-npcmanager-gate1-tests",
+      "project": "tests/NpcManager.Gate1.Tests/NpcManager.Gate1.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m5-fixtures\\gate1-blank-provider-bundle.json",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m5-fixtures\\gate1-qualified-facetint.json",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\03-builds\\feasibility-probes\\ck-carrier-root\\Data\\EmiCarrierProbe.esp",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\02-normalized-resources\\dependency-manifest.json",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\03-builds\\v0.3-static-candidate\\package\\textures\\actors\\character\\FaceGenData\\FaceTint\\EmiRedDossier.esp\\00000800.dds",
+        "K:\\ExampleWorkspace\\tools\\external\\directxtex-texconv-2026.5.7\\texconv.exe"
+      ],
+      "reason": "The no-argument Gate 1 transaction requires the hash-bound provider/facetint authorities, CK carrier, normalized dependency manifest, exact face-tint payload, and pinned texconv tool."
+    },
+    {
+      "id": "default-npcmanager-gate2-tests",
+      "project": "tests/NpcManager.Gate2.Tests/NpcManager.Gate2.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m5-fixtures\\gate1-qualified-facetint.json",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\03-builds\\feasibility-probes\\ck-carrier-root\\Data\\EmiCarrierProbe.esp",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\02-normalized-resources\\dependency-manifest.json"
+      ],
+      "reason": "The no-argument Gate 2 suite constructs K-local work roots but reads the qualified facetint authority, CK carrier provider, and dependency manifest from ExampleWorkspace."
+    },
+    {
+      "id": "default-npcmanager-gate2-pipelineintegration-tests",
+      "project": "tests/NpcManager.Gate2.PipelineIntegration.Tests/NpcManager.Gate2.PipelineIntegration.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2\\execution-request-v5b.json",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\03-builds\\feasibility-probes\\ck-carrier-root\\Data\\EmiCarrierProbe.esp",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\02-normalized-resources\\dependency-manifest.json"
+      ],
+      "reason": "The no-argument integration suite includes the real schema-5 transaction and requires its hash-bound request, CK carrier, and dependency authority; other schema fixtures are synthetic."
+    },
+    {
+      "id": "default-npcmanager-npccreationappearance-tests",
+      "project": "tests/NpcManager.NpcCreationAppearance.Tests/NpcManager.NpcCreationAppearance.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\03-builds\\feasibility-probes\\ck-carrier-root\\Data\\EmiCarrierProbe.esp"
+      ],
+      "reason": "The no-argument appearance suite uses synthetic transaction fixtures and the authentic CK carrier plugin for template-compatible readback."
+    },
+    {
+      "id": "default-npcmanager-referencepreset-tests",
+      "project": "tests/NpcManager.ReferencePreset.Tests/NpcManager.ReferencePreset.Tests.csproj",
+      "arguments": [],
+      "classification": "fixture-bound",
+      "dependencies": [
+        "K:\\ExampleWorkspace workspace root required by the K-only policy and authentic resource tests",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\gate2-emi2\\headpart-geometry-bases\\meshes\\KL\\High Poly Head\\FemaleHead.nif and face-bake-bases\\meshes\\KL\\High Poly Head\\FemaleHead.tri",
+        "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\p12-009-authentic-render\\textures\\actors\\character\\female\\femalehead.dds and K:\\ExampleWorkspace\\Resources\\Screenshot\\Sofia Fergar.png",
+        "K:\\ExampleWorkspace\\projects\\Emi2FreshBuild\\01-source-copies\\fresh-export-drop\\emi2-neutral.jslot and dependency-providers\\ (Skyrim.esm, High Poly Head.esm, Improved Eyes Skyrim.esp, Koralina's Eyebrows.esp, KS Hairdo's.esp)",
+        "K:\\ExampleWorkspace\\projects\\ElviraFromPreset\\sources\\ref-front-1024.png, ref-left-1024.png and ref-right-1024.png",
+        "repository-tracked runtime/reference-preset manifest and admitted native DLL closure"
+      ],
+      "reason": "The no-argument fallback runs the full authentic reference-preset suite, which reads the listed Skyrim/provider/image authorities and uses the repository's admitted native runtime."
+    }
+  ]
+}

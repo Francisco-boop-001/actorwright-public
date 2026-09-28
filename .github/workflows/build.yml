@@ -1,0 +1,205 @@
+name: actorwright
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  ACTORWRIGHT_REQUIRE_NTFS_FIXTURES: '1'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.4'
+      - name: Install Python test dependency
+        shell: pwsh
+        run: python -m pip install pytest==8.4.2
+      - name: Create real K-only workspace
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if (Get-PSDrive -Name K -ErrorAction SilentlyContinue) {
+            throw 'GitHub runner already has a K: drive; refusing to replace it.'
+          }
+          $vhdPath = Join-Path $env:RUNNER_TEMP 'actorwright-ci-k.vhdx'
+          $diskPartPath = Join-Path $env:RUNNER_TEMP 'actorwright-ci-k-create.txt'
+          $kWorkspace = 'K:\actorwright'
+          if (Test-Path -LiteralPath $vhdPath) {
+            throw "Temporary CI disk already exists: $vhdPath"
+          }
+          $commands = @(
+            "create vdisk file=`"$vhdPath`" maximum=16384 type=expandable"
+            "select vdisk file=`"$vhdPath`""
+            'attach vdisk'
+            'create partition primary'
+            'format fs=ntfs label=ActorwrightCI quick'
+            'assign letter=K'
+          )
+          [IO.File]::WriteAllLines($diskPartPath, $commands)
+          try {
+            & diskpart.exe /s $diskPartPath
+            if ($LASTEXITCODE -ne 0) {
+              throw "Could not create the temporary K: volume (exit $LASTEXITCODE)."
+            }
+          }
+          finally {
+            Remove-Item -LiteralPath $diskPartPath -Force -ErrorAction SilentlyContinue
+          }
+          $volume = Get-Volume -DriveLetter K -ErrorAction Stop
+          if ($volume.FileSystem -ne 'NTFS' -or $volume.DriveType -ne 'Fixed') {
+            throw 'Temporary K: workspace is not a fixed NTFS volume.'
+          }
+          Write-Output 'EVIDENCE_NTFS_WORKSPACE=K:\actorwright filesystem=NTFS driveType=Fixed strictFixtures=1'
+          New-Item -ItemType Directory -Path $kWorkspace | Out-Null
+          & robocopy.exe "$env:GITHUB_WORKSPACE" $kWorkspace /E /COPY:DAT /DCOPY:DAT /R:2 /W:1 /NFL /NDL /NJH /NJS /NP
+          $copyExit = $LASTEXITCODE
+          if ($copyExit -gt 7) {
+            throw "Could not copy the checkout to K: (robocopy exit $copyExit)."
+          }
+          $evidenceRoot = Join-Path $env:GITHUB_WORKSPACE 'actorwright-ci-evidence'
+          New-Item -ItemType Directory -Path $evidenceRoot -Force | Out-Null
+          $workspaceEvidence = [ordered]@{
+            schemaVersion = 1
+            workspace = $kWorkspace
+            fileSystem = $volume.FileSystem
+            driveType = $volume.DriveType
+            capacityBytes = $volume.Size
+            availableBytes = $volume.SizeRemaining
+            vhdMaximumMiB = 16384
+            strictFixtures = $env:ACTORWRIGHT_REQUIRE_NTFS_FIXTURES
+          }
+          $workspaceEvidence | ConvertTo-Json -Depth 4 |
+            Set-Content -LiteralPath (Join-Path $evidenceRoot 'ntfs-workspace.json') -Encoding utf8
+          exit 0
+      - name: Bootstrap authenticated pinned SDK for compatibility firewall
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $kWorkspace = 'K:\actorwright'
+          Set-Location $kWorkspace
+          $manifestPath = Join-Path $kWorkspace 'tools\manifests\dotnet-sdk-10.0.301-win-x64.json'
+          $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
+          $expectedSource = 'https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.301/dotnet-sdk-10.0.301-win-x64.zip'
+          if ($manifest.source -cne $expectedSource) {
+            throw 'Pinned SDK manifest source changed.'
+          }
+          $archive = Join-Path $kWorkspace 'artifacts\tools\dotnet-sdk-10.0.301-win-x64.zip'
+          New-Item -ItemType Directory -Path (Split-Path -Parent $archive) -Force | Out-Null
+          Invoke-WebRequest -Uri $manifest.source -OutFile $archive
+          pwsh -NoProfile -File ./tools/scripts/bootstrap-dotnet10.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Bootstrap pinned renderer downloads
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $kWorkspace = 'K:\actorwright'
+          Set-Location $kWorkspace
+          $evidenceRoot = Join-Path $env:GITHUB_WORKSPACE 'actorwright-ci-evidence'
+          $log = Join-Path $evidenceRoot 'renderer-bootstrap.log'
+          & pwsh -NoProfile -File ./tools/scripts/bootstrap-renderer.ps1 *> $log
+          $exitCode = $LASTEXITCODE
+          Get-Content -LiteralPath $log
+          if ($exitCode -ne 0) { exit $exitCode }
+      - name: Verify renderer inventory
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $kWorkspace = 'K:\actorwright'
+          Set-Location $kWorkspace
+          $evidenceRoot = Join-Path $env:GITHUB_WORKSPACE 'actorwright-ci-evidence'
+          $log = Join-Path $evidenceRoot 'renderer-inventory-test.log'
+          & python -m pytest ./tests/test_renderer_bootstrap.py -q --basetemp ./artifacts/pytest-renderer-bootstrap *> $log
+          $exitCode = $LASTEXITCODE
+          Get-Content -LiteralPath $log
+          if ($exitCode -ne 0) { exit $exitCode }
+      - name: Build and verify
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $kWorkspace = 'K:\actorwright'
+          Set-Location $kWorkspace
+          $evidenceRoot = Join-Path $env:GITHUB_WORKSPACE 'actorwright-ci-evidence'
+          $log = Join-Path $evidenceRoot 'build-and-verify.log'
+          & pwsh -NoProfile -File ./tools/build/build.ps1 -Configuration Release *> $log
+          $exitCode = $LASTEXITCODE
+          Get-Content -LiteralPath $log
+          $artifactsRoot = Join-Path $kWorkspace 'artifacts'
+          if (Test-Path -LiteralPath $artifactsRoot) {
+            $firewall = Get-ChildItem -LiteralPath $artifactsRoot -Filter 'compatibility-firewall-source-*.json' -File -Recurse -ErrorAction SilentlyContinue |
+              Sort-Object LastWriteTimeUtc -Descending | Select-Object -First 1
+            if ($firewall) {
+              Copy-Item -LiteralPath $firewall.FullName -Destination (Join-Path $evidenceRoot 'compatibility-firewall-source.json')
+            }
+          }
+          if ($exitCode -ne 0) { exit $exitCode }
+      - name: Verify standalone selector registry fixtures
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $kWorkspace = 'K:\actorwright'
+          Set-Location $kWorkspace
+          python ./tools/architecture/validate_standalone_test_registry.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m pytest ./tests/architecture/test_standalone_test_registry.py -q `
+            --basetemp ./artifacts/pytest-selector-registry-ci
+          exit $LASTEXITCODE
+      - name: Verify public dependency advisories
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $kWorkspace = 'K:\actorwright'
+          Set-Location $kWorkspace
+          $dotnet = Join-Path $kWorkspace 'artifacts\tools\dotnet-sdk-10.0.301\dotnet.exe'
+          $packages = Join-Path $kWorkspace 'artifacts\nuget-packages'
+          $report = Join-Path $kWorkspace 'artifacts\hardening\ci-dependency-vulnerability-report.json'
+          New-Item -ItemType Directory -Path (Split-Path -Parent $report) | Out-Null
+          pwsh -NoProfile -File ./tools/hardening/dependency_vulnerability_scan.ps1 `
+            -DotNetPath $dotnet -PackagesPath $packages -Output $report `
+            -AdvisoryCoverage public
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python ./tools/hardening/validate_dependency_vulnerability_report.py `
+            $report --public-release
+          exit $LASTEXITCODE
+      - name: Upload build and NTFS evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: actorwright-ci-evidence
+          path: actorwright-ci-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Remove temporary K-only workspace
+        if: always()
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Set-Location $env:RUNNER_TEMP
+          $vhdPath = Join-Path $env:RUNNER_TEMP 'actorwright-ci-k.vhdx'
+          $diskPartPath = Join-Path $env:RUNNER_TEMP 'actorwright-ci-k-detach.txt'
+          if (Test-Path -LiteralPath $vhdPath) {
+            $commands = @(
+              "select vdisk file=`"$vhdPath`""
+              'detach vdisk noerr'
+            )
+            [IO.File]::WriteAllLines($diskPartPath, $commands)
+            try {
+              & diskpart.exe /s $diskPartPath
+              if ($LASTEXITCODE -ne 0) {
+                throw "Could not detach the temporary K: volume (exit $LASTEXITCODE)."
+              }
+            }
+            finally {
+              Remove-Item -LiteralPath $diskPartPath -Force -ErrorAction SilentlyContinue
+            }
+            if (Get-PSDrive -Name K -ErrorAction SilentlyContinue) {
+              throw 'Temporary K: volume remained mounted after cleanup.'
+            }
+            Remove-Item -LiteralPath $vhdPath -Force
+          }

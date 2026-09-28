@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:exchange:v1:response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "issueId", "createdUtc", "classification", "issueManifestSha256", "summary", "recommendedAction", "artifacts"],
+  "properties": {
+    "$schema": {"const": "urn:actorwright:exchange:v1:response"},
+    "version": {"const": 1},
+    "issueId": {"type": "string", "pattern": "^NPCM-[0-9]{8}-[0-9]{4}$"},
+    "createdUtc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "classification": {"enum": ["BUG", "FEATURE_REQUEST", "EXPECTED_TYPED_REFUSAL", "CONSUMER_OR_ENVIRONMENT_FAILURE", "NEEDS_MORE_EVIDENCE"]},
+    "issueManifestSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "summary": {"type": "string", "minLength": 1},
+    "recommendedAction": {"type": "string", "minLength": 1},
+    "artifacts": {"type": "array"}
+  }
+}

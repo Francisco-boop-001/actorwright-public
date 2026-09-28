@@ -1,0 +1,557 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "preview npc",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Compose and render one selected Skyrim NPC from reviewed providers.",
+    "limitations": [
+      "High-fidelity off-engine inspection only: resolves the selected NPC's exact copied/plugin/package providers into six textured views, refuses unsupported UBE runtime composition, never mutates source inputs, and never grants runtime or likeness authority.",
+      "Produces off-engine evidence only; human visual acceptance, Skyrim runtime verification, and promotion approval remain required."
+    ],
+    "options": [
+      {
+        "cliName": "intake",
+        "jsonName": "intake",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact codec-validated reviewed Skyrim intake.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "plugin",
+        "jsonName": "plugin",
+        "valueKind": "string",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<plugin-name>",
+        "description": "Selected NPC owner plugin name.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "form",
+        "jsonName": "form",
+        "valueKind": "identifier",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<nonzero-hexadecimal-form-id>",
+        "description": "Selected non-null NPC FormID.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "package-manifest",
+        "jsonName": "package-manifest",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact NPC package manifest required by strict preview.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "expected-package-sha256",
+        "jsonName": "expected-package-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 binding the package manifest.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "output-root",
+        "jsonName": "output-root",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh K-local six-view preview output root.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle",
+        "jsonName": "workflow-bundle",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact resumable workflow bundle input.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle-sha256",
+        "jsonName": "workflow-bundle-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 binding the workflow bundle.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-output",
+        "jsonName": "workflow-output",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh successor workflow bundle output.",
+        "aliasFor": null
+      }
+    ],
+    "inputArtifactKinds": [
+      "reviewed-workspace-intake",
+      "npc-package-manifest",
+      "workflow-bundle"
+    ],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:npc-visual-preview-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "readWorkspace",
+        "condition": "When the exact package, reviewed intake, NPC identity, and workflow are admitted.",
+        "scope": "workspace",
+        "trigger": null
+      },
+      {
+        "kind": "invokeAdmittedProcess",
+        "condition": "When the admitted renderer composes the six deterministic off-engine views.",
+        "scope": "workspace",
+        "trigger": null
+      },
+      {
+        "kind": "writeNewArtifact",
+        "condition": "Only after every preview output is independently reopened.",
+        "scope": "k-local-output",
+        "trigger": null
+      },
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "requiresFreshOutput",
+    "determinism": "deterministic",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "The package, intake, workflow, and NPC identity are admitted."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "established",
+        "reason": "The rendered source graph remains bound to the exact package."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "established",
+        "reason": "The hash-bound static NPC package remains materialized."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "established",
+        "reason": "The package and preview outputs are independently reopened."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "established",
+        "reason": "Six deterministic off-engine views and evidence are persisted."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "required",
+        "reason": "The agent may inspect evidence but cannot attest human acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "required",
+        "reason": "Runtime testing remains user-operated."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "required",
+        "reason": "Preview production never grants promotion approval."
+      }
+    ],
+    "transitions": [
+      {
+        "from": "verify",
+        "to": "review",
+        "requiredBindings": [
+          "npc-package-manifest",
+          "npc-preview-manifest"
+        ]
+      }
+    ],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [],
+    "inputArtifacts": [
+      {
+        "kind": "reviewed-workspace-intake",
+        "schemaIds": [
+          "npcmanager-reviewed-game-intake/2"
+        ],
+        "description": "Exact codec-validated reviewed Skyrim intake.",
+        "trigger": null
+      },
+      {
+        "kind": "npc-package-manifest",
+        "schemaIds": [
+          "application/json"
+        ],
+        "description": "Exact hash-bound NPC package overlay.",
+        "trigger": null
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Exact hash-bound predecessor workflow bundle.",
+        "trigger": null
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "kind": "npc-preview-manifest",
+        "schemaIds": [
+          "npc-preview-bundle/1"
+        ],
+        "description": "Fresh independently reopened six-view off-engine preview bundle.",
+        "trigger": null
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Fresh independently verified workflow successor.",
+        "trigger": null
+      }
+    ],
+    "resultShape": "object",
+    "resultDescription": "Protocol result with composed state, persisted bundle versions, source route, off-engine label, contact sheet, six view paths and hashes, diagnostics, effects, and authority; runtime and human visual acceptance remain required."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:npc-visual-preview-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:npc-visual-preview-result:v1",
+        "title": "Actorwright protocol v2 NPC visual preview result",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "composed",
+          "status",
+          "runtimeAuthority",
+          "bundlePath",
+          "bundleSize",
+          "bundleSha256",
+          "hashManifestPath",
+          "hashManifestSize",
+          "hashManifestSha256",
+          "contactSheetPath",
+          "contactSheetSha256",
+          "views",
+          "diagnostics"
+        ],
+        "properties": {
+          "composed": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "offEnginePreviewRuntimeRequired",
+              "refused"
+            ]
+          },
+          "runtimeAuthority": {
+            "const": false
+          },
+          "bundlePath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "bundleSize": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "bundleSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "hashManifestPath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hashManifestSize": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "hashManifestSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "contactSheetPath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "contactSheetSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "views": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "$ref": "#/$defs/view"
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          }
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "composed": {
+                "const": false
+              },
+              "status": {
+                "const": "refused"
+              },
+              "bundlePath": {
+                "type": "null"
+              },
+              "bundleSize": {
+                "type": "null"
+              },
+              "bundleSha256": {
+                "type": "null"
+              },
+              "hashManifestPath": {
+                "type": "null"
+              },
+              "hashManifestSize": {
+                "type": "null"
+              },
+              "hashManifestSha256": {
+                "type": "null"
+              },
+              "contactSheetPath": {
+                "type": "null"
+              },
+              "contactSheetSha256": {
+                "type": "null"
+              },
+              "views": {
+                "maxItems": 0
+              }
+            }
+          },
+          {
+            "properties": {
+              "composed": {
+                "const": true
+              },
+              "status": {
+                "const": "offEnginePreviewRuntimeRequired"
+              },
+              "bundlePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bundleSize": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "bundleSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "hashManifestPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "hashManifestSize": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "hashManifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "contactSheetPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contactSheetSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "views": {
+                "minItems": 6,
+                "maxItems": 6
+              }
+            }
+          }
+        ],
+        "$defs": {
+          "view": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "imagePath",
+              "imageSha256",
+              "roleMaskPath",
+              "roleMaskSha256",
+              "width",
+              "height"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "imagePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "imageSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "roleMaskPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "roleMaskSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "width": {
+                "const": 900
+              },
+              "height": {
+                "const": 900
+              }
+            }
+          },
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "documentSchemas": []
+}

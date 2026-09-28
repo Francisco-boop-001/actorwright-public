@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "blank-npc-v1",
+  "owner": "Actorwright",
+  "redistribution": "product-generated-test-fixture",
+  "sources": [
+    "tools/fixtures/m2 deterministic Skyrim plugin writer",
+    "tests/fixtures/sse-packed-normals/generate.py (synthetic test-only NIF writer)",
+    "tests/fixtures/sse-packed-normals/dynamic-16.nif (generated test input)",
+    "Actorwright deterministic 1024x1024 BGRA8 FaceTint writer"
+  ],
+  "runtimeAuthority": false
+}

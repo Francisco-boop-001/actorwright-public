@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:exchange:v1:release-candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "productVersion", "sourceCommit", "sourceTag", "capabilitiesSha256", "packageSha256", "sbomSha256", "testSummarySha256", "runtimeAuthority", "visualAuthority"],
+  "properties": {
+    "$schema": {"const": "urn:actorwright:exchange:v1:release-candidate"},
+    "version": {"const": 1},
+    "productVersion": {"type": "string", "minLength": 1},
+    "sourceCommit": {"type": "string", "pattern": "^[A-Fa-f0-9]{40}$"},
+    "sourceTag": {"type": "string", "minLength": 1},
+    "capabilitiesSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "packageSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "sbomSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "testSummarySha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "runtimeAuthority": {"const": false},
+    "visualAuthority": {"const": false}
+  }
+}

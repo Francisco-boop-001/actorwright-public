@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:protocol-v2:npc-create-preflight-result:v1",
+  "title": "Actorwright protocol v2 NPC create preflight result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "created", "readyForBuild", "previewReady", "path", "sha256",
+    "requiredGates", "optionalPreview", "diagnostics"
+  ],
+  "properties": {
+    "created": { "type": "boolean" },
+    "readyForBuild": { "type": "boolean" },
+    "previewReady": { "type": "boolean" },
+    "path": { "type": ["string", "null"] },
+    "sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "requiredGates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gate" }
+    },
+    "optionalPreview": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gate" }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/diagnostic" }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "created": { "const": false },
+        "readyForBuild": { "const": false },
+        "previewReady": { "const": false },
+        "path": { "type": "null" },
+        "sha256": { "type": "null" }
+      }
+    },
+    {
+      "properties": {
+        "created": { "const": true },
+        "readyForBuild": { "const": true },
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9A-F]{64}$"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "required", "passed", "detail"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "required": { "type": "boolean" },
+        "passed": { "type": "boolean" },
+        "detail": { "type": "string", "minLength": 1 }
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "severity": { "type": "integer", "enum": [0, 1, 2] },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

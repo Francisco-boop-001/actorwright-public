@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Preserve the exact hash-bound FO4 NPC Manager emitter source used as Actorwright runtime-script proposal provenance.",
+  "sourceRepositoryCommit": "64ce5c524fc18e4dfb5475e7e17c806035f53c11",
+  "sourcePath": "projects/NpcManagerReimplementation/02-normalized-resources/upstream-papyrus/FO4_NPC_Manager/NPC/NpcApplyScriptEmitter.vb",
+  "actorwrightPath": "runtime/provenance/fo4-npc-manager/NpcApplyScriptEmitter.vb",
+  "gitBlob": "7a8ec664b3158be0f3a262fa13edfbf70b606ded",
+  "sha256": "91e630e143ef382a6661638c07f931fd29759bc84b32cd3f98758fc72617454b",
+  "embeddedResource": "Actorwright.Provenance.Fo4NpcManager.NpcApplyScriptEmitter.vb",
+  "sourceSemanticsChanged": false,
+  "upstream": {
+    "repository": "https://github.com/MANOLOV02/FO4_NPC_Manager",
+    "commit": "2f765c5dc09277f48321eb8cf80ad7925d4699a4",
+    "commitUrl": "https://github.com/MANOLOV02/FO4_NPC_Manager/commit/2f765c5dc09277f48321eb8cf80ad7925d4699a4",
+    "sourcePath": "FO4_NPC_Manager/NPC/NpcApplyScriptEmitter.vb",
+    "sourceBlob": "7a8ec664b3158be0f3a262fa13edfbf70b606ded",
+    "sourceSha256": "91e630e143ef382a6661638c07f931fd29759bc84b32cd3f98758fc72617454b",
+    "licensePath": "LICENSE",
+    "licenseRawUrl": "https://raw.githubusercontent.com/MANOLOV02/FO4_NPC_Manager/2f765c5dc09277f48321eb8cf80ad7925d4699a4/LICENSE",
+    "licenseBlob": "9a8a08a29b58716b3d04fe13ca283bf097c487a1",
+    "licenseSha256": "5335ab01352c0208eb48c866d55513231cff8e1af8833d698a56f580b36965c8",
+    "licenseLocalPath": "licenses/upstream-fo4-npc-manager-LICENSE"
+  }
+}

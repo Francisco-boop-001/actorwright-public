@@ -1,0 +1,438 @@
+[
+  {
+    "path": "tests/standalone-test-matrix.json",
+    "occurrences": 111
+  },
+  {
+    "path": "tests/test_docs_lint.py",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/test_permission_profile.py",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/ActorAssemblyPreflightServiceTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/ActorAssemblyProvenanceTests.cs",
+    "occurrences": 9
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/BethesdaNpcVisualSourceComposerTests.cs",
+    "occurrences": 7
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/BethesdaSkyrimRawTopologyPreflightTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/CleanupFailureDiagnosticsTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/FaceGenBakeAllTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/FaceGenBakeTargetDiscoveryTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/FaceGeomHairRegionsPreviewSourceTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/FaceGeomHairRegionsRendererTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/FaceGeomHairRegionsSelectedSourceResolverTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/FaceGeomHairRegionsTransactionTests.cs",
+    "occurrences": 5
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/NpcVisualComparisonServiceTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/NpcVisualPreviewComposerTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/Program.cs",
+    "occurrences": 11
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/QualifiedFaceGeomCarrierTests.cs",
+    "occurrences": 12
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/RaceMenuCatalogAuthorityTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/RaceMenuCharGenFaceGeomMergeTests.cs",
+    "occurrences": 19
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/RaceMenuNpcExecutionRequestFileLoaderTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/ReviewedGameIntakeTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/RubyNarrowAdmissionTests.cs",
+    "occurrences": 5
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimArmorAddonEditorTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimArmorAddonProductionWorkflowTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimArmorAddonReferenceEditorTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimArmorEditorTests.cs",
+    "occurrences": 5
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimArmorProductionFixture.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimArmorProductionWorkflowTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimBodyEditWorkflowTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimBodyEditorDocumentTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimBsaProductionTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimCharGenOptionsEditorTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFaceEditWorkflowTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFaceEditorDocumentTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFaceGenSidecarOverlayTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFollowerFinishContractTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFollowerFinishCoreBinaryTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFollowerFinishPairContractTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFollowerFinishPlacementTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFollowerFinishProposalTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimFollowerFinishTransactionTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimHeadPartChoiceTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimInteriorPlacementFormatSpikeTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimLeveledEntryEditorTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimLeveledListEditorTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimLeveledListProductionWorkflowTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimLightingEditorTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimMainWorkspaceCatalogTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimMainWorkspacePersistencePreviewTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimMeshPickerTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimNativeFaceGeomBuildTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimNpcFinishCoreAuthorityTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimNpcFinishCoreContractTests.cs",
+    "occurrences": 26
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimNpcFinishCoreExternalContractTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimNpcFinishCoreSandboxTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimOutfitBinaryRoundTripTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimOutfitEditorTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimOutfitProductionWorkflowTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimRaceMenuPaintChoiceTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimSavePackageProductionTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimSavePackageTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimSavePluginTransformerTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimSelectiveAppearancePasteTests.cs",
+    "occurrences": 6
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimSelectiveAppearanceProductionTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SseFaceGeomCarrierAssemblerTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SseSelectedHeadpartNifGeometryReaderTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Assets.Tests/FaceBakeAuthorityLoaderTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Assets.Tests/Program.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.BethesdaFaceRouting.Tests/Program.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Cli.Tests/ActorAssemblyPreflightCliTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Cli.Tests/FaceGeomHairRegionsCliTests.cs",
+    "occurrences": 43
+  },
+  {
+    "path": "tests/NpcManager.Cli.Tests/NpcVisualPreviewCliTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Cli.Tests/OutfitProposalCliAdmissionTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Cli.Tests/Program.cs",
+    "occurrences": 428
+  },
+  {
+    "path": "tests/NpcManager.Cli.Tests/SkyrimNpcFinishCoreCliTests.cs",
+    "occurrences": 5
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/FaceGeomHairRegionsWizardProductionTransactionTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/FaceGeomHairRegionsWizardTests.cs",
+    "occurrences": 27
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/FaceGeomHairRegionsWizardWindowTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/Program.cs",
+    "occurrences": 38
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/ReferencePresetAuthoringViewModelTests.cs",
+    "occurrences": 7
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimArmorProductionWorkspaceTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimBodyEditWorkspaceTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimCharGenOptionsProductionWorkspaceTests.cs",
+    "occurrences": 4
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimFaceEditWorkspaceTests.cs",
+    "occurrences": 10
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimHeadPartEditDesktopTests.cs",
+    "occurrences": 13
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimLeveledListProductionWorkspaceTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimLightingEditorDesktopTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimMainWorkspacePackagedAcceptance.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimMainWorkspaceViewModelTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimNpcFinishWizardTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimOutfitProductionWorkspaceTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimSavePackageDesktopTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimSavePackagePackagedAcceptance.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.Desktop.Smoke/SkyrimSelectiveAppearancePasteWorkspaceTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.FaceGen.Tests/Bgra8FaceTintTextureDecoderTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.FaceGen.Tests/Program.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.FaceGen.Tests/SkyrimNativeFaceTintMaterializationTests.cs",
+    "occurrences": 9
+  },
+  {
+    "path": "tests/NpcManager.Gate2.PipelineIntegration.Tests/Program.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.ReferencePreset.Tests/AuthenticResourceClosureRepro.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.ReferencePreset.Tests/MediaPipeNativeApiTests.cs",
+    "occurrences": 3
+  },
+  {
+    "path": "tests/NpcManager.ReferencePreset.Tests/ReferenceImageDecoderTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.ReferencePreset.Tests/ReferencePresetRenderingTests.cs",
+    "occurrences": 9
+  },
+  {
+    "path": "tests/NpcManager.ReferencePreset.Tests/ReferencePresetRulesTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.ReferencePreset.Tests/ReferencePresetSolverTests.cs",
+    "occurrences": 2
+  },
+  {
+    "path": "tests/NpcManager.ReferencePreset.Tests/ReferencePresetWriterTests.cs",
+    "occurrences": 1
+  },
+  {
+    "path": "tests/NpcManager.ReferencePreset.Tests/ReferenceResourceSnapshotTests.cs",
+    "occurrences": 6
+  },
+  {
+    "path": "tests/independence/test_repository_independence.py",
+    "occurrences": 9
+  },
+  {
+    "path": "tests/NpcManager.Architecture.Tests/SkyrimDialogueLipSyncTests.cs",
+    "occurrences": 2
+  }
+]

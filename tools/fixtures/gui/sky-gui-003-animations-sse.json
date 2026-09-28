@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "edition": "skyrimse",
+  "animations": [
+    {
+      "id": "walk",
+      "name": "Walk Forward",
+      "path": "animations/MT/Neutral/walk.hkx",
+      "skeleton": "meshes/actors/character/character assets female/skeleton_female.nif",
+      "frames": 10,
+      "fps": 30,
+      "roles": ["Core", "MT"],
+      "stateAxes": "Forward"
+    },
+    {
+      "id": "attack",
+      "name": "Power Attack",
+      "path": "animations/Weapon/attack.hkx",
+      "skeleton": "meshes/actors/character/character assets female/skeleton_female.nif",
+      "frames": 12,
+      "fps": 30,
+      "additive": true,
+      "role": "Weapon",
+      "femaleOnly": true,
+      "firstPersonOnly": true,
+      "behaviorGraph": true
+    },
+    {
+      "id": "talk",
+      "name": "Talk Gesture",
+      "path": "animations/Dialogue/talk.hkx",
+      "skeleton": "meshes/actors/character/character assets female/skeleton_female.nif",
+      "frames": 8,
+      "fps": 24,
+      "role": "Idle",
+      "category": "Talk"
+    }
+  ]
+}

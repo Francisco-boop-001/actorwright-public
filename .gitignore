@@ -1,0 +1,30 @@
+**/bin/
+**/obj/
+/.dotnet-home/
+/artifacts/
+/.worktrees/
+/.pytest-tmp/
+/.actorwright/
+/t/
+/%SystemDrive%/
+/.superpowers/
+/resources/
+/tools/external/*
+!/tools/external/README.md
+**/__pycache__/
+tools/external/dotnet-sdk-10.0.301-win-x64/
+03-builds/*/work/
+03-builds/work/
+/03-builds/dotnet-home/
+/03-builds/nuget-packages/
+04-packages/*/work/
+# Generated release candidates are retained in the K-local workspace and are
+# addressed by acceptance/hash reports rather than committed binary payloads.
+04-packages/npcmanager-*.zip
+04-packages/npcmanager-*/
+*.user
+*.suo
+/voice-services.json
+
+# Source-only publication: locally supplied native inputs are not redistributed.
+/runtime/reference-preset/*.dll

@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1c5a725..78b83a2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,7 +99,7 @@ if(CAPRICA_STATIC_LIBRARY)
+   find_package(fmt REQUIRED)
+   find_package(pugixml CONFIG REQUIRED)
+   target_link_libraries(${PROJECT_NAME} PRIVATE Boost::container fmt::fmt)
+-  target_link_libraries(${PROJECT_NAME} PRIVATE pugixml pugixml::static pugixml::pugixml)
++  target_link_libraries(${PROJECT_NAME} PRIVATE pugixml::pugixml)
+ 
+   target_include_directories(
+     "${PROJECT_NAME}"
+@@ -144,8 +144,8 @@ else()
+   add_subdirectory(Caprica)
+   add_dependencies(${PROJECT_NAME} Caprica)
+   target_link_libraries(${PROJECT_NAME} PRIVATE Boost::filesystem Boost::program_options Boost::container fmt::fmt)
+-  target_link_libraries(${PROJECT_NAME} PRIVATE pugixml pugixml::static pugixml::pugixml)
++  target_link_libraries(${PROJECT_NAME} PRIVATE pugixml::pugixml)
+ 
+   install(
+     TARGETS Caprica
+   )

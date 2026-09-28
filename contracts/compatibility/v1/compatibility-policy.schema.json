@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:compatibility:v1:policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "formatVersion", "semanticRules", "acceptedDifferences"],
+  "properties": {
+    "$schema": {"const": "urn:actorwright:compatibility:v1:policy"},
+    "formatVersion": {"const": 1},
+    "semanticRules": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/semanticRule"}
+    },
+    "acceptedDifferences": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/acceptedDifference"}
+    }
+  },
+  "$defs": {
+    "semanticRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workflowId", "pointer", "normalizer"],
+      "properties": {
+        "workflowId": {"type": "string", "minLength": 1},
+        "pointer": {"type": "string", "pattern": "^/"},
+        "normalizer": {"enum": ["temporary-root", "generated-timestamp", "operation-id"]}
+      }
+    },
+    "acceptedDifference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "issueId",
+        "rationale",
+        "regressionSelector",
+        "affectedCommand",
+        "workflowId",
+        "pointer",
+        "baselineValue",
+        "candidateValue"
+      ],
+      "properties": {
+        "issueId": {"type": "string", "minLength": 1},
+        "rationale": {"type": "string", "minLength": 1},
+        "regressionSelector": {"type": "string", "minLength": 1},
+        "affectedCommand": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "workflowId": {"type": "string", "minLength": 1},
+        "pointer": {"type": "string", "pattern": "^/"},
+        "baselineValue": {},
+        "candidateValue": {}
+      }
+    }
+  }
+}

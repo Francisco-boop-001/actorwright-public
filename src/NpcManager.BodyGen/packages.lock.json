@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "npcmanager.application": {
+        "type": "Project",
+        "dependencies": {
+          "NpcManager.Domain": "[1.0.0, )"
+        }
+      },
+      "npcmanager.domain": {
+        "type": "Project"
+      }
+    },
+    "net10.0/win-x64": {}
+  }
+}

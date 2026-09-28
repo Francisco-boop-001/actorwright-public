@@ -1,0 +1,183 @@
+<UserControl x:Class="NpcManager.Desktop.SkyrimSelectiveAppearancePastePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             automation:AutomationProperties.Name="Paste selected Skyrim appearance task">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="0,16,10,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" MinWidth="620" />
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="2*" MinWidth="350" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        Background="#13252C" BorderBrush="#2F665E">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="SELECTIVE APPEARANCE  /  TWO-CARRIER TRANSACTION" />
+                        <TextBlock Margin="0,5,0,7" FontSize="23" FontWeight="SemiBold"
+                                   Text="Paste only the categories you choose" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Loads one source and one target from reviewed ESP and RaceMenu jslot carriers. Review writes proposals only; execution writes and reopens both fresh outputs atomically." />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="1  SOURCE ENDPOINT" />
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Reviewed plugin" />
+                                <TextBox Margin="0,5,0,0" Text="{Binding SourcePlugin, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selective paste source plugin" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="NPC FormID" />
+                                <TextBox Margin="0,5,0,0" Text="{Binding SourceNpcFormId, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selective paste source NPC FormID" />
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Margin="0,10,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Existing RaceMenu source jslot" />
+                        <TextBox Text="{Binding SourcePreset, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Selective paste source preset" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="2  TARGET ENDPOINT" />
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Reviewed plugin" />
+                                <TextBox Margin="0,5,0,0" Text="{Binding TargetPlugin, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selective paste target plugin" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="NPC FormID" />
+                                <TextBox Margin="0,5,0,0" Text="{Binding TargetNpcFormId, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selective paste target NPC FormID" />
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Margin="0,10,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Existing RaceMenu target jslot" />
+                        <TextBox Text="{Binding TargetPreset, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Selective paste target preset" />
+                        <Button Margin="0,14,0,0" HorizontalAlignment="Left"
+                                Style="{StaticResource QuietButton}" Content="_Load both carriers"
+                                Command="{Binding LoadCommand}"
+                                automation:AutomationProperties.Name="Load selective appearance source and target" />
+                        <TextBlock Margin="0,10,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding Context}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="3  CHOOSE CATEGORIES" />
+                        <Button Margin="0,12,0,0" HorizontalAlignment="Left"
+                                Style="{StaticResource PrimaryButton}"
+                                Content="_Choose appearance categories"
+                                IsEnabled="{Binding CanChooseCategories}"
+                                Click="OpenSelector_Click"
+                                automation:AutomationProperties.Name="Open selective appearance category chooser" />
+                        <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource AccentBrush}"
+                                   Text="{Binding SelectionSummary}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="FRESH PROPOSALS" />
+                        <TextBlock Margin="0,8,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Transaction proposal JSON" />
+                        <TextBox Text="{Binding TransactionProposalPath, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Selective paste transaction proposal" />
+                        <TextBlock Margin="0,10,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Plugin proposal JSON" />
+                        <TextBox Text="{Binding PluginProposalPath, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Selective paste plugin proposal" />
+                        <TextBlock Margin="0,10,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Output plugin" />
+                        <TextBox Text="{Binding OutputPlugin, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Selective paste output plugin" />
+                        <TextBlock Margin="0,10,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Output RaceMenu jslot" />
+                        <TextBox Text="{Binding OutputPreset, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Selective paste output preset" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="REVIEW, WRITE, REOPEN" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource PrimaryButton}"
+                                Content="_Review both proposals" Command="{Binding ReviewCommand}"
+                                automation:AutomationProperties.Name="Review selective appearance proposals" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource PrimaryButton}"
+                                Content="_Write and verify both outputs" Command="{Binding ExecuteCommand}"
+                                automation:AutomationProperties.Name="Write and verify selective appearance outputs" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource QuietButton}"
+                                Content="_Cancel operation" Command="{Binding CancelCommand}"
+                                automation:AutomationProperties.Name="Cancel selective appearance operation" />
+                        <ProgressBar Margin="0,18,0,0" Minimum="0" Maximum="100"
+                                     Value="{Binding ProgressPercent, Mode=OneWay}"
+                                     automation:AutomationProperties.Name="Selective appearance progress" />
+                        <TextBlock Margin="0,8,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding Status}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="RESULT" />
+                        <TextBlock Margin="0,5,0,12" FontSize="19" FontWeight="SemiBold"
+                                   Text="{Binding Verdict}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Transaction proposal SHA-256" />
+                        <TextBlock Margin="0,4,0,10" Text="{Binding ProposalSha256}" TextWrapping="Wrap" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Output plugin" />
+                        <TextBlock Margin="0,4,0,10" Text="{Binding ResultPlugin}" TextWrapping="Wrap" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Output jslot" />
+                        <TextBlock Margin="0,4,0,10" Text="{Binding ResultPreset}" TextWrapping="Wrap" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Output jslot SHA-256" />
+                        <TextBlock Margin="0,4,0,0" Text="{Binding OutputPresetSha256}" TextWrapping="Wrap" />
+                        <Border Margin="0,14,0,0" Padding="10"
+                                Background="{DynamicResource AccentDarkBrush}" CornerRadius="7">
+                            <TextBlock Foreground="{DynamicResource AccentBrush}" TextWrapping="Wrap"
+                                       Text="Static carrier readback is not FaceGen, BodySlide-build, runtime, or visual proof." />
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="DIAGNOSTICS" />
+                        <ListBox Margin="0,10,0,0" MaxHeight="190"
+                                 ItemsSource="{Binding Diagnostics}"
+                                 automation:AutomationProperties.Name="Selective appearance diagnostics" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

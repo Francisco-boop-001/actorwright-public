@@ -1,0 +1,578 @@
+<Window x:Class="NpcManager.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:NpcManager.Desktop"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="Actorwright"
+        Width="1240"
+        Height="820"
+        MinWidth="980"
+        MinHeight="680"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        automation:AutomationProperties.Name="Actorwright workspace">
+    <Grid Margin="28,22,28,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,14">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Style="{StaticResource EyebrowText}" Text="SKYRIM SE / AE • NPC AUTHORING" />
+                <TextBlock Margin="0,4,0,0" FontSize="30" FontWeight="SemiBold" Text="NPC Studio" />
+                <TextBlock Margin="0,5,0,0" FontSize="14" Foreground="{DynamicResource MutedTextBrush}"
+                           Text="Create, verify, and package NPCs without touching your live game." />
+            </StackPanel>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Border Padding="13,7" Background="{DynamicResource AccentDarkBrush}"
+                        BorderBrush="{DynamicResource AccentStrongBrush}" BorderThickness="1" CornerRadius="16">
+                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}"
+                               Text="K-only safe workspace" />
+                </Border>
+                <TextBlock Margin="0,7,0,0" HorizontalAlignment="Right" FontSize="11"
+                           Foreground="{DynamicResource MutedTextBrush}" Text="Runtime proof remains separate" />
+                <Button Margin="0,9,0,0" HorizontalAlignment="Right"
+                        Style="{StaticResource QuietButton}"
+                        Content="Preview _lighting"
+                        Click="OpenLightingEditorClick"
+                        automation:AutomationProperties.Name="Open preview lighting editor" />
+                <TextBlock Margin="0,5,0,0" HorizontalAlignment="Right" FontSize="11"
+                           Foreground="{DynamicResource MutedTextBrush}"
+                           Text="{Binding Lighting.Summary}" />
+            </StackPanel>
+        </Grid>
+
+        <TabControl x:Name="MainTasks"
+                    Grid.Row="1"
+                    automation:AutomationProperties.Name="NPC Studio tasks">
+            <TabItem x:Name="ReviewHandoffTab"
+                     Header="Review handoff"
+                     automation:AutomationProperties.Name="Review exact agent workflow handoff task"
+                     automation:AutomationProperties.HelpText="Displays exact workflow evidence and creates operator-attested review receipts.">
+                <local:DesktopWorkflowReviewPanel DataContext="{Binding WorkflowReview}" />
+            </TabItem>
+            <TabItem x:Name="OpenWorkspaceTab"
+                     Header="Open workspace"
+                     IsSelected="True"
+                     automation:AutomationProperties.Name="Open copied Skyrim workspace task">
+                <local:ReviewedGameIntakePanel DataContext="{Binding Preflight}" />
+            </TabItem>
+
+            <TabItem x:Name="NpcWorkspaceTab"
+                     Header="NPC workspace"
+                     IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Integrated NPC workspace task">
+                <local:SkyrimMainWorkspacePanel DataContext="{Binding MainWorkspace}" />
+            </TabItem>
+
+            <TabItem x:Name="CreatePresetTab"
+                     Header="Create preset"
+                     IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Create RaceMenu preset from references task">
+                <local:ReferencePresetAuthoringPanel
+                    DataContext="{Binding ReferencePreset}" />
+            </TabItem>
+
+            <TabItem x:Name="PresetToNpcTab"
+                     Header="Preset to NPC" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Create NPC from RaceMenu preset task">
+                <local:RaceMenuNpcBuildPanel DataContext="{Binding RaceMenuNpc}" />
+            </TabItem>
+
+            <TabItem x:Name="EditNpcTab"
+                     Header="Edit NPC" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Edit existing NPC task">
+                <local:ExistingNpcEditPanel DataContext="{Binding ExistingNpcEdit}" />
+            </TabItem>
+
+            <TabItem x:Name="FinishNpcTab"
+                     Header="Finish NPC" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Finish NPC core workflow">
+                <local:SkyrimNpcFinishWizardPanel DataContext="{Binding FinishCore}" />
+            </TabItem>
+
+            <TabItem x:Name="VoiceTab"
+                     Header="Voice"
+                     automation:AutomationProperties.Name="Import NPC reference voice task">
+                <local:SkyrimNpcVoicePanel DataContext="{Binding Voice}" />
+            </TabItem>
+
+            <TabItem x:Name="HeadPartsTab"
+                     Header="Edit head parts" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Edit Skyrim NPC head parts task">
+                <local:SkyrimHeadPartEditPanel DataContext="{Binding HeadPartEdit}" />
+            </TabItem>
+
+            <TabItem x:Name="FaceTab"
+                     Header="Edit face" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Edit Skyrim NPC face task">
+                <local:SkyrimFaceEditPanel DataContext="{Binding FaceEdit}" />
+            </TabItem>
+
+            <TabItem x:Name="BodyTab"
+                     Header="Edit body" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Edit Skyrim NPC body task">
+                <local:SkyrimBodyEditPanel DataContext="{Binding BodyEdit}" />
+            </TabItem>
+
+            <TabItem x:Name="PasteAppearanceTab"
+                     Header="Paste appearance" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Paste selected Skyrim appearance task">
+                <local:SkyrimSelectiveAppearancePastePanel
+                    DataContext="{Binding SelectiveAppearancePaste}" />
+            </TabItem>
+
+            <TabItem x:Name="OutfitsTab"
+                     Header="Outfits" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Browse and author Skyrim outfits task">
+                <local:SkyrimOutfitProductionPanel
+                    DataContext="{Binding OutfitProduction}" />
+            </TabItem>
+
+            <TabItem Header="Leveled lists" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Create Skyrim leveled lists task">
+                <local:SkyrimLeveledListProductionPanel
+                    DataContext="{Binding LeveledListProduction}" />
+            </TabItem>
+
+            <TabItem Header="Armor" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Create Skyrim armor task">
+                <local:SkyrimArmorProductionPanel
+                    DataContext="{Binding ArmorProduction}" />
+            </TabItem>
+
+            <TabItem x:Name="FaceGenTab"
+                     Header="Bake FaceGen" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Bake native FaceGen batch task">
+                <local:NativeFaceGenBatchPanel DataContext="{Binding FaceGenBatch}" />
+            </TabItem>
+
+            <TabItem x:Name="CharGenOptionsTab"
+                     Header="CharGen options"
+                     automation:AutomationProperties.Name="Edit and consume Skyrim CharGen options task">
+                <local:SkyrimCharGenOptionsProductionPanel
+                    DataContext="{Binding CharGenOptionsProduction}" />
+            </TabItem>
+
+            <TabItem Header="Create NPC" IsEnabled="{Binding HasReviewedIntake}"
+                     automation:AutomationProperties.Name="Create new NPC task">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                              Padding="0,16,10,8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" MinWidth="570" />
+                            <ColumnDefinition Width="22" />
+                            <ColumnDefinition Width="*" MinWidth="310" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" IsEnabled="{Binding CreateNpc.IsNotBusy}">
+                            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                                    Background="#13252C" BorderBrush="#2F665E">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock Style="{StaticResource EyebrowText}" Text="NEW NPC FROM ZERO" />
+                                        <TextBlock Margin="0,6,0,0" FontSize="23" FontWeight="SemiBold"
+                                                   Text="Build a game-facing NPC package" />
+                                        <TextBlock Margin="0,7,14,0" Foreground="{DynamicResource MutedTextBrush}"
+                                                   TextWrapping="Wrap"
+                                                   Text="Creates one new NPC record, complete FaceGen files, dependency evidence, and an installable Data tree—then reads everything back before keeping it." />
+                                    </StackPanel>
+                                    <Border Grid.Column="1" Width="50" Height="50" CornerRadius="25"
+                                            Background="{DynamicResource AccentDarkBrush}" VerticalAlignment="Center">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                   FontSize="22" FontWeight="Bold" Foreground="{DynamicResource AccentBrush}"
+                                                   Text="+" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+
+                            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}" Text="1  IDENTITY" />
+                                    <TextBlock Margin="0,5,0,16" FontSize="19" FontWeight="SemiBold" Text="Who is this NPC?" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="16" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Display name" />
+                                            <TextBox Text="{Binding CreateNpc.DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                                                     automation:AutomationProperties.Name="NPC display name" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2">
+                                            <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Editor ID" />
+                                            <TextBox Text="{Binding CreateNpc.EditorId, UpdateSourceTrigger=PropertyChanged}"
+                                                     automation:AutomationProperties.Name="NPC editor ID" />
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}" Text="2  ROLE" />
+                                    <TextBlock Margin="0,5,0,16" FontSize="19" FontWeight="SemiBold" Text="Qualified validation profile" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="16" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Implemented role" />
+                                            <ComboBox ItemsSource="{Binding CreateNpc.RoleOptions}"
+                                                      DisplayMemberPath="Label" SelectedValuePath="Value"
+                                                      SelectedValue="{Binding CreateNpc.SelectedRole}"
+                                                      automation:AutomationProperties.Name="NPC role" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2">
+                                            <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Provider sex" />
+                                            <ComboBox ItemsSource="{Binding CreateNpc.SexOptions}"
+                                                      DisplayMemberPath="Label" SelectedValuePath="Value"
+                                                      SelectedValue="{Binding CreateNpc.SelectedSex}"
+                                                      automation:AutomationProperties.Name="NPC sex" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Expander Margin="0,16,0,0" Header="Advanced game references">
+                                        <Grid Margin="0,14,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="14" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,12">
+                                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Race" />
+                                                <TextBox Text="{Binding CreateNpc.Race, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="Race reference" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="0" Grid.Column="2" Margin="0,0,0,12">
+                                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Voice" />
+                                                <TextBox Text="{Binding CreateNpc.Voice, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="Voice reference" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,12">
+                                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Class" />
+                                                <TextBox Text="{Binding CreateNpc.ActorClass, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="Class reference" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,0,0,12">
+                                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Combat style" />
+                                                <TextBox Text="{Binding CreateNpc.CombatStyle, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="Combat style reference" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+                                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Default outfit" />
+                                                <TextBox Text="{Binding CreateNpc.DefaultOutfit, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="Default outfit reference" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Expander>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}" Text="3  APPEARANCE SOURCE" />
+                                    <TextBlock Margin="0,5,0,5" FontSize="19" FontWeight="SemiBold" Text="Appearance provider" />
+                                    <TextBlock Margin="0,0,0,10" Foreground="{DynamicResource MutedTextBrush}"
+                                               TextWrapping="Wrap" Text="Install a legally obtained provider bundle inside the admitted workspace. Choose its provider-manifest.json; the app checks the manifest and every referenced file before build." />
+                                    <Grid Margin="0,0,0,6">
+                                        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                        <TextBox IsReadOnly="True" Text="{Binding CreateNpc.ProviderManifest, Mode=OneWay}" automation:AutomationProperties.Name="Provider manifest path" />
+                                        <Button Grid.Column="1" Margin="10,0,0,0" Style="{StaticResource QuietButton}" Content="Choose provider"
+                                                Command="{Binding CreateNpc.SelectProviderCommand}" automation:AutomationProperties.Name="Choose appearance provider manifest" />
+                                    </Grid>
+                                    <TextBlock Margin="0,0,0,14" Foreground="{DynamicResource MutedTextBrush}"
+                                               TextWrapping="Wrap" Text="{Binding CreateNpc.ProviderSelectionStatus}" automation:AutomationProperties.LiveSetting="Polite" />
+                                    <Expander Header="Review admitted provider evidence">
+                                        <StackPanel Margin="0,14,0,0">
+                                            <Grid Margin="0,0,0,10">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Template plugin" />
+                                                    <TextBox IsReadOnly="True" Text="{Binding CreateNpc.TemplatePlugin}" automation:AutomationProperties.Name="Template plugin path" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Margin="0,0,0,10">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Complete FaceGeom carrier" />
+                                                    <TextBox IsReadOnly="True" Text="{Binding CreateNpc.FaceGeomCarrier}" automation:AutomationProperties.Name="FaceGeom carrier path" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Margin="0,0,0,10">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="FaceTint recipe" />
+                                                    <TextBox IsReadOnly="True" Text="{Binding CreateNpc.FaceTintManifest}" automation:AutomationProperties.Name="FaceTint manifest path" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Margin="0,0,0,10">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Provider Data folder" />
+                                                    <TextBox IsReadOnly="True" Text="{Binding CreateNpc.ProviderRoot}" automation:AutomationProperties.Name="Provider Data folder" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Dependency contract" />
+                                                    <TextBox IsReadOnly="True" Text="{Binding CreateNpc.DependencyManifest}" automation:AutomationProperties.Name="Dependency manifest path" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Expander>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource CardBorder}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}" Text="4  OUTPUT" />
+                                    <TextBlock Margin="0,5,0,16" FontSize="19" FontWeight="SemiBold" Text="Name the package" />
+                                    <Grid Margin="0,0,0,12">
+                                        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="14" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Plugin filename" />
+                                            <TextBox Text="{Binding CreateNpc.PluginName, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="Output plugin filename" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2">
+                                            <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Fresh output folder" />
+                                            <Grid>
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                                <TextBox Text="{Binding CreateNpc.OutputRoot, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="Output folder" />
+                                                <Button Grid.Column="1" Margin="10,0,0,0" Style="{StaticResource QuietButton}" Content="Choose parent"
+                                                        Command="{Binding CreateNpc.BrowseFolderCommand}" CommandParameter="output" automation:AutomationProperties.Name="Choose output parent folder" />
+                                            </Grid>
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="{Binding CreateNpc.ReadinessText}"
+                                               TextWrapping="Wrap" automation:AutomationProperties.LiveSetting="Polite" />
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14" Background="#111E2B">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}" Text="BUILD" />
+                                    <TextBlock Margin="0,5,0,4" FontSize="21" FontWeight="SemiBold" Text="Create verified package" />
+                                    <TextBlock Margin="0,0,0,18" Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                               Text="The app will allocate the NPC, write the ESP, materialize FaceGen, decode the DDS, and verify the exact package." />
+                                    <Button Style="{StaticResource PrimaryButton}" Content="Create NPC package" IsDefault="True"
+                                            Command="{Binding CreateNpc.CreateCommand}" automation:AutomationProperties.Name="Create verified NPC package" />
+                                    <Button Margin="0,10,0,0" Style="{StaticResource QuietButton}" Content="Cancel build"
+                                            Command="{Binding CreateNpc.CancelCommand}" automation:AutomationProperties.Name="Cancel NPC build" />
+                                <ProgressBar Margin="0,20,0,0" Minimum="0" Maximum="100" Value="{Binding CreateNpc.ProgressPercent, Mode=OneWay}"
+                                                 automation:AutomationProperties.Name="NPC build progress" />
+                                    <Grid Margin="0,9,0,0">
+                                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="{Binding CreateNpc.Status}"
+                                                   TextWrapping="Wrap" automation:AutomationProperties.LiveSetting="Polite" />
+                                        <TextBlock HorizontalAlignment="Right" Foreground="{DynamicResource AccentBrush}"
+                                                   FontWeight="SemiBold" Text="{Binding CreateNpc.ProgressPercent, StringFormat={}{0}%}" />
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}" Text="RESULT" />
+                                    <TextBlock Margin="0,5,0,16" FontSize="19" FontWeight="SemiBold" Text="{Binding CreateNpc.Verdict}" />
+                                    <TextBlock Margin="0,0,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="Plugin" />
+                                    <TextBlock Margin="0,0,0,12" Text="{Binding CreateNpc.ResultPlugin}" TextWrapping="Wrap" />
+                                    <TextBlock Margin="0,0,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="FaceGeom NIF" />
+                                    <TextBlock Margin="0,0,0,12" Text="{Binding CreateNpc.ResultFaceGeom}" TextWrapping="Wrap" />
+                                    <TextBlock Margin="0,0,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="FaceTint DDS" />
+                                    <TextBlock Margin="0,0,0,12" Text="{Binding CreateNpc.ResultFaceTint}" TextWrapping="Wrap" />
+                                    <TextBlock Margin="0,0,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="Package manifest" />
+                                    <TextBlock Text="{Binding CreateNpc.ResultManifest}" TextWrapping="Wrap" />
+                                    <Border Margin="0,16,0,0" Padding="10" Background="{DynamicResource AccentDarkBrush}" CornerRadius="7">
+                                        <TextBlock Foreground="{DynamicResource AccentBrush}" TextWrapping="Wrap"
+                                                   Text="Static verification is not in-game authority. Use the included runtime kit before release." />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource CardBorder}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}" Text="DIAGNOSTICS" />
+                                    <ListBox Margin="0,10,0,0" MaxHeight="180" ItemsSource="{Binding CreateNpc.Diagnostics}"
+                                             automation:AutomationProperties.Name="NPC build diagnostics">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Foreground="{DynamicResource DangerBrush}" Text="{Binding}" TextWrapping="Wrap" />
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                    <TextBlock Margin="0,8,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                               Text="No message means no actionable finding." />
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem x:Name="SavePackageTab"
+                     Header="Save package"
+                     automation:AutomationProperties.Name="Save and promote verified package task">
+                <local:SkyrimSavePackagePanel DataContext="{Binding SavePackage}" />
+            </TabItem>
+
+            <TabItem Header="Command catalog" automation:AutomationProperties.Name="Command catalog">
+                <Grid Margin="0,16,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="310" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Style="{StaticResource CardBorder}">
+                        <DockPanel>
+                            <StackPanel DockPanel.Dock="Top" Margin="0,0,0,12">
+                                <TextBlock Style="{StaticResource EyebrowText}" Text="AUTOMATION" />
+                                <TextBlock Margin="0,5,0,0" FontSize="18" FontWeight="SemiBold" Text="CLI command families" />
+                            </StackPanel>
+                            <ListBox ItemsSource="{Binding Commands}" SelectedItem="{Binding SelectedCommand, Mode=TwoWay}"
+                                     automation:AutomationProperties.Name="Available command families">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="1" Margin="8,0,0,0" FontSize="10" FontWeight="SemiBold"
+                                                       Foreground="{DynamicResource AccentBrush}" Text="{Binding MutationBadge}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </DockPanel>
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource CardBorder}">
+                        <Grid>
+                            <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                            <TextBlock FontSize="24" FontWeight="SemiBold" Text="{Binding SelectedCommand.Name, TargetNullValue=Ready}" />
+                            <TextBlock Grid.Row="1" Margin="0,8,0,18" FontSize="15" Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="{Binding SelectedCommand.Description, TargetNullValue=Choose a command family.}" TextWrapping="Wrap" />
+                            <StackPanel Grid.Row="2">
+                                <TextBlock Style="{StaticResource EyebrowText}" Text="SUPPORTED GAMES" />
+                                <TextBlock Margin="0,5,0,18" Text="{Binding SelectedCommand.Games, TargetNullValue=—}" />
+                                <TextBlock Style="{StaticResource EyebrowText}" Text="BEHAVIOR" />
+                                <TextBlock Margin="0,5,0,18" Text="{Binding SelectedCommand.MutationState, TargetNullValue=—}" />
+                                <TextBlock Style="{StaticResource EyebrowText}" Text="BOUNDARY" />
+                                <TextBlock Margin="0,5,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="{Binding SelectedCommand.Limitation}" TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Margin="0,18,0,0" Orientation="Horizontal">
+                                <Button Content="Show capabilities" Command="{Binding ShowCapabilitiesCommand}" />
+                                <Button Margin="10,0,0,0" Style="{StaticResource QuietButton}" Content="Clear selection" Command="{Binding ClearSelectionCommand}" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="AnimationsTab"
+                     Header="Animations"
+                     automation:AutomationProperties.Name="Animation browser">
+                <Border Margin="0,16,0,8" Style="{StaticResource CardBorder}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="PREVIEW MOTION" />
+                        <TextBlock Grid.Row="1" Margin="0,5,0,8" FontSize="24"
+                                   FontWeight="SemiBold" Text="Animation picker" />
+                        <TextBlock Grid.Row="2" Margin="0,0,0,18"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Choose one catalog-backed animation for the NPC preview. The picker never executes HKX files or claims in-game playback."
+                                   TextWrapping="Wrap" />
+                        <Border Grid.Row="3" Padding="16" Background="#0E1924"
+                                BorderBrush="{DynamicResource BorderBrush}"
+                                BorderThickness="1" CornerRadius="9">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="18" />
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="18" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                               Text="Animation catalog file" />
+                                    <TextBox Margin="0,6,0,0"
+                                             Text="{Binding AnimationPicker.ManifestPath, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="Animation catalog file" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                               Text="Game" />
+                                    <ComboBox Margin="0,6,0,0"
+                                              ItemsSource="{Binding AnimationPicker.EditionOptions}"
+                                              SelectedValue="{Binding AnimationPicker.SelectedEdition}"
+                                              SelectedValuePath="Value" DisplayMemberPath="Name" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="4" VerticalAlignment="Bottom">
+                                    <CheckBox Margin="0,0,0,8" Content="NPC is female"
+                                              IsChecked="{Binding AnimationPicker.IsFemale}"
+                                              automation:AutomationProperties.Name="Animation target NPC is female" />
+                                    <Button MinWidth="170" Style="{StaticResource PrimaryButton}"
+                                            Content="Choose animation..."
+                                            IsEnabled="{Binding AnimationPicker.CanOpenPicker}"
+                                            Click="OpenAnimationPickerClick"
+                                            automation:AutomationProperties.Name="Open animation picker" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Row="4" Margin="0,16,0,0" Padding="18"
+                                Background="{DynamicResource SurfaceRaisedBrush}"
+                                BorderBrush="{DynamicResource BorderBrush}"
+                                BorderThickness="1" CornerRadius="9">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}" Text="CURRENT PREVIEW ANIMATION" />
+                                <TextBlock Margin="0,6,0,0" FontSize="18" FontWeight="SemiBold"
+                                           Text="{Binding AnimationPicker.CommittedSelectionSummary}"
+                                           TextWrapping="Wrap" />
+                                <TextBlock Margin="0,10,0,0"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="{Binding AnimationPicker.Status}" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+            </TabItem>
+        </TabControl>
+
+        <Border Grid.Row="2" Margin="0,12,0,0" Padding="12,8" Background="{DynamicResource SurfaceRaisedBrush}"
+                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="8">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource MutedTextBrush}" Text="STATUS" />
+                <Button DockPanel.Dock="Right" Style="{StaticResource QuietButton}" Content="Close" IsCancel="True"
+                        Padding="14,3" Click="CloseClick" automation:AutomationProperties.Name="Close NPC Studio" />
+                <TextBlock Margin="12,0,12,0" VerticalAlignment="Center" FontSize="12"
+                           Text="{Binding Message}" TextTrimming="CharacterEllipsis"
+                           automation:AutomationProperties.LiveSetting="Polite" />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

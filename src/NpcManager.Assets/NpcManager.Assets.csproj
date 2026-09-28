@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><AssemblyName>NpcManager.Assets</AssemblyName><RootNamespace>NpcManager.Assets</RootNamespace><IsPackable>false</IsPackable></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <PackageReference Include="Mutagen.Bethesda.Skyrim" Version="0.52.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,147 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "capabilities",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "fallout4",
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Print the versioned command and capability manifest.",
+    "limitations": [],
+    "options": [],
+    "inputArtifactKinds": [],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:capabilities-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "safeUnchanged",
+    "determinism": "deterministic",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "No command-specific input is accepted."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "notApplicable",
+        "reason": "This command does not consume source-provider artifacts."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "notApplicable",
+        "reason": "This discovery command does not materialize an artifact."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "notApplicable",
+        "reason": "This command does not verify a produced game artifact."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "notApplicable",
+        "reason": "This command does not produce an off-engine preview."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "notApplicable",
+        "reason": "This command does not request visual acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "notApplicable",
+        "reason": "This command does not make a game-runtime claim."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "notApplicable",
+        "reason": "This command does not promote an artifact."
+      }
+    ],
+    "transitions": [],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [],
+    "inputArtifacts": [],
+    "outputArtifacts": [],
+    "resultShape": "object",
+    "resultDescription": "Versioned command catalogue and ledger mappings."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:capabilities-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:capabilities-result:v1",
+        "title": "Actorwright protocol v2 capabilities result",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaId",
+          "protocolVersion",
+          "commands"
+        ],
+        "properties": {
+          "schemaId": {
+            "const": "urn:actorwright:protocol-v2:capabilities-result:v1"
+          },
+          "protocolVersion": {
+            "const": "2"
+          },
+          "commands": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "readiness",
+                "resultSchemaIds"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "documentSchemas": []
+}

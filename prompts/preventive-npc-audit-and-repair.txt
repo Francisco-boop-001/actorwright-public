@@ -1,0 +1,67 @@
+Preventive NPC audit and repair
+
+Target project: [PROJECT PATH]
+Exact candidate plugin/package: [PATH OR VERSION]
+Intended NPC role and required features: [DESCRIPTION, OR USE PROJECT SPECIFICATION]
+Target game/runtime and mod-manager profile: [IDENTIFY, OR RESOLVE FROM CURRENT EVIDENCE]
+
+Perform a thorough preventive bug hunt and fix pass on this NPC mod before its first in-game test. Inspect the actual written artifacts and their integration with the intended environment. Find and repair statically demonstrable defects; identify credible risks and prepare focused runtime tests for what cannot be established offline. Do not wait for a crash log or invent observed symptoms. Do not stop at a checklist or recommendations when an evidenced repair is possible within scope.
+
+## Establish scope and evidence
+
+Read the repository instructions, required policies, target manifest, task trail, accepted baselines, relevant knowledgebase entries and current tool manifests. Reconcile the exact NPC identity, plugin, version and package before analysis. Do not select another project's active branch implicitly. Record a short plan in the owning task trail.
+
+Inventory and hash the candidate. Determine its appearance/body route, intended behavior, dependencies, optional integrations and installation model. Preserve those design choices. Resolve disagreements between historical advice and current evidence; old successful fixes are leads, not universal rules.
+
+Where permitted, inspect the intended enabled profile, plugin order and asset-provider precedence read-only. Distinguish files present on disk from enabled and winning providers. If that environment is unavailable, continue the standalone audit and mark integration coverage unknown. Never invent a load-order winner.
+
+## Audit categories
+
+For every category below, inspect applicable components and their interactions. These categories are a minimum coverage framework, not an exhaustive bug list. Extend the investigation wherever the actual dependency graph, implementation or repository history exposes additional failure modes. Mark exclusions with reasons.
+
+1. **Engine stability and structural integrity.** Assess conditions that could cause startup, loading, spawning, interaction, animation or transition crashes, freezes or engine rejection. Inspect plugin and asset validity, reference integrity, supported formats, native dependencies and cross-file structural compatibility.
+
+2. **Dependency and version compatibility.** Trace required masters, assets, scripts, frameworks, native components and transitive dependencies. Establish compatibility with the target game and enabled versions, distinguish required from optional inputs, and identify undeclared dependencies or reliance on development-machine leftovers.
+
+3. **Appearance, materials and visual identity.** Audit the complete face, headpart, skin, body and accessory chain for coherence, resolution and compatibility. Cover texture/material failures, identity loss, missing surfaces, shading discontinuities and inconsistent appearance ownership. Validate relationships between records, geometry, morphs, UVs, shaders and textures rather than file existence alone. Apply route-specific checks only where justified.
+
+4. **Rigging, animation, morphs and physics.** Assess skeleton and bone compatibility, skin bindings, morph topology, animation dependencies and physics configuration. Consider movement, expressions, speech, equipment changes and form changes as separate triggers. Distinguish asset providers from systems that modify the actor at runtime; detect incompatible or duplicate ownership.
+
+5. **Equipment and body integration.** Audit skin, outfits, inventory and equipment as a connected system, including race support, slots, weight support, morph support and intended body ownership. Evaluate both equipped and unequipped states and applicable equipment transitions. Preserve the chosen body route.
+
+6. **Override isolation and mod interoperability.** Audit conflicts in both directions: what can override this mod, and what this mod can override or alter elsewhere. Include plugin records, loose files, archives, shared paths, scripts, global configuration and runtime distribution/patching rules. Separate intentional compatibility overrides from accidental collateral changes. Record conflict scope, winner evidence and affected consumers; do not equate an override with a defect automatically.
+
+7. **Placement, world integration and environmental conflicts.** Audit placement and routines against cells, worldspaces, navigation, markers, doors, ownership, encounter systems and installed location overhauls. Explicitly assess lighting/environment interactions, including Lux when applicable. Examine the complete override and binary group structure, not just placement coordinates. Do not assume omitted record fields preserve another mod's values. Evaluate occupancy and likely accessibility separately from record conflicts. Preserve required interior/exterior placement; do not silently relocate the NPC to simplify the audit.
+
+8. **Actor lifecycle, AI and gameplay behavior.** Check initialization, spawning, persistence, schedules, package conditions, combat, abilities, factions, relationships and quest/alias dependencies against the intended role. For followers, trace recruitment, follow/wait, dismissal and return behavior. Inspect reachable transitions and ownership, including repeated initialization, death or transformation where applicable. Do not add follower features to an NPC whose specification does not require them.
+
+9. **Dialogue, voice, scripting and event integration.** Audit dialogue eligibility, quest state, aliases, conditions, voice routing, audio/lipsync assets, fragments, compiled scripts and their properties or dependencies. Assess event registration, initialization order, repeated execution, cleanup and interactions with other frameworks. Presence of records or scripts does not prove the intended behavior is implemented.
+
+10. **Identity, persistence and save compatibility.** Trace plugin identity, FormIDs, references and all identity-dependent sidecars or selectors. Assess renaming, merging, compaction, replacement and actor-state persistence where applicable. Distinguish first installation from upgrades and existing-save use. Do not claim save migration or safe removal without evidence.
+
+11. **Performance and resource behavior.** Look for avoidable asset cost, physics load, script/event churn, repeated spawning, retained state and other scaling risks. Support concerns with measurements or a concrete execution path. Do not optimize speculatively or sacrifice the approved appearance to satisfy arbitrary thresholds.
+
+12. **Packaging, installation and validation integrity.** Inspect the exact installable payload and dependency declarations, archive layout, file resolution, stale-file risks and replacement instructions. Keep non-runtime evidence and build debris outside the archive. Check that gates actually examined this candidate, relevant inputs were available, and advisory/skipped checks were not reported as passes. Identify audit blind spots beyond the existing suite.
+
+## Diagnose and fix
+
+For each finding, record its category, severity, confidence, exact affected artifact or record, evidence, triggering conditions, expected consequence and proposed repair. Separate confirmed defects, supported risks and unknowns. State assumptions, consider counterarguments and identify how the proposed repair could fail or affect other consumers. A difference from a donor, warning or unconventional value alone is not proof of a bug.
+
+Prioritize stability, data integrity and cross-mod damage, then functional and visual defects. Repair confirmed defects with the smallest complete change that preserves the intended NPC. Follow the repository's analyze/propose/sandbox-write/independent-verification process for game-facing files. Preserve originals and rollback evidence. Do not perform broad cleaning, generic regeneration, route substitution or unrelated refactoring. Ask only for material design choices or authority genuinely missing from the request.
+
+Keep all writes and tool scratch inside the authorized workspace. The live installation remains read-only. Respect protected roots and binary-consumer boundaries; do not install, change the live profile, or modify independent tool products as part of this audit.
+
+## Verify and hand off
+
+Re-read repaired artifacts independently of the writer where feasible. Verify both structural validity and the intended semantic change; account for collateral differences. Run applicable gates against the exact candidate and relevant regression checks. Check gate applicability and fixture health; unavailable inputs, tool errors, skips and advisories are not passes. Never weaken a gate merely to obtain green output. Recheck affected dependency chains and cross-mod interactions after repairs.
+
+Return:
+- A direct pre-runtime readiness verdict and remaining blockers.
+- A coverage matrix for all categories: checked, findings, not applicable or unknown, with evidence links.
+- Prioritized findings showing what was fixed, how it was verified and what remains uncertain.
+- Exact changed artifacts and a bounded regression/diff summary.
+- A focused first-run test plan for unresolved runtime risks, with triggers, expected outcomes and evidence to capture, following the repository's actor/provider and visual-authority protocol.
+
+If producing a corrected installable archive is within the task scope and packaging gates permit it, verify the archive's actual contents against the repaired candidate and provide clear replacement instructions. Otherwise retain the corrected sandbox artifacts and explain the packaging blocker. Never waive a Tier-0 failure or silently waive other failures.
+
+Finish the authorized offline work even though runtime evidence is pending. Report missing runtime prerequisites honestly without fabricating acceptance. A successful static pass may establish STATIC_PASS_RUNTIME_REQUIRED; it cannot establish crash-free operation, visual correctness, conflict-free gameplay or release readiness. The completion claim is that the scoped pre-runtime audit and evidenced repairs are complete, not that every possible bug has been eliminated.

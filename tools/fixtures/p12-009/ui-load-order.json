@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "edition": "skyrimse",
+  "plugins": [
+    { "name": "Skyrim.esm", "order": 0, "enabled": true },
+    { "name": "Update.esm", "order": 1, "enabled": true },
+    { "name": "Dawnguard.esm", "order": 2, "enabled": true },
+    { "name": "RaceCompatibility.esm", "order": 3, "enabled": true },
+    { "name": "RaceMenu.esp", "order": 4, "enabled": true },
+    { "name": "High Poly Head.esm", "order": 5, "enabled": true },
+    { "name": "Improved Eyes Skyrim.esp", "order": 6, "enabled": true },
+    { "name": "Koralina's Eyebrows.esp", "order": 7, "enabled": true },
+    { "name": "KS Hairdo's.esp", "order": 8, "enabled": true },
+    { "name": "COR_AllRace.esp", "order": 9, "enabled": true },
+    {
+      "name": "COR_TheEyesOfBeauty_Compability Patch.esp",
+      "order": 10,
+      "enabled": true
+    },
+    {
+      "name": "Koralina's COtR Makeup Female.esp",
+      "order": 11,
+      "enabled": true
+    }
+  ]
+}

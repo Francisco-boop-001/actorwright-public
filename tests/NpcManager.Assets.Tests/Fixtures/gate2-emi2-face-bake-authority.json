@@ -1,0 +1,897 @@
+{
+  "schemaVersion": 2,
+  "authorityId": "gate2-emi2-face-bake-authority-v1",
+  "loadedPlugins": [
+    {
+      "order": 0,
+      "plugin": "Expressive Facegen Morphs.esl"
+    },
+    {
+      "order": 1,
+      "plugin": "High Poly Head.esm"
+    },
+    {
+      "order": 2,
+      "plugin": "RaceMenu.esp"
+    }
+  ],
+  "recordPlugins": [
+    {
+      "order": 0,
+      "plugin": "Skyrim.esm",
+      "path": "projects/Emi2FreshBuild/01-source-copies/dependency-providers/official-masters/Skyrim.esm",
+      "sha256": "06a9881f6ab277afd2a82e71f8a3719183b7031db4d9c78a7f40c08e1e4ffa91"
+    },
+    {
+      "order": 1,
+      "plugin": "High Poly Head.esm",
+      "path": "projects/Emi2FreshBuild/01-source-copies/dependency-providers/High Poly Head.esm",
+      "sha256": "5e2020d348181a518ecd1eacec3bbffb7b6da8dff0032c23c9a30b0cd51c0113"
+    },
+    {
+      "order": 2,
+      "plugin": "Improved Eyes Skyrim.esp",
+      "path": "projects/Emi2FreshBuild/01-source-copies/dependency-providers/Improved Eyes Skyrim.esp",
+      "sha256": "e7e66190e4e2063482a8f92e60fd40c35e31c510abfeadcc80c8b5688cc51780"
+    },
+    {
+      "order": 3,
+      "plugin": "Koralina's Eyebrows.esp",
+      "path": "projects/Emi2FreshBuild/01-source-copies/dependency-providers/Koralina's Eyebrows.esp",
+      "sha256": "b076b6bdfd645e71e98b558685f59d128e94cf2355d923b69273201c0db47407"
+    },
+    {
+      "order": 4,
+      "plugin": "KS Hairdo's.esp",
+      "path": "projects/Emi2FreshBuild/01-source-copies/dependency-providers/KS Hairdo's.esp",
+      "sha256": "1a281dd84e90eda6cdd3356de9e22456eb01e643e869562aa3c43ddba2eb20d5"
+    }
+  ],
+  "assets": [
+    {
+      "order": 0,
+      "id": "cfg-efm-morphs",
+      "providerId": "Expressive Facegen Morphs SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-configs/Expressive Facegen Morphs SE/meshes/actors/character/facegenmorphs/Expressive Facegen Morphs.esl/morphs.ini",
+      "providerSha256": "631f62c92f371169b3f987f74af94b911464a6c56238e66a73f84e529fc1e406",
+      "assetPath": "meshes/actors/character/facegenmorphs/Expressive Facegen Morphs.esl/morphs.ini",
+      "contentLength": 11488,
+      "contentSha256": "631f62c92f371169b3f987f74af94b911464a6c56238e66a73f84e529fc1e406"
+    },
+    {
+      "order": 1,
+      "id": "cfg-efm-races",
+      "providerId": "Expressive Facegen Morphs SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-configs/Expressive Facegen Morphs SE/meshes/actors/character/facegenmorphs/Expressive Facegen Morphs.esl/races.ini",
+      "providerSha256": "280c21ff304ffb0f39bf2b259cab286944dc4c0e27f17597c27e063c08b29703",
+      "assetPath": "meshes/actors/character/facegenmorphs/Expressive Facegen Morphs.esl/races.ini",
+      "contentLength": 929,
+      "contentSha256": "280c21ff304ffb0f39bf2b259cab286944dc4c0e27f17597c27e063c08b29703"
+    },
+    {
+      "order": 2,
+      "id": "cfg-efm-human",
+      "providerId": "Expressive Facegen Morphs SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-configs/Expressive Facegen Morphs SE/meshes/actors/character/facegenmorphs/Expressive Facegen Morphs.esl/sliders/human.ini",
+      "providerSha256": "255b1d457693cffb45631bdb83ecc83b0b9b9c301991e5034c1f6577a21824de",
+      "assetPath": "meshes/actors/character/facegenmorphs/Expressive Facegen Morphs.esl/sliders/human.ini",
+      "contentLength": 11874,
+      "contentSha256": "255b1d457693cffb45631bdb83ecc83b0b9b9c301991e5034c1f6577a21824de"
+    },
+    {
+      "order": 3,
+      "id": "cfg-hph-morphs",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-configs/High Poly Head SE/meshes/actors/character/facegenmorphs/high poly head.esm/morphs.ini",
+      "providerSha256": "2c959526b7acb870d7f1b1b04741d3e4ce59a3da4be761a74ce218f54f7fc5c5",
+      "assetPath": "meshes/actors/character/facegenmorphs/High Poly Head.esm/morphs.ini",
+      "contentLength": 17564,
+      "contentSha256": "2c959526b7acb870d7f1b1b04741d3e4ce59a3da4be761a74ce218f54f7fc5c5"
+    },
+    {
+      "order": 4,
+      "id": "cfg-rm-morphs",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/RaceMenu.esp/morphs.ini",
+      "contentLength": 27708,
+      "contentSha256": "bc896ac5d69f9ff7cfc850dea835730c4cbb5621008937dbd6d803b06743bad0"
+    },
+    {
+      "order": 5,
+      "id": "cfg-rm-races",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/RaceMenu.esp/races.ini",
+      "contentLength": 925,
+      "contentSha256": "f0494e8c0437f14513aeb01472e0595d2d3673418af57f627c4daa4e2b8f51af"
+    },
+    {
+      "order": 6,
+      "id": "cfg-rm-human",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/RaceMenu.esp/sliders/human.ini",
+      "contentLength": 22785,
+      "contentSha256": "61f623dacc4b4dc371a63b2947fe677d73540bf405756ddc7e23ea788a5f9482"
+    },
+    {
+      "order": 7,
+      "id": "model-head",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/KL/High Poly Head/FemaleHead.nif",
+      "providerSha256": "a2a9835c506e067f89e273006cda4fd7f365ef94722ec0620b2c22bb59ae0bad",
+      "assetPath": "meshes/KL/High Poly Head/FemaleHead.nif",
+      "contentLength": 322292,
+      "contentSha256": "a2a9835c506e067f89e273006cda4fd7f365ef94722ec0620b2c22bb59ae0bad"
+    },
+    {
+      "order": 8,
+      "id": "model-brows",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/KL/High Poly Head/FaceParts/FemaleBrows.nif",
+      "providerSha256": "c6a8f44ad50b889299475dcf34e43287302d413dc4112411dd69b50062419de3",
+      "assetPath": "meshes/KL/High Poly Head/FaceParts/FemaleBrows.nif",
+      "contentLength": 34195,
+      "contentSha256": "c6a8f44ad50b889299475dcf34e43287302d413dc4112411dd69b50062419de3"
+    },
+    {
+      "order": 9,
+      "id": "model-eyes",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/Actors/Character/Character Assets/EyesFemale.nif",
+      "providerSha256": "90fd9bd845865eab2de743e08699cb6e8fd621c53a60fc4acd725b8457e33b74",
+      "assetPath": "meshes/Actors/Character/Character Assets/EyesFemale.nif",
+      "contentLength": 16360,
+      "contentSha256": "90fd9bd845865eab2de743e08699cb6e8fd621c53a60fc4acd725b8457e33b74"
+    },
+    {
+      "order": 10,
+      "id": "model-mouth",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/Actors/Character/Character Assets/Mouth/MouthHumanF.nif",
+      "providerSha256": "53110e262dc14084a848a295a0e941dd9fd9478f6013dc86aef72a31f8f4e5e5",
+      "assetPath": "meshes/Actors/Character/Character Assets/Mouth/MouthHumanF.nif",
+      "contentLength": 13115,
+      "contentSha256": "53110e262dc14084a848a295a0e941dd9fd9478f6013dc86aef72a31f8f4e5e5"
+    },
+    {
+      "order": 11,
+      "id": "model-hairline",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/KS Hairdo's/hairline/straightscalpHUMAN.nif",
+      "providerSha256": "c53e9f58bae59be203653dfc131234a6f6403d3e8dee05d84de00b1fddd233c5",
+      "assetPath": "meshes/KS Hairdo's/hairline/straightscalpHUMAN.nif",
+      "contentLength": 83373,
+      "contentSha256": "c53e9f58bae59be203653dfc131234a6f6403d3e8dee05d84de00b1fddd233c5"
+    },
+    {
+      "order": 12,
+      "id": "model-hair-lassi",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/KS Hairdo's/Lassi.nif",
+      "providerSha256": "fb638096a80e949d69110441fb6766f64088d5011eb6d0e073c8c0fa410d149b",
+      "assetPath": "meshes/KS Hairdo's/Lassi.nif",
+      "contentLength": 502247,
+      "contentSha256": "fb638096a80e949d69110441fb6766f64088d5011eb6d0e073c8c0fa410d149b"
+    },
+    {
+      "order": 13,
+      "id": "model-hair-lassi-hl",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/KS Hairdo's/LassiHL.nif",
+      "providerSha256": "c0392f50dc13591103a26b93d192367a1e67a19eeb120a32e09ba830da747d35",
+      "assetPath": "meshes/KS Hairdo's/LassiHL.nif",
+      "contentLength": 502247,
+      "contentSha256": "c0392f50dc13591103a26b93d192367a1e67a19eeb120a32e09ba830da747d35"
+    },
+    {
+      "order": 14,
+      "id": "tri-head-race",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/KL/High Poly Head/FemaleHeadRaces.tri",
+      "providerSha256": "6de8050b7411b56b906a7dc0eeb9bb3decad1a1beaa96b8583694074d17d9c1e",
+      "assetPath": "meshes/KL/High Poly Head/FemaleHeadRaces.tri",
+      "contentLength": 478752,
+      "contentSha256": "6de8050b7411b56b906a7dc0eeb9bb3decad1a1beaa96b8583694074d17d9c1e"
+    },
+    {
+      "order": 15,
+      "id": "tri-head-chargen",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/KL/High Poly Head/FemaleHeadCharGen.tri",
+      "providerSha256": "03fffb0b925e74ad3ca5e90df730392510dc86ead3742072fdc93514c2cc8cef",
+      "assetPath": "meshes/KL/High Poly Head/FemaleHeadCharGen.tri",
+      "contentLength": 3055880,
+      "contentSha256": "03fffb0b925e74ad3ca5e90df730392510dc86ead3742072fdc93514c2cc8cef"
+    },
+    {
+      "order": 16,
+      "id": "tri-head-mesh",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/KL/High Poly Head/FemaleHead.tri",
+      "providerSha256": "b7dbfb1eaab22bf520e43daea3ae84843a0fe84f290d21a6c1f3fb5f49aa33c9",
+      "assetPath": "meshes/KL/High Poly Head/FemaleHead.tri",
+      "contentLength": 1284045,
+      "contentSha256": "b7dbfb1eaab22bf520e43daea3ae84843a0fe84f290d21a6c1f3fb5f49aa33c9"
+    },
+    {
+      "order": 17,
+      "id": "tri-brows-race",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/KL/High Poly Head/FaceParts/FemaleHeadBrowsRace.tri",
+      "providerSha256": "cadb6dbd3f3c28e94fbbc0edd5ec0befef5f87f89f06a8b842f76d54773473e4",
+      "assetPath": "meshes/KL/High Poly Head/FaceParts/FemaleHeadBrowsRace.tri",
+      "contentLength": 45584,
+      "contentSha256": "cadb6dbd3f3c28e94fbbc0edd5ec0befef5f87f89f06a8b842f76d54773473e4"
+    },
+    {
+      "order": 18,
+      "id": "tri-brows-chargen",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/KL/High Poly Head/FaceParts/FemaleHeadBrowsCharGen.tri",
+      "providerSha256": "2ae7c32f007a129788a70ebf387deef193df6e7a21eb12909bffd5715c62865d",
+      "assetPath": "meshes/KL/High Poly Head/FaceParts/FemaleHeadBrowsCharGen.tri",
+      "contentLength": 193709,
+      "contentSha256": "2ae7c32f007a129788a70ebf387deef193df6e7a21eb12909bffd5715c62865d"
+    },
+    {
+      "order": 19,
+      "id": "tri-brows-mesh",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/KL/High Poly Head/FaceParts/FemaleHeadBrows.tri",
+      "providerSha256": "8ed8c1e40de58dd1bae87f92082016ab7e50e5cb2abf2b86931f438a6f39cb1a",
+      "assetPath": "meshes/KL/High Poly Head/FaceParts/FemaleHeadBrows.tri",
+      "contentLength": 88258,
+      "contentSha256": "8ed8c1e40de58dd1bae87f92082016ab7e50e5cb2abf2b86931f438a6f39cb1a"
+    },
+    {
+      "order": 20,
+      "id": "tri-eyes-chargen",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/Actors/Character/Character Assets/EyesFemaleChargen.tri",
+      "providerSha256": "c2d22eec981708d70a21bd271db0d2fe760ccf61a73b4d9205df21ac06ccd792",
+      "assetPath": "meshes/Actors/Character/Character Assets/EyesFemaleChargen.tri",
+      "contentLength": 46048,
+      "contentSha256": "c2d22eec981708d70a21bd271db0d2fe760ccf61a73b4d9205df21ac06ccd792"
+    },
+    {
+      "order": 21,
+      "id": "tri-eyes-mesh",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/Actors/Character/Character Assets/EyesFemale.tri",
+      "providerSha256": "9c3f56d68fa69af07a483b1d4479900fbcd9cec2b83fbb509d3f29fe25bebf1a",
+      "assetPath": "meshes/Actors/Character/Character Assets/EyesFemale.tri",
+      "contentLength": 34251,
+      "contentSha256": "9c3f56d68fa69af07a483b1d4479900fbcd9cec2b83fbb509d3f29fe25bebf1a"
+    },
+    {
+      "order": 22,
+      "id": "tri-mouth-chargen",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/Actors/Character/Character Assets/Mouth/MouthHumanFChargen.tri",
+      "providerSha256": "2bd9c3c98a3a63b9fa7c16972faeea1274372dfe76268e329cd04e4ae9dab18d",
+      "assetPath": "meshes/Actors/Character/Character Assets/Mouth/MouthHumanFChargen.tri",
+      "contentLength": 36769,
+      "contentSha256": "2bd9c3c98a3a63b9fa7c16972faeea1274372dfe76268e329cd04e4ae9dab18d"
+    },
+    {
+      "order": 23,
+      "id": "tri-mouth-mesh",
+      "providerId": "Gate 2 captured base TRI",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/face-bake-bases/meshes/Actors/Character/Character Assets/Mouth/MouthHumanF.tri",
+      "providerSha256": "c72bd9f49c65382f049dae9f5b74337070a6430496370155a8e683271a221a91",
+      "assetPath": "meshes/Actors/Character/Character Assets/Mouth/MouthHumanF.tri",
+      "contentLength": 28054,
+      "contentSha256": "c72bd9f49c65382f049dae9f5b74337070a6430496370155a8e683271a221a91"
+    },
+    {
+      "order": 24,
+      "id": "tri-hairline-mesh",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/KS Hairdo's/hairline/straightscalpHUMAN.tri",
+      "providerSha256": "0b0978be16aa6acdee6d47698f22f7c026aa1f8669215fe0a08d84f459049fc3",
+      "assetPath": "meshes/KS Hairdo's/hairline/straightscalpHUMAN.tri",
+      "contentLength": 63726,
+      "contentSha256": "0b0978be16aa6acdee6d47698f22f7c026aa1f8669215fe0a08d84f459049fc3"
+    },
+    {
+      "order": 25,
+      "id": "tri-hair-lassi",
+      "providerId": "Gate 2 captured headpart geometry",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/headpart-geometry-bases/meshes/KS Hairdo's/Lassi.tri",
+      "providerSha256": "d1041c2427ace295fe9974df77793ed472253bdccdef73987d219f18b95a106a",
+      "assetPath": "meshes/KS Hairdo's/Lassi.tri",
+      "contentLength": 385176,
+      "contentSha256": "d1041c2427ace295fe9974df77793ed472253bdccdef73987d219f18b95a106a"
+    },
+    {
+      "order": 26,
+      "id": "ext-head-cme",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/femalehead_cme.tri",
+      "providerSha256": "3273f012550af63300bfacac960d819efdb563196233140021c2d18c25e1277b",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/femalehead_cme.tri",
+      "contentLength": 1721667,
+      "contentSha256": "3273f012550af63300bfacac960d819efdb563196233140021c2d18c25e1277b"
+    },
+    {
+      "order": 27,
+      "id": "ext-head-ece",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/femalehead_ece.tri",
+      "providerSha256": "159c609deca485a5b6ac9051463f0a4319408f410eea966eb3e957c3b4a168d0",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/femalehead_ece.tri",
+      "contentLength": 5128288,
+      "contentSha256": "159c609deca485a5b6ac9051463f0a4319408f410eea966eb3e957c3b4a168d0"
+    },
+    {
+      "order": 28,
+      "id": "ext-head-rans",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/femalehead_rans.tri",
+      "providerSha256": "5bd9ddaa5c6f7788f16af1ce087f4a518b800566682b5143093adf9cfa55437d",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/femalehead_rans.tri",
+      "contentLength": 593886,
+      "contentSha256": "5bd9ddaa5c6f7788f16af1ce087f4a518b800566682b5143093adf9cfa55437d"
+    },
+    {
+      "order": 29,
+      "id": "ext-head-nuska",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/femalehead_nuska.tri",
+      "providerSha256": "8976b9cccda6587cf31aea2163f3d94177cc7b178f42e7f46616713c0dac30b8",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/femalehead_nuska.tri",
+      "contentLength": 893180,
+      "contentSha256": "8976b9cccda6587cf31aea2163f3d94177cc7b178f42e7f46616713c0dac30b8"
+    },
+    {
+      "order": 30,
+      "id": "ext-head-extra",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/femalehead_extra.tri",
+      "providerSha256": "a18ad21eac6f45f885d48bf0e5bf404b2ed638655eeea285f52283be824cb90b",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/femalehead_extra.tri",
+      "contentLength": 1077097,
+      "contentSha256": "a18ad21eac6f45f885d48bf0e5bf404b2ed638655eeea285f52283be824cb90b"
+    },
+    {
+      "order": 31,
+      "id": "ext-head-expr",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/femalehead_expr.tri",
+      "providerSha256": "6d9e02212911d531028554c404c477158db2fe981d45973b6cf81b1b919b62f4",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/femalehead_expr.tri",
+      "contentLength": 1261253,
+      "contentSha256": "6d9e02212911d531028554c404c477158db2fe981d45973b6cf81b1b919b62f4"
+    },
+    {
+      "order": 32,
+      "id": "ext-head-efm",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/femalehead_efm.tri",
+      "providerSha256": "a86d3ad8d38b1cfea544b85946bd7dee594b430d87f2012cd9a7bf6fcb50d994",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/femalehead_efm.tri",
+      "contentLength": 3333081,
+      "contentSha256": "a86d3ad8d38b1cfea544b85946bd7dee594b430d87f2012cd9a7bf6fcb50d994"
+    },
+    {
+      "order": 33,
+      "id": "ext-head-race",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/femalehead_race.tri",
+      "providerSha256": "d751ce4993362eded5199218f550921dee73111fb09376f1930876b06895bd6f",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/femalehead_race.tri",
+      "contentLength": 708984,
+      "contentSha256": "d751ce4993362eded5199218f550921dee73111fb09376f1930876b06895bd6f"
+    },
+    {
+      "order": 34,
+      "id": "ext-brows-cme",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_cme.tri",
+      "providerSha256": "561dddd303814f2b471dafdca1fff254801b1078afdaac8fa3d9428cc305106b",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_cme.tri",
+      "contentLength": 108631,
+      "contentSha256": "561dddd303814f2b471dafdca1fff254801b1078afdaac8fa3d9428cc305106b"
+    },
+    {
+      "order": 35,
+      "id": "ext-brows-ece",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_ece.tri",
+      "providerSha256": "03f314422edcbb943bed2f33402c96a4995c5ab07827394e12f256d756df7ea8",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_ece.tri",
+      "contentLength": 318104,
+      "contentSha256": "03f314422edcbb943bed2f33402c96a4995c5ab07827394e12f256d756df7ea8"
+    },
+    {
+      "order": 36,
+      "id": "ext-brows-rans",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_rans.tri",
+      "providerSha256": "7ef3ee22906b5ad3d5c1a925ebdfa012c8d65a5d40255955364f3d596aa1a416",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_rans.tri",
+      "contentLength": 45638,
+      "contentSha256": "7ef3ee22906b5ad3d5c1a925ebdfa012c8d65a5d40255955364f3d596aa1a416"
+    },
+    {
+      "order": 37,
+      "id": "ext-brows-nuska",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_nuska.tri",
+      "providerSha256": "d496327ca80bf25488a8ad11e072df64bd723ae92387641fc56532c0ca45fd19",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_nuska.tri",
+      "contentLength": 81722,
+      "contentSha256": "d496327ca80bf25488a8ad11e072df64bd723ae92387641fc56532c0ca45fd19"
+    },
+    {
+      "order": 38,
+      "id": "ext-brows-extra",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_extra.tri",
+      "providerSha256": "9a79f505f9b027d3a0509ba5d3afc5c57764c51c9d7eb047aa6188b13741744c",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_extra.tri",
+      "contentLength": 104013,
+      "contentSha256": "9a79f505f9b027d3a0509ba5d3afc5c57764c51c9d7eb047aa6188b13741744c"
+    },
+    {
+      "order": 39,
+      "id": "ext-brows-expr",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_expr.tri",
+      "providerSha256": "15d3345ef403cdfd4eb9d0c8317006b05f70bc2d58292ddf608efeab3155a6d8",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_expr.tri",
+      "contentLength": 88403,
+      "contentSha256": "15d3345ef403cdfd4eb9d0c8317006b05f70bc2d58292ddf608efeab3155a6d8"
+    },
+    {
+      "order": 40,
+      "id": "ext-brows-efm",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_efm.tri",
+      "providerSha256": "e1068e692e3420294ff083e2d970b0b97df1ac5d143c439df003c80d0d7c8949",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_efm.tri",
+      "contentLength": 160475,
+      "contentSha256": "e1068e692e3420294ff083e2d970b0b97df1ac5d143c439df003c80d0d7c8949"
+    },
+    {
+      "order": 41,
+      "id": "ext-brows-race",
+      "providerId": "High Poly Head SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/High Poly Head SE/meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_race.tri",
+      "providerSha256": "837deadb91acb00e7c2001d6f5c52b7cea280aab0dbeeef2823e03cb0b34a20a",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/kl/faceparts/femaleheadbrows_race.tri",
+      "contentLength": 68156,
+      "contentSha256": "837deadb91acb00e7c2001d6f5c52b7cea280aab0dbeeef2823e03cb0b34a20a"
+    },
+    {
+      "order": 42,
+      "id": "ext-eyes-cme",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/ece/CME_EyesFemale.tri",
+      "contentLength": 43355,
+      "contentSha256": "4a6efe477e85cf0e36142885c1f197f224eb72c613fc3d07789a64f69dced022"
+    },
+    {
+      "order": 43,
+      "id": "ext-eyes-rans",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/ece/RANs_EyesFemale.tri",
+      "contentLength": 18534,
+      "contentSha256": "c4db9c9962c1820cdfb6c9edda058c402de4463a769f13cbc703922d75b672c8"
+    },
+    {
+      "order": 44,
+      "id": "ext-eyes-ece",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/ece/ECEEyesFemale.tri",
+      "contentLength": 73712,
+      "contentSha256": "51783bafe556f761cf61eb0f408a185f24774c30163b932c92cf01680191cfde"
+    },
+    {
+      "order": 45,
+      "id": "ext-eyes-nuska",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/nuska/eyesfemalechargen.tri",
+      "contentLength": 14222,
+      "contentSha256": "afcc0c8a3b530dd07cb1b289e05a95af75d61f0fe8d10031a0f76d84df1e1455"
+    },
+    {
+      "order": 46,
+      "id": "ext-eyes-extra",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/extra/RM_eyesfemalechargen.tri",
+      "contentLength": 15978,
+      "contentSha256": "de37c57bcb0e87bb7b3febbbab0df8a9192213ac6cdaf673852c42274dc3fe31"
+    },
+    {
+      "order": 47,
+      "id": "ext-eyes-expr",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/expressions/EXPR_eyesfemale.tri",
+      "contentLength": 32209,
+      "contentSha256": "4cb8e2feb53f9142f1ef7c6910ea172d90e350c2e0dcd500537311ffef510b49"
+    },
+    {
+      "order": 48,
+      "id": "ext-eyes-efm",
+      "providerId": "Expressive Facegen Morphs SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/Expressive Facegen Morphs SE/meshes/actors/character/facegenmorphs/morphs/EFM/Female/EyesFemale.tri",
+      "providerSha256": "bb27ae936cc37075c70e975b58cb8f9ac146787adc4906425fa8b19de2a5ad7e",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/EFM/Female/EyesFemale.tri",
+      "contentLength": 53860,
+      "contentSha256": "bb27ae936cc37075c70e975b58cb8f9ac146787adc4906425fa8b19de2a5ad7e"
+    },
+    {
+      "order": 49,
+      "id": "ext-mouth-ece",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/ece/ECEMouthhumanFemale.tri",
+      "contentLength": 23929,
+      "contentSha256": "b82392184a89b960f6b4db4b3ab5782242e8dde39eba8ccbd983f7981275bf34"
+    },
+    {
+      "order": 50,
+      "id": "ext-mouth-extra",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/extra/mouth/RM_mouthhumanfchargen.tri",
+      "contentLength": 12600,
+      "contentSha256": "ec536b14e84a1b6ac467c91dac3904c79b125f8503437cf516e4561e60cff754"
+    },
+    {
+      "order": 51,
+      "id": "ext-mouth-cme",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/ece/CME_MouthhumanFemale.tri",
+      "contentLength": 23064,
+      "contentSha256": "5ce0c11fbdb0035f500e98acde93933c1954fcf160380572ef7dc2e5f10fb872"
+    },
+    {
+      "order": 52,
+      "id": "ext-mouth-rans",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/ece/RANs_MouthhumanFemale.tri",
+      "contentLength": 16102,
+      "contentSha256": "faff0376ee1c7d9896e275e9ce2541bf08b2f07c68a79e00e208ab32b9194ff7"
+    },
+    {
+      "order": 53,
+      "id": "ext-mouth-expr",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/expressions/mouth/EXPR_mouthhumanf.tri",
+      "contentLength": 22948,
+      "contentSha256": "5886cd9e0558ff03d91f5b690c3f50c1d2e46cbc2980e200a51101d9784b07dc"
+    },
+    {
+      "order": 54,
+      "id": "ext-mouth-spg",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/spg/SPG_MouthHumanFemale.tri",
+      "contentLength": 10869,
+      "contentSha256": "3c24ce48148703b9dd0de703ae7be4ccc1dbcb183da299f2e6f0dfcbbed669bd"
+    },
+    {
+      "order": 55,
+      "id": "ext-mouth-efm",
+      "providerId": "Expressive Facegen Morphs SE captured loose",
+      "providerKind": "loose",
+      "providerPath": "projects/NpcManagerReimplementation/01-source-copies/gate2-emi2/morph-providers/Expressive Facegen Morphs SE/meshes/actors/character/facegenmorphs/morphs/EFM/Female/MouthHumanF.tri",
+      "providerSha256": "dd9f199955b9078699edaef77a8a4b7e08f120af7503ec756222fe3dad2e0fd6",
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/EFM/Female/MouthHumanF.tri",
+      "contentLength": 30010,
+      "contentSha256": "dd9f199955b9078699edaef77a8a4b7e08f120af7503ec756222fe3dad2e0fd6"
+    },
+    {
+      "order": 56,
+      "id": "cfg-rm-beast",
+      "providerId": "RaceMenu",
+      "providerKind": "bsa",
+      "providerPath": "projects/Emi2FreshBuild/01-source-copies/feasibility-providers/RaceMenu/RaceMenu.bsa",
+      "providerSha256": "fcc46f42731d2b7c3782b96cff40930ffcf689482ca8e9a5568cf2b76e9a7603",
+      "assetPath": "meshes/actors/character/facegenmorphs/RaceMenu.esp/sliders/beast.ini",
+      "contentLength": 9501,
+      "contentSha256": "30be21628658aa9f206812e564720b2b7a304edc46383e6799d28176b3b70f3e"
+    }
+  ],
+  "catalogConfigs": [
+    {
+      "order": 0,
+      "plugin": "Expressive Facegen Morphs.esl",
+      "assetId": "cfg-efm-morphs"
+    },
+    {
+      "order": 1,
+      "plugin": "Expressive Facegen Morphs.esl",
+      "assetId": "cfg-efm-races"
+    },
+    {
+      "order": 2,
+      "plugin": "Expressive Facegen Morphs.esl",
+      "assetId": "cfg-efm-human"
+    },
+    {
+      "order": 3,
+      "plugin": "High Poly Head.esm",
+      "assetId": "cfg-hph-morphs"
+    },
+    {
+      "order": 4,
+      "plugin": "RaceMenu.esp",
+      "assetId": "cfg-rm-morphs"
+    },
+    {
+      "order": 5,
+      "plugin": "RaceMenu.esp",
+      "assetId": "cfg-rm-races"
+    },
+    {
+      "order": 6,
+      "plugin": "RaceMenu.esp",
+      "assetId": "cfg-rm-human"
+    },
+    {
+      "order": 7,
+      "plugin": "RaceMenu.esp",
+      "assetId": "cfg-rm-beast"
+    }
+  ],
+  "shapeTriInputs": [
+    {
+      "order": 0,
+      "carrierShapeName": "00KLH_FemaleHeadNord",
+      "raceAssetId": "tri-head-race",
+      "chargenAssetId": "tri-head-chargen",
+      "meshAssetId": "tri-head-mesh",
+      "extendedAssetIds": [
+        "ext-head-cme",
+        "ext-head-ece",
+        "ext-head-rans",
+        "ext-head-nuska",
+        "ext-head-extra",
+        "ext-head-expr",
+        "ext-head-efm",
+        "ext-head-race"
+      ]
+    },
+    {
+      "order": 1,
+      "carrierShapeName": "KoralinaEyebrowsF02",
+      "raceAssetId": "tri-brows-race",
+      "chargenAssetId": "tri-brows-chargen",
+      "meshAssetId": "tri-brows-mesh",
+      "extendedAssetIds": [
+        "ext-brows-cme",
+        "ext-brows-ece",
+        "ext-brows-rans",
+        "ext-brows-nuska",
+        "ext-brows-extra",
+        "ext-brows-expr",
+        "ext-brows-efm",
+        "ext-brows-race"
+      ]
+    },
+    {
+      "order": 2,
+      "carrierShapeName": "MJBFemaleEyesHumanGreen04",
+      "raceAssetId": null,
+      "chargenAssetId": "tri-eyes-chargen",
+      "meshAssetId": "tri-eyes-mesh",
+      "extendedAssetIds": [
+        "ext-eyes-efm",
+        "ext-eyes-cme",
+        "ext-eyes-rans",
+        "ext-eyes-ece",
+        "ext-eyes-nuska",
+        "ext-eyes-extra",
+        "ext-eyes-expr"
+      ]
+    },
+    {
+      "order": 3,
+      "carrierShapeName": "FemaleMouthHumanoidDefault",
+      "raceAssetId": null,
+      "chargenAssetId": "tri-mouth-chargen",
+      "meshAssetId": "tri-mouth-mesh",
+      "extendedAssetIds": [
+        "ext-mouth-efm",
+        "ext-mouth-ece",
+        "ext-mouth-extra",
+        "ext-mouth-cme",
+        "ext-mouth-rans",
+        "ext-mouth-expr",
+        "ext-mouth-spg"
+      ]
+    },
+    {
+      "order": 4,
+      "carrierShapeName": "0_HAIRLINE_Female_Human_Straight",
+      "raceAssetId": null,
+      "chargenAssetId": null,
+      "meshAssetId": "tri-hairline-mesh",
+      "extendedAssetIds": []
+    },
+    {
+      "order": 5,
+      "carrierShapeName": "0Lassi",
+      "raceAssetId": null,
+      "chargenAssetId": null,
+      "meshAssetId": "tri-hair-lassi",
+      "extendedAssetIds": []
+    },
+    {
+      "order": 6,
+      "carrierShapeName": "0LassiHL",
+      "raceAssetId": null,
+      "chargenAssetId": null,
+      "meshAssetId": "tri-hair-lassi",
+      "extendedAssetIds": []
+    }
+  ],
+  "carrierShapes": [
+    {
+      "order": 0,
+      "headPart": "High Poly Head.esm|0x00000A06",
+      "modelAssetId": "model-head",
+      "modelShapeName": "FemaleHead_KLH",
+      "carrierShapeName": "00KLH_FemaleHeadNord",
+      "expectedModelPositionSha256": "3d48dbb1637cb6105fb8bfedd86053cd60da2d21bd4bda22ff47dfde7b9e4773",
+      "expectedModelTopologySha256": "e70076f7e1a7d0e6297ef1bda2a8cda3e3ac9c30a9bfd2a115d7baf3184f82d6",
+      "expectedCarrierTopologySha256": "e70076f7e1a7d0e6297ef1bda2a8cda3e3ac9c30a9bfd2a115d7baf3184f82d6"
+    },
+    {
+      "order": 1,
+      "headPart": "Koralina's Eyebrows.esp|0x00000801",
+      "modelAssetId": "model-brows",
+      "modelShapeName": "FemaleHeadBrows",
+      "carrierShapeName": "KoralinaEyebrowsF02",
+      "expectedModelPositionSha256": "c31873746309ffd2c84e3c11528e5490bd6b789fae1746fc8c8586bafe454b8a",
+      "expectedModelTopologySha256": "517d2d69954459ee39a4a14af540a54a2dc7be425eaae7a2251a2eeffda51528",
+      "expectedCarrierTopologySha256": "517d2d69954459ee39a4a14af540a54a2dc7be425eaae7a2251a2eeffda51528"
+    },
+    {
+      "order": 2,
+      "headPart": "Improved Eyes Skyrim.esp|0x00002889",
+      "modelAssetId": "model-eyes",
+      "modelShapeName": "EyesFemaleV2",
+      "carrierShapeName": "MJBFemaleEyesHumanGreen04",
+      "expectedModelPositionSha256": "f52be3d1b765aece1f4e312940446cfaded9d12d28f41ef909a9ea9778fab6e9",
+      "expectedModelTopologySha256": "068cacaa074f9ad223ec7bd91386d9d51822b4abaddebc277bb8c2bd16668f53",
+      "expectedCarrierTopologySha256": "068cacaa074f9ad223ec7bd91386d9d51822b4abaddebc277bb8c2bd16668f53"
+    },
+    {
+      "order": 3,
+      "headPart": "Skyrim.esm|0x0005150F",
+      "modelAssetId": "model-mouth",
+      "modelShapeName": "MouthHumanF",
+      "carrierShapeName": "FemaleMouthHumanoidDefault",
+      "expectedModelPositionSha256": "b1ef0ea833a50557e412cf4c99fe16ebe6dfba640f4c0189b4f4e01c9a347775",
+      "expectedModelTopologySha256": "36fddb9e35d575e37b8d4f99217256a543513a827530c22a73c1d6ab2527d2f2",
+      "expectedCarrierTopologySha256": "36fddb9e35d575e37b8d4f99217256a543513a827530c22a73c1d6ab2527d2f2"
+    },
+    {
+      "order": 4,
+      "headPart": "KS Hairdo's.esp|0x00015C9F",
+      "modelAssetId": "model-hairline",
+      "modelShapeName": "straightscalpHUMAN",
+      "carrierShapeName": "0_HAIRLINE_Female_Human_Straight",
+      "expectedModelPositionSha256": "5556eb1d3e9379daffd9f95f1ed65d3b6a07d5647ef64c7e61c21920675cc360",
+      "expectedModelTopologySha256": "6b790fe1a74e7ce1659f3e1dccb1080b1054fecacd1bc332b61baa9a83b3c94c",
+      "expectedCarrierTopologySha256": "6b790fe1a74e7ce1659f3e1dccb1080b1054fecacd1bc332b61baa9a83b3c94c"
+    },
+    {
+      "order": 5,
+      "headPart": "KS Hairdo's.esp|0x000A9555",
+      "modelAssetId": "model-hair-lassi",
+      "modelShapeName": "s4studio_mesh_3",
+      "carrierShapeName": "0Lassi",
+      "expectedModelPositionSha256": "374432f2fe324292283ea1658d2cc006525735e53a8e6864c38e7f20c63d841a",
+      "expectedModelTopologySha256": "07f4e98b1266abfd44e35e0f43f430f105dcf5c1eda674326dd858c9f3c5385c",
+      "expectedCarrierTopologySha256": "07f4e98b1266abfd44e35e0f43f430f105dcf5c1eda674326dd858c9f3c5385c"
+    },
+    {
+      "order": 6,
+      "headPart": "KS Hairdo's.esp|0x000A9554",
+      "modelAssetId": "model-hair-lassi-hl",
+      "modelShapeName": "s4studio_mesh_3",
+      "carrierShapeName": "0LassiHL",
+      "expectedModelPositionSha256": "374432f2fe324292283ea1658d2cc006525735e53a8e6864c38e7f20c63d841a",
+      "expectedModelTopologySha256": "07f4e98b1266abfd44e35e0f43f430f105dcf5c1eda674326dd858c9f3c5385c",
+      "expectedCarrierTopologySha256": "07f4e98b1266abfd44e35e0f43f430f105dcf5c1eda674326dd858c9f3c5385c"
+    }
+  ],
+  "recordOnlyMappedHeadParts": [
+    {
+      "order": 0,
+      "headPart": "Skyrim.esm|0x000EC1B2"
+    }
+  ],
+  "optionalUnavailableExtensions": [
+    {
+      "order": 0,
+      "assetPath": "meshes/actors/character/facegenmorphs/morphs/nuska/mouth/mouthhumanfchargen.tri"
+    }
+  ]
+}

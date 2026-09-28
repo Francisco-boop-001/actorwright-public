@@ -1,0 +1,697 @@
+<Window x:Class="NpcManager.Desktop.FaceGeomHairRegionsWizardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="Dual-tone Hair / Accent Regions"
+        Width="1180"
+        Height="780"
+        MinWidth="940"
+        MinHeight="640"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        PreviewKeyDown="Window_OnPreviewKeyDown"
+        automation:AutomationProperties.Name="Dual-tone Hair / Accent Regions wizard">
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Style="{StaticResource EyebrowText}"
+                           Text="FACEGEOM · FIXED-WIDTH AUTHORING" />
+                <TextBlock Margin="0,4,0,0"
+                           FontSize="27"
+                           FontWeight="SemiBold"
+                           Text="Dual-tone Hair / Accent Regions" />
+                <TextBlock Margin="0,6,0,0"
+                           Foreground="{DynamicResource MutedTextBrush}"
+                           TextWrapping="Wrap"
+                           Text="Classify every physical HairTint shader group, preview the exact proposed bytes, then write only after explicit review." />
+            </StackPanel>
+            <Border Grid.Column="1"
+                    Margin="18,0,0,0"
+                    Padding="12,8"
+                    CornerRadius="8"
+                    Background="#162B30"
+                    BorderBrush="{DynamicResource AccentDarkBrush}"
+                    BorderThickness="1">
+                <TextBlock MaxWidth="340"
+                           FontSize="11"
+                           Foreground="{DynamicResource AccentBrush}"
+                           TextWrapping="Wrap"
+                           Text="{Binding AuthorityLabel}"
+                           automation:AutomationProperties.Name="{Binding AuthorityLabel}" />
+            </Border>
+        </Grid>
+
+        <ItemsControl x:Name="StepsStrip"
+                      Grid.Row="1"
+                      Margin="0,16,0,14"
+                      ItemsSource="{Binding Steps}"
+                      automation:AutomationProperties.Name="HairTint wizard steps">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="0,0,8,0"
+                            Padding="10,8"
+                            Background="{DynamicResource SurfaceBrush}"
+                            BorderBrush="{DynamicResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="7"
+                            automation:AutomationProperties.Name="{Binding AutomationName}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,7,0"
+                                       FontWeight="Bold"
+                                       Foreground="{DynamicResource AccentBrush}"
+                                       Text="{Binding Number}" />
+                            <TextBlock Text="{Binding Title}" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Grid Grid.Row="2">
+            <Grid x:Name="SourceStep">
+                <Border Style="{StaticResource CardBorder}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="STEP 1 · SOURCE AUTHORITY" />
+                        <TextBlock Grid.Row="1"
+                                   Margin="0,6,0,14"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding SelectedNpcSummary}" />
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <Label Target="{Binding ElementName=SourcePathBox}"
+                                       Content="Exact K-local FaceGeom _NIF" />
+                                <TextBox x:Name="SourcePathBox"
+                                         Text="{Binding SourcePath, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="HairTint FaceGeom source path" />
+                            </StackPanel>
+                            <Button Grid.Column="2"
+                                    Margin="0,25,0,0"
+                                    Style="{StaticResource QuietButton}"
+                                    Click="BrowseSource_OnClick"
+                                    Content="_Browse..."
+                                    automation:AutomationProperties.Name="Select K-local FaceGeom" />
+                        </Grid>
+                        <Grid Grid.Row="3" Margin="0,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="12" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <Label Target="{Binding ElementName=OutputPathBox}"
+                                       Content="New output _NIF" />
+                                <TextBox x:Name="OutputPathBox"
+                                         Text="{Binding OutputPath, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="HairTint output FaceGeom path" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <Label Target="{Binding ElementName=ManifestPathBox}"
+                                       Content="New hash-bound _manifest" />
+                                <TextBox x:Name="ManifestPathBox"
+                                         Text="{Binding ManifestPath, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="HairTint output manifest path" />
+                            </StackPanel>
+                        </Grid>
+                        <Button Grid.Row="4"
+                                Margin="0,18,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Style="{StaticResource PrimaryButton}"
+                                Click="Analyze_OnClick"
+                                Content="_Analyze exact FaceGeom"
+                                automation:AutomationProperties.Name="Analyze exact FaceGeom" />
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="RegionsStep" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="500" />
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="320" />
+                </Grid.ColumnDefinitions>
+                <Border Style="{StaticResource CardBorder}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="STEP 2 · REGIONS" />
+                        <TextBox x:Name="RegionFilterBox"
+                                 Grid.Row="1"
+                                 Margin="0,10,0,10"
+                                 TextChanged="RegionFilter_OnTextChanged"
+                                 automation:AutomationProperties.Name="Filter HairTint regions" />
+                        <WrapPanel Grid.Row="2" Margin="0,0,0,8">
+                            <Button Margin="0,0,8,6"
+                                    Click="AssignPrimary_OnClick"
+                                    Content="_Primary"
+                                    automation:AutomationProperties.Name="Assign selected Primary" />
+                            <Button Margin="0,0,8,6"
+                                    Click="AssignAccent_OnClick"
+                                    Content="_Accent"
+                                    automation:AutomationProperties.Name="Assign selected Accent" />
+                            <Button Margin="0,0,8,6"
+                                    Click="AssignPreserve_OnClick"
+                                    Content="Preserve"
+                                    automation:AutomationProperties.Name="Assign selected Preserve" />
+                        </WrapPanel>
+                        <ScrollViewer x:Name="RegionCardsScroll"
+                                      Grid.Row="3"
+                                      VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      automation:AutomationProperties.Name="HairTint region cards scroll">
+                            <ListBox x:Name="RegionsList"
+                                     SelectionMode="Extended"
+                                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                     automation:AutomationProperties.Name="HairTint regions">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="0,0,0,8"
+                                                Padding="12"
+                                                Background="{DynamicResource SurfaceRaisedBrush}"
+                                                BorderBrush="{DynamicResource BorderBrush}"
+                                                BorderThickness="1"
+                                                CornerRadius="8">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBlock FontSize="15"
+                                                               FontWeight="SemiBold"
+                                                               Text="{Binding Name}" />
+                                                    <TextBlock Margin="0,3,0,0"
+                                                               FontSize="11"
+                                                               Foreground="{DynamicResource MutedTextBrush}"
+                                                               Text="{Binding StructuralId}" />
+                                                    <TextBlock Margin="0,2,0,0"
+                                                               FontSize="11"
+                                                               TextWrapping="Wrap"
+                                                               Text="{Binding SharedShaderGroupId, StringFormat=Shared shader: {0}}" />
+                                                    <TextBlock Margin="0,2,0,0"
+                                                               FontSize="11"
+                                                               Text="{Binding Region.ShapeBlockType, StringFormat=Shape: {0}}" />
+                                                    <TextBlock Margin="0,2,0,0"
+                                                               FontSize="11"
+                                                               Text="{Binding Region.CurrentColor, StringFormat=Current: {0}}" />
+                                                    <TextBlock Margin="0,2,0,0"
+                                                               FontSize="11"
+                                                               TextWrapping="Wrap"
+                                                               Foreground="{DynamicResource MutedTextBrush}"
+                                                               Text="{Binding TextureRoutesText}" />
+                                                    <StackPanel Margin="0,7,0,0"
+                                                                Orientation="Horizontal">
+                                                        <Border Width="22"
+                                                                Height="22"
+                                                                Margin="0,0,6,0"
+                                                                CornerRadius="4"
+                                                                BorderBrush="{DynamicResource BorderBrush}"
+                                                                BorderThickness="1"
+                                                                Background="{Binding CurrentColor}"
+                                                                automation:AutomationProperties.Name="Current HairTint swatch" />
+                                                        <TextBlock Margin="0,2,12,0"
+                                                                   FontSize="11"
+                                                                   Text="Current" />
+                                                        <Border Width="22"
+                                                                Height="22"
+                                                                Margin="0,0,6,0"
+                                                                CornerRadius="4"
+                                                                BorderBrush="{DynamicResource BorderBrush}"
+                                                                BorderThickness="1"
+                                                                Background="{Binding TargetColor}"
+                                                                automation:AutomationProperties.Name="Target HairTint swatch" />
+                                                        <TextBlock Margin="0,2,0,0"
+                                                                   FontSize="11"
+                                                                   Text="Target" />
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1"
+                                                            Margin="14,0,0,0">
+                                                    <TextBlock HorizontalAlignment="Right"
+                                                               FontWeight="SemiBold"
+                                                               Foreground="{DynamicResource AccentBrush}"
+                                                               Text="{Binding Role}" />
+                                                    <Button Margin="0,7,0,0"
+                                                            Padding="8,3"
+                                                            Click="CardPrimary_OnClick"
+                                                            Content="Primary"
+                                                            automation:AutomationProperties.Name="{Binding Name, StringFormat=Classify {0} as Primary}" />
+                                                    <Button Margin="0,5,0,0"
+                                                            Padding="8,3"
+                                                            Click="CardAccent_OnClick"
+                                                            Content="Accent"
+                                                            automation:AutomationProperties.Name="{Binding Name, StringFormat=Classify {0} as Accent}" />
+                                                    <Button Margin="0,5,0,0"
+                                                            Padding="8,3"
+                                                            Click="CardPreserve_OnClick"
+                                                            Content="Preserve"
+                                                            automation:AutomationProperties.Name="{Binding Name, StringFormat=Classify {0} as Preserve}" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="2" Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="CLASSIFICATION RULE" />
+                        <TextBlock Margin="0,7,0,0"
+                                   TextWrapping="Wrap"
+                                   Text="Every detected region must remain an explicit Primary, Accent, or Preserve choice. Shapes sharing one physical shader tint stay linked." />
+                        <TextBlock Margin="0,14,0,0"
+                                   FontWeight="SemiBold"
+                                   Text="Keyboard" />
+                        <TextBlock Margin="0,5,0,0"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="P = Primary · A = Accent · 0 = Preserve" />
+                        <TextBlock Margin="0,16,0,0"
+                                   FontWeight="SemiBold"
+                                   Text="No name guessing" />
+                        <TextBlock Margin="0,5,0,0"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Names such as hair, brow, lash, or highlight never choose a role automatically." />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="ColorsStep" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="340" />
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="STEP 3 · COLORS AND PREVIEW" />
+                        <Label Margin="0,10,0,0"
+                               Target="{Binding ElementName=PrimaryColorBox}"
+                               Content="_Primary #RRGGBB" />
+                        <TextBox x:Name="PrimaryColorBox"
+                                 Text="{Binding PrimaryColor, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Primary HairTint color" />
+                        <Label Margin="0,10,0,0"
+                               Target="{Binding ElementName=AccentColorBox}"
+                               Content="_Accent #RRGGBB" />
+                        <TextBox x:Name="AccentColorBox"
+                                 Text="{Binding AccentColor, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Accent HairTint color" />
+                        <Button Margin="0,18,0,0"
+                                Click="Propose_OnClick"
+                                Content="Create _byte plan"
+                                automation:AutomationProperties.Name="Create HairTint byte plan" />
+                        <Button Margin="0,8,0,0"
+                                Style="{StaticResource PrimaryButton}"
+                                Click="Preview_OnClick"
+                                Content="_Render preview"
+                                automation:AutomationProperties.Name="Render HairTint preview" />
+                        <Label Margin="0,15,0,0"
+                               Target="{Binding ElementName=PreviewZoomSlider}"
+                               Content="Preview _zoom" />
+                        <Slider x:Name="PreviewZoomSlider"
+                                Minimum="0.5"
+                                Maximum="2.5"
+                                Value="1"
+                                TickFrequency="0.25"
+                                ValueChanged="PreviewZoom_OnValueChanged"
+                                automation:AutomationProperties.Name="HairTint preview zoom" />
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="2" Style="{StaticResource CardBorder}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="170" />
+                        </Grid.RowDefinitions>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Auto">
+                            <Image x:Name="CombinedPreviewImage"
+                                   Stretch="Uniform"
+                                   RenderOptions.BitmapScalingMode="HighQuality"
+                                   automation:AutomationProperties.Name="Combined HairTint face preview" />
+                        </ScrollViewer>
+                        <ScrollViewer Grid.Row="2"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Auto">
+                            <Image x:Name="ContactSheetImage"
+                                   Stretch="Uniform"
+                                   RenderOptions.BitmapScalingMode="HighQuality"
+                                   automation:AutomationProperties.Name="HairTint contact sheet" />
+                        </ScrollViewer>
+                        <ScrollViewer Grid.Row="4"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Disabled"
+                                      automation:AutomationProperties.Name="HairTint per-region previews">
+                            <ListBox x:Name="RegionPreviewGallery"
+                                     ItemsSource="{Binding Regions}"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     ScrollViewer.CanContentScroll="True"
+                                     VirtualizingPanel.IsVirtualizing="True"
+                                     VirtualizingPanel.VirtualizationMode="Recycling">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Width="155"
+                                                Margin="0,0,10,0"
+                                                Padding="8"
+                                                Background="{DynamicResource SurfaceRaisedBrush}"
+                                                BorderBrush="{DynamicResource BorderBrush}"
+                                                BorderThickness="1"
+                                                CornerRadius="7">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <TextBlock FontSize="11"
+                                                           FontWeight="SemiBold"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           Text="{Binding Name}" />
+                                                <Grid Grid.Row="1" Margin="0,6,0,6">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="6" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Background="#0F1823"
+                                                            CornerRadius="5">
+                                                        <Image Tag="{Binding ThumbnailPath.Value}"
+                                                               Loaded="RegionArtifactImage_OnLoaded"
+                                                               Stretch="Uniform"
+                                                               RenderOptions.BitmapScalingMode="HighQuality"
+                                                               automation:AutomationProperties.Name="Isolated HairTint region thumbnail" />
+                                                    </Border>
+                                                    <Border Grid.Column="2"
+                                                            Background="#0F1823"
+                                                            CornerRadius="5">
+                                                        <Image Tag="{Binding MaskPath.Value}"
+                                                               Loaded="RegionArtifactImage_OnLoaded"
+                                                               Stretch="Uniform"
+                                                               RenderOptions.BitmapScalingMode="HighQuality"
+                                                               automation:AutomationProperties.Name="HairTint region role mask" />
+                                                    </Border>
+                                                </Grid>
+                                                <StackPanel Grid.Row="2"
+                                                            Orientation="Horizontal">
+                                                    <Border Width="18"
+                                                            Height="18"
+                                                            Margin="0,0,5,0"
+                                                            CornerRadius="3"
+                                                            BorderBrush="{DynamicResource BorderBrush}"
+                                                            BorderThickness="1"
+                                                            Background="{Binding CurrentColor}" />
+                                                    <TextBlock Margin="0,1,10,0"
+                                                               FontSize="10"
+                                                               Text="{Binding CurrentColor}" />
+                                                    <Border Width="18"
+                                                            Height="18"
+                                                            Margin="0,0,5,0"
+                                                            CornerRadius="3"
+                                                            BorderBrush="{DynamicResource BorderBrush}"
+                                                            BorderThickness="1"
+                                                            Background="{Binding TargetColor}" />
+                                                    <TextBlock Margin="0,1,0,0"
+                                                               FontSize="10"
+                                                               Text="{Binding Role}" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="ReviewStep" Visibility="Collapsed">
+                <Border Style="{StaticResource CardBorder}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="STEP 4 · BYTE-PLAN REVIEW" />
+                        <TextBlock Grid.Row="1"
+                                   Margin="0,8,0,12"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Text="Exact authorized tint envelopes" />
+                        <ScrollViewer Grid.Row="2"
+                                      VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      automation:AutomationProperties.Name="HairTint exact byte-plan review">
+                            <StackPanel>
+                                <Grid Margin="0,0,0,12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="14" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="SemiBold"
+                                                   Text="Proposal SHA-256" />
+                                        <TextBlock Margin="0,3,0,9"
+                                                   FontFamily="Consolas"
+                                                   FontSize="11"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding BytePlanProposalSha256}"
+                                                   automation:AutomationProperties.Name="HairTint proposal hash" />
+                                        <TextBlock FontWeight="SemiBold"
+                                                   Text="Expected output" />
+                                        <TextBlock Margin="0,3,0,3"
+                                                   FontSize="11"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding BytePlanExpectedOutputPath}"
+                                                   automation:AutomationProperties.Name="HairTint expected output path" />
+                                        <TextBlock FontFamily="Consolas"
+                                                   FontSize="11"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding BytePlanExpectedOutputSha256}"
+                                                   automation:AutomationProperties.Name="HairTint expected output hash" />
+                                        <TextBlock Margin="0,3,0,0"
+                                                   FontSize="11"
+                                                   Text="{Binding BytePlanExpectedOutputLength, StringFormat=Expected length: {0} bytes}"
+                                                   automation:AutomationProperties.Name="HairTint expected output length" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock FontWeight="SemiBold"
+                                                   Text="Hash-bound manifest" />
+                                        <TextBlock Margin="0,3,0,9"
+                                                   FontSize="11"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding BytePlanManifestPath}"
+                                                   automation:AutomationProperties.Name="HairTint manifest path" />
+                                        <TextBlock FontWeight="SemiBold"
+                                                   Text="Actual simulated changed-byte offsets" />
+                                        <TextBlock Margin="0,3,0,0"
+                                                   FontFamily="Consolas"
+                                                   FontSize="11"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding BytePlanChangedByteOffsetsText}"
+                                                   automation:AutomationProperties.Name="HairTint changed byte offsets" />
+                                    </StackPanel>
+                                </Grid>
+                                <TextBlock Margin="0,0,0,7"
+                                           FontWeight="SemiBold"
+                                           Text="Authorized 12-byte HairTint envelopes" />
+                                <ItemsControl ItemsSource="{Binding BytePlanEnvelopes}"
+                                              automation:AutomationProperties.Name="HairTint authorized envelopes">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Margin="0,0,0,8"
+                                                    Padding="11"
+                                                    Background="{DynamicResource SurfaceRaisedBrush}"
+                                                    BorderBrush="{DynamicResource BorderBrush}"
+                                                    BorderThickness="1"
+                                                    CornerRadius="7">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="220" />
+                                                        <ColumnDefinition Width="14" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel>
+                                                        <TextBlock FontWeight="SemiBold"
+                                                                   Text="{Binding Role}" />
+                                                        <TextBlock Margin="0,2,0,0"
+                                                                   FontSize="11"
+                                                                   TextWrapping="Wrap"
+                                                                   Text="{Binding SharedShaderGroupId}" />
+                                                        <TextBlock Margin="0,2,0,0"
+                                                                   FontSize="11"
+                                                                   Foreground="{DynamicResource MutedTextBrush}"
+                                                                   TextWrapping="Wrap"
+                                                                   Text="{Binding StructuralIdsText}" />
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Column="2">
+                                                        <TextBlock FontFamily="Consolas"
+                                                                   FontSize="11"
+                                                                   Text="{Binding ByteEnvelopeText}" />
+                                                        <TextBlock Margin="0,3,0,0"
+                                                                   FontFamily="Consolas"
+                                                                   FontSize="11"
+                                                                   TextWrapping="Wrap"
+                                                                   Text="{Binding OldFloatBitsText, StringFormat=old IEEE-754: {0}}" />
+                                                        <TextBlock Margin="0,3,0,0"
+                                                                   FontFamily="Consolas"
+                                                                   FontSize="11"
+                                                                   TextWrapping="Wrap"
+                                                                   Text="{Binding NewFloatBitsText, StringFormat=new IEEE-754: {0}}" />
+                                                        <TextBlock Margin="0,3,0,0"
+                                                                   FontFamily="Consolas"
+                                                                   FontSize="11"
+                                                                   TextWrapping="Wrap"
+                                                                   Text="{Binding ChangedByteOffsetsText, StringFormat=changed offsets: {0}}" />
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <ItemsControl Margin="0,6,0,0"
+                                              ItemsSource="{Binding Diagnostics}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="0,0,0,6"
+                                            Padding="10"
+                                            Background="{DynamicResource SurfaceRaisedBrush}"
+                                            CornerRadius="6">
+                                        <TextBlock TextWrapping="Wrap">
+                                            <Run FontWeight="SemiBold" Text="{Binding Code}" />
+                                            <Run Text=" · " />
+                                            <Run Text="{Binding Message}" />
+                                        </TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <Button Grid.Row="3"
+                                Margin="0,14,0,0"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource PrimaryButton}"
+                                Click="AcceptProposal_OnClick"
+                                Content="_Accept exact byte plan"
+                                automation:AutomationProperties.Name="Accept exact HairTint byte plan" />
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="WriteStep" Visibility="Collapsed">
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="STEP 5 · WRITE AND VERIFY" />
+                        <TextBlock Margin="0,8,0,0"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Text="Atomic no-overwrite FaceGeom result" />
+                        <TextBlock Margin="0,7,0,16"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="The product reopens the source, revalidates the complete authority chain, patches only admitted 12-byte tint envelopes, promotes without overwrite, and verifies through the independent Bethesda parser lineage." />
+                        <Button HorizontalAlignment="Left"
+                                Style="{StaticResource PrimaryButton}"
+                                IsEnabled="{Binding CanWrite}"
+                                Click="Write_OnClick"
+                                Content="_Write and independently verify"
+                                automation:AutomationProperties.Name="Write and independently verify HairTint FaceGeom" />
+                        <TextBlock Margin="0,16,0,0"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding HasVerifiedApplyResult, StringFormat=Independent verification passed: {0}}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,14,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock x:Name="LocalStatus"
+                           Foreground="{DynamicResource WarningBrush}"
+                           TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Polite" />
+                <TextBlock Margin="0,3,0,0"
+                           FontSize="11"
+                           Foreground="{DynamicResource MutedTextBrush}"
+                           TextWrapping="Wrap"
+                           Text="{Binding CurrentStep.Title, StringFormat=Current step: {0}}" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Margin="0,0,8,0"
+                        Style="{StaticResource QuietButton}"
+                        Click="Previous_OnClick"
+                        Content="_Previous"
+                        automation:AutomationProperties.Name="Previous wizard step" />
+                <Button Margin="0,0,8,0"
+                        Click="Next_OnClick"
+                        Content="_Next"
+                        automation:AutomationProperties.Name="Next wizard step" />
+                <Button Style="{StaticResource QuietButton}"
+                        Click="Cancel_OnClick"
+                        Content="_Cancel"
+                        automation:AutomationProperties.Name="Cancel HairTint wizard" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,3477 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "npc finish apply",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Apply one reviewed Finish Core proposal to a new package and direct-install archive.",
+    "limitations": [
+      "The output preserves the source plugin identity and package-relative path plus appearance sidecars, emits no world/reference records, and remains STATIC_PASS_RUNTIME_REQUIRED; --validate-all uses disposable output and promotes nothing.",
+      "Callable without an operator review receipt. Human visual acceptance remains required; receipt-free successors cannot authorize Exchange packaging or promotion. Supplied receipts must match exact workflow bindings.",
+      "A master-owned CSTY seed-required diagnostic offers npc finish analyze recovery: set combatPolicy.seedLocalStyle=true, retain copied master/provider hash authority, rehash the request, and reanalyze. Missing or duplicate CSTY evidence does not authorize that recovery."
+    ],
+    "options": [
+      {
+        "cliName": "request",
+        "jsonName": "request",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<request.json>",
+        "description": "Hash-bound Finish Core request document.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "request-sha256",
+        "jsonName": "request-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<64-hex-sha256>",
+        "description": "Exact request-document SHA-256.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "proposal",
+        "jsonName": "proposal",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<proposal.json>",
+        "description": "Hash-bound Finish Core proposal document.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "proposal-sha256",
+        "jsonName": "proposal-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<64-hex-sha256>",
+        "description": "Exact proposal-document SHA-256.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "validate-all",
+        "jsonName": "validate-all",
+        "valueKind": "boolean",
+        "required": false,
+        "allowedValues": [
+          "true",
+          "false",
+          "1"
+        ],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "true|false|1",
+        "description": "Optional validation mode; true or 1 accumulates safely reachable phase diagnostics.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "data-root",
+        "jsonName": "data-root",
+        "valueKind": "path",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<absolute-K-local-path>",
+        "description": "Optional for ordinary requests. External-schema non-validation apply requires both --data-root and --plugins; --validate-all true or 1 may omit both, but supplying either still requires the pair.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "plugins",
+        "jsonName": "plugins",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<plugin,...>",
+        "description": "Optional for ordinary requests. External-schema non-validation apply requires both --data-root and --plugins as a complete enabled order; --validate-all true or 1 may omit both, but supplying either still requires the pair.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle",
+        "jsonName": "workflow-bundle",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact resumable workflow bundle input.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-bundle-sha256",
+        "jsonName": "workflow-bundle-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Uppercase physical SHA-256 binding the workflow bundle.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-output",
+        "jsonName": "workflow-output",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh successor workflow bundle output.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "review-receipt",
+        "jsonName": "review-receipt",
+        "valueKind": "path",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Typed value for --review-receipt.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "review-receipt-sha256",
+        "jsonName": "review-receipt-sha256",
+        "valueKind": "sha256",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<64-hex-sha256>",
+        "description": "Typed value for --review-receipt-sha256.",
+        "aliasFor": null
+      }
+    ],
+    "inputArtifactKinds": [
+      "npc-finish-core-request",
+      "npc-finish-core-proposal",
+      "workflow-bundle",
+      "review-receipt"
+    ],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:finish-apply-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "readWorkspace",
+        "condition": "When admitting the exact request, proposal, and optional install context.",
+        "scope": "workspace",
+        "trigger": null
+      },
+      {
+        "kind": "writeNewArtifact",
+        "condition": "Only outside --validate-all true or 1 after all reviewed bindings pass.",
+        "scope": "k-local-output",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "validate-all",
+              "match": "noneOf",
+              "values": [
+                "true",
+                "1"
+              ],
+              "matchesWhenAbsent": true
+            }
+          ]
+        }
+      },
+      {
+        "kind": "writeNewArtifact",
+        "condition": "Only in --validate-all true or 1 mode for disposable validation output; nothing is promoted.",
+        "scope": "k-local-output",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "validate-all",
+              "match": "anyOf",
+              "values": [
+                "true",
+                "1"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      },
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "requiresFreshOutput",
+    "determinism": "pinnedInputsAndTools",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "Exact hash-bound request and proposal bytes are admitted."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "established",
+        "reason": "The request and proposal bind source/provider identity."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "established",
+        "reason": "The applied package remains bound to reviewed inputs and fresh outputs."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "required",
+        "reason": "Apply output still requires the independent Finish Verify step."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "notApplicable",
+        "reason": "Finish Apply does not render an off-engine preview."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "required",
+        "reason": "Static apply output does not establish human visual acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "required",
+        "reason": "Static apply output does not establish game-runtime behavior."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "notApplicable",
+        "reason": "Finish Apply never grants promotion approval."
+      }
+    ],
+    "transitions": [
+      {
+        "from": "apply",
+        "to": "verify",
+        "requiredBindings": [
+          "npc-finish-core-manifest"
+        ]
+      },
+      {
+        "from": "apply",
+        "to": "review-required",
+        "requiredBindings": [
+          "npc-finish-core-manifest"
+        ]
+      }
+    ],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [
+      {
+        "kind": "requiresTogether",
+        "options": [
+          "data-root",
+          "plugins"
+        ],
+        "referencedOptions": [],
+        "condition": "--data-root and --plugins must be supplied together.",
+        "trigger": null
+      },
+      {
+        "kind": "requiresTogether",
+        "options": [
+          "review-receipt",
+          "review-receipt-sha256"
+        ],
+        "referencedOptions": [],
+        "condition": "--review-receipt and --review-receipt-sha256 must be supplied together.",
+        "trigger": null
+      }
+    ],
+    "inputArtifacts": [
+      {
+        "kind": "npc-finish-core-request",
+        "schemaIds": [
+          "npc.finish-core.request.v1",
+          "npc.finish-core.request.v2",
+          "npc.finish-core.request.v3",
+          "npc.finish-core.request.v4"
+        ],
+        "description": "Exact hash-bound Finish Core request.",
+        "trigger": null
+      },
+      {
+        "kind": "npc-finish-core-proposal",
+        "schemaIds": [
+          "npc.finish-core.proposal.v1",
+          "npc.finish-core.proposal.v2",
+          "npc.finish-core.proposal.v3",
+          "npc.finish-core.proposal.v4"
+        ],
+        "description": "Exact hash-bound Finish Core proposal.",
+        "trigger": null
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Exact predecessor workflow bound by path and physical SHA-256.",
+        "trigger": null
+      },
+      {
+        "kind": "review-receipt",
+        "schemaIds": [
+          "actorwright.review-receipt.v1"
+        ],
+        "description": "Optional exact operator receipt; when supplied it must bind the predecessor and is independently validated.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "review-receipt",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "kind": "npc-finish-core-manifest",
+        "schemaIds": [
+          "npc.finish-core.manifest.v1",
+          "npc.finish-core.manifest.v2"
+        ],
+        "description": "Fresh applied package manifest when mutation succeeds.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "validate-all",
+              "match": "noneOf",
+              "values": [
+                "true",
+                "1"
+              ],
+              "matchesWhenAbsent": true
+            }
+          ]
+        }
+      },
+      {
+        "kind": "package-archive",
+        "schemaIds": [],
+        "description": "Fresh archive emitted with the applied Finish package.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "validate-all",
+              "match": "noneOf",
+              "values": [
+                "true",
+                "1"
+              ],
+              "matchesWhenAbsent": true
+            }
+          ]
+        }
+      },
+      {
+        "kind": "workflow-bundle",
+        "schemaIds": [
+          "actorwright.agent-workflow-bundle.v1"
+        ],
+        "description": "Fresh successor; receipt-free Finish remains review-required through independent verification.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "validate-all",
+              "match": "noneOf",
+              "values": [
+                "true",
+                "1"
+              ],
+              "matchesWhenAbsent": true
+            }
+          ]
+        }
+      }
+    ],
+    "resultShape": "object",
+    "resultDescription": "Typed Finish outcome and optional nonpromoting validation report; artifacts and next actions bind the exact static workflow."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:finish-apply-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaId",
+          "schemaVersion",
+          "status",
+          "validation",
+          "applied",
+          "outputRoot",
+          "archive"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": "1"
+          },
+          "status": {
+            "enum": [
+              "readyForReviewedWrite",
+              "noChanges",
+              "refused",
+              "staticPassRuntimeRequired",
+              "staticPassInstallDependencyRequired"
+            ]
+          },
+          "validation": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/$defs/validation"
+              }
+            ]
+          },
+          "schemaId": {
+            "const": "urn:actorwright:protocol-v2:finish-apply-result:v1"
+          },
+          "applied": {
+            "type": "boolean"
+          },
+          "outputRoot": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "archive": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "$defs": {
+          "validation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "valid",
+              "phases",
+              "diagnostics"
+            ],
+            "properties": {
+              "valid": {
+                "type": "boolean"
+              },
+              "phases": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "name",
+                    "state",
+                    "diagnostics"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "enum": [
+                        "reached",
+                        "skipped"
+                      ]
+                    },
+                    "diagnostics": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/diagnostic"
+                      }
+                    }
+                  }
+                }
+              },
+              "diagnostics": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/diagnostic"
+                }
+              }
+            }
+          },
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "severity": {
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              },
+              "message": {
+                "type": "string"
+              },
+              "recovery": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "action",
+                  "option",
+                  "artifactKind",
+                  "constraint",
+                  "retryUnchangedSafe"
+                ],
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "retryUnchanged",
+                      "chooseFreshOutput",
+                      "reanalyze",
+                      "obtainHumanReview",
+                      "repairEnvironment",
+                      "correctInput",
+                      "none"
+                    ]
+                  },
+                  "option": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "artifactKind": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "constraint": {
+                    "type": "string"
+                  },
+                  "retryUnchangedSafe": {
+                    "type": "boolean"
+                  },
+                  "alternativeCommand": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "$id": "urn:actorwright:protocol-v2:finish-apply-result:v1"
+      }
+    }
+  ],
+  "documentSchemas": [
+    {
+      "name": "request-legacy",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.request.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.request.v1",
+        "title": "Actorwright Finish Core request v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "source",
+          "actor",
+          "authorities",
+          "followerPolicy",
+          "outfitPolicy",
+          "inventoryPolicy",
+          "sandboxAuthority",
+          "output"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.request.v1"
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "packageRoot",
+              "packageManifest",
+              "packageManifestSha256",
+              "packageTreeSha256",
+              "pluginPath",
+              "plugin",
+              "pluginSha256"
+            ],
+            "properties": {
+              "packageRoot": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path (repository-relative in the standard invocation) to the full source package root, not its Data subdirectory."
+              },
+              "packageManifest": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path to the verified package manifest; it must be a direct child of packageRoot."
+              },
+              "packageManifestSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "packageTreeSha256": {
+                "$ref": "#/$defs/sha256",
+                "description": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused."
+              },
+              "pluginPath": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path to the source plugin; it must resolve inside packageRoot and its final segment must equal plugin."
+              },
+              "plugin": {
+                "$ref": "#/$defs/plugin",
+                "description": "Bare safe filename for the source plugin, with no directory components."
+              },
+              "pluginSha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "actor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "editorId",
+              "formId"
+            ],
+            "properties": {
+              "editorId": {
+                "$ref": "#/$defs/editorId"
+              },
+              "formId": {
+                "$ref": "#/$defs/formId"
+              }
+            }
+          },
+          "authorities": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "bodyRoute",
+              "providers"
+            ],
+            "properties": {
+              "bodyRoute": {
+                "type": "string",
+                "enum": [
+                  "Cbbe3Ba",
+                  "Cotr",
+                  "Ube"
+                ]
+              },
+              "providers": {
+                "type": "array",
+                "minItems": 1,
+                "description": "Provider plugin identities and paths must each be unique, and every provider file must be declared by the source package.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "plugin",
+                    "path",
+                    "sha256",
+                    "byteLength"
+                  ],
+                  "properties": {
+                    "plugin": {
+                      "$ref": "#/$defs/plugin",
+                      "description": "Bare safe filename for the provider plugin, with no directory components."
+                    },
+                    "path": {
+                      "$ref": "#/$defs/path",
+                      "description": "Workspace-root-relative path that must resolve inside source.packageRoot and whose final segment must equal plugin."
+                    },
+                    "sha256": {
+                      "$ref": "#/$defs/sha256",
+                      "description": "SHA-256 of the exact provider file bytes."
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Positive byte length of the exact provider file."
+                    }
+                  }
+                }
+              },
+              "actorAssemblySha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "bodyOwnerSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "protectedAppearanceTreeSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              }
+            }
+          },
+          "followerPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "recruitable",
+              "defensiveOnly",
+              "relationshipRank"
+            ],
+            "properties": {
+              "recruitable": {
+                "type": "boolean"
+              },
+              "defensiveOnly": {
+                "const": true,
+                "description": "Must be true. Finish Core authors only the closed zero-offense defensive combat style."
+              },
+              "potentialFollowerFaction": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "currentFollowerFaction": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "relationshipRank": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "aiPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Optional complete Skyrim NPC AIDT authoring policy. When omitted, the source AIDT bytes are preserved. A recruitable NPC may not remain HelpsNobody.",
+            "required": [
+              "aggression",
+              "confidence",
+              "energy",
+              "morality",
+              "assistance"
+            ],
+            "properties": {
+              "aggression": {
+                "type": "string",
+                "enum": [
+                  "Unaggressive",
+                  "Aggressive",
+                  "VeryAggressive",
+                  "Frenzied"
+                ]
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "Cowardly",
+                  "Cautious",
+                  "Average",
+                  "Brave",
+                  "Foolhardy"
+                ]
+              },
+              "energy": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "morality": {
+                "type": "string",
+                "enum": [
+                  "AnyCrime",
+                  "ViolenceAgainstEnemies",
+                  "PropertyCrimeOnly",
+                  "NoCrime"
+                ]
+              },
+              "assistance": {
+                "type": "string",
+                "enum": [
+                  "HelpsNobody",
+                  "HelpsAllies",
+                  "HelpsFriendsAndAllies"
+                ]
+              }
+            }
+          },
+          "outfitRacePolicy": {
+            "type": "string",
+            "enum": [
+              "refuse",
+              "clone"
+            ],
+            "default": "refuse",
+            "description": "Every selected ARMO armature must admit the actor race through its primary or additional race list. clone allocates output-owned ARMA with the race appended, affected ARMO with retargeted armatures, and a private OTFT. Only hash-bound copied providers are read."
+          },
+          "outfitPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "policy",
+              "armorItems"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string",
+                "enum": [
+                  "ExistingOutfit",
+                  "PrivateOutfit"
+                ]
+              },
+              "existingOutfit": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "armorItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/formReference"
+                }
+              }
+            }
+          },
+          "inventoryPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "policy",
+              "expectedSourceItems",
+              "desiredItems"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string",
+                "enum": [
+                  "PreserveInventory",
+                  "ReplaceExactInventory"
+                ]
+              },
+              "expectedSourceItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              },
+              "desiredItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              }
+            }
+          },
+          "sandboxAuthority": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "template",
+              "templateEditorId"
+            ],
+            "properties": {
+              "copiedMaster": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "copiedMasterSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "template": {
+                "$ref": "#/$defs/formReference"
+              },
+              "templateEditorId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "rawRecordDigest": {
+                "$ref": "#/$defs/nullableSha256"
+              }
+            }
+          },
+          "output": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "pluginFileName"
+            ],
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "archive": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "pluginFileName": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          }
+        },
+        "$defs": {
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+          },
+          "nullablePath": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "plugin": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "nullablePlugin": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "editorId": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "nullableEditorId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "formId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "nullableFormId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "formReference": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-F]{8}$"
+          },
+          "nullableFormReference": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-F]{8}$"
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "request",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.request.v2",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.request.v2",
+        "title": "Actorwright Finish Core request v2",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "source",
+          "actor",
+          "authorities",
+          "followerPolicy",
+          "outfitPolicy",
+          "inventoryPolicy",
+          "sandboxAuthority",
+          "output",
+          "aiPolicy"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.request.v2"
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "packageRoot",
+              "packageManifest",
+              "packageManifestSha256",
+              "packageTreeSha256",
+              "pluginPath",
+              "plugin",
+              "pluginSha256"
+            ],
+            "properties": {
+              "packageRoot": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path (repository-relative in the standard invocation) to the full source package root, not its Data subdirectory."
+              },
+              "packageManifest": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path to the verified package manifest; it must be a direct child of packageRoot."
+              },
+              "packageManifestSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "packageTreeSha256": {
+                "$ref": "#/$defs/sha256",
+                "description": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused."
+              },
+              "pluginPath": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path to the source plugin; it must resolve inside packageRoot and its final segment must equal plugin."
+              },
+              "plugin": {
+                "$ref": "#/$defs/plugin",
+                "description": "Bare safe filename for the source plugin, with no directory components."
+              },
+              "pluginSha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "actor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "editorId",
+              "formId"
+            ],
+            "properties": {
+              "editorId": {
+                "$ref": "#/$defs/editorId"
+              },
+              "formId": {
+                "$ref": "#/$defs/formId"
+              }
+            }
+          },
+          "authorities": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "bodyRoute",
+              "providers",
+              "additionalMasters"
+            ],
+            "properties": {
+              "bodyRoute": {
+                "type": "string",
+                "enum": [
+                  "Cbbe3Ba",
+                  "Cotr",
+                  "Ube"
+                ]
+              },
+              "providers": {
+                "type": "array",
+                "minItems": 1,
+                "description": "Provider plugin identities and paths must each be unique, and every provider file must be declared by the source package.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "plugin",
+                    "path",
+                    "sha256",
+                    "byteLength"
+                  ],
+                  "properties": {
+                    "plugin": {
+                      "$ref": "#/$defs/plugin",
+                      "description": "Bare safe filename for the provider plugin, with no directory components."
+                    },
+                    "path": {
+                      "$ref": "#/$defs/path",
+                      "description": "Workspace-root-relative path that must resolve inside source.packageRoot and whose final segment must equal plugin."
+                    },
+                    "sha256": {
+                      "$ref": "#/$defs/sha256",
+                      "description": "SHA-256 of the exact provider file bytes."
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Positive byte length of the exact provider file."
+                    }
+                  }
+                }
+              },
+              "actorAssemblySha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "bodyOwnerSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "protectedAppearanceTreeSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "additionalMasters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "plugin",
+                    "path",
+                    "sha256",
+                    "byteLength",
+                    "loadOrderIndex"
+                  ],
+                  "properties": {
+                    "plugin": {
+                      "$ref": "#/$defs/plugin"
+                    },
+                    "path": {
+                      "$ref": "#/$defs/path"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-F]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "loadOrderIndex": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "followerPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "recruitable",
+              "defensiveOnly",
+              "relationshipRank"
+            ],
+            "properties": {
+              "recruitable": {
+                "type": "boolean"
+              },
+              "defensiveOnly": {
+                "const": true,
+                "description": "Must be true. Finish Core authors only the closed zero-offense defensive combat style."
+              },
+              "potentialFollowerFaction": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "currentFollowerFaction": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "relationshipRank": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "aiPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Required complete Skyrim NPC AIDT authoring policy for v2; mood is one of the eight admitted values.",
+            "required": [
+              "aggression",
+              "confidence",
+              "energy",
+              "morality",
+              "assistance",
+              "mood"
+            ],
+            "properties": {
+              "aggression": {
+                "type": "string",
+                "enum": [
+                  "Unaggressive",
+                  "Aggressive",
+                  "VeryAggressive",
+                  "Frenzied"
+                ]
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "Cowardly",
+                  "Cautious",
+                  "Average",
+                  "Brave",
+                  "Foolhardy"
+                ]
+              },
+              "energy": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "morality": {
+                "type": "string",
+                "enum": [
+                  "AnyCrime",
+                  "ViolenceAgainstEnemies",
+                  "PropertyCrimeOnly",
+                  "NoCrime"
+                ]
+              },
+              "assistance": {
+                "type": "string",
+                "enum": [
+                  "HelpsNobody",
+                  "HelpsAllies",
+                  "HelpsFriendsAndAllies"
+                ]
+              },
+              "mood": {
+                "type": "string",
+                "enum": [
+                  "Neutral",
+                  "Angry",
+                  "Fear",
+                  "Happy",
+                  "Sad",
+                  "Surprise",
+                  "Puzzled",
+                  "Disgusted"
+                ]
+              }
+            }
+          },
+          "outfitRacePolicy": {
+            "type": "string",
+            "enum": [
+              "refuse",
+              "clone"
+            ],
+            "default": "refuse",
+            "description": "Every selected ARMO armature must admit the actor race through its primary or additional race list. clone allocates output-owned ARMA with the race appended, affected ARMO with retargeted armatures, and a private OTFT. Only hash-bound copied providers are read."
+          },
+          "outfitPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "policy",
+              "armorItems"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string",
+                "enum": [
+                  "ExistingOutfit",
+                  "PrivateOutfit"
+                ]
+              },
+              "existingOutfit": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "armorItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/formReference"
+                }
+              }
+            }
+          },
+          "inventoryPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "policy",
+              "expectedSourceItems",
+              "desiredItems"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string",
+                "enum": [
+                  "PreserveInventory",
+                  "ReplaceExactInventory"
+                ]
+              },
+              "expectedSourceItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              },
+              "desiredItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              }
+            }
+          },
+          "sandboxAuthority": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "template",
+              "templateEditorId"
+            ],
+            "properties": {
+              "copiedMaster": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "copiedMasterSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "template": {
+                "$ref": "#/$defs/formReference"
+              },
+              "templateEditorId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "rawRecordDigest": {
+                "$ref": "#/$defs/nullableSha256"
+              }
+            }
+          },
+          "output": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "pluginFileName"
+            ],
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "archive": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "pluginFileName": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          }
+        },
+        "$defs": {
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+          },
+          "nullablePath": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "plugin": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "nullablePlugin": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "editorId": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "nullableEditorId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "formId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "nullableFormId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "formReference": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-F]{8}$"
+          },
+          "nullableFormReference": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-F]{8}$"
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "request-external",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.request.v3",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.request.v3",
+        "title": "Actorwright Finish Core request v3",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "source",
+          "actor",
+          "authorities",
+          "followerPolicy",
+          "outfitPolicy",
+          "inventoryPolicy",
+          "sandboxAuthority",
+          "output",
+          "aiPolicy"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.request.v3"
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "packageRoot",
+              "packageManifest",
+              "packageManifestSha256",
+              "packageTreeSha256",
+              "pluginPath",
+              "plugin",
+              "pluginSha256"
+            ],
+            "properties": {
+              "packageRoot": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path (repository-relative in the standard invocation) to the full source package root, not its Data subdirectory."
+              },
+              "packageManifest": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path to the verified package manifest; it must be a direct child of packageRoot."
+              },
+              "packageManifestSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "packageTreeSha256": {
+                "$ref": "#/$defs/sha256",
+                "description": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused."
+              },
+              "pluginPath": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path to the source plugin; it must resolve inside packageRoot and its final segment must equal plugin."
+              },
+              "plugin": {
+                "$ref": "#/$defs/plugin",
+                "description": "Bare safe filename for the source plugin, with no directory components."
+              },
+              "pluginSha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "actor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "editorId",
+              "formId"
+            ],
+            "properties": {
+              "editorId": {
+                "$ref": "#/$defs/editorId"
+              },
+              "formId": {
+                "$ref": "#/$defs/formId"
+              }
+            }
+          },
+          "authorities": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "bodyRoute",
+              "providers",
+              "additionalMasters",
+              "externalHeadParts"
+            ],
+            "properties": {
+              "bodyRoute": {
+                "type": "string",
+                "enum": [
+                  "Cbbe3Ba",
+                  "Cotr",
+                  "Ube"
+                ]
+              },
+              "providers": {
+                "type": "array",
+                "minItems": 1,
+                "description": "Provider plugin identities and paths must each be unique, and every provider file must be declared by the source package.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "plugin",
+                    "path",
+                    "sha256",
+                    "byteLength"
+                  ],
+                  "properties": {
+                    "plugin": {
+                      "$ref": "#/$defs/plugin",
+                      "description": "Bare safe filename for the provider plugin, with no directory components."
+                    },
+                    "path": {
+                      "$ref": "#/$defs/path",
+                      "description": "Workspace-root-relative path that must resolve inside source.packageRoot and whose final segment must equal plugin."
+                    },
+                    "sha256": {
+                      "$ref": "#/$defs/sha256",
+                      "description": "SHA-256 of the exact provider file bytes."
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Positive byte length of the exact provider file."
+                    }
+                  }
+                }
+              },
+              "actorAssemblySha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "bodyOwnerSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "protectedAppearanceTreeSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "additionalMasters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "plugin",
+                    "path",
+                    "sha256",
+                    "byteLength",
+                    "loadOrderIndex"
+                  ],
+                  "properties": {
+                    "plugin": {
+                      "$ref": "#/$defs/plugin"
+                    },
+                    "path": {
+                      "$ref": "#/$defs/path"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-F]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "loadOrderIndex": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                }
+              },
+              "externalHeadParts": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "selectedManifestPath",
+                  "selectedManifestSha256",
+                  "bindings"
+                ],
+                "properties": {
+                  "selectedManifestPath": {
+                    "const": "Data/NPCManager/Evidence/selected-preset-dependencies.json"
+                  },
+                  "selectedManifestSha256": {
+                    "type": "string",
+                    "pattern": "^[0-9A-Fa-f]{64}$"
+                  },
+                  "bindings": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "descriptorId",
+                        "faceGeomExclusionAttestationSha256"
+                      ],
+                      "properties": {
+                        "descriptorId": {
+                          "type": "string",
+                          "pattern": "^[0-9A-Fa-f]{64}$"
+                        },
+                        "faceGeomExclusionAttestationSha256": {
+                          "type": "string",
+                          "pattern": "^[0-9A-Fa-f]{64}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "followerPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "recruitable",
+              "defensiveOnly",
+              "relationshipRank"
+            ],
+            "properties": {
+              "recruitable": {
+                "type": "boolean"
+              },
+              "defensiveOnly": {
+                "const": true,
+                "description": "Must be true. Finish Core authors only the closed zero-offense defensive combat style."
+              },
+              "potentialFollowerFaction": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "currentFollowerFaction": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "relationshipRank": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "aiPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Required complete Skyrim NPC AIDT authoring policy for v2; mood is one of the eight admitted values.",
+            "required": [
+              "aggression",
+              "confidence",
+              "energy",
+              "morality",
+              "assistance",
+              "mood"
+            ],
+            "properties": {
+              "aggression": {
+                "type": "string",
+                "enum": [
+                  "Unaggressive",
+                  "Aggressive",
+                  "VeryAggressive",
+                  "Frenzied"
+                ]
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "Cowardly",
+                  "Cautious",
+                  "Average",
+                  "Brave",
+                  "Foolhardy"
+                ]
+              },
+              "energy": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "morality": {
+                "type": "string",
+                "enum": [
+                  "AnyCrime",
+                  "ViolenceAgainstEnemies",
+                  "PropertyCrimeOnly",
+                  "NoCrime"
+                ]
+              },
+              "assistance": {
+                "type": "string",
+                "enum": [
+                  "HelpsNobody",
+                  "HelpsAllies",
+                  "HelpsFriendsAndAllies"
+                ]
+              },
+              "mood": {
+                "type": "string",
+                "enum": [
+                  "Neutral",
+                  "Angry",
+                  "Fear",
+                  "Happy",
+                  "Sad",
+                  "Surprise",
+                  "Puzzled",
+                  "Disgusted"
+                ]
+              }
+            }
+          },
+          "outfitRacePolicy": {
+            "type": "string",
+            "enum": [
+              "refuse",
+              "clone"
+            ],
+            "default": "refuse",
+            "description": "Every selected ARMO armature must admit the actor race through its primary or additional race list. clone allocates output-owned ARMA with the race appended, affected ARMO with retargeted armatures, and a private OTFT. Only hash-bound copied providers are read."
+          },
+          "outfitPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "policy",
+              "armorItems"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string",
+                "enum": [
+                  "ExistingOutfit",
+                  "PrivateOutfit"
+                ]
+              },
+              "existingOutfit": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "armorItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/formReference"
+                }
+              }
+            }
+          },
+          "inventoryPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "policy",
+              "expectedSourceItems",
+              "desiredItems"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string",
+                "enum": [
+                  "PreserveInventory",
+                  "ReplaceExactInventory"
+                ]
+              },
+              "expectedSourceItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              },
+              "desiredItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              }
+            }
+          },
+          "sandboxAuthority": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "template",
+              "templateEditorId"
+            ],
+            "properties": {
+              "copiedMaster": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "copiedMasterSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "template": {
+                "$ref": "#/$defs/formReference"
+              },
+              "templateEditorId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "rawRecordDigest": {
+                "$ref": "#/$defs/nullableSha256"
+              }
+            }
+          },
+          "output": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "pluginFileName"
+            ],
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "archive": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "pluginFileName": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "combatPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "seedLocalStyle"
+            ],
+            "description": "Clone the NPC's referenced combat style into an allocated output-owned CSTY and repoint ZNAM. All fields outside the selected profile are preserved. Omission retains legacy defensive behavior.",
+            "properties": {
+              "seedLocalStyle": {
+                "type": "boolean",
+                "description": "Must be true to resolve a master CSTY from a hash-bound copied master/provider authority."
+              },
+              "profile": {
+                "type": "string",
+                "enum": [
+                  "defensive",
+                  "rangedFirst",
+                  "meleeFirst"
+                ],
+                "description": "Omitted: exact clone. defensive: halve source offense, defense=max(source,1). rangedFirst/meleeFirst: selected equipment score=max(all six source equipment scores,1)+1. Source inputs and the resulting preference must be finite and representable; all remaining fields are copied."
+              }
+            }
+          },
+          "perkPolicy": {
+            "type": "array",
+            "description": "Exact ordered NPC perk replacement. Omitted preserves PRKR; [] clears it. Form identities must be unique.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "form",
+                "rank"
+              ],
+              "properties": {
+                "form": {
+                  "type": "string",
+                  "pattern": "^[^|]+\\|0x[0-9A-Fa-f]{8}$"
+                },
+                "rank": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 255
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+          },
+          "nullablePath": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "plugin": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "nullablePlugin": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "editorId": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "nullableEditorId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "formId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "nullableFormId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "formReference": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-F]{8}$"
+          },
+          "nullableFormReference": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-F]{8}$"
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "request-policy",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.request.v4",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.request.v4",
+        "title": "Actorwright Finish Core policy request v4",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "source",
+          "actor",
+          "authorities",
+          "followerPolicy",
+          "outfitPolicy",
+          "inventoryPolicy",
+          "sandboxAuthority",
+          "output",
+          "aiPolicy"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.request.v4"
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "packageRoot",
+              "packageManifest",
+              "packageManifestSha256",
+              "packageTreeSha256",
+              "pluginPath",
+              "plugin",
+              "pluginSha256"
+            ],
+            "properties": {
+              "packageRoot": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path (repository-relative in the standard invocation) to the full source package root, not its Data subdirectory."
+              },
+              "packageManifest": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path to the verified package manifest; it must be a direct child of packageRoot."
+              },
+              "packageManifestSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "packageTreeSha256": {
+                "$ref": "#/$defs/sha256",
+                "description": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused."
+              },
+              "pluginPath": {
+                "$ref": "#/$defs/path",
+                "description": "Workspace-root-relative path to the source plugin; it must resolve inside packageRoot and its final segment must equal plugin."
+              },
+              "plugin": {
+                "$ref": "#/$defs/plugin",
+                "description": "Bare safe filename for the source plugin, with no directory components."
+              },
+              "pluginSha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "actor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "editorId",
+              "formId"
+            ],
+            "properties": {
+              "editorId": {
+                "$ref": "#/$defs/editorId"
+              },
+              "formId": {
+                "$ref": "#/$defs/formId"
+              }
+            }
+          },
+          "authorities": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "bodyRoute",
+              "providers",
+              "additionalMasters"
+            ],
+            "properties": {
+              "bodyRoute": {
+                "type": "string",
+                "enum": [
+                  "Cbbe3Ba",
+                  "Cotr",
+                  "Ube"
+                ]
+              },
+              "providers": {
+                "type": "array",
+                "minItems": 1,
+                "description": "Provider plugin identities and paths must each be unique, and every provider file must be declared by the source package.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "plugin",
+                    "path",
+                    "sha256",
+                    "byteLength"
+                  ],
+                  "properties": {
+                    "plugin": {
+                      "$ref": "#/$defs/plugin",
+                      "description": "Bare safe filename for the provider plugin, with no directory components."
+                    },
+                    "path": {
+                      "$ref": "#/$defs/path",
+                      "description": "Workspace-root-relative path that must resolve inside source.packageRoot and whose final segment must equal plugin."
+                    },
+                    "sha256": {
+                      "$ref": "#/$defs/sha256",
+                      "description": "SHA-256 of the exact provider file bytes."
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Positive byte length of the exact provider file."
+                    }
+                  }
+                }
+              },
+              "actorAssemblySha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "bodyOwnerSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "protectedAppearanceTreeSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "additionalMasters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "plugin",
+                    "path",
+                    "sha256",
+                    "byteLength",
+                    "loadOrderIndex"
+                  ],
+                  "properties": {
+                    "plugin": {
+                      "$ref": "#/$defs/plugin"
+                    },
+                    "path": {
+                      "$ref": "#/$defs/path"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-F]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "loadOrderIndex": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "followerPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "recruitable",
+              "defensiveOnly",
+              "relationshipRank"
+            ],
+            "properties": {
+              "recruitable": {
+                "type": "boolean"
+              },
+              "defensiveOnly": {
+                "const": true,
+                "description": "Must be true. Finish Core authors only the closed zero-offense defensive combat style."
+              },
+              "potentialFollowerFaction": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "currentFollowerFaction": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "relationshipRank": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "aiPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Required complete Skyrim NPC AIDT authoring policy for v2; mood is one of the eight admitted values.",
+            "required": [
+              "aggression",
+              "confidence",
+              "energy",
+              "morality",
+              "assistance",
+              "mood"
+            ],
+            "properties": {
+              "aggression": {
+                "type": "string",
+                "enum": [
+                  "Unaggressive",
+                  "Aggressive",
+                  "VeryAggressive",
+                  "Frenzied"
+                ]
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "Cowardly",
+                  "Cautious",
+                  "Average",
+                  "Brave",
+                  "Foolhardy"
+                ]
+              },
+              "energy": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "morality": {
+                "type": "string",
+                "enum": [
+                  "AnyCrime",
+                  "ViolenceAgainstEnemies",
+                  "PropertyCrimeOnly",
+                  "NoCrime"
+                ]
+              },
+              "assistance": {
+                "type": "string",
+                "enum": [
+                  "HelpsNobody",
+                  "HelpsAllies",
+                  "HelpsFriendsAndAllies"
+                ]
+              },
+              "mood": {
+                "type": "string",
+                "enum": [
+                  "Neutral",
+                  "Angry",
+                  "Fear",
+                  "Happy",
+                  "Sad",
+                  "Surprise",
+                  "Puzzled",
+                  "Disgusted"
+                ]
+              }
+            }
+          },
+          "outfitRacePolicy": {
+            "type": "string",
+            "enum": [
+              "refuse",
+              "clone"
+            ],
+            "default": "refuse",
+            "description": "Every selected ARMO armature must admit the actor race through its primary or additional race list. clone allocates output-owned ARMA with the race appended, affected ARMO with retargeted armatures, and a private OTFT. Only hash-bound copied providers are read."
+          },
+          "outfitPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "policy",
+              "armorItems"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string",
+                "enum": [
+                  "ExistingOutfit",
+                  "PrivateOutfit"
+                ]
+              },
+              "existingOutfit": {
+                "$ref": "#/$defs/nullableFormReference"
+              },
+              "armorItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/formReference"
+                }
+              }
+            }
+          },
+          "inventoryPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "policy",
+              "expectedSourceItems",
+              "desiredItems"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string",
+                "enum": [
+                  "PreserveInventory",
+                  "ReplaceExactInventory"
+                ]
+              },
+              "expectedSourceItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              },
+              "desiredItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              }
+            }
+          },
+          "sandboxAuthority": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "template",
+              "templateEditorId"
+            ],
+            "properties": {
+              "copiedMaster": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "copiedMasterSha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "template": {
+                "$ref": "#/$defs/formReference"
+              },
+              "templateEditorId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "rawRecordDigest": {
+                "$ref": "#/$defs/nullableSha256"
+              }
+            }
+          },
+          "output": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "pluginFileName"
+            ],
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "archive": {
+                "$ref": "#/$defs/nullablePath"
+              },
+              "pluginFileName": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "combatPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "seedLocalStyle"
+            ],
+            "description": "Clone the NPC's referenced combat style into an allocated output-owned CSTY and repoint ZNAM. All fields outside the selected profile are preserved. Omission retains legacy defensive behavior.",
+            "properties": {
+              "seedLocalStyle": {
+                "type": "boolean",
+                "description": "Must be true to resolve a master CSTY from a hash-bound copied master/provider authority."
+              },
+              "profile": {
+                "type": "string",
+                "enum": [
+                  "defensive",
+                  "rangedFirst",
+                  "meleeFirst"
+                ],
+                "description": "Omitted: exact clone. defensive: halve source offense, defense=max(source,1). rangedFirst/meleeFirst: selected equipment score=max(all six source equipment scores,1)+1. Source inputs and the resulting preference must be finite and representable; all remaining fields are copied."
+              }
+            }
+          },
+          "perkPolicy": {
+            "type": "array",
+            "description": "Exact ordered NPC perk replacement. Omitted preserves PRKR; [] clears it. Form identities must be unique.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "form",
+                "rank"
+              ],
+              "properties": {
+                "form": {
+                  "type": "string",
+                  "pattern": "^[^|]+\\|0x[0-9A-Fa-f]{8}$"
+                },
+                "rank": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 255
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+          },
+          "nullablePath": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$)).+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "plugin": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "nullablePlugin": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])$"
+          },
+          "editorId": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "nullableEditorId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "formId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "nullableFormId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "formReference": {
+            "type": "string",
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-F]{8}$"
+          },
+          "nullableFormReference": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[^|/\\\\:]+\\.(?:[Ee][Ss][Pp]|[Ee][Ss][Mm]|[Ee][Ss][Ll])\\|0x[0-9A-F]{8}$"
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "proposal-legacy",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.proposal.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.proposal.v1",
+        "title": "Actorwright Finish Core proposal v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "status",
+          "existingRecordChanges",
+          "newRecords",
+          "appendedMasters",
+          "forbiddenRecordCounts",
+          "nextFormId",
+          "sourceTes4Flags",
+          "masterOrder",
+          "packageFiles",
+          "runtimeAuthority",
+          "request"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.proposal.v1"
+          },
+          "requestSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "proposalSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ReadyForReviewedWrite",
+              "NoChanges",
+              "Refused",
+              "StaticPassRuntimeRequired"
+            ]
+          },
+          "existingRecordChanges": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "newRecords": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "appendedMasters": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "forbiddenRecordCounts": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "nextFormId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "sourceTes4Flags": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "masterOrder": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "packageFiles": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "runtimeAuthority": {
+            "type": "boolean"
+          },
+          "request": {
+            "$ref": "urn:actorwright:schema:npc.finish-core.request.v1"
+          }
+        },
+        "$defs": {
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "stringArray": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "proposal",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.proposal.v2",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.proposal.v2",
+        "title": "Actorwright Finish Core proposal v2",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "status",
+          "existingRecordChanges",
+          "newRecords",
+          "appendedMasters",
+          "forbiddenRecordCounts",
+          "nextFormId",
+          "sourceTes4Flags",
+          "masterOrder",
+          "packageFiles",
+          "runtimeAuthority",
+          "request"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.proposal.v2"
+          },
+          "requestSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "proposalSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ReadyForReviewedWrite",
+              "NoChanges",
+              "Refused",
+              "StaticPassRuntimeRequired"
+            ]
+          },
+          "existingRecordChanges": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "newRecords": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "appendedMasters": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "forbiddenRecordCounts": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "nextFormId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "sourceTes4Flags": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "masterOrder": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "packageFiles": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "runtimeAuthority": {
+            "type": "boolean"
+          },
+          "request": {
+            "$ref": "urn:actorwright:schema:npc.finish-core.request.v2"
+          }
+        },
+        "$defs": {
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "stringArray": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "proposal-external",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.proposal.v3",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.proposal.v3",
+        "title": "Actorwright Finish Core proposal v3",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "status",
+          "existingRecordChanges",
+          "newRecords",
+          "appendedMasters",
+          "forbiddenRecordCounts",
+          "nextFormId",
+          "sourceTes4Flags",
+          "masterOrder",
+          "packageFiles",
+          "runtimeAuthority",
+          "request"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.proposal.v3"
+          },
+          "requestSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "proposalSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ReadyForReviewedWrite",
+              "NoChanges",
+              "Refused",
+              "StaticPassRuntimeRequired",
+              "StaticPassInstallDependencyRequired"
+            ]
+          },
+          "existingRecordChanges": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "newRecords": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "appendedMasters": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "forbiddenRecordCounts": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "nextFormId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "sourceTes4Flags": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "masterOrder": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "packageFiles": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "runtimeAuthority": {
+            "const": false
+          },
+          "request": {
+            "$ref": "urn:actorwright:schema:npc.finish-core.request.v3"
+          },
+          "externalHeadParts": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "selectedManifestPath",
+              "selectedManifestSha256",
+              "bindings",
+              "verification"
+            ],
+            "properties": {
+              "selectedManifestPath": {
+                "const": "Data/NPCManager/Evidence/selected-preset-dependencies.json"
+              },
+              "selectedManifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-Fa-f]{64}$"
+              },
+              "bindings": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "descriptorId",
+                    "faceGeomExclusionAttestationSha256"
+                  ],
+                  "properties": {
+                    "descriptorId": {
+                      "type": "string",
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "faceGeomExclusionAttestationSha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    }
+                  }
+                }
+              },
+              "verification": {
+                "$ref": "#/$defs/externalInstallVerification"
+              },
+              "contextFingerprint": {
+                "$ref": "#/$defs/externalContextFingerprint"
+              }
+            }
+          }
+        },
+        "$defs": {
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "stringArray": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "externalInstallVerification": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schemaIdentifier",
+              "packageIntegrity",
+              "descriptorClosureValid",
+              "descriptorIds",
+              "currentInstallDependencyState",
+              "installReady",
+              "installDependencyAuthority",
+              "runtimeAuthority",
+              "visualAuthority",
+              "providerObservations",
+              "missingPrerequisites"
+            ],
+            "properties": {
+              "schemaIdentifier": {
+                "const": "npc.external-install-dependency-verification.v1"
+              },
+              "packageIntegrity": {
+                "type": "boolean"
+              },
+              "descriptorClosureValid": {
+                "type": "boolean"
+              },
+              "historicalSnapshotValid": {
+                "type": "boolean"
+              },
+              "descriptorIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[0-9A-Fa-f]{64}$"
+                }
+              },
+              "verifiedInstallSnapshot": {
+                "$ref": "#/$defs/externalInstallSnapshot"
+              },
+              "currentInstallDependencyState": {
+                "type": "string",
+                "enum": [
+                  "not-required",
+                  "declared-unverified",
+                  "verified"
+                ]
+              },
+              "installReady": {
+                "type": "boolean"
+              },
+              "installDependencyAuthority": {
+                "type": "boolean"
+              },
+              "runtimeAuthority": {
+                "type": "boolean"
+              },
+              "visualAuthority": {
+                "type": "boolean"
+              },
+              "providerObservations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "providerPlugin",
+                    "expectedSha256"
+                  ],
+                  "properties": {
+                    "providerPlugin": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "expectedSha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "currentSha256": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "enabled": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "missingPrerequisites": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "diagnosticCode",
+                    "portableIdentity",
+                    "nextAction"
+                  ],
+                  "properties": {
+                    "diagnosticCode": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "portableIdentity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "expectedSha256": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "currentSha256": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "enabled": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "nextAction": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "externalContextFingerprint": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "sha256",
+              "observations"
+            ],
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9A-Fa-f]{64}$"
+              },
+              "observations": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "portableIdentity",
+                    "sha256",
+                    "byteLength",
+                    "order"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "portableIdentity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9A-Fa-f]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "order": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "externalInstallSnapshot": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "selectedManifestSha256",
+              "descriptorIds",
+              "contextFingerprint"
+            ],
+            "properties": {
+              "selectedManifestSha256": {
+                "type": "string",
+                "pattern": "^[0-9A-Fa-f]{64}$"
+              },
+              "descriptorIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[0-9A-Fa-f]{64}$"
+                }
+              },
+              "contextFingerprint": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "sha256",
+                  "observations"
+                ],
+                "properties": {
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9A-Fa-f]{64}$"
+                  },
+                  "observations": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "kind",
+                        "portableIdentity",
+                        "sha256",
+                        "byteLength",
+                        "order"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "portableIdentity": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9A-Fa-f]{64}$"
+                        },
+                        "byteLength": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "order": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "request": {
+                  "properties": {
+                    "authorities": {
+                      "required": [
+                        "externalHeadParts"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "externalHeadParts"
+              ]
+            }
+          },
+          {
+            "if": {
+              "required": [
+                "externalHeadParts"
+              ]
+            },
+            "then": {
+              "properties": {
+                "request": {
+                  "properties": {
+                    "authorities": {
+                      "required": [
+                        "externalHeadParts"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "proposal-policy",
+      "direction": "input",
+      "schemaIdentifier": "npc.finish-core.proposal.v4",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.proposal.v4",
+        "title": "Actorwright Finish Core policy proposal v4",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "status",
+          "existingRecordChanges",
+          "newRecords",
+          "appendedMasters",
+          "forbiddenRecordCounts",
+          "nextFormId",
+          "sourceTes4Flags",
+          "masterOrder",
+          "packageFiles",
+          "runtimeAuthority",
+          "request"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.proposal.v4"
+          },
+          "requestSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "proposalSha256": {
+            "$ref": "#/$defs/nullableSha256"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ReadyForReviewedWrite",
+              "NoChanges",
+              "Refused",
+              "StaticPassRuntimeRequired"
+            ]
+          },
+          "existingRecordChanges": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "newRecords": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "appendedMasters": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "forbiddenRecordCounts": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "nextFormId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A hexadecimal FormID accepted by Actorwright; canonical emission uses 0xXXXXXXXX."
+          },
+          "sourceTes4Flags": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "masterOrder": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "packageFiles": {
+            "$ref": "#/$defs/stringArray"
+          },
+          "runtimeAuthority": {
+            "type": "boolean"
+          },
+          "request": {
+            "$ref": "urn:actorwright:schema:npc.finish-core.request.v4"
+          }
+        },
+        "$defs": {
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "stringArray": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    },
+    {
+      "name": "validation",
+      "direction": "output",
+      "schemaIdentifier": "npc.finish-core.validation.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npc.finish-core.validation.v1",
+        "title": "Actorwright Finish Core validate-all result v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "command",
+          "valid",
+          "phases",
+          "diagnostics"
+        ],
+        "properties": {
+          "schema": {
+            "const": "npc.finish-core.validation.v1"
+          },
+          "command": {
+            "type": "string",
+            "enum": [
+              "npc finish analyze",
+              "npc finish apply"
+            ]
+          },
+          "valid": {
+            "type": "boolean"
+          },
+          "phases": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "state",
+                "diagnostics"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "reached",
+                    "skipped"
+                  ]
+                },
+                "diagnostics": {
+                  "$ref": "#/$defs/diagnostics"
+                }
+              }
+            }
+          },
+          "diagnostics": {
+            "$ref": "#/$defs/diagnostics"
+          }
+        },
+        "$defs": {
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "info",
+                    "warning",
+                    "error"
+                  ]
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "canonicalization": "Editable Finish request, proposal and manifest reads accept SHA-256 of raw UTF-8 bytes or the typed canonical serialization. Canonical JSON has ordinally sorted object keys, unchanged array order, no insignificant whitespace or BOM, and lowercase typed SHA-256 values. Unknown and duplicate members are refused. Internal document bindings use canonical identity. Proposal identity omits proposalSha256; the legacy self-excluding digest remains accepted in addition to raw and full canonical hashes. Embedded proposal identity is independently checked. Binary files, package inventory, receipts and external authority artifacts retain their exact byte bindings.",
+        "digestRule": {
+          "source.packageTreeSha256": "SHA-256 of UTF-8 bytes formed from every recursively enumerated file under packageRoot, including packageManifest. For each file, replace '\\' with '/' in its relative path and emit <relativePath>|<byteLength>|<uppercaseFileSha256> followed by LF. Sort rows ordinally by relativePath before concatenation. Reparse-point files are refused.",
+          "manifest.packageTreeSha256": "For new outputs begin the SHA-256 input with UTF-8 npc.finish-core.output-tree.v2 followed by NUL, then ordinally sorted forward-slash relative paths. For each included file append UTF-8 relativePath, NUL, raw file bytes, NUL. Exclude the output plugin path (ordinal-ignore-case), paths beginning NPCManager/Evidence/ or Data/NPCManager/Evidence/ (ordinal), README-Finish-Core.txt (ordinal), and the generated root npcmanager-package.json (ordinal). The generated generic manifest is independently reconstructed from the retained NPCManager/finish-core-source-package-manifest.json bytes bound to the request source manifest hash, plus exact final file hashes. The retained member is included in the new output digest, so external verification needs no original source folder. Legacy output manifests retain the unprefixed historical digest including npcmanager-package.json. Ordinary files only; no reparse points or devices.",
+          "manifest.sourcePackageTreeSha256": "Ordinary v1 manifest: the unprefixed path-NUL-bytes-NUL digest over the source package, excluding only its plugin path (ordinal-ignore-case). External v2 manifest: the source.packageTreeSha256 inventory digest including packageManifest. These are distinct existing hash domains."
+        }
+      }
+    }
+  ]
+}

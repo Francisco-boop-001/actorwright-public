@@ -1,0 +1,27 @@
+* text=auto
+
+# These tracked fixtures are byte-addressed evidence. Do not transform their
+# line endings even when their payload happens to look like text.
+tools/release/protocol-v2-workflow-probes/**/*.bin -text
+
+01-source-copies/m2-fixtures/** -text
+01-source-copies/m5-fixtures/** -text
+runtime/skyrimse/runtime-asset-manifest.json -text
+runtime/skyrimse/Source/Scripts/ActorwrightFollowerDialogue.psc -text whitespace=cr-at-eol
+runtime/skyrimse/Data/Scripts/ActorwrightFollowerDialogue.pex -text
+tests/NpcManager.Assets.Tests/Fixtures/gate2-emi2-face-bake-authority.json -text
+tools/release/protocol-v2-workflow-probes/**/*.base64 text eol=lf
+tools/release/protocol-v2-workflow-probes/**/*.json text eol=lf
+tools/release/protocol-v2-workflow-probes/**/*.jslot text eol=lf
+tools/release/protocol-v2-workflow-probes/**/*.txt text eol=lf
+
+contracts/compatibility/v1/consumer-stage-report.schema.json text eol=lf
+
+# Retained upstream notices and reviewed patch bytes are package provenance.
+licenses/** -text
+provenance/mediapipe/*.patch -text
+tests/fixtures/compatibility-firewall/publicSynthetic/** -text
+contracts/compatibility/v2/compatibility-snapshot.schema.json text eol=lf
+tools/build/actorwright.ps1 -text
+tests/fixtures/synthetic-facegeom-hair-regions/*.nif -text
+tools/compilers/caprica/sanitize_pex_metadata.py text eol=lf

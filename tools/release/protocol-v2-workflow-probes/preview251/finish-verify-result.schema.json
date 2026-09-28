@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:protocol-v2:finish-verify-result:v1",
+  "title": "Actorwright protocol v2 Finish Verify result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion","verified","status","manifestPath","manifestSha256","verificationPath","verificationSize","verificationSha256","verification","diagnostics"],
+  "properties": {
+    "schemaVersion": {"const":"1"},
+    "verified": {"type":"boolean"},
+    "status": {"type":["string","null"],"enum":["staticPassRuntimeRequired","refused",null]},
+    "manifestPath": {"type":"string","minLength":1},
+    "manifestSha256": {"type":"string","pattern":"^[0-9A-F]{64}$"},
+    "verificationPath": {"type":["string","null"]},
+    "verificationSize": {"type":["integer","null"],"minimum":1},
+    "verificationSha256": {"type":["string","null"],"pattern":"^[0-9A-F]{64}$"},
+    "verification": {"oneOf":[{"type":"null"},{"$ref":"#/$defs/verification"}]},
+    "diagnostics": {"type":"array","items":{"type":"object","additionalProperties":false,"required":["code","severity","message"],"properties":{"code":{"type":"string","minLength":1},"severity":{"type":"string","enum":["info","warning","error"]},"message":{"type":"string","minLength":1}}}}
+  },
+  "oneOf": [
+    {"properties":{"verified":{"const":false},"verificationPath":{"type":"null"},"verificationSize":{"type":"null"},"verificationSha256":{"type":"null"},"verification":{"type":"null"}}},
+    {"properties":{"verified":{"const":true},"status":{"const":"staticPassRuntimeRequired"},"verificationPath":{"type":"string","minLength":1},"verificationSize":{"type":"integer","minimum":1},"verificationSha256":{"type":"string","pattern":"^[0-9A-F]{64}$"},"verification":{"$ref":"#/$defs/verification"}}}
+  ],
+  "$defs": {
+    "hash":{"type":"object","additionalProperties":false,"required":["value"],"properties":{"value":{"type":"string","pattern":"^[0-9a-f]{64}$"}}},
+    "plugin":{"type":"object","additionalProperties":false,"required":["value"],"properties":{"value":{"type":"string","minLength":1}}},
+    "formId":{"type":"object","additionalProperties":false,"required":["value"],"properties":{"value":{"type":"integer","minimum":0,"maximum":4294967295}}},
+    "formReference":{"type":"object","additionalProperties":false,"required":["plugin","formId"],"properties":{"plugin":{"$ref":"#/$defs/plugin"},"formId":{"$ref":"#/$defs/formId"}}},
+    "runtimeIdentity":{"type":"object","additionalProperties":false,"required":["baseNpc","placedReference","placementIncluded"],"properties":{"baseNpc":{"$ref":"#/$defs/formReference"},"placedReference":{"oneOf":[{"type":"null"},{"$ref":"#/$defs/formReference"}]},"placementIncluded":{"type":"boolean"}}},
+    "verification":{"type":"object","additionalProperties":false,"required":["schema","status","verified","placementIncluded","runtimeAuthority","visualAuthority","typedForbiddenCounts","rawForbiddenCounts","pluginSha256","packageTreeSha256","sourcePackageTreeSha256","archiveSha256","runtimeIdentity"],"properties":{"schema":{"const":"npc.finish-core.verification.v1"},"status":{"const":"staticPassRuntimeRequired"},"verified":{"const":true},"placementIncluded":{"const":false},"runtimeAuthority":{"const":false},"visualAuthority":{"const":false},"typedForbiddenCounts":{"type":"object","additionalProperties":{"const":0}},"rawForbiddenCounts":{"type":"object","additionalProperties":{"const":0}},"pluginSha256":{"$ref":"#/$defs/hash"},"packageTreeSha256":{"$ref":"#/$defs/hash"},"sourcePackageTreeSha256":{"$ref":"#/$defs/hash"},"archiveSha256":{"$ref":"#/$defs/hash"},"runtimeIdentity":{"$ref":"#/$defs/runtimeIdentity"}}}
+  }
+}

@@ -1,0 +1,291 @@
+<UserControl x:Class="NpcManager.Desktop.SkyrimSavePackagePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             automation:AutomationProperties.Name="Save and promote verified Skyrim package task">
+    <UserControl.Resources>
+        <Style x:Key="AccessibleSaveChoiceItem"
+               TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="automation:AutomationProperties.Name"
+                    Value="{Binding Label}" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="0,16,10,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" MinWidth="560" />
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="2*" MinWidth="340" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        Background="#13252C" BorderBrush="#2F665E">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="SAVE / PACKAGE" />
+                        <TextBlock Margin="0,5,0,7" FontSize="23" FontWeight="SemiBold"
+                                   Text="Produce one verified Skyrim package" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Review binds the source bytes and every save choice. Apply writes a fresh K-local plugin/package, reopens it, and verifies the actual ESM/ESL, encoding, archive, and LVLN result." />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="1  SOURCE AND DESTINATION" />
+                        <TextBlock Margin="0,5,0,16" FontSize="19" FontWeight="SemiBold"
+                                   Text="Choose explicit package roots" />
+                        <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Verified source package" />
+                        <Grid Margin="0,0,0,13">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="SourceRootTextBox"
+                                     Text="{Binding SourceRoot, UpdateSourceTrigger=PropertyChanged}"
+                                     automation:AutomationProperties.Name="Source package root" />
+                            <Button Grid.Column="1" Margin="10,0,0,0"
+                                    Style="{StaticResource QuietButton}"
+                                    Content="_Choose source"
+                                    Command="{Binding BrowseSourceCommand}"
+                                    automation:AutomationProperties.Name="Choose source package root" />
+                        </Grid>
+                        <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Fresh destination package" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="OutputRootTextBox"
+                                     Text="{Binding OutputRoot, UpdateSourceTrigger=PropertyChanged}"
+                                     automation:AutomationProperties.Name="Destination package root" />
+                            <Button Grid.Column="1" Margin="10,0,0,0"
+                                    Style="{StaticResource QuietButton}"
+                                    Content="Choose destination _parent"
+                                    Command="{Binding BrowseOutputParentCommand}"
+                                    automation:AutomationProperties.Name="Choose destination package parent" />
+                        </Grid>
+                        <TextBlock Margin="0,12,0,0"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding ReadinessText}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel IsEnabled="{Binding IsNotBusy}">
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="2  SAVE CHOICES" />
+                        <TextBlock Margin="0,5,0,14" FontSize="19" FontWeight="SemiBold"
+                                   Text="Choose the typed production result" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="NPC scope" />
+                                <ComboBox ItemsSource="{Binding ScopeChoices}"
+                                          ItemContainerStyle="{StaticResource AccessibleSaveChoiceItem}"
+                                          DisplayMemberPath="Label"
+                                          SelectedValuePath="Value"
+                                          SelectedValue="{Binding SelectedScope, Mode=TwoWay}"
+                                          automation:AutomationProperties.Name="NPC save scope including Selected and All changed" />
+                                <TextBlock Margin="0,12,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Target mode" />
+                                <ComboBox ItemsSource="{Binding TargetModeChoices}"
+                                          ItemContainerStyle="{StaticResource AccessibleSaveChoiceItem}"
+                                          DisplayMemberPath="Label"
+                                          SelectedValuePath="Value"
+                                          SelectedValue="{Binding SelectedTargetMode, Mode=TwoWay}"
+                                          automation:AutomationProperties.Name="Fresh package or Update existing as fresh-derived output" />
+                                <TextBlock Margin="0,12,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Plugin encoding" />
+                                <ComboBox ItemsSource="{Binding EncodingChoices}"
+                                          ItemContainerStyle="{StaticResource AccessibleSaveChoiceItem}"
+                                          DisplayMemberPath="Label"
+                                          SelectedValuePath="Value"
+                                          SelectedValue="{Binding SelectedEncodingMode, Mode=TwoWay}"
+                                          automation:AutomationProperties.Name="Plugin encoding choice" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Asset layout" />
+                                <ComboBox ItemsSource="{Binding ArchiveChoices}"
+                                          ItemContainerStyle="{StaticResource AccessibleSaveChoiceItem}"
+                                          DisplayMemberPath="Label"
+                                          SelectedValuePath="Value"
+                                          SelectedValue="{Binding SelectedArchiveMode, Mode=TwoWay}"
+                                          automation:AutomationProperties.Name="Loose assets or BSA archive choice" />
+                                <TextBlock Margin="0,12,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="LVLN operation" />
+                                <ComboBox ItemsSource="{Binding LeveledListChoices}"
+                                          ItemContainerStyle="{StaticResource AccessibleSaveChoiceItem}"
+                                          DisplayMemberPath="Label"
+                                          SelectedValuePath="Value"
+                                          SelectedValue="{Binding SelectedLeveledListMode, Mode=TwoWay}"
+                                          automation:AutomationProperties.Name="Preserve create or append LVLN choice" />
+                                <CheckBox Margin="0,15,0,0" Content="_ESM master flag"
+                                          IsChecked="{Binding MarkAsMaster, Mode=TwoWay}"
+                                          automation:AutomationProperties.Name="Write ESM flag" />
+                                <CheckBox Margin="0,8,0,0" Content="ES_L light flag"
+                                          IsChecked="{Binding LightMaster, Mode=TwoWay}"
+                                          automation:AutomationProperties.Name="Write ESL flag" />
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Margin="0,14,0,0" IsEnabled="{Binding UsesLeveledList}">
+                            <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="New/existing LVLN EditorID" />
+                            <TextBox Text="{Binding LeveledListEditorId, UpdateSourceTrigger=PropertyChanged}"
+                                     automation:AutomationProperties.Name="Leveled NPC list EditorID" />
+                            <CheckBox Margin="0,8,0,0"
+                                      Content="_Do not add duplicate NPC entries"
+                                      IsChecked="{Binding NoDuplicateLeveledEntries, Mode=TwoWay}"
+                                      automation:AutomationProperties.Name="Suppress duplicate LVLN entries" />
+                        </StackPanel>
+                        <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Update existing is implemented as a fresh-derived update: the reviewed source is never overwritten. Change any choice, then Review again to bind a new proposal." />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="3  HASH-BOUND REVIEW" />
+                        <TextBlock Margin="0,5,0,14" FontSize="19" FontWeight="SemiBold"
+                                   Text="Verified package facts" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Plugin" />
+                            <TextBlock Grid.Column="1" Text="{Binding OutputPlugin}" />
+                            <TextBlock Grid.Row="1" Foreground="{DynamicResource MutedTextBrush}" Text="Target NPC" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TargetFormId}" />
+                            <TextBlock Grid.Row="2" Foreground="{DynamicResource MutedTextBrush}" Text="Scope" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ScopeText}" />
+                            <TextBlock Grid.Row="3" Foreground="{DynamicResource MutedTextBrush}" Text="Target" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TargetText}" />
+                            <TextBlock Grid.Row="4" Foreground="{DynamicResource MutedTextBrush}" Text="Plugin flags" />
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding PluginFlagsText}" TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="5" Foreground="{DynamicResource MutedTextBrush}" Text="Manifest SHA-256" />
+                            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ReviewedManifestSha256}" TextWrapping="Wrap" />
+                        </Grid>
+
+                        <UniformGrid Margin="0,16,0,0" Columns="2">
+                            <CheckBox Content="FaceGeom NIF" IsChecked="{Binding HasFaceGeom, Mode=OneWay}" IsEnabled="False" Focusable="False" />
+                            <CheckBox Content="FaceTint DDS" IsChecked="{Binding HasFaceTint, Mode=OneWay}" IsEnabled="False" Focusable="False" />
+                            <CheckBox Content="BodySlide sidecar" IsChecked="{Binding HasBodySlideSidecar, Mode=OneWay}" IsEnabled="False" Focusable="False" />
+                            <CheckBox Content="BodyGen" IsChecked="{Binding HasBodyGen, Mode=OneWay}" IsEnabled="False" Focusable="False" />
+                            <CheckBox Content="Apply script" IsChecked="{Binding HasApplyScript, Mode=OneWay}" IsEnabled="False" Focusable="False" />
+                            <CheckBox Content="BSA archive present" IsChecked="{Binding HasArchive, Mode=OneWay}" IsEnabled="False" Focusable="False" />
+                        </UniformGrid>
+                        <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding FileCount, StringFormat={}{0} declared files}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding AuthoredRecordCount, StringFormat={}{0} authored ARMO/ARMA/OTFT/LVLI records}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding LeveledRecordCount, StringFormat={}{0} preserved LVLN/LVLI records}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="EXPLICIT AUTHORITY BOUNDARY" />
+                        <TextBlock Margin="0,6,0,8" FontSize="17" FontWeight="SemiBold"
+                                   Text="Static production is not Skyrim runtime proof" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                   Text="Each enabled choice is written and independently read back. Equipment, load order, provider precedence, scripts, BodyGen, and visual appearance remain unproven until a separate fingerprinted in-game test." />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14" Background="#111E2B">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="REVIEW AND APPLY" />
+                        <TextBlock Margin="0,5,0,16" FontSize="21" FontWeight="SemiBold"
+                                   Text="Hash-bound production transaction" />
+                        <Button x:Name="ReviewButton" Style="{StaticResource PrimaryButton}"
+                                Content="_Review package" Command="{Binding ReviewCommand}"
+                                automation:AutomationProperties.Name="Review exact source package" />
+                        <Button x:Name="PromoteButton" Margin="0,10,0,0"
+                                Style="{StaticResource PrimaryButton}"
+                                Content="_Apply verified choices" Command="{Binding PromoteCommand}"
+                                automation:AutomationProperties.Name="Apply verified save package choices" />
+                        <Button x:Name="CancelButton" Margin="0,10,0,0"
+                                Style="{StaticResource QuietButton}"
+                                Content="_Cancel operation" Command="{Binding CancelCommand}"
+                                automation:AutomationProperties.Name="Cancel active package operation" />
+                        <ProgressBar Margin="0,18,0,0" Minimum="0" Maximum="100"
+                                     Value="{Binding ProgressPercent, Mode=OneWay}"
+                                     automation:AutomationProperties.Name="Package promotion progress" />
+                        <Grid Margin="0,8,0,0">
+                            <TextBlock Margin="0,0,45,0" Text="{Binding Status}"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.LiveSetting="Polite" />
+                            <TextBlock HorizontalAlignment="Right" FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AccentBrush}"
+                                       Text="{Binding ProgressPercent, StringFormat={}{0}%}" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="RESULT" />
+                        <TextBlock Margin="0,5,0,14" FontSize="19" FontWeight="SemiBold"
+                                   Text="{Binding Verdict}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Destination" />
+                        <TextBlock Margin="0,5,0,12" Text="{Binding ResultRoot}" TextWrapping="Wrap" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Manifest SHA-256" />
+                        <TextBlock Margin="0,5,0,0" Text="{Binding ResultManifestSha256}" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource MutedTextBrush}" Text="Proposal SHA-256" />
+                        <TextBlock Margin="0,5,0,0" Text="{Binding ProposalSha256}" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource MutedTextBrush}" Text="Plugin SHA-256" />
+                        <TextBlock Margin="0,5,0,0" Text="{Binding ResultPluginSha256}" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource MutedTextBrush}" Text="Produced archive" />
+                        <TextBlock Margin="0,5,0,0" Text="{Binding ResultArchiveText}" TextWrapping="Wrap" />
+                        <Border Margin="0,15,0,0" Padding="10" Background="{DynamicResource AccentDarkBrush}" CornerRadius="7">
+                            <TextBlock Foreground="{DynamicResource AccentBrush}" TextWrapping="Wrap"
+                                       Text="Runtime authority remains false. Static package equality does not prove provider selection, Papyrus, BodyGen, equipment, or appearance in Skyrim." />
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="DIAGNOSTICS" />
+                        <ListBox Margin="0,10,0,0" MaxHeight="220"
+                                 ItemsSource="{Binding Diagnostics}"
+                                 automation:AutomationProperties.Name="Save package diagnostics">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="{DynamicResource DangerBrush}"
+                                               Text="{Binding}" TextWrapping="Wrap" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

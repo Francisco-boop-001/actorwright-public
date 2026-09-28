@@ -1,0 +1,162 @@
+<Window x:Class="NpcManager.Desktop.ExistingNpcStatsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="Edit Skyrim NPC statistics"
+        Width="980" Height="760" MinWidth="800" MinHeight="620"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        FocusManager.FocusedElement="{Binding ElementName=LevelBox}"
+        automation:AutomationProperties.Name="Existing NPC statistics editor">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Style="{StaticResource EyebrowText}" Text="SKYRIM ACBS + DNAM" />
+            <TextBlock Margin="0,5,0,4" FontSize="24" FontWeight="SemiBold"
+                       Text="Edit complete gameplay statistics" />
+            <TextBlock Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                       Text="Every field starts from the hash-bound source NPC. Save commits one typed copy; Cancel leaves the prior edit untouched." />
+        </StackPanel>
+
+        <Border Grid.Row="2" Style="{StaticResource CardBorder}" Padding="12">
+            <TabControl automation:AutomationProperties.Name="NPC statistics categories">
+                <TabItem Header="Core stats">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="8">
+                        <StackPanel>
+                            <TextBlock FontWeight="SemiBold" Text="Level and calculated range" />
+                            <UniformGrid Columns="3" Margin="0,10,0,20">
+                                <StackPanel Margin="0,0,10,0">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Level mode" />
+                                    <ComboBox ItemsSource="{Binding LevelModes}" SelectedItem="{Binding LevelMode}"
+                                              automation:AutomationProperties.Name="NPC level mode" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,10,0">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Level or multiplier" />
+                                    <TextBox x:Name="LevelBox" Text="{Binding Level, UpdateSourceTrigger=PropertyChanged}"
+                                             automation:AutomationProperties.Name="NPC level value" />
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Calculated level range" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="8" /><ColumnDefinition /></Grid.ColumnDefinitions>
+                                        <TextBox Text="{Binding CalcMinLevel, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Minimum calculated level" />
+                                        <TextBox Grid.Column="2" Text="{Binding CalcMaxLevel, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Maximum calculated level" />
+                                    </Grid>
+                                </StackPanel>
+                            </UniformGrid>
+
+                            <TextBlock FontWeight="SemiBold" Text="ACBS gameplay values" />
+                            <UniformGrid Columns="3" Margin="0,10,0,20">
+                                <StackPanel Margin="0,0,10,10">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Health offset" />
+                                    <TextBox Text="{Binding HealthOffset, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC health offset" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,10,10">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Magicka offset" />
+                                    <TextBox Text="{Binding MagickaOffset, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC magicka offset" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,0,10">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Stamina offset" />
+                                    <TextBox Text="{Binding StaminaOffset, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC stamina offset" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,10,0">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Speed multiplier" />
+                                    <TextBox Text="{Binding SpeedMultiplier, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC speed multiplier" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,10,0">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Disposition" />
+                                    <TextBox Text="{Binding DispositionBase, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC disposition" />
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Bleedout override" />
+                                    <TextBox Text="{Binding BleedoutOverride, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC bleedout override" />
+                                </StackPanel>
+                            </UniformGrid>
+
+                            <TextBlock FontWeight="SemiBold" Text="DNAM base values" />
+                            <UniformGrid Columns="3" Margin="0,10,0,0">
+                                <StackPanel Margin="0,0,10,10">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Base health" />
+                                    <TextBox Text="{Binding PlayerHealth, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC base health" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,10,10">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Base magicka" />
+                                    <TextBox Text="{Binding PlayerMagicka, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC base magicka" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,0,10">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Base stamina" />
+                                    <TextBox Text="{Binding PlayerStamina, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC base stamina" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,10,0">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Far-away model distance" />
+                                    <TextBox Text="{Binding FarAwayModelDistance, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC far-away model distance" />
+                                </StackPanel>
+                                <StackPanel Margin="0,0,10,0">
+                                    <TextBlock Margin="0,0,0,6" Foreground="{DynamicResource MutedTextBrush}" Text="Geared weapons" />
+                                    <TextBox Text="{Binding GearedUpWeapons, UpdateSourceTrigger=PropertyChanged}" automation:AutomationProperties.Name="NPC geared weapons" />
+                                </StackPanel>
+                            </UniformGrid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Skills">
+                    <Grid Margin="8">
+                        <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="10" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                   Text="All 18 Skyrim skills retain their fixed DNAM order. Values and offsets are bytes from 0 through 255." />
+                        <DataGrid Grid.Row="2" ItemsSource="{Binding Skills}" AutoGenerateColumns="False"
+                                  CanUserAddRows="False" CanUserDeleteRows="False" GridLinesVisibility="Horizontal"
+                                  automation:AutomationProperties.Name="NPC skill values and offsets">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Skill" Width="*" IsReadOnly="True" Binding="{Binding DisplayName}" />
+                                <DataGridTextColumn Header="Value" Width="150" Binding="{Binding Value, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header="Offset" Width="150" Binding="{Binding Offset, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Gameplay flags">
+                    <Grid Margin="8">
+                        <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="10" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                   Text="These are the nonappearance Skyrim flags surfaced by the pinned NPC editor. Sex remains owned by the FaceGen rebuild transaction." />
+                        <ListBox Grid.Row="2" ItemsSource="{Binding Flags}"
+                                 automation:AutomationProperties.Name="NPC gameplay flags">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Margin="6" Content="{Binding DisplayName}" IsChecked="{Binding IsEnabled}"
+                                              automation:AutomationProperties.Name="{Binding DisplayName}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Border>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource DangerBrush}"
+                       Text="{Binding ValidationMessage}" TextWrapping="Wrap"
+                       automation:AutomationProperties.LiveSetting="Assertive" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Margin="0,0,8,0" Content="Cancel" IsCancel="True"
+                        Style="{StaticResource QuietButton}" Click="Cancel_Click" />
+                <Button Content="Save statistics" IsDefault="True"
+                        Style="{StaticResource PrimaryButton}" Click="Accept_Click" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

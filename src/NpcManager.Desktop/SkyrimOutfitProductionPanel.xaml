@@ -1,0 +1,163 @@
+<UserControl x:Class="NpcManager.Desktop.SkyrimOutfitProductionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             automation:AutomationProperties.Name="Browse and author Skyrim outfits task">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="0,16,10,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" MinWidth="620" />
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="2*" MinWidth="350" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        Background="#13252C" BorderBrush="#2F665E">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="OUTFIT AUTHORITY  /  OTFT TRANSACTION" />
+                        <TextBlock Margin="0,5,0,7" FontSize="23" FontWeight="SemiBold"
+                                   Text="Browse, author, write, and reopen an outfit" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Loads winning OTFT, ARMO, and LVLI records from the reviewed copied closure. Review writes one proposal only; Apply writes one fresh ESP and reopens it twice." />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="1  REVIEWED CATALOG" />
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Winning template plugin" />
+                                <TextBox Margin="0,5,0,0"
+                                         Text="{Binding TemplatePlugin, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Outfit template plugin" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Template OTFT FormID" />
+                                <TextBox Margin="0,5,0,0"
+                                         Text="{Binding TemplateFormId, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Outfit template FormID" />
+                            </StackPanel>
+                        </Grid>
+                        <Grid Margin="0,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="New local OTFT FormID" />
+                                <TextBox Margin="0,5,0,0"
+                                         Text="{Binding NewTargetFormId, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="New outfit local FormID" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Deterministic LVLI seed" />
+                                <TextBox Margin="0,5,0,0"
+                                         Text="{Binding PreviewSeed, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Outfit initial leveled-list seed" />
+                            </StackPanel>
+                        </Grid>
+                        <Button Margin="0,14,0,0" HorizontalAlignment="Left"
+                                Style="{StaticResource QuietButton}"
+                                Content="_Load reviewed outfit catalog"
+                                Command="{Binding LoadCommand}"
+                                automation:AutomationProperties.Name="Load reviewed outfit catalog" />
+                        <TextBlock Margin="0,10,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding CatalogSummary}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="2  CHOOSE OR AUTHOR" />
+                        <TextBlock Margin="0,8,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Fresh outfit proposal JSON" />
+                        <TextBox Text="{Binding ProposalPath, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Outfit proposal path" />
+                        <Button Margin="0,14,0,0" HorizontalAlignment="Left"
+                                Style="{StaticResource PrimaryButton}"
+                                Content="_Open outfit workbench"
+                                IsEnabled="{Binding CanOpenEditor}"
+                                Click="OpenOutfitWorkbench_Click"
+                                automation:AutomationProperties.Name="Open Skyrim outfit workbench" />
+                        <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource AccentBrush}"
+                                   Text="{Binding SelectionSummary}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="FRESH BINARY OUTPUT" />
+                        <TextBlock Margin="0,8,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Output plugin" />
+                        <TextBox Text="{Binding OutputPlugin, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Outfit output plugin" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="3  REVIEW, WRITE, REOPEN" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource PrimaryButton}"
+                                Content="_Review OTFT proposal" Command="{Binding ReviewCommand}"
+                                automation:AutomationProperties.Name="Review outfit proposal" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource PrimaryButton}"
+                                Content="_Write and verify outfit" Command="{Binding ExecuteCommand}"
+                                automation:AutomationProperties.Name="Write and verify outfit output" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource QuietButton}"
+                                Content="_Cancel operation" Command="{Binding CancelCommand}"
+                                automation:AutomationProperties.Name="Cancel outfit operation" />
+                        <ProgressBar Margin="0,18,0,0" Minimum="0" Maximum="100"
+                                     Value="{Binding ProgressPercent, Mode=OneWay}"
+                                     automation:AutomationProperties.Name="Outfit transaction progress" />
+                        <TextBlock Margin="0,8,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding Status}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="RESULT" />
+                        <TextBlock Margin="0,5,0,12" FontSize="19" FontWeight="SemiBold"
+                                   Text="{Binding Verdict}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Proposal SHA-256" />
+                        <TextBlock Margin="0,4,0,10" Text="{Binding ProposalSha256}" TextWrapping="Wrap" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Output plugin" />
+                        <TextBlock Margin="0,4,0,10" Text="{Binding ResultPlugin}" TextWrapping="Wrap" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Output SHA-256" />
+                        <TextBlock Margin="0,4,0,0" Text="{Binding ResultSha256}" TextWrapping="Wrap" />
+                        <Border Margin="0,14,0,0" Padding="10"
+                                Background="{DynamicResource AccentDarkBrush}" CornerRadius="7">
+                            <TextBlock Foreground="{DynamicResource AccentBrush}" TextWrapping="Wrap"
+                                       Text="Static OTFT readback is not preview, equipment, runtime, or visual proof." />
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="DIAGNOSTICS" />
+                        <ListBox Margin="0,10,0,0" MaxHeight="190"
+                                 ItemsSource="{Binding Diagnostics}"
+                                 automation:AutomationProperties.Name="Outfit transaction diagnostics" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

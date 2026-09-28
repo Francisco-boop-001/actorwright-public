@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><AssemblyName>NpcManager.FaceGen</AssemblyName><RootNamespace>NpcManager.FaceGen</RootNamespace><IsPackable>false</IsPackable></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\NpcManager.Domain\NpcManager.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BCnEncoder.Net" Version="2.3.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,143 @@
+<Window x:Class="NpcManager.Desktop.SkyrimLeveledListEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="New leveled list"
+        Width="650" Height="610" MinWidth="520" MinHeight="520"
+        SizeToContent="Manual" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        FocusManager.FocusedElement="{Binding ElementName=NameBox}"
+        automation:AutomationProperties.Name="Create a Skyrim leveled list">
+    <Grid Margin="26,22,26,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,18">
+            <TextBlock Style="{StaticResource EyebrowText}" Text="SKYRIM OUTFIT AUTHORING" />
+            <TextBlock Margin="0,5,0,0" FontSize="28" FontWeight="SemiBold"
+                       Text="New leveled list" />
+            <TextBlock Margin="0,7,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                       Text="Define the LVLI header now. Add its ordered armor or nested-list entries in the next editor."
+                       TextWrapping="Wrap" />
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+                <Border Style="{StaticResource CardBorder}" Padding="18">
+                    <StackPanel>
+                        <Label Padding="0" FontWeight="SemiBold" Content="_Name suffix"
+                               Target="{Binding ElementName=NameBox}" />
+                        <TextBox x:Name="NameBox" Margin="0,7,0,0"
+                                 Text="{Binding NameSuffix, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Leveled-list name suffix"
+                                 automation:AutomationProperties.HelpText="ASCII letters, digits, and underscores; the complete EditorID is previewed below" />
+                        <TextBlock Margin="0,10,0,3" FontSize="11"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Complete EditorID" />
+                        <TextBox IsReadOnly="True" BorderThickness="0" Padding="0"
+                                 Background="Transparent"
+                                 Foreground="{DynamicResource AccentBrush}"
+                                 FontFamily="Cascadia Mono, Consolas"
+                                 Text="{Binding EditorIdPreview, Mode=OneWay}"
+                                 automation:AutomationProperties.Name="Complete leveled-list EditorID" />
+                    </StackPanel>
+                </Border>
+
+                <Border Margin="0,14,0,0" Style="{StaticResource CardBorder}" Padding="18">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,10">
+                            <TextBlock DockPanel.Dock="Right" FontFamily="Cascadia Mono, Consolas"
+                                       Foreground="{DynamicResource AccentBrush}"
+                                       Text="{Binding PackedFlags}" />
+                            <TextBlock FontWeight="SemiBold" Text="Evaluation flags" />
+                        </DockPanel>
+                        <CheckBox Content="Calculate from _all levels at or below the player (0x01)"
+                                  IsChecked="{Binding CalculateAllLevels}"
+                                  automation:AutomationProperties.Name="Calculate from all eligible levels flag" />
+                        <CheckBox Margin="0,9,0,0"
+                                  Content="Calculate for _each item in count (0x02)"
+                                  IsChecked="{Binding CalculateEachInCount}"
+                                  automation:AutomationProperties.Name="Calculate for each item in count flag" />
+                        <CheckBox Margin="0,9,0,0" Content="_Use every eligible entry (0x04)"
+                                  IsChecked="{Binding UseAll}"
+                                  automation:AutomationProperties.Name="Use all entries flag" />
+                    </StackPanel>
+                </Border>
+
+                <Border Margin="0,14,0,0" Style="{StaticResource CardBorder}" Padding="18">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <DockPanel LastChildFill="False">
+                                <Label Padding="0" FontWeight="SemiBold" Content="Chance _None"
+                                       Target="{Binding ElementName=ChanceNoneSlider}" />
+                                <TextBlock DockPanel.Dock="Right" FontFamily="Cascadia Mono, Consolas"
+                                           Text="{Binding ChanceNone, StringFormat={}{0}%}" />
+                            </DockPanel>
+                            <Slider x:Name="ChanceNoneSlider" Margin="0,10,0,0"
+                                    Minimum="0" Maximum="100"
+                                    TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding ChanceNone, Mode=TwoWay}"
+                                    automation:AutomationProperties.Name="Chance None percent from zero through one hundred" />
+                            <TextBlock Margin="0,5,0,0" FontSize="11"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="Whole-list chance to produce nothing." TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <DockPanel LastChildFill="False">
+                                <Label Padding="0" FontWeight="SemiBold" Content="_Max Count"
+                                       Target="{Binding ElementName=MaxCountSlider}" />
+                                <TextBlock DockPanel.Dock="Right" FontFamily="Cascadia Mono, Consolas"
+                                           Text="{Binding MaxCount}" />
+                            </DockPanel>
+                            <Slider x:Name="MaxCountSlider" Margin="0,10,0,0"
+                                    Minimum="0" Maximum="255"
+                                    TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding MaxCount, Mode=TwoWay}"
+                                    automation:AutomationProperties.Name="Maximum count from zero through two hundred fifty five" />
+                            <TextBlock Margin="0,5,0,0" FontSize="11"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="{Binding MaxCountMeaning}" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Margin="0,14,0,0" Padding="12" CornerRadius="8"
+                        Background="#171D24" BorderBrush="{DynamicResource WarningBrush}"
+                        BorderThickness="1">
+                    <TextBlock FontSize="11" Foreground="{DynamicResource WarningBrush}"
+                               Text="{Binding AuthorityNotice}" TextWrapping="Wrap" />
+                </Border>
+                <TextBlock Margin="2,10,2,0" Foreground="{DynamicResource DangerBrush}"
+                           Text="{Binding ValidationMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Assertive" />
+                <TextBlock Margin="2,6,2,0" Foreground="{DynamicResource AccentBrush}"
+                           Text="{Binding StatusMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Polite" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Margin="0,16,0,0" HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button MinWidth="110" Style="{StaticResource QuietButton}" Content="_Cancel"
+                    IsCancel="True" Click="Cancel_OnClick"
+                    automation:AutomationProperties.Name="Cancel leveled-list creation" />
+            <Button MinWidth="150" Margin="10,0,0,0"
+                    Style="{StaticResource PrimaryButton}" Content="_Create list"
+                    IsDefault="True" IsEnabled="{Binding CanAccept}" Click="Accept_OnClick"
+                    automation:AutomationProperties.Name="Create leveled-list header" />
+        </StackPanel>
+    </Grid>
+</Window>

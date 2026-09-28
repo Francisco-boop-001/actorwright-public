@@ -1,0 +1,249 @@
+{
+  "title": "Pinned MediaPipe dependency license text inventory",
+  "prepared_date": "2026-09-27",
+  "status": "Notice-text preparation only; not complete corresponding source, exact link membership, package clearance, or legal advice.",
+  "scope": "Official upstream root license/notice text for the target-relevant dependency candidates enumerated in the retained MediaPipe closure table.",
+  "source_context": "The selected Windows MediaPipe target is link-static, but the exact linked-component/action graph is unavailable. Rows are candidate dependencies, not a claim that each is present in the shipped binary.",
+  "retrieval": {
+    "method": "Fetched small plain-text license files from official upstream raw/GitLab URLs at the recorded pinned commit or release tag.",
+    "inaccessible_urls": [],
+    "note": "No requested exact license URL was inaccessible. Root-level file listings were checked at the same refs; absence of a separate root NOTICE does not imply absence of nested third-party notices."
+  },
+  "candidate_component_count": 11,
+  "license_text_file_count": 16.0,
+  "components": [
+    {
+      "name": "abseil",
+      "upstream_repository": "https://github.com/abseil/abseil-cpp",
+      "pinned_ref": "9687a8ea750bfcddf790372093245a1d041b21a3",
+      "pin_type": "git commit",
+      "archive_sha256": "f841f78243f179326f2a80b719f2887c38fe226d288ecdc46e2aa091e6aa43bc",
+      "license_summary": "Apache-2.0",
+      "notice_discovery": "Exact-ref GitHub root listing showed LICENSE and no separate root NOTICE; this is not a nested-notice inventory.",
+      "license_files": [
+        {
+          "path": "abseil/LICENSE",
+          "source_url": "https://raw.githubusercontent.com/abseil/abseil-cpp/9687a8ea750bfcddf790372093245a1d041b21a3/LICENSE",
+          "bytes": 11361,
+          "sha256": "C79A7FEA0E3CAC04CD43F20E7B648E5A0FF8FA5344E644B0EE09CA1162B62747",
+          "note": "Complete root Apache 2.0 license text."
+        }
+      ]
+    },
+    {
+      "name": "glog",
+      "upstream_repository": "https://github.com/google/glog",
+      "pinned_ref": "3a0d4d22c5ae0b9a2216988411cfa6bf860cc372",
+      "pin_type": "git commit",
+      "archive_sha256": "170d08f80210b82d95563f4723a15095eff1aad1863000e8eeb569c96a98fefb",
+      "license_summary": "BSD-3-Clause; COPYING also preserves a separate gettimeofday/Jouni Malinen BSD-style notice.",
+      "notice_discovery": "Exact-ref GitHub root listing showed COPYING and no separate root NOTICE; COPYING contains an additional utility notice.",
+      "license_files": [
+        {
+          "path": "glog/COPYING",
+          "source_url": "https://raw.githubusercontent.com/google/glog/3a0d4d22c5ae0b9a2216988411cfa6bf860cc372/COPYING",
+          "bytes": 3215,
+          "sha256": "0FC497129C5C69FF6F22DA6933C7E4AAEF082FDE8437FD57680C2780100772A4",
+          "note": "Retain the entire file, including its secondary gettimeofday attribution and terms."
+        }
+      ]
+    },
+    {
+      "name": "protobuf",
+      "upstream_repository": "https://github.com/protocolbuffers/protobuf",
+      "pinned_ref": "v5.28.3",
+      "pin_type": "release tag",
+      "archive_sha256": "f645e6e42745ce922ca5388b1883ca583bafe4366cc74cf35c3c9299005136e2",
+      "license_summary": "BSD-3-Clause; the license text includes generated-code and support-library ownership/license language.",
+      "notice_discovery": "Exact-ref GitHub root listing showed LICENSE and no separate root NOTICE; this is not a nested-notice inventory.",
+      "license_files": [
+        {
+          "path": "protobuf/LICENSE",
+          "source_url": "https://raw.githubusercontent.com/protocolbuffers/protobuf/v5.28.3/LICENSE",
+          "bytes": 1732,
+          "sha256": "6E5E117324AFD944DCF67F36CF329843BC1A92229A8CD9BB573D7A83130FEA7D",
+          "note": "Complete root license text."
+        }
+      ]
+    },
+    {
+      "name": "tensorflow",
+      "upstream_repository": "https://github.com/tensorflow/tensorflow",
+      "pinned_ref": "fad6b3cf5a7d51a437bd01ee929853bc8554b618",
+      "pin_type": "git commit",
+      "archive_sha256": "2b5028c480ea8029701056f8ddb80ce12ba31c9cf402183107cbb34d2db899e8",
+      "license_summary": "Apache-2.0 root license.",
+      "notice_discovery": "Exact-ref GitHub root listing showed LICENSE and no separate root NOTICE. TensorFlow Lite's nested dependency and notice closure remains unverified.",
+      "license_files": [
+        {
+          "path": "tensorflow/LICENSE",
+          "source_url": "https://raw.githubusercontent.com/tensorflow/tensorflow/fad6b3cf5a7d51a437bd01ee929853bc8554b618/LICENSE",
+          "bytes": 13575,
+          "sha256": "71C6915D04265772A0339BED47276942C678B45CC01534210EBE6984FD1AEC65",
+          "note": "Complete root Apache 2.0 license text; not a substitute for nested third-party notices."
+        }
+      ]
+    },
+    {
+      "name": "xnnpack",
+      "upstream_repository": "https://github.com/google/XNNPACK",
+      "pinned_ref": "68167d1fefa50296f0588ec280f48c58357ca898",
+      "pin_type": "git commit",
+      "archive_sha256": "7235b2b55fbf11b64f38db130efae0f293d2d6d6fd90613221b598a8847f41c5",
+      "license_summary": "BSD-3-Clause.",
+      "notice_discovery": "Exact-ref GitHub root listing showed LICENSE and no separate root NOTICE. The pinned third_party directory listing contained BUILD and FP16.BUILD; actual FP16 linkage/notice scope is not established.",
+      "license_files": [
+        {
+          "path": "xnnpack/LICENSE",
+          "source_url": "https://raw.githubusercontent.com/google/XNNPACK/68167d1fefa50296f0588ec280f48c58357ca898/LICENSE",
+          "bytes": 1560,
+          "sha256": "63F519E15726F4C4F830BD958F694C84FECB4E0A4CACC527D2696BB71EF95ADA",
+          "note": "Complete root license text."
+        }
+      ]
+    },
+    {
+      "name": "cpuinfo",
+      "upstream_repository": "https://github.com/pytorch/cpuinfo",
+      "pinned_ref": "8a9210069b5a37dd89ed118a783945502a30a4ae",
+      "pin_type": "git commit",
+      "archive_sha256": "c0254ce97f7abc778dd2df0aaca1e0506dba1cd514fdb9fe88c07849393f8ef4",
+      "license_summary": "BSD-2-Clause.",
+      "notice_discovery": "Exact-ref GitHub root listing showed LICENSE and no separate root NOTICE; this is not a nested-notice inventory.",
+      "license_files": [
+        {
+          "path": "cpuinfo/LICENSE",
+          "source_url": "https://raw.githubusercontent.com/pytorch/cpuinfo/8a9210069b5a37dd89ed118a783945502a30a4ae/LICENSE",
+          "bytes": 1424,
+          "sha256": "8E7E60636C3AA0CB03571A1A841CE5697F9551FF92B3C426C2561613D15ADE70",
+          "note": "Complete root license text."
+        }
+      ]
+    },
+    {
+      "name": "pthreadpool",
+      "upstream_repository": "https://github.com/google/pthreadpool",
+      "pinned_ref": "995229919303dd98c0f1b3b585b54527067ef893",
+      "pin_type": "git commit",
+      "archive_sha256": "d5a78b017839ee0474e6aef6e21742b03f641b260f29faf9538a0a6b8fae0704",
+      "license_summary": "BSD-2-Clause.",
+      "notice_discovery": "Exact-ref GitHub root listing showed LICENSE and no separate root NOTICE; this is not a nested-notice inventory.",
+      "license_files": [
+        {
+          "path": "pthreadpool/LICENSE",
+          "source_url": "https://raw.githubusercontent.com/google/pthreadpool/995229919303dd98c0f1b3b585b54527067ef893/LICENSE",
+          "bytes": 1378,
+          "sha256": "57814A606B4D0FB087D9A534919084B6C11B58A4174CB5A4AEF200187780DC3A",
+          "note": "Complete root license text."
+        }
+      ]
+    },
+    {
+      "name": "eigen",
+      "upstream_repository": "https://gitlab.com/libeigen/eigen",
+      "pinned_ref": "4c38131a16803130b66266a912029504f2cf23cd",
+      "pin_type": "git commit",
+      "archive_sha256": "1a432ccbd597ea7b9faa1557b1752328d6adc1a3db8969f6fe793ff704be3bf0",
+      "license_summary": "MPL-2.0 is primary; some individual files carry third-party BSD or other MPL2-compatible terms. COPYING.MINPACK is a separate file-specific notice.",
+      "notice_discovery": "Exact-ref GitLab root listing contained LICENSE, COPYING.README, COPYING.MPL2, COPYING.APACHE, COPYING.BSD, and COPYING.MINPACK. These root texts do not establish which Eigen source files were linked.",
+      "license_files": [
+        {
+          "path": "eigen/LICENSE",
+          "source_url": "https://gitlab.com/libeigen/eigen/-/raw/4c38131a16803130b66266a912029504f2cf23cd/LICENSE",
+          "bytes": 16725,
+          "sha256": "1F256ECAD192880510E84AD60474EAB7589218784B9A50BC7CEEE34C2B91F1D5",
+          "note": "Pinned root license file; retained byte-for-byte."
+        },
+        {
+          "path": "eigen/COPYING.README",
+          "source_url": "https://gitlab.com/libeigen/eigen/-/raw/4c38131a16803130b66266a912029504f2cf23cd/COPYING.README",
+          "bytes": 264,
+          "sha256": "DB640FF2BD90C6ABD6A4D3FBB351E0EE4D555417CF840492054D1CBB2EA85644",
+          "note": "Explains primary MPL2 coverage and existence of file-specific third-party terms."
+        },
+        {
+          "path": "eigen/COPYING.MPL2",
+          "source_url": "https://gitlab.com/libeigen/eigen/-/raw/4c38131a16803130b66266a912029504f2cf23cd/COPYING.MPL2",
+          "bytes": 16727,
+          "sha256": "66A3107D5AD6A058AAB753EAAC2047CCB2ED0E39465DD0FE5844DA3E300D5172",
+          "note": "Pinned MPL2 text."
+        },
+        {
+          "path": "eigen/COPYING.APACHE",
+          "source_url": "https://gitlab.com/libeigen/eigen/-/raw/4c38131a16803130b66266a912029504f2cf23cd/COPYING.APACHE",
+          "bytes": 11362,
+          "sha256": "03379001A7B12A2EC997A25554247D985270B353C10D5BAFEE9AC8D6519820B7",
+          "note": "Pinned Apache license text referenced by Eigen's license set."
+        },
+        {
+          "path": "eigen/COPYING.BSD",
+          "source_url": "https://gitlab.com/libeigen/eigen/-/raw/4c38131a16803130b66266a912029504f2cf23cd/COPYING.BSD",
+          "bytes": 1517,
+          "sha256": "51928DCE36213C5333BA3172E847D735D4C6E9B7FF2722A326C49067155B82EB",
+          "note": "Pinned BSD license text referenced by Eigen's license set."
+        },
+        {
+          "path": "eigen/COPYING.MINPACK",
+          "source_url": "https://gitlab.com/libeigen/eigen/-/raw/4c38131a16803130b66266a912029504f2cf23cd/COPYING.MINPACK",
+          "bytes": 2193,
+          "sha256": "C87B7F8EE88F6195E91743820C00354833583AEF091B72E2D4A49C8E28E798A0",
+          "note": "Pinned Minpack attribution/license text; applicability to the selected linked files was not determined."
+        }
+      ]
+    },
+    {
+      "name": "stb_image",
+      "upstream_repository": "https://github.com/nothings/stb",
+      "pinned_ref": "b42009b3b9d4ca35bc703f5310eedc74f584be58",
+      "pin_type": "git commit",
+      "archive_sha256": "13a99ad430e930907f5611325ec384168a958bf7610e63e60e2fd8e7b7379610",
+      "license_summary": "MIT OR Unlicense; upstream presents both alternatives. No choice is asserted here.",
+      "notice_discovery": "Exact-ref GitHub root listing showed LICENSE and no separate root NOTICE; this is not a nested-notice inventory.",
+      "license_files": [
+        {
+          "path": "stb/LICENSE",
+          "source_url": "https://raw.githubusercontent.com/nothings/stb/b42009b3b9d4ca35bc703f5310eedc74f584be58/LICENSE",
+          "bytes": 2510,
+          "sha256": "BEBFE904B14301657E4E5D655C811D51FD31B97C455B9CC2D8600D6BAC6CFF63",
+          "note": "Complete dual-license text; retain both alternatives unless a documented distribution choice is made."
+        }
+      ]
+    },
+    {
+      "name": "zlib",
+      "upstream_repository": "https://github.com/madler/zlib",
+      "pinned_ref": "v1.2.13",
+      "pin_type": "release tag",
+      "archive_sha256": "b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30",
+      "license_summary": "zlib license.",
+      "notice_discovery": "Exact-ref GitHub root listing showed LICENSE and no separate root NOTICE; this is not a nested-notice inventory.",
+      "license_files": [
+        {
+          "path": "zlib/LICENSE",
+          "source_url": "https://raw.githubusercontent.com/madler/zlib/v1.2.13/LICENSE",
+          "bytes": 1002,
+          "sha256": "845EFC77857D485D91FB3E0B884AAA929368C717AE8186B66FE1ED2495753243",
+          "note": "Complete license text."
+        }
+      ]
+    },
+    {
+      "name": "gflags",
+      "upstream_repository": "https://github.com/gflags/gflags",
+      "pinned_ref": "v2.2.2",
+      "pin_type": "release tag",
+      "archive_sha256": "19713a36c9f32b33df59d1c79b4958434cb005b5b47dc5400a7a4b078111d9b5",
+      "license_summary": "BSD-3-Clause.",
+      "notice_discovery": "Exact-ref GitHub root listing showed COPYING.txt and no separate root NOTICE; this is not a nested-notice inventory.",
+      "license_files": [
+        {
+          "path": "gflags/COPYING.txt",
+          "source_url": "https://raw.githubusercontent.com/gflags/gflags/v2.2.2/COPYING.txt",
+          "bytes": 1479,
+          "sha256": "90D1F3701813C3CD65EEE2DC736746FE46B465918F3F7D6D31463A2018B33FA5",
+          "note": "Complete root license text."
+        }
+      ]
+    }
+  ]
+}

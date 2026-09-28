@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>NpcManager.Assets.Tests</AssemblyName>
+    <RootNamespace>NpcManager.Assets.Tests</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\NpcManager.Architecture.Tests\PhysicalReparseFixture.cs" Link="PhysicalReparseFixture.cs" />
+    <ProjectReference Include="..\..\src\NpcManager.Assets\NpcManager.Assets.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.FaceGen\NpcManager.FaceGen.csproj" />
+  </ItemGroup>
+</Project>

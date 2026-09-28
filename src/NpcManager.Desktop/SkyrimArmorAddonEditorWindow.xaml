@@ -1,0 +1,454 @@
+<Window x:Class="NpcManager.Desktop.SkyrimArmorAddonEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="Skyrim Armor-addon editor"
+        Width="1080" Height="820" MinWidth="820" MinHeight="640"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        ResizeMode="CanResizeWithGrip"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        FocusManager.FocusedElement="{Binding ElementName=EditorIdBox}"
+        automation:AutomationProperties.Name="Edit one Skyrim Armor Addon">
+    <Grid Margin="26,22,26,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Style="{StaticResource EyebrowText}"
+                           Text="SKYRIM ARMA AUTHORING" />
+                <TextBlock Margin="0,5,0,0" FontSize="28"
+                           FontWeight="SemiBold" Text="Armor-addon editor" />
+                <TextBlock Margin="0,7,0,0"
+                           Foreground="{DynamicResource MutedTextBrush}"
+                           Text="Intent and source status" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                <TextBlock HorizontalAlignment="Right"
+                           FontFamily="Cascadia Mono, Consolas"
+                           Foreground="{DynamicResource AccentBrush}"
+                           Text="{Binding Identity.TargetIdentity}" />
+                <TextBlock Margin="0,5,0,0" HorizontalAlignment="Right"
+                           Foreground="{DynamicResource MutedTextBrush}"
+                           Text="{Binding Identity.SourceIdentity, StringFormat=Source: {0}}" />
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="1" Margin="0,18,0,14"
+                Style="{StaticResource CardBorder}" Padding="12">
+            <DockPanel LastChildFill="True">
+                <Button DockPanel.Dock="Right" Margin="18,0,0,0"
+                        Style="{StaticResource QuietButton}"
+                        Content="Delete / _revert" Click="Delete_OnClick"
+                        automation:AutomationProperties.Name="Delete a new Armor Addon or revert an override" />
+                <WrapPanel>
+                    <Button Style="{StaticResource QuietButton}"
+                            Content="New _blank" Click="Blank_OnClick"
+                            automation:AutomationProperties.Name="Start a new blank Armor-addon" />
+                    <Button Margin="8,0,0,0"
+                            Style="{StaticResource QuietButton}"
+                            Content="New from _template" Click="Template_OnClick"
+                            automation:AutomationProperties.Name="Start a new Armor-addon from the reviewed template" />
+                    <Button Margin="8,0,0,0"
+                            Style="{StaticResource QuietButton}"
+                            Content="_Override existing" Click="Override_OnClick"
+                            automation:AutomationProperties.Name="Override the reviewed Armor-addon" />
+                    <Button Margin="8,0,0,0"
+                            Style="{StaticResource QuietButton}"
+                            Content="Edit _mine" Click="EditAuthored_OnClick"
+                            automation:AutomationProperties.Name="Reopen the authored Armor-addon" />
+                    <TextBlock Margin="18,5,0,0"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               Text="{Binding Identity.IntentLabel}" />
+                </WrapPanel>
+            </DockPanel>
+        </Border>
+
+        <TabControl Grid.Row="2">
+            <TabItem Header="_Identity &amp; Models">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="16">
+                        <Border Style="{StaticResource CardBorder}" Padding="18">
+                            <StackPanel>
+                                <TextBlock FontSize="18" FontWeight="SemiBold"
+                                           Text="Identity" />
+                                <Label Margin="0,12,0,0" Padding="0"
+                                       FontWeight="SemiBold" Content="_EditorID"
+                                       Target="{Binding ElementName=EditorIdBox}" />
+                                <TextBox x:Name="EditorIdBox" Margin="0,6,0,0"
+                                         IsEnabled="{Binding Identity.CanEditEditorId}"
+                                         Text="{Binding Identity.EditorIdText, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Armor-addon EditorID" />
+                                <TextBlock Margin="0,8,0,0" FontSize="11"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="New records require a unique npcm_ARMA_ EditorID. Overrides retain source identity."
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="0,14,0,0"
+                                Style="{StaticResource CardBorder}" Padding="18">
+                            <StackPanel>
+                                <TextBlock FontSize="18" FontWeight="SemiBold"
+                                           Text="Models" />
+                                <TextBlock Margin="0,5,0,12" FontSize="11"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Optional safe .nif paths relative to Meshes. Empty deliberately clears that gender in a complete document."
+                                           TextWrapping="Wrap" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="16" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="12" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel>
+                                        <Label Padding="0" Content="Male _third-person" />
+                                        <TextBox Text="{Binding Models.MaleModel, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Male third-person model path" />
+                                        <Button Margin="0,6,0,0" HorizontalAlignment="Left"
+                                                Content="Bro_wse male third-person model..."
+                                                Click="PickMaleThirdPersonModel_OnClick"
+                                                automation:AutomationProperties.Name="Browse male third-person model" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <Label Padding="0" Content="Female t_hird-person" />
+                                        <TextBox Text="{Binding Models.FemaleModel, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Female third-person model path" />
+                                        <Button Margin="0,6,0,0" HorizontalAlignment="Left"
+                                                Content="B_rowse female third-person model..."
+                                                Click="PickFemaleThirdPersonModel_OnClick"
+                                                automation:AutomationProperties.Name="Browse female third-person model" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="2">
+                                        <Label Padding="0" Content="Male _first-person" />
+                                        <TextBox Text="{Binding Models.MaleFirstPersonModel, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Male first-person model path" />
+                                        <Button Margin="0,6,0,0" HorizontalAlignment="Left"
+                                                Content="Browse male first-_person model..."
+                                                Click="PickMaleFirstPersonModel_OnClick"
+                                                automation:AutomationProperties.Name="Browse male first-person model" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="2" Grid.Column="2">
+                                        <Label Padding="0" Content="Female f_irst-person" />
+                                        <TextBox Text="{Binding Models.FemaleFirstPersonModel, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Female first-person model path" />
+                                        <Button Margin="0,6,0,0" HorizontalAlignment="Left"
+                                                Content="Browse female _first-person model..."
+                                                Click="PickFemaleFirstPersonModel_OnClick"
+                                                automation:AutomationProperties.Name="Browse female first-person model" />
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="_Slots">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <Border Margin="16" Style="{StaticResource CardBorder}"
+                            Padding="18">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold"
+                                       Text="Slots" />
+                            <TextBlock Margin="0,5,0,4"
+                                       Foreground="{DynamicResource AccentBrush}"
+                                       FontFamily="Cascadia Mono, Consolas"
+                                       Text="{Binding Slots.MaskText}" />
+                            <TextBlock Margin="0,0,0,12" FontSize="11"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="All 32 Skyrim BOD2 biped slots are explicit."
+                                       TextWrapping="Wrap" />
+                            <ItemsControl ItemsSource="{Binding Slots.Slots}"
+                                          automation:AutomationProperties.Name="Skyrim BOD2 slot toggles">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Width="220" Margin="0,5,10,5"
+                                                  Content="{Binding Label}"
+                                                  IsChecked="{Binding IsSelected}"
+                                                  automation:AutomationProperties.Name="{Binding Name}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="_Race &amp; skin">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="16">
+                        <Border Style="{StaticResource CardBorder}" Padding="18">
+                            <StackPanel>
+                                <TextBlock FontSize="18" FontWeight="SemiBold"
+                                           Text="Race and skin" />
+                                <TextBlock Margin="0,5,0,12" FontSize="11"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Qualified Plugin|FormID values retain provider ownership. Picker acceptance may explicitly clear an optional field."
+                                           TextWrapping="Wrap" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="16" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="10" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="10" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="10" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel>
+                                        <Label Padding="0" Content="Primary _race" />
+                                        <TextBox Text="{Binding RaceAndSkin.Race, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Primary Armor-addon race" />
+                                    </StackPanel>
+                                    <Button Grid.Column="1" Margin="8,21,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="_Pick" Click="PickRace_OnClick"
+                                            automation:AutomationProperties.Name="Pick primary Armor-addon race" />
+                                    <StackPanel Grid.Column="3">
+                                        <Label Padding="0" Content="_Footstep set" />
+                                        <TextBox Text="{Binding RaceAndSkin.FootstepSet, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Armor-addon footstep set" />
+                                    </StackPanel>
+                                    <Button Grid.Column="4" Margin="8,21,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="P_ick" Click="PickFootstep_OnClick"
+                                            automation:AutomationProperties.Name="Pick or clear Armor-addon footstep set" />
+
+                                    <StackPanel Grid.Row="2">
+                                        <Label Padding="0" Content="Male _TXST" />
+                                        <TextBox Text="{Binding RaceAndSkin.MaleSkinTexture, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Male Armor-addon skin texture" />
+                                    </StackPanel>
+                                    <Button Grid.Row="2" Grid.Column="1" Margin="8,21,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="Pick" Click="PickMaleTexture_OnClick"
+                                            automation:AutomationProperties.Name="Pick or clear male Armor-addon skin texture" />
+                                    <StackPanel Grid.Row="2" Grid.Column="3">
+                                        <Label Padding="0" Content="Female T_XST" />
+                                        <TextBox Text="{Binding RaceAndSkin.FemaleSkinTexture, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Female Armor-addon skin texture" />
+                                    </StackPanel>
+                                    <Button Grid.Row="2" Grid.Column="4" Margin="8,21,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="Pick" Click="PickFemaleTexture_OnClick"
+                                            automation:AutomationProperties.Name="Pick or clear female Armor-addon skin texture" />
+
+                                    <StackPanel Grid.Row="4">
+                                        <Label Padding="0" Content="Male F_LST" />
+                                        <TextBox Text="{Binding RaceAndSkin.MaleSkinTextureSwapList, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Male Armor-addon skin-swap form list" />
+                                    </StackPanel>
+                                    <Button Grid.Row="4" Grid.Column="1" Margin="8,21,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="Pick" Click="PickMaleSwapList_OnClick"
+                                            automation:AutomationProperties.Name="Pick or clear male Armor-addon skin-swap form list" />
+                                    <StackPanel Grid.Row="4" Grid.Column="3">
+                                        <Label Padding="0" Content="Female FL_ST" />
+                                        <TextBox Text="{Binding RaceAndSkin.FemaleSkinTextureSwapList, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Female Armor-addon skin-swap form list" />
+                                    </StackPanel>
+                                    <Button Grid.Row="4" Grid.Column="4" Margin="8,21,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="Pick" Click="PickFemaleSwapList_OnClick"
+                                            automation:AutomationProperties.Name="Pick or clear female Armor-addon skin-swap form list" />
+
+                                    <StackPanel Grid.Row="6">
+                                        <Label Padding="0" Content="_Art object" />
+                                        <TextBox Text="{Binding RaceAndSkin.ArtObject, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Armor-addon art object" />
+                                    </StackPanel>
+                                    <Button Grid.Row="6" Grid.Column="1" Margin="8,21,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="Pick" Click="PickArtObject_OnClick"
+                                            automation:AutomationProperties.Name="Pick or clear Armor-addon art object" />
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="0,14,0,0"
+                                Style="{StaticResource CardBorder}" Padding="18">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock FontWeight="SemiBold"
+                                           Text="Ordered additional races" />
+                                <TextBox Grid.Row="1" Margin="0,10,0,8"
+                                         Text="{Binding RaceAndSkin.CandidateAdditionalRace, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Candidate additional race" />
+                                <ListBox Grid.Row="2" MinHeight="100" MaxHeight="180"
+                                         ItemsSource="{Binding RaceAndSkin.AdditionalRaces}"
+                                         SelectedIndex="{Binding RaceAndSkin.SelectedAdditionalRaceIndex}"
+                                         automation:AutomationProperties.Name="Ordered additional Armor-addon races" />
+                                <WrapPanel Grid.Row="3" Margin="0,10,0,0">
+                                    <Button Style="{StaticResource QuietButton}"
+                                            Content="_Add race" Click="AddRace_OnClick"
+                                            automation:AutomationProperties.Name="Add qualified Armor-addon race" />
+                                    <Button Margin="8,0,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="_Remove race" Click="RemoveRace_OnClick"
+                                            automation:AutomationProperties.Name="Remove selected Armor-addon race" />
+                                    <Button Margin="8,0,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="Move _up" Click="MoveRaceUp_OnClick"
+                                            automation:AutomationProperties.Name="Move selected Armor-addon race up" />
+                                    <Button Margin="8,0,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="Move _down" Click="MoveRaceDown_OnClick"
+                                            automation:AutomationProperties.Name="Move selected Armor-addon race down" />
+                                </WrapPanel>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="_Data &amp; preview">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="16">
+                        <Border Style="{StaticResource CardBorder}" Padding="18">
+                            <StackPanel>
+                                <TextBlock FontSize="18" FontWeight="SemiBold"
+                                           Text="Data" />
+                                <Grid Margin="0,12,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="16" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="10" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel>
+                                        <Label Padding="0" Content="Male _priority" />
+                                        <TextBox Text="{Binding Data.MalePriorityText, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Male Armor-addon priority" />
+                                        <CheckBox Margin="0,8,0,0"
+                                                  Content="Male _weight slider enabled"
+                                                  IsChecked="{Binding Data.MaleWeightSliderEnabled}"
+                                                  automation:AutomationProperties.Name="Male Armor-addon weight slider enabled" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <Label Padding="0" Content="Female p_riority" />
+                                        <TextBox Text="{Binding Data.FemalePriorityText, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Female Armor-addon priority" />
+                                        <CheckBox Margin="0,8,0,0"
+                                                  Content="Female w_eight slider enabled"
+                                                  IsChecked="{Binding Data.FemaleWeightSliderEnabled}"
+                                                  automation:AutomationProperties.Name="Female Armor-addon weight slider enabled" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="2">
+                                        <Label Padding="0" Content="_Detection sound (byte)" />
+                                        <TextBox Text="{Binding Data.DetectionSoundText, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Armor-addon detection sound" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="2" Grid.Column="2">
+                                        <Label Padding="0" Content="Weapon _adjustment" />
+                                        <TextBox Text="{Binding Data.WeaponAdjustText, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Armor-addon weapon adjustment" />
+                                        <TextBlock Margin="0,5,0,0" FontSize="11"
+                                                   Foreground="{DynamicResource MutedTextBrush}"
+                                                   Text="Finite -100000 through 100000." />
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="0,14,0,0"
+                                Style="{StaticResource CardBorder}" Padding="18">
+                            <StackPanel>
+                                <TextBlock FontSize="18" FontWeight="SemiBold"
+                                           Text="Preview controls" />
+                                <ComboBox Margin="0,12,0,0"
+                                          ItemsSource="{Binding Preview.Scopes}"
+                                          SelectedItem="{Binding Preview.Scope}"
+                                          automation:AutomationProperties.Name="Armor-addon preview scope" />
+                                <CheckBox Margin="0,10,0,0" Content="_Include body"
+                                          IsChecked="{Binding Preview.IncludeBody}"
+                                          automation:AutomationProperties.Name="Include body in Armor-addon preview" />
+                                <CheckBox Margin="0,8,0,0" Content="Use _opposite gender"
+                                          IsChecked="{Binding Preview.OppositeGender}"
+                                          automation:AutomationProperties.Name="Use opposite gender in Armor-addon preview" />
+                                <Button Margin="0,12,0,0" HorizontalAlignment="Left"
+                                        Style="{StaticResource QuietButton}"
+                                        Content="_Preview" Click="Preview_OnClick"
+                                        automation:AutomationProperties.Name="Preview Armor-addon" />
+                                <TextBlock Margin="0,8,0,0" FontSize="11"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="A preview request is not equipment, runtime, or visual proof. Failures remain visible."
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <Border Grid.Row="3" Margin="0,14,0,0" Padding="12"
+                CornerRadius="8" Background="#171D24"
+                BorderBrush="{DynamicResource WarningBrush}"
+                BorderThickness="1">
+            <StackPanel>
+                <TextBlock FontWeight="SemiBold"
+                           Text="Validation and authority" />
+                <TextBlock Margin="0,5,0,0" FontSize="11"
+                           Foreground="{DynamicResource WarningBrush}"
+                           Text="{Binding AuthorityNotice}" TextWrapping="Wrap" />
+                <TextBlock Margin="0,7,0,0"
+                           Foreground="{DynamicResource DangerBrush}"
+                           Text="{Binding ValidationMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Assertive" />
+                <TextBlock Margin="0,5,0,0"
+                           Foreground="{DynamicResource AccentBrush}"
+                           Text="{Binding StatusMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Polite" />
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="4" Margin="0,16,0,0"
+                    HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button MinWidth="105" Style="{StaticResource QuietButton}"
+                    Content="_Cancel" IsCancel="True" Click="Cancel_OnClick"
+                    automation:AutomationProperties.Name="Cancel Armor-addon edit" />
+            <Button MinWidth="125" Margin="10,0,0,0"
+                    Style="{StaticResource PrimaryButton}"
+                    Content="_Save" IsDefault="True"
+                    IsEnabled="{Binding CanSave}" Click="Save_OnClick"
+                    automation:AutomationProperties.Name="Save Armor-addon document" />
+        </StackPanel>
+    </Grid>
+</Window>

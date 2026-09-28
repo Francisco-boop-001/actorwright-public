@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>NpcManager.Pipeline</AssemblyName>
+    <RootNamespace>NpcManager.Pipeline</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\NpcManager.Assets\NpcManager.Assets.csproj" />
+    <ProjectReference Include="..\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <ProjectReference Include="..\NpcManager.Formats.Bethesda\NpcManager.Formats.Bethesda.csproj" />
+    <ProjectReference Include="..\NpcManager.Infrastructure\NpcManager.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\runtime\skyrimse\runtime-asset-manifest.json"
+                      LogicalName="NpcManager.Pipeline.Runtime.SkyrimSE.ApplySse.Manifest" />
+    <EmbeddedResource Include="..\..\runtime\skyrimse\Data\Scripts\NPCM_Manolov_ApplySSE.pex"
+                      LogicalName="NpcManager.Pipeline.Runtime.SkyrimSE.ApplySse.Pex" />
+  </ItemGroup>
+</Project>

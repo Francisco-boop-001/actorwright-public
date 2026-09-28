@@ -1,0 +1,693 @@
+{
+  "schema": "actorwright.mediapipe-native-build-record.v1",
+  "status": "Hash-bound runtime candidate; source archives and final corresponding-source offer are not included in this checkout.",
+  "candidate": {
+    "path": "runtime/reference-preset/libmediapipe.dll",
+    "bytes": 8825344,
+    "sha256": "6B4C7503B1324CA5D1D2579DAC8D5E842DE6538A7483E778729E113063ACEC31",
+    "target": "//mediapipe/tasks/c:npc_manager_reference_source",
+    "historicalBinaryEquivalenceClaim": false
+  },
+  "opencvRuntime": {
+    "path": "runtime/reference-preset/opencv_world3410.dll",
+    "bytes": 8406528,
+    "sha256": "98EAF023A55C1A50904C9EBB6AD20348A1654C394C8359ED95EE878D58C31291",
+    "version": "3.4.10",
+    "features": "IPP and IPP IW disabled",
+    "mediaPipeLinkRole": "runtime DLL; MediaPipe was linked against the existing separate OpenCV import library",
+    "nonOsImports": [
+      "concrt140.dll",
+      "msvcp140.dll",
+      "vcruntime140.dll",
+      "vcruntime140_1.dll"
+    ]
+  },
+  "upstream": {
+    "repository": "https://github.com/google-ai-edge/mediapipe",
+    "commit": "f8ef212d5c962c0e853db7e59d217056b187084b",
+    "archiveUrl": "https://github.com/google-ai-edge/mediapipe/archive/f8ef212d5c962c0e853db7e59d217056b187084b.zip",
+    "archiveBytes": 47173138,
+    "archiveSha256": "DC18A99BC9021FFDC5EC4134DF623F0D3B62F824EDB44D9D326A708807475676",
+    "sixFileDeltaSha256": "A16F0A269E8685F297BD28F96D57E80160D28E4B2337D235B76DAB09475E327F",
+    "glogRepository": "https://github.com/google/glog",
+    "glogCommit": "3a0d4d22c5ae0b9a2216988411cfa6bf860cc372",
+    "glogArchiveSha256": "170D08F80210B82D95563F4723A15095EFF1AAD1863000E8EEB569C96A98FEFB",
+    "glogPatchedTreeFiles": 88,
+    "glogPatchedTreeSha256": "A4AC9A425A6775614F10AC0DCA8313504DFF19307F1B45F1B6AC9F15E9322F3C",
+    "glogBazelDefinitionSha256": "AFD705D53754B128E6777C7B33515F4F79F0A149FB4D41C01B54DB7EB97E8CB0",
+    "glogPatchesAppliedInOrder": [
+      {
+        "sourcePath": "third_party/com_github_glog_glog.diff",
+        "bytes": 1233,
+        "sha256": "B46D410C71E154B3B0612632C5864CE36D7BAFB49CCF44BD210B4D566E84731A"
+      },
+      {
+        "sourcePath": "third_party/com_github_glog_glog_windows_patch.diff",
+        "bytes": 996,
+        "sha256": "53A3242BE5353AEDB5A18AFFD2D4D4C48E3A70CF008D66032000F2AD570D0A47"
+      },
+      {
+        "sourcePath": "glog-static-noexports.patch",
+        "bytes": 322,
+        "sha256": "783A3FBD30591DAEFFCAB31053DA42C2F2F407D0BCFEAFE9C2E81C9AFF1F9DC0"
+      }
+    ]
+  },
+  "sourceInputs": {
+    "sourceArchiveCount": 19,
+    "compressedBytesIncludingMediaPipe": 182335743,
+    "archivesIncludedInCheckout": false,
+    "archives": [
+      {
+        "repositories": [
+          "FP16"
+        ],
+        "sourceUrls": [
+          "https://github.com/Maratyszcza/FP16/archive/4dfe081cf6bcd15db339cf2680b9281b8451eeb3.zip",
+          "https://storage.googleapis.com/mirror.tensorflow.org/github.com/Maratyszcza/FP16/archive/4dfe081cf6bcd15db339cf2680b9281b8451eeb3.zip"
+        ],
+        "bytes": 91462,
+        "sha256": "D973501A40C55126B31ACCC2D9F08D931EC3CC190C0430309A5E341D3C0CE32A",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 54,
+          "regularFiles": 45,
+          "uncompressedBytes": 484568
+        },
+        "relations": [
+          {
+            "name": "FP16",
+            "relation": "header-only compile input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "FXdiv"
+        ],
+        "sourceUrls": [
+          "https://github.com/Maratyszcza/FXdiv/archive/63058eff77e11aa15bf531df5dd34395ec3017c8.zip",
+          "https://storage.googleapis.com/mirror.tensorflow.org/github.com/Maratyszcza/FXdiv/archive/63058eff77e11aa15bf531df5dd34395ec3017c8.zip"
+        ],
+        "bytes": 16646,
+        "sha256": "3D7B0E9C4C658A84376A1086126BE02F9B7F753CAA95E009D9AC38D11DA444DB",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 27,
+          "regularFiles": 21,
+          "uncompressedBytes": 42751
+        },
+        "relations": [
+          {
+            "name": "FXdiv",
+            "relation": "header-only compile input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "XNNPACK"
+        ],
+        "sourceUrls": [
+          "https://github.com/google/XNNPACK/archive/68167d1fefa50296f0588ec280f48c58357ca898.zip"
+        ],
+        "bytes": 22914932,
+        "sha256": "7235B2B55FBF11B64F38DB130EFAE0F293D2D6D6FD90613221B598A8847F41C5",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 11221,
+          "regularFiles": 10848,
+          "uncompressedBytes": 131255498
+        },
+        "relations": [
+          {
+            "name": "XNNPACK",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "arm_neon_2_x86_sse"
+        ],
+        "sourceUrls": [
+          "https://github.com/intel/ARM_NEON_2_x86_SSE/archive/a15b489e1222b2087007546b4912e21293ea86ff.tar.gz",
+          "https://storage.googleapis.com/mirror.tensorflow.org/github.com/intel/ARM_NEON_2_x86_SSE/archive/a15b489e1222b2087007546b4912e21293ea86ff.tar.gz"
+        ],
+        "bytes": 103972,
+        "sha256": "019FBC7EC25860070A1D90E12686FC160CFB33E22AA063C80F52B363F1361E9D",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 8,
+          "regularFiles": 6,
+          "uncompressedBytes": 815465
+        },
+        "relations": [
+          {
+            "name": "arm_neon_2_x86_sse",
+            "relation": "header-only compile input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "com_github_gflags_gflags"
+        ],
+        "sourceUrls": [
+          "https://github.com/gflags/gflags/archive/v2.2.2.zip"
+        ],
+        "bytes": 123837,
+        "sha256": "19713A36C9F32B33DF59D1C79B4958434CB005B5B47DC5400A7A4B078111D9B5",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 59,
+          "regularFiles": 51,
+          "uncompressedBytes": 375383
+        },
+        "relations": [
+          {
+            "name": "com_github_gflags_gflags",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "com_github_glog_glog_windows"
+        ],
+        "sourceUrls": [
+          "https://github.com/google/glog/archive/3a0d4d22c5ae0b9a2216988411cfa6bf860cc372.zip"
+        ],
+        "bytes": 251468,
+        "sha256": "170D08F80210B82D95563F4723A15095EFF1AAD1863000E8EEB569C96A98FEFB",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 101,
+          "regularFiles": 88,
+          "uncompressedBytes": 720698
+        },
+        "relations": [
+          {
+            "name": "com_github_glog_glog_windows",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "com_google_absl"
+        ],
+        "sourceUrls": [
+          "https://github.com/abseil/abseil-cpp/archive//9687a8ea750bfcddf790372093245a1d041b21a3.tar.gz"
+        ],
+        "bytes": 2110042,
+        "sha256": "F841F78243F179326F2A80B719F2887C38FE226D288ECDC46E2AA091E6AA43BC",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 1581,
+          "regularFiles": 1506,
+          "uncompressedBytes": 9934952
+        },
+        "relations": [
+          {
+            "name": "com_google_absl",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "com_google_protobuf"
+        ],
+        "sourceUrls": [
+          "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v5.28.3.zip"
+        ],
+        "bytes": 11003792,
+        "sha256": "F645E6E42745CE922CA5388B1883CA583BAFE4366CC74CF35C3C9299005136E2",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 3282,
+          "regularFiles": 2938,
+          "uncompressedBytes": 88990821
+        },
+        "relations": [
+          {
+            "name": "com_google_protobuf",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "cpuinfo"
+        ],
+        "sourceUrls": [
+          "https://github.com/pytorch/cpuinfo/archive/8a9210069b5a37dd89ed118a783945502a30a4ae.zip"
+        ],
+        "bytes": 3852053,
+        "sha256": "C0254CE97F7ABC778DD2DF0AACA1E0506DBA1CD514FDB9FE88C07849393F8EF4",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 611,
+          "regularFiles": 569,
+          "uncompressedBytes": 20295794
+        },
+        "relations": [
+          {
+            "name": "cpuinfo",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "eigen",
+          "eigen_archive"
+        ],
+        "sourceUrls": [
+          "https://gitlab.com/libeigen/eigen/-/archive/4c38131a16803130b66266a912029504f2cf23cd/eigen-4c38131a16803130b66266a912029504f2cf23cd.tar.gz",
+          "https://storage.googleapis.com/mirror.tensorflow.org/gitlab.com/libeigen/eigen/-/archive/4c38131a16803130b66266a912029504f2cf23cd/eigen-4c38131a16803130b66266a912029504f2cf23cd.tar.gz"
+        ],
+        "bytes": 2891457,
+        "sha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 2029,
+          "regularFiles": 1890,
+          "uncompressedBytes": 16868738
+        },
+        "relations": [
+          {
+            "name": "eigen",
+            "relation": "header-only compile input"
+          },
+          {
+            "name": "eigen_archive",
+            "relation": "header-only compile input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "farmhash_archive"
+        ],
+        "sourceUrls": [
+          "https://github.com/google/farmhash/archive/0d859a811870d10f53a594927d0d0b97573ad06d.tar.gz",
+          "https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/farmhash/archive/0d859a811870d10f53a594927d0d0b97573ad06d.tar.gz"
+        ],
+        "bytes": 467251,
+        "sha256": "18392CF0736E1D62ECBB8D695C31496B6507859E8C75541D7AD0BA092DC52115",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 74,
+          "regularFiles": 70,
+          "uncompressedBytes": 1814729
+        },
+        "relations": [
+          {
+            "name": "farmhash_archive",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "fft2d"
+        ],
+        "sourceUrls": [
+          "https://github.com/petewarden/OouraFFT/archive/v1.0.tar.gz",
+          "https://storage.googleapis.com/mirror.tensorflow.org/github.com/petewarden/OouraFFT/archive/v1.0.tar.gz"
+        ],
+        "bytes": 110531,
+        "sha256": "5F4DABC2AE21E1F537425D58A49CDCA1C49EA11DB0D6271E2A4B27E9697548EB",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 42,
+          "regularFiles": 38,
+          "uncompressedBytes": 897208
+        },
+        "relations": [
+          {
+            "name": "fft2d",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "flatbuffers"
+        ],
+        "sourceUrls": [
+          "https://github.com/google/flatbuffers/archive/e6463926479bd6b330cbcf673f7e917803fd5831.tar.gz",
+          "https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/flatbuffers/archive/e6463926479bd6b330cbcf673f7e917803fd5831.tar.gz"
+        ],
+        "bytes": 2300417,
+        "sha256": "C9C6B8653597ED7EE5C62243979010BD0F09B29A46BE414505BC5B58A874BB17",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 2169,
+          "regularFiles": 1806,
+          "uncompressedBytes": 12688737
+        },
+        "relations": [
+          {
+            "name": "flatbuffers",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "gemmlowp"
+        ],
+        "sourceUrls": [
+          "https://github.com/google/gemmlowp/archive/16e8662c34917be0065110bfcd9cc27d30f52fdf.zip",
+          "https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/gemmlowp/archive/16e8662c34917be0065110bfcd9cc27d30f52fdf.zip"
+        ],
+        "bytes": 940836,
+        "sha256": "7DC418717C8456473FAC4FF2288B71057E3DCB72894524C734A4362CDB51FA8B",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 166,
+          "regularFiles": 145,
+          "uncompressedBytes": 5458426
+        },
+        "relations": [
+          {
+            "name": "gemmlowp",
+            "relation": "header-only compile input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "org_tensorflow"
+        ],
+        "sourceUrls": [
+          "https://github.com/tensorflow/tensorflow/archive/fad6b3cf5a7d51a437bd01ee929853bc8554b618.tar.gz"
+        ],
+        "bytes": 84618846,
+        "sha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 36689,
+          "regularFiles": 34502,
+          "uncompressedBytes": 338597159
+        },
+        "relations": [
+          {
+            "name": "org_tensorflow",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "pthreadpool"
+        ],
+        "sourceUrls": [
+          "https://github.com/google/pthreadpool/archive/995229919303dd98c0f1b3b585b54527067ef893.zip"
+        ],
+        "bytes": 107994,
+        "sha256": "D5A78B017839EE0474E6AEF6E21742B03F641B260F29FAF9538A0A6B8FAE0704",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 56,
+          "regularFiles": 45,
+          "uncompressedBytes": 1404766
+        },
+        "relations": [
+          {
+            "name": "pthreadpool",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "ruy"
+        ],
+        "sourceUrls": [
+          "https://github.com/google/ruy/archive/3286a34cc8de6149ac6844107dfdffac91531e72.zip",
+          "https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/ruy/archive/3286a34cc8de6149ac6844107dfdffac91531e72.zip"
+        ],
+        "bytes": 381045,
+        "sha256": "A22C42E80C7BB450DB8492728E4742EE66F46D5458C45FE67CE2C9B61240630C",
+        "integrity": {
+          "format": "zip",
+          "status": "all entries CRC-verified",
+          "entries": 152,
+          "regularFiles": 143,
+          "uncompressedBytes": 1690102
+        },
+        "relations": [
+          {
+            "name": "ruy",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "stblib"
+        ],
+        "sourceUrls": [
+          "https://github.com/nothings/stb/archive/b42009b3b9d4ca35bc703f5310eedc74f584be58.tar.gz"
+        ],
+        "bytes": 1378579,
+        "sha256": "13A99AD430E930907F5611325EC384168A958BF7610E63E60E2FD8E7B7379610",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 430,
+          "regularFiles": 407,
+          "uncompressedBytes": 4435247
+        },
+        "relations": [
+          {
+            "name": "stblib",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      },
+      {
+        "repositories": [
+          "zlib"
+        ],
+        "sourceUrls": [
+          "http://zlib.net/fossils/zlib-1.2.13.tar.gz"
+        ],
+        "bytes": 1497445,
+        "sha256": "B3A24DE97A8FDBC835B9833169501030B8977031BCB54B3B3AC13740F846AB30",
+        "integrity": {
+          "format": "tar.gz",
+          "status": "all regular members and gzip stream verified",
+          "entries": 278,
+          "regularFiles": 243,
+          "uncompressedBytes": 4182382
+        },
+        "relations": [
+          {
+            "name": "zlib",
+            "relation": "external static-library or import-library input"
+          }
+        ]
+      }
+    ],
+    "bazelPatches": [
+      {
+        "sourcePath": "third_party/com_github_glog_glog.diff",
+        "bytes": 1233,
+        "sha256": "B46D410C71E154B3B0612632C5864CE36D7BAFB49CCF44BD210B4D566E84731A",
+        "labels": [
+          "//third_party:com_github_glog_glog.diff"
+        ]
+      },
+      {
+        "sourcePath": "third_party/com_github_glog_glog_windows_patch.diff",
+        "bytes": 996,
+        "sha256": "53A3242BE5353AEDB5A18AFFD2D4D4C48E3A70CF008D66032000F2AD570D0A47",
+        "labels": [
+          "//third_party:com_github_glog_glog_windows_patch.diff"
+        ]
+      },
+      {
+        "sourcePath": "third_party/com_google_absl_windows_patch.diff",
+        "bytes": 688,
+        "sha256": "3FEC0A4EF061B3FB581471FB59D7E95CA61C523B41DCEB5A58D0E611A73B06B0",
+        "labels": [
+          "//third_party:com_google_absl_windows_patch.diff"
+        ]
+      },
+      {
+        "sourcePath": "third_party/com_google_protobuf_fixes.diff",
+        "bytes": 9799,
+        "sha256": "9B1B29FACF5B476615B288918B1D64AEA609FAF576BD2BDC5BF7E736FA82E452",
+        "labels": [
+          "//third_party:com_google_protobuf_fixes.diff"
+        ]
+      },
+      {
+        "sourcePath": "third_party/org_tensorflow_c_api_experimental.diff",
+        "bytes": 5269,
+        "sha256": "01DF432BAB8EF69DC6F464323040D4661CD7B1793211329E3F870029D266AA17",
+        "labels": [
+          "//third_party:org_tensorflow_c_api_experimental.diff"
+        ]
+      },
+      {
+        "sourcePath": "third_party/org_tensorflow_custom_ops.diff",
+        "bytes": 122507,
+        "sha256": "339CB7A2AB9DD86107D3A432473A703A4A7070BB9071C2124F2D3032F0AD2AD4",
+        "labels": [
+          "//third_party:org_tensorflow_custom_ops.diff"
+        ]
+      },
+      {
+        "sourcePath": "third_party/org_tensorflow_objc_build_fixes.diff",
+        "bytes": 2576,
+        "sha256": "1F2C99262D74EE1D6837BD56B5B137C19F91DEEDC851964FBC9E3BD32D2B164E",
+        "labels": [
+          "//third_party:org_tensorflow_objc_build_fixes.diff"
+        ]
+      },
+      {
+        "sourcePath": "third_party/stb_image_impl.diff",
+        "bytes": 1004,
+        "sha256": "4AD1F3F2D805662622894E6F9CBE029B4549E70C6BBF3EF68C23444FFE5982E3",
+        "labels": [
+          "//third_party:stb_image_impl.diff"
+        ]
+      },
+      {
+        "sourcePath": "third_party/zlib.diff",
+        "bytes": 2222,
+        "sha256": "3B7EB2292E4175CEAFDF68E2835EB12B680EDD84DBA83DB5B8521C8B81B3EA64",
+        "labels": [
+          "//third_party:zlib.diff"
+        ]
+      }
+    ],
+    "linkerInputs": {
+      "externalLibraryInputs": 274,
+      "externalRepositoryRoots": [
+        "XNNPACK",
+        "bazel_tools",
+        "com_github_gflags_gflags",
+        "com_github_glog_glog_windows",
+        "com_google_absl",
+        "com_google_protobuf",
+        "cpuinfo",
+        "farmhash_archive",
+        "fft2d",
+        "flatbuffers",
+        "org_tensorflow",
+        "pthreadpool",
+        "ruy",
+        "stblib",
+        "windows_opencv",
+        "zlib"
+      ],
+      "generatedWorkspaceLibraries": 291,
+      "platformToolchainLibraries": 5,
+      "compileActions": 1236,
+      "compileInputRepositoryRoots": 23,
+      "interpretation": "Configured link and compile inputs identify source roots but do not prove each archive member or header emitted code."
+    }
+  },
+  "build": {
+    "bazelVersion": "bazel 7.4.1",
+    "bazelSha256": "4A76EDDF6C5115E1D93355FD11DB5AC2FC20E58F197F5D65D3F21DA92AA0925B",
+    "msvcInstallationVersion": "17.11.35327.3",
+    "msvcToolsVersion": "14.41.34120",
+    "msvcToolSha256": {
+      "cl.exe": "5A85E24E8545C3CC58F8961020A546838ACF8F78ED7A3342472836130016F77B",
+      "lib.exe": "B2AAC679BFD740905FCA27F3AF1853D87FAA5082789CCC8B1C3AEA2587DBAB68",
+      "link.exe": "1EB109718DE427B37BD063E7E16D2AAED7F4040388D4DE64622E05C94403228C",
+      "rc.exe": "9274B05389A0A99C9D7C7ABA9ECB6341023B2ADDC3435DD814FBF04AF641C5E5"
+    },
+    "windowsSdkVersion": "10.0.22621.0",
+    "msysBashVersion": "GNU bash, version 5.3.15(1)-release (x86_64-pc-cygwin)",
+    "msysBashSha256": "41B09F0A9C1C68FD65253A7E8087B3775F0AF245B729ADE74CA4425D14392C2D",
+    "pythonVersion": "3.12.4",
+    "jobs": 1,
+    "mode": "opt",
+    "strip": "always",
+    "gpu": "disabled",
+    "defines": [
+      "MP_EXPORT=",
+      "TFL_STATIC_LIBRARY_BUILD",
+      "MEDIAPIPE_DISABLE_GPU=1"
+    ],
+    "commandDelta": "Only the Glog repository override was added; build-event/repository-resolution outputs were routed to private evidence. Compile and link flags otherwise match the retained r1 command.",
+    "exitCode": 0,
+    "actions": 22,
+    "warnings": [
+      "MSVC D9002 ignored -std=c++17 options; retained logs also show JAVA_HOME points to a JRE and Bazel repeated-repository warnings."
+    ]
+  },
+  "validation": {
+    "exactExports": [
+      "MpErrorFree",
+      "MpFaceDetectorClose",
+      "MpFaceDetectorCloseResult",
+      "MpFaceDetectorCreate",
+      "MpFaceDetectorDetectImage",
+      "MpFaceLandmarkerClose",
+      "MpFaceLandmarkerCloseResult",
+      "MpFaceLandmarkerCreate",
+      "MpFaceLandmarkerDetectImage",
+      "MpImageCreateFromUint8Data",
+      "MpImageFree"
+    ],
+    "exactExportGatePassed": true,
+    "mediaPipeImportCount": 13,
+    "allImportsResolveAgainstOpenCvCandidate": true,
+    "loaderProbeExitCode": 0,
+    "inference": {
+      "exitCode": 0,
+      "result": "RESULT PASS native-inference-evidence",
+      "outcome": "PASS",
+      "views": [
+        {
+          "role": "Front",
+          "landmarks": 478,
+          "matrixValues": 16,
+          "exactRepeatHash": true
+        },
+        {
+          "role": "LeftThreeQuarter",
+          "landmarks": 478,
+          "matrixValues": 16,
+          "exactRepeatHash": true
+        },
+        {
+          "role": "RightThreeQuarter",
+          "landmarks": 478,
+          "matrixValues": 16,
+          "exactRepeatHash": true
+        }
+      ],
+      "warningSummary": "TFLite feedback tensors disabled for the model signatures and native log-initialization warnings were retained."
+    },
+    "limits": "Private isolated loader/inference logs and reference images are retained separately, not included here."
+  },
+  "sourceOffer": "This record is not a complete corresponding-source offer; source archives are identified by upstream URL and hash but not bundled.",
+  "redistribution": "Microsoft VC runtime qualification remains a separate unresolved publisher requirement."
+}

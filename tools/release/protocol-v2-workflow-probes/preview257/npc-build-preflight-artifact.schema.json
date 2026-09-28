@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:schema:actorwright-npc-build-preflight:1",
+  "title": "Actorwright NPC build preflight artifact v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "product", "productVersion", "sourceLine",
+    "executableSha256", "derivationVersion", "sourceRequest",
+    "sourceRequestSha256", "presetSha256", "race", "sex",
+    "winningPluginOrder", "authorities", "headParts", "appearance",
+    "finalDependencyClosure", "requiredGates", "optionalPreview",
+    "plannedOutputs", "readyForBuild", "previewReady",
+    "runtimeAuthority"
+  ],
+  "properties": {
+    "schema": { "const": "actorwright-npc-build-preflight/1" },
+    "product": { "$ref": "#/$defs/nonEmptyString" },
+    "productVersion": { "$ref": "#/$defs/nonEmptyString" },
+    "sourceLine": { "$ref": "#/$defs/nonEmptyString" },
+    "executableSha256": { "$ref": "#/$defs/nullableSha256" },
+    "derivationVersion": { "const": 1 },
+    "sourceRequest": { "$ref": "#/$defs/path" },
+    "sourceRequestSha256": { "$ref": "#/$defs/sha256" },
+    "presetSha256": { "$ref": "#/$defs/sha256" },
+    "race": { "$ref": "#/$defs/nonEmptyString" },
+    "sex": { "$ref": "#/$defs/nonEmptyString" },
+    "winningPluginOrder": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/nonEmptyString" }
+    },
+    "authorities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/authority" }
+    },
+    "headParts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/headPart" }
+    },
+    "appearance": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/appearanceFact" }
+    },
+    "finalDependencyClosure": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/authority" }
+    },
+    "requiredGates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gate" }
+    },
+    "optionalPreview": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gate" }
+    },
+    "plannedOutputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/plannedOutput" }
+    },
+    "readyForBuild": { "type": "boolean" },
+    "previewReady": { "type": "boolean" },
+    "runtimeAuthority": { "const": false }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "path": { "type": "string", "minLength": 1 },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f]{64}$"
+    },
+    "nullableSha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9A-Fa-f]{64}$"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "origin", "identity", "sha256"],
+      "properties": {
+        "role": { "$ref": "#/$defs/nonEmptyString" },
+        "origin": { "$ref": "#/$defs/nonEmptyString" },
+        "identity": { "$ref": "#/$defs/nonEmptyString" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "required", "passed", "detail"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmptyString" },
+        "required": { "type": "boolean" },
+        "passed": { "type": "boolean" },
+        "detail": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "headPart": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceIndex", "sourceType", "effectiveType", "disposition",
+        "provider", "geometryStatus", "vertexLayoutStatus",
+        "topologyStatus", "packedNormalStatus"
+      ],
+      "properties": {
+        "sourceIndex": { "type": "integer", "minimum": 0 },
+        "sourceType": { "$ref": "#/$defs/nonEmptyString" },
+        "effectiveType": { "$ref": "#/$defs/nonEmptyString" },
+        "disposition": { "$ref": "#/$defs/nonEmptyString" },
+        "provider": { "$ref": "#/$defs/nonEmptyString" },
+        "geometryStatus": { "$ref": "#/$defs/nonEmptyString" },
+        "vertexLayoutStatus": { "$ref": "#/$defs/nonEmptyString" },
+        "topologyStatus": { "$ref": "#/$defs/nonEmptyString" },
+        "packedNormalStatus": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "appearanceFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "providerValue", "effectiveValue", "authority"],
+      "properties": {
+        "field": { "$ref": "#/$defs/nonEmptyString" },
+        "providerValue": { "$ref": "#/$defs/nonEmptyString" },
+        "effectiveValue": { "$ref": "#/$defs/nonEmptyString" },
+        "authority": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "plannedOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "path"],
+      "properties": {
+        "role": { "$ref": "#/$defs/nonEmptyString" },
+        "path": { "$ref": "#/$defs/path" }
+      }
+    }
+  }
+}

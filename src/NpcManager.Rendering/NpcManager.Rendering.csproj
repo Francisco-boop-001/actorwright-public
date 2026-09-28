@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><AssemblyName>NpcManager.Rendering</AssemblyName><RootNamespace>NpcManager.Rendering</RootNamespace><IsPackable>false</IsPackable></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\NpcManager.Domain\NpcManager.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="3.119.4" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Win32" Version="3.119.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\runtime\rendering\export_facegeom_nif.py"
+                      LogicalName="Actorwright.Rendering.Scripts.export_facegeom_nif.py" />
+    <EmbeddedResource Include="..\..\runtime\rendering\export_preview_nif.py"
+                      LogicalName="Actorwright.Rendering.Scripts.export_preview_nif.py" />
+    <EmbeddedResource Include="..\..\runtime\rendering\nif_geometry_readback.py"
+                      LogicalName="Actorwright.Rendering.Scripts.nif_geometry_readback.py" />
+    <EmbeddedResource Include="..\..\runtime\rendering\hair_zap.py"
+                      LogicalName="Actorwright.Rendering.Scripts.hair_zap.py" />
+    <EmbeddedResource Include="..\..\runtime\rendering\render_npc_preview_bundle.py"
+                      LogicalName="Actorwright.Rendering.Scripts.render_npc_preview_bundle.py" />
+    <EmbeddedResource Include="..\..\runtime\rendering\render_preview_scene.py"
+                      LogicalName="Actorwright.Rendering.Scripts.render_preview_scene.py" />
+  </ItemGroup>
+</Project>

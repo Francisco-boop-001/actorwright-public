@@ -1,0 +1,6 @@
+{
+  "$schema": "urn:actorwright:compatibility:v1:policy",
+  "formatVersion": 1,
+  "semanticRules": [],
+  "acceptedDifferences": []
+}

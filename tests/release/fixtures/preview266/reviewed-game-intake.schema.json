@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:schema:npcmanager-reviewed-game-intake:2",
+  "title": "Actorwright reviewed game intake schema 2",
+  "description": "Canonical persisted reviewed-intake document. Filesystem containment, exact file hashes, count equality, plugin/FormID ordering, path derivation, and the intake fingerprint remain codec-enforced constraints.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "edition",
+    "isAccepted",
+    "workspaceRoot",
+    "dataRoot",
+    "loadOrderPath",
+    "outputRoot",
+    "loadOrderHash",
+    "assetIndexFingerprint",
+    "intakeFingerprint",
+    "plugins",
+    "bodySidecarCount",
+    "generatedPluginCount",
+    "generatedSidecarCount",
+    "bodySidecars",
+    "generatedPlugins",
+    "generatedSidecars",
+    "assetProviderCount",
+    "runtimeAuthority",
+    "diagnostics"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "2"
+    },
+    "edition": {
+      "const": "skyrimse"
+    },
+    "isAccepted": {
+      "const": true
+    },
+    "workspaceRoot": {
+      "$ref": "#/$defs/workspacePath"
+    },
+    "dataRoot": {
+      "$ref": "#/$defs/workspacePath"
+    },
+    "loadOrderPath": {
+      "$ref": "#/$defs/workspacePath"
+    },
+    "outputRoot": {
+      "$ref": "#/$defs/workspacePath"
+    },
+    "loadOrderHash": {
+      "$ref": "#/$defs/sha256"
+    },
+    "assetIndexFingerprint": {
+      "$ref": "#/$defs/sha256"
+    },
+    "intakeFingerprint": {
+      "$ref": "#/$defs/sha256"
+    },
+    "plugins": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 512,
+      "items": {
+        "$ref": "#/$defs/plugin"
+      },
+      "description": "Codec requires unique plugin names and strictly ascending global order indexes."
+    },
+    "bodySidecarCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 512,
+      "description": "Codec requires equality with bodySidecars length."
+    },
+    "generatedPluginCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 512,
+      "description": "Codec requires equality with generatedPlugins length."
+    },
+    "generatedSidecarCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 16384,
+      "description": "Codec requires equality with generatedSidecars length."
+    },
+    "bodySidecars": {
+      "type": "array",
+      "maxItems": 512,
+      "items": {
+        "$ref": "#/$defs/bodySidecar"
+      }
+    },
+    "generatedPlugins": {
+      "type": "array",
+      "maxItems": 512,
+      "items": {
+        "$ref": "#/$defs/generatedPlugin"
+      }
+    },
+    "generatedSidecars": {
+      "type": "array",
+      "maxItems": 16384,
+      "items": {
+        "$ref": "#/$defs/generatedSidecar"
+      }
+    },
+    "assetProviderCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "runtimeAuthority": {
+      "const": false
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/diagnostic"
+      }
+    }
+  },
+  "$defs": {
+    "nonWhitespaceString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "pluginName": {
+      "type": "string",
+      "pattern": "^(?=.{1,255}$)(?=.*\\S)(?!.*[\\u0000-\\u001F\\u007F-\\u009F/\\\\:]).*\\.(?:[eE][sS][pP]|[eE][sS][mM]|[eE][sS][lL])$"
+    },
+    "workspacePath": {
+      "type": "string",
+      "pattern": "^(?=.*\\S)(?!.*\\u0000)(?:[A-Za-z]:[\\\\/]|\\\\\\\\[^\\\\/]+[\\\\/][^\\\\/]+(?:[\\\\/]|$))[\\s\\S]*$",
+      "description": "Fully-qualified no-NUL path. Codec additionally canonicalizes and validates K-local containment, ordinary-file/directory status, and exact derived paths."
+    },
+    "assetPath": {
+      "type": "string",
+      "pattern": "^(?=.*\\S)(?!.*\\u0000)(?!\\s*[\\\\/])(?!.*:)(?!\\s*\\.{1,2}(?:[\\\\/]|\\s*$))(?!.*[\\\\/]\\.{1,2}(?:[\\\\/]|\\s*$))(?!.*[\\\\/]{2})(?!.*[\\\\/]\\s*$)[\\s\\S]+$",
+      "description": "Trim-normalizable relative AssetPath with slash normalization and no empty, dot, dot-dot, rooted, or colon-bearing segment."
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^\\s*[0-9A-Fa-f]{64}\\s*$"
+    },
+    "formId": {
+      "type": "string",
+      "pattern": "^\\s*(?:0[xX])?0*[0-9A-Fa-f]{1,8}\\s*$"
+    },
+    "plugin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plugin",
+        "order",
+        "active",
+        "requested",
+        "requiredMaster",
+        "sourceHash",
+        "masters"
+      ],
+      "properties": {
+        "plugin": {
+          "$ref": "#/$defs/pluginName"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "requested": {
+          "type": "boolean"
+        },
+        "requiredMaster": {
+          "type": "boolean"
+        },
+        "sourceHash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "masters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pluginName"
+          }
+        }
+      }
+    },
+    "bodySidecar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plugin",
+        "path",
+        "sourceHash",
+        "canonicalHash",
+        "npcCount"
+      ],
+      "properties": {
+        "plugin": {
+          "$ref": "#/$defs/pluginName"
+        },
+        "path": {
+          "$ref": "#/$defs/workspacePath"
+        },
+        "sourceHash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "canonicalHash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "npcCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "generatedPlugin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plugin",
+        "path",
+        "author",
+        "sha256",
+        "readSucceeded",
+        "npcFormIds"
+      ],
+      "properties": {
+        "plugin": {
+          "$ref": "#/$defs/pluginName"
+        },
+        "path": {
+          "$ref": "#/$defs/workspacePath"
+        },
+        "author": {
+          "$ref": "#/$defs/nonWhitespaceString"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^\\s*[0-9A-Fa-f]{64}\\s*$"
+        },
+        "readSucceeded": {
+          "const": true
+        },
+        "npcFormIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/formId"
+          },
+          "description": "Codec additionally requires strictly ascending numeric FormIDs."
+        }
+      }
+    },
+    "generatedSidecar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "originPlugin",
+        "kind",
+        "variant",
+        "relativePath",
+        "path",
+        "formId",
+        "size",
+        "sha256"
+      ],
+      "properties": {
+        "originPlugin": {
+          "$ref": "#/$defs/pluginName"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "faceGeom",
+            "faceCustomizationDiffuse",
+            "faceCustomizationNormal",
+            "faceCustomizationSpecular",
+            "faceTint",
+            "faceDiffuse",
+            "faceNormal",
+            "faceDetailNeutral"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "canonical",
+            "debugSandbox"
+          ]
+        },
+        "relativePath": {
+          "$ref": "#/$defs/assetPath"
+        },
+        "path": {
+          "$ref": "#/$defs/workspacePath"
+        },
+        "formId": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/formId"
+            }
+          ]
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 536870912
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "description": "Codec additionally validates origin-plugin membership, unique relative paths, derived materialized paths, exact size/hash bytes, and canonical kind-specific naming."
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "severity",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/nonWhitespaceString"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warning"
+          ]
+        },
+        "message": {
+          "$ref": "#/$defs/nonWhitespaceString"
+        }
+      }
+    }
+  }
+}

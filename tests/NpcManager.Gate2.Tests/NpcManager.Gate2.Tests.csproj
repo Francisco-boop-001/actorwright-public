@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>NpcManager.Gate2.Tests</AssemblyName>
+    <RootNamespace>NpcManager.Gate2.Tests</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Infrastructure\NpcManager.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Pipeline\NpcManager.Pipeline.csproj" />
+    <ProjectReference Include="..\..\src\NpcManager.Presets\NpcManager.Presets.csproj" />
+  </ItemGroup>
+</Project>

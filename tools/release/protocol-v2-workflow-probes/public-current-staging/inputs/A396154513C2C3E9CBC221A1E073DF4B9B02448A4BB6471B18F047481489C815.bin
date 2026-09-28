@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "blank-npc-v1",
+  "edition": "skyrimse",
+  "sex": "female",
+  "templateNpcFormId": "0x00000800",
+  "dataRootSha256": "24d3b0d7412abad1b75103098ed4c711200292467e9a24e6213203c683eb2f52",
+  "assets": [
+    {
+      "role": "provenance",
+      "path": "provenance.json",
+      "length": 484,
+      "sha256": "2f0429ba5e4bd9539e27e55ca1dd07e953d15637a934fa252fe6a2956de699e8"
+    },
+    {
+      "role": "provider-manifest",
+      "path": "provider-manifest.json",
+      "length": 1715,
+      "sha256": "18FBF3837A1C673ED38F039DF914615FE5AE12CCA2AFCDE48114821478632F69"
+    },
+    {
+      "role": "template-plugin",
+      "path": "Data/ActorwrightBlankNpcProvider.esp",
+      "length": 360,
+      "sha256": "17057aedc2b5202b2d66dcad4259d2e9ac28467ee28458c31aeee97ad8e171f2"
+    },
+    {
+      "role": "facegeom-carrier",
+      "path": "Data/meshes/actors/character/FaceGenData/FaceGeom/ActorwrightBlankNpcProvider.esp/00000800.nif",
+      "length": 1814128,
+      "sha256": "dc18c2454658dcf3506931f6ba247f5ffe93f633d1e11f7e4a3dcd6ff190b2cd"
+    },
+    {
+      "role": "facetint-manifest",
+      "path": "facetint-manifest.json",
+      "length": 667,
+      "sha256": "b4d0f856572a02c059553183c8d0cc3c4921f57a0905fbc46d932083e4b2d0bb"
+    },
+    {
+      "role": "facetint-source",
+      "path": "Data/textures/actors/character/FaceGenData/FaceTint/ActorwrightBlankNpcProvider.esp/00000800.dds",
+      "length": 4194432,
+      "sha256": "8fc023ce81cb10855095826884b9502740e6f2370b738c276f2ccc4994bd502a"
+    },
+    {
+      "role": "dependency-manifest",
+      "path": "dependency-manifest.json",
+      "length": 124,
+      "sha256": "2e0dac3fe052a0a6e328ee5d8bfa6c8260d53efde9c75ccee06b1aa975a3d822"
+    }
+  ]
+}

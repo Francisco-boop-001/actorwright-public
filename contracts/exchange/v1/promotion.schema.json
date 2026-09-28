@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:exchange:v1:promotion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "createdUtc", "candidateManifestSha256", "decision", "decidedBy"],
+  "properties": {
+    "$schema": {"const": "urn:actorwright:exchange:v1:promotion"},
+    "version": {"const": 1},
+    "createdUtc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "candidateManifestSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "decision": {"enum": ["APPROVED", "REJECTED"]},
+    "decidedBy": {"type": "string", "minLength": 1}
+  }
+}

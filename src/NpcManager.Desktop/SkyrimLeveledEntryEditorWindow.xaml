@@ -1,0 +1,112 @@
+<Window x:Class="NpcManager.Desktop.SkyrimLeveledEntryEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="{Binding Title}"
+        Width="590" Height="500" MinWidth="500" MinHeight="440"
+        ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        FocusManager.FocusedElement="{Binding ElementName=LevelBox}"
+        automation:AutomationProperties.Name="{Binding Title}">
+    <Grid Margin="26,22,26,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,18">
+            <TextBlock Style="{StaticResource EyebrowText}" Text="SKYRIM LVLO ROW" />
+            <TextBlock Margin="0,5,0,0" FontSize="28" FontWeight="SemiBold"
+                       Text="{Binding Title}" />
+            <TextBlock Margin="0,7,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                       Text="The item identity is locked. Set when it becomes eligible and how many copies it yields."
+                       TextWrapping="Wrap" />
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+                <Border Style="{StaticResource CardBorder}" Padding="16">
+                    <StackPanel>
+                        <TextBlock FontSize="18" FontWeight="SemiBold"
+                                   Text="{Binding ItemTitle}" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,5,0,0" FontFamily="Cascadia Mono, Consolas"
+                                   FontSize="11" Foreground="{DynamicResource AccentBrush}"
+                                   Text="{Binding ItemReference}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Immutable qualified entry reference" />
+                        <TextBlock Margin="0,4,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding ItemKind}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Margin="0,14,0,0" Style="{StaticResource CardBorder}" Padding="16">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="18" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <Label Padding="0" FontWeight="SemiBold" Content="_Level"
+                                   Target="{Binding ElementName=LevelBox}" />
+                            <TextBox x:Name="LevelBox" Margin="0,7,0,0"
+                                     Text="{Binding LevelText, UpdateSourceTrigger=PropertyChanged}"
+                                     automation:AutomationProperties.Name="Entry level from one through 32767" />
+                            <TextBlock Margin="0,5,0,0" FontSize="11"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="Eligible at actor level - range 1-32767" TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <Label Padding="0" FontWeight="SemiBold" Content="_Count"
+                                   Target="{Binding ElementName=CountBox}" />
+                            <TextBox x:Name="CountBox" Margin="0,7,0,0"
+                                     Text="{Binding CountText, UpdateSourceTrigger=PropertyChanged}"
+                                     automation:AutomationProperties.Name="Entry count from one through 32767" />
+                            <TextBlock Margin="0,5,0,0" FontSize="11"
+                                       Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="Copies yielded - range 1-32767" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Margin="0,14,0,0" Padding="12" CornerRadius="8"
+                        Background="{DynamicResource SurfaceRaisedBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock FontWeight="SemiBold" Text="Chance None per entry" />
+                        <TextBlock Margin="0,4,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding ChanceNoneSummary}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Skyrim per-entry Chance None is fixed at zero" />
+                    </StackPanel>
+                </Border>
+
+                <Border Margin="0,14,0,0" Padding="12" CornerRadius="8"
+                        Background="#171D24" BorderBrush="{DynamicResource WarningBrush}"
+                        BorderThickness="1">
+                    <TextBlock FontSize="11" Foreground="{DynamicResource WarningBrush}"
+                               Text="{Binding AuthorityNotice}" TextWrapping="Wrap" />
+                </Border>
+                <TextBlock Margin="2,10,2,0" Foreground="{DynamicResource DangerBrush}"
+                           Text="{Binding ValidationMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Assertive" />
+                <TextBlock Margin="2,6,2,0" Foreground="{DynamicResource AccentBrush}"
+                           Text="{Binding StatusMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Polite" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Margin="0,16,0,0" HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button MinWidth="110" Style="{StaticResource QuietButton}" Content="_Cancel"
+                    IsCancel="True" Click="Cancel_OnClick"
+                    automation:AutomationProperties.Name="Cancel leveled-entry edit" />
+            <Button MinWidth="150" Margin="10,0,0,0"
+                    Style="{StaticResource PrimaryButton}" Content="{Binding ActionText}"
+                    IsDefault="True" IsEnabled="{Binding CanAccept}" Click="Accept_OnClick"
+                    automation:AutomationProperties.Name="Apply leveled-entry values" />
+        </StackPanel>
+    </Grid>
+</Window>

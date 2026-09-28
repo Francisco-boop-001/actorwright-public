@@ -1,0 +1,74 @@
+{
+  "actor": {
+    "editorId": "ActorwrightResumptionNpc",
+    "formId": "0x00000800"
+  },
+  "aiPolicy": {
+    "aggression": "Unaggressive",
+    "assistance": "HelpsFriendsAndAllies",
+    "confidence": "Brave",
+    "energy": 50,
+    "mood": "Neutral",
+    "morality": "NoCrime"
+  },
+  "authorities": {
+    "actorAssemblySha256": null,
+    "additionalMasters": [],
+    "bodyOwnerSha256": null,
+    "bodyRoute": "Cbbe3Ba",
+    "protectedAppearanceTreeSha256": null,
+    "providers": [
+      {
+        "byteLength": 2118,
+        "path": "planned-npc-output/Data/PackagedNpc.esp",
+        "plugin": "PackagedNpc.esp",
+        "sha256": "FBA0F5F506BA83185820AF2C7ABEE08D2C4EF891686EA653E9D95319A8A8B30C"
+      }
+    ]
+  },
+  "combatPolicy": {
+    "profile": "rangedFirst",
+    "seedLocalStyle": true
+  },
+  "followerPolicy": {
+    "currentFollowerFaction": null,
+    "defensiveOnly": true,
+    "potentialFollowerFaction": null,
+    "recruitable": true,
+    "relationshipRank": "Ally"
+  },
+  "inventoryPolicy": {
+    "desiredItems": [],
+    "expectedSourceItems": [],
+    "policy": "PreserveInventory"
+  },
+  "outfitPolicy": {
+    "armorItems": [
+      "Skyrim.esm|0x00000900"
+    ],
+    "existingOutfit": null,
+    "policy": "PrivateOutfit"
+  },
+  "output": {
+    "archive": "finished.zip",
+    "pluginFileName": "PackagedNpc.esp",
+    "root": "finished"
+  },
+  "sandboxAuthority": {
+    "copiedMaster": "authority/Skyrim.esm",
+    "copiedMasterSha256": null,
+    "rawRecordDigest": null,
+    "template": "Skyrim.esm|0x0001B217",
+    "templateEditorId": "DefaultSandboxEditorLocation512"
+  },
+  "schema": "npc.finish-core.request.v4",
+  "source": {
+    "packageManifest": "planned-npc-output/npcmanager-package.json",
+    "packageManifestSha256": "A6AD23E63F387C254EF7B07ED330A210B6A923BB9B1D1A941E60264347751B20",
+    "packageRoot": "planned-npc-output",
+    "packageTreeSha256": "0159C2020FE47871602DF0E4BED67D0B5F6C94A3F5E0D27250FEE12D3E079320",
+    "plugin": "PackagedNpc.esp",
+    "pluginPath": "planned-npc-output/Data/PackagedNpc.esp",
+    "pluginSha256": "FBA0F5F506BA83185820AF2C7ABEE08D2C4EF891686EA653E9D95319A8A8B30C"
+  }
+}

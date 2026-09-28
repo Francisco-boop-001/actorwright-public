@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "productAssetId": "skyrimse-actorwright-follower-dialogue-v2",
+  "artifact": {
+    "edition": "skyrimse",
+    "dataRelativeDestination": "Scripts/ActorwrightFollowerDialogue.pex",
+    "pexSha256": "CDE13383F9DB288733CEA255C82E7B70747FFE4A39126CB6DBE992B0CEA8AD56",
+    "pexSizeBytes": 1721
+  },
+  "source": {
+    "relativePath": "runtime/skyrimse/Source/Scripts/ActorwrightFollowerDialogue.psc",
+    "sha256": "7AFCAADA56C1EFB75076936170E9211EC3F5926A112D01810D701DDD990EAF69"
+  },
+  "compiler": {
+    "upstream": "Orvid/Caprica",
+    "sourceCommit": "e4dee0860914d75e770d3f9ab374f7aba474b701",
+    "buildConfiguration": "Release",
+    "executableSha256": "9DD94B6992D35E9C4EDC804B119207C451DCF61D514CFC4DE5773E96EA6B83E4",
+    "patches": [
+      {
+        "path": "tools/compilers/caprica/patches/0001-skyrim-native-declarations.patch",
+        "sha256": "E91BB81DEC2B5227DE3855532BFF6D6BE273643B482A7F87729E78BB0E0B923A"
+      },
+      {
+        "path": "tools/compilers/caprica/patches/0002-pex-object-length-endian.patch",
+        "sha256": "FE0E37B6FC88AB63A22ED8F580C775DBE9139F166753D6CA468FA0939933E8F5"
+      },
+      {
+        "path": "tools/compilers/caprica/patches/0003-vcpkg-pugixml-target-build-only.patch",
+        "sha256": "2E2F43F2D6C6F16AE9500C2B3D0DEBCBA152F470EBC18EBEC28B2C55F8629E7F"
+      }
+    ],
+    "anonymize": true,
+    "actualExitCode": 0,
+    "compiledPexSha256": "2B581372076791992367065E46CBA33F19A8890D21B07223E50C18EAB62D4DC3",
+    "compiledPexSizeBytes": 1776
+  },
+  "inspection": {
+    "valid": true,
+    "game": "Skyrim",
+    "pexVersion": "3.2",
+    "publicSourceIdentityPresent": true,
+    "personalOrPrivateStagingPathMarkersPresent": false
+  },
+  "comparison": {
+    "previousPexSha256": "E7C7802AFDDA25FA996B920AF8B78CB72F4D57969B63217393DA7F4DC84A9FB5",
+    "api": {
+      "valid": true,
+      "equivalent": true,
+      "differenceCount": 0
+    },
+    "behavior": {
+      "valid": true,
+      "equivalent": true,
+      "differenceCount": 0
+    }
+  },
+  "runtimeAuthority": false,
+  "postCompileSanitization": {
+    "tool": "tools/compilers/caprica/sanitize_pex_metadata.py",
+    "compiledPexSha256": "2B581372076791992367065E46CBA33F19A8890D21B07223E50C18EAB62D4DC3",
+    "compiledPexSizeBytes": 1776,
+    "shippedPexSha256": "CDE13383F9DB288733CEA255C82E7B70747FFE4A39126CB6DBE992B0CEA8AD56",
+    "sourceHeader": "runtime/skyrimse/Source/Scripts/ActorwrightFollowerDialogue.psc",
+    "userNameHeader": "",
+    "computerNameHeader": "",
+    "preservedPayloadSuffixSha256": "9C0BF8B9054A9DBF105814A2C2025FEAF0E388DE239A6228AEA6DC9F8D91F9B3",
+    "preservedPayloadSuffixBytes": 1636,
+    "toolSha256CanonicalLf": "315F7AC8885B7548B893A7E56FFA5ED9FCE0D7E061E13B6CBA441FF2F69648CC"
+  },
+  "inspectionTool": {
+    "identity": "Private Caprica PEX inspector and diff tool (not included)",
+    "sha256": "C8013BAF3350BF9B313A633F74997CE6A9A47C343E489F886BCDE359369126F0",
+    "checksumManifestSha256": "4F787CFAAFF3060F3B7DB9F4EF07057BCDA24EAB1802A0EB6EA2592D4DF51A92"
+  }
+}

@@ -1,0 +1,12 @@
+; Replace angle-bracket placeholders before running in Fallout 4.
+; Read-only inspection commands; do not use a live-root path as an output.
+prid <TARGET_FORM_ID>
+getav health
+getlevel
+getpos x
+getpos y
+getpos z
+; capture target face/neck/body/hands/eyes/outfit with the control NPC visible
+prid <CONTROL_FORM_ID>
+getav health
+getlevel

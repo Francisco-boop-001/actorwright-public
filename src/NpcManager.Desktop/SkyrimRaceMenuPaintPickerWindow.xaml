@@ -1,0 +1,119 @@
+<Window x:Class="NpcManager.Desktop.SkyrimRaceMenuPaintPickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="{Binding Title}"
+        Width="960" Height="680" MinWidth="760" MinHeight="520"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        ResizeMode="CanResizeWithGrip"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        FocusManager.FocusedElement="{Binding ElementName=FilterBox}"
+        automation:AutomationProperties.Name="Choose a registered RaceMenu paint">
+    <Grid Margin="26,22,26,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,18">
+            <TextBlock Style="{StaticResource EyebrowText}" Text="COMPILED RACEMENU CATALOG" />
+            <TextBlock Margin="0,5,0,0" FontSize="28" FontWeight="SemiBold"
+                       Text="{Binding Title}" />
+            <TextBlock Margin="0,7,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                       Text="{Binding Context}" TextWrapping="Wrap"
+                       automation:AutomationProperties.Name="Paint catalog evidence summary" />
+        </StackPanel>
+
+        <Border Grid.Row="1" Margin="0,0,0,14" Padding="14"
+                Background="{DynamicResource SurfaceRaisedBrush}"
+                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+                CornerRadius="10">
+            <TextBox x:Name="FilterBox"
+                     Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
+                     automation:AutomationProperties.Name="Filter registered paints"
+                     automation:AutomationProperties.HelpText="Filter by paint name or registered path" />
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.4*" MinWidth="420" />
+                <ColumnDefinition Width="18" />
+                <ColumnDefinition Width="1*" MinWidth="280" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardBorder}" Padding="12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <ListView x:Name="PaintList"
+                                  ItemsSource="{Binding VisibleRows}"
+                                  SelectedItem="{Binding SelectedRow, Mode=TwoWay}"
+                                  Background="#0F1823" BorderThickness="0"
+                                  MouseDoubleClick="PaintList_OnMouseDoubleClick"
+                                  PreviewKeyDown="PaintList_OnPreviewKeyDown"
+                                  automation:AutomationProperties.Name="Registered RaceMenu paints">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Paint" Width="210"
+                                                    DisplayMemberBinding="{Binding DisplayName}" />
+                                    <GridViewColumn Header="Registered texture path" Width="360"
+                                                    DisplayMemberBinding="{Binding RegisteredPath}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   MaxWidth="360" TextAlignment="Center" TextWrapping="Wrap"
+                                   Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding EmptyState}"
+                                   Visibility="{Binding HasNoVisibleRows, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                    </Grid>
+                    <TextBlock Grid.Row="1" Margin="2,10,0,0" FontSize="11"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               Text="{Binding VisibleCount}" />
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="18">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource EyebrowText}" Text="SELECTION" />
+                    <TextBlock Margin="0,7,0,4" FontSize="22" FontWeight="SemiBold"
+                               Text="{Binding SelectionTitle}" TextWrapping="Wrap" />
+                    <TextBlock FontFamily="Cascadia Mono, Consolas" FontSize="11"
+                               Foreground="{DynamicResource AccentBrush}"
+                               Text="{Binding SelectionPath}" TextWrapping="Wrap"
+                               automation:AutomationProperties.Name="Selected paint path" />
+                    <Separator Margin="0,16,0,14" />
+                    <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                               Text="{Binding SelectionEvidence}" TextWrapping="Wrap" />
+                    <Border Margin="0,18,0,0" Padding="12" CornerRadius="8"
+                            Background="#171D24" BorderBrush="{DynamicResource WarningBrush}"
+                            BorderThickness="1">
+                        <TextBlock FontSize="11" Foreground="{DynamicResource WarningBrush}"
+                                   Text="{Binding AuthorityNotice}" TextWrapping="Wrap" />
+                    </Border>
+                    <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource DangerBrush}"
+                               Text="{Binding ValidationMessage}" TextWrapping="Wrap"
+                               automation:AutomationProperties.LiveSetting="Assertive" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Margin="0,16,0,0" HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button MinWidth="110" Style="{StaticResource QuietButton}" Content="_Cancel"
+                    IsCancel="True" Click="Cancel_OnClick"
+                    automation:AutomationProperties.Name="Cancel paint selection" />
+            <Button MinWidth="150" Margin="10,0,0,0"
+                    Style="{StaticResource PrimaryButton}" Content="_Select paint"
+                    IsDefault="True" IsEnabled="{Binding CanAccept}" Click="Accept_OnClick"
+                    automation:AutomationProperties.Name="Select registered paint" />
+        </StackPanel>
+    </Grid>
+</Window>

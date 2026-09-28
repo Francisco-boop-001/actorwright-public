@@ -1,0 +1,1 @@
+$exe = Join-Path $PSScriptRoot 'actorwright.exe'; if (-not (Test-Path -LiteralPath $exe -PathType Leaf)) { [Console]::Error.WriteLine("Actorwright executable is missing: $exe"); exit 1 }; & $exe @args; exit $LASTEXITCODE

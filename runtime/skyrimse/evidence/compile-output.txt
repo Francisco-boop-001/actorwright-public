@@ -1,0 +1,15 @@
+Historical Caprica compile transcript (sanitized; not a new run)
+
+The recorded machine-specific paths have been replaced with role-based placeholders.
+The command and captured output are historical evidence; the source and output
+hashes are recorded separately in runtime-asset-manifest.json.
+
+command=powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '<ACTORWRIGHT_SOURCE_ROOT>\tools\scripts\caprica-skyrim-compiler\compile.ps1' -InputPath '<ACTORWRIGHT_SOURCE_ROOT>\runtime\skyrimse\Source\Scripts\NPCM_Manolov_ApplySSE.psc' -FlagsPath '<CAPRICA_TOOL_ROOT>\TESV_Papyrus_Flags.flg' -OutputPath '<ACTORWRIGHT_SOURCE_ROOT>\runtime\skyrimse\Data\Scripts' -ImportPath @('<SKSE_SOURCE_ROOT>\scripts\vanilla','<NIOVERRIDE_SOURCE_ROOT>')"
+exitCode=0
+Adding import directory: "<SKSE_SOURCE_ROOT>\scripts\vanilla"
+Adding import directory: "<NIOVERRIDE_SOURCE_ROOT>"
+Importing files...
+Imported 64 files.
+Compiling 1 files...
+Compiling NPCM_Manolov_ApplySSE.psc
+diagnosticSummary=0 warnings; 0 errors

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "actorwright-exchange-response/2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "issueId",
+    "createdUtc",
+    "classification",
+    "issueManifestSha256",
+    "candidateManifestSha256",
+    "summary",
+    "recommendedAction",
+    "artifacts"
+  ],
+  "properties": {
+    "$schema": {"const": "actorwright-exchange-response/2"},
+    "version": {"const": 2},
+    "issueId": {"type": "string", "pattern": "^NPCM-[0-9]{8}-[0-9]{4}$"},
+    "createdUtc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "classification": {"enum": ["BUG", "FEATURE_REQUEST", "EXPECTED_TYPED_REFUSAL", "CONSUMER_OR_ENVIRONMENT_FAILURE", "NEEDS_MORE_EVIDENCE"]},
+    "issueManifestSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "candidateManifestSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "summary": {"type": "string", "minLength": 1},
+    "recommendedAction": {"type": "string", "minLength": 1},
+    "artifacts": {"type": "array"}
+  }
+}

@@ -1,0 +1,261 @@
+<UserControl x:Class="NpcManager.Desktop.ReviewedGameIntakePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             SizeChanged="PanelSizeChanged"
+             PreviewKeyDown="PanelPreviewKeyDown"
+             automation:AutomationProperties.Name="Open copied Skyrim workspace">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="0,16,10,8">
+        <Grid x:Name="WorkspaceGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="PrimaryColumn" Width="3*" MinWidth="590" />
+                <ColumnDefinition x:Name="GutterColumn" Width="22" />
+                <ColumnDefinition x:Name="ReviewColumn" Width="2*" MinWidth="330" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel x:Name="PrimaryPanel" Grid.Column="0">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        Background="#13252C" BorderBrush="#2F665E">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="STEP ZERO  /  COPIED DATA" />
+                        <TextBlock Margin="0,6,0,0" FontSize="23" FontWeight="SemiBold"
+                                   Text="Open a trusted Skyrim workspace" />
+                        <TextBlock Margin="0,7,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Review an explicit copied Data folder, its plugin order, masters, sidecars, and assets before an NPC task can use them. The live game is never touched." />
+                    </StackPanel>
+                </Border>
+
+                <StackPanel IsEnabled="{Binding IsNotBusy}">
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource EyebrowText}" Text="1  WORKSPACE" />
+                            <TextBlock Margin="0,5,0,16" FontSize="19" FontWeight="SemiBold"
+                                       Text="Choose explicit K-local inputs" />
+
+                            <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="Copied Data folder" />
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding DataRoot, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Copied Skyrim Data folder" />
+                                <Button Grid.Column="1" Margin="10,0,0,0"
+                                        Style="{StaticResource QuietButton}" Content="Choose"
+                                        Command="{Binding BrowseDataCommand}"
+                                        automation:AutomationProperties.Name="Choose copied Skyrim Data folder" />
+                            </Grid>
+
+                            <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="Load-order manifest" />
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding LoadOrderPath, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Explicit load-order manifest" />
+                                <Button Grid.Column="1" Margin="10,0,0,0"
+                                        Style="{StaticResource QuietButton}" Content="Choose"
+                                        Command="{Binding BrowseLoadOrderCommand}"
+                                        automation:AutomationProperties.Name="Choose explicit load-order manifest" />
+                            </Grid>
+
+                            <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="Fresh output folder" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding OutputRoot, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Fresh workspace output folder" />
+                                <Button Grid.Column="1" Margin="10,0,0,0"
+                                        Style="{StaticResource QuietButton}" Content="Choose parent"
+                                        Command="{Binding BrowseOutputCommand}"
+                                        automation:AutomationProperties.Name="Choose output parent folder" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Style="{StaticResource CardBorder}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Style="{StaticResource EyebrowText}" Text="2  PLUGINS" />
+                            <TextBlock Grid.Row="1" Margin="0,5,0,14" FontSize="19" FontWeight="SemiBold"
+                                       Text="Choose the working closure" />
+                            <Grid Grid.Row="2" Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Filter reviewed plugins"
+                                         automation:AutomationProperties.HelpText="Filters visible plugins without changing hidden selections." />
+                                <CheckBox Grid.Column="1" Margin="14,9,0,0" Content="Active only"
+                                          IsChecked="{Binding ActiveOnly}"
+                                          automation:AutomationProperties.Name="Show active plugins only" />
+                            </Grid>
+                            <StackPanel Grid.Row="3">
+                                <WrapPanel Margin="0,0,0,10">
+                                    <Button Style="{StaticResource QuietButton}" Content="Select active"
+                                            Command="{Binding SelectActiveCommand}"
+                                            automation:AutomationProperties.Name="Select active plugins" />
+                                    <Button Margin="8,0,0,0" Style="{StaticResource QuietButton}" Content="Select shown"
+                                            Command="{Binding SelectShownCommand}"
+                                            automation:AutomationProperties.Name="Select shown plugins" />
+                                    <Button Margin="8,0,0,0" Style="{StaticResource QuietButton}" Content="Clear shown"
+                                            Command="{Binding ClearShownCommand}"
+                                            automation:AutomationProperties.Name="Clear shown plugin selections" />
+                                    <Button Margin="8,0,0,0" Style="{StaticResource QuietButton}" Content="Add required masters"
+                                            Command="{Binding AddMastersCommand}"
+                                            automation:AutomationProperties.Name="Add required plugin masters" />
+                                </WrapPanel>
+                                <Grid MinHeight="160" MaxHeight="285">
+                                    <ListBox x:Name="PluginList"
+                                             ItemsSource="{Binding VisiblePlugins}"
+                                             automation:AutomationProperties.Name="Reviewed plugin selection">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid MinHeight="36">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="34" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="78" />
+                                                        <ColumnDefinition Width="64" />
+                                                        <ColumnDefinition Width="112" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected}"
+                                                              automation:AutomationProperties.Name="{Binding Name, StringFormat=Select {0}}" />
+                                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Name}"
+                                                               TextTrimming="CharacterEllipsis" />
+                                                    <TextBlock Grid.Column="2" VerticalAlignment="Center"
+                                                               Foreground="{DynamicResource MutedTextBrush}" Text="{Binding ActiveState}" />
+                                                    <TextBlock Grid.Column="3" VerticalAlignment="Center"
+                                                               Foreground="{DynamicResource MutedTextBrush}"
+                                                               Text="{Binding MasterCount, StringFormat={}{0} masters}" />
+                                                    <TextBlock Grid.Column="4" VerticalAlignment="Center" Text="{Binding Health}"
+                                                               Foreground="{DynamicResource AccentBrush}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                    <TextBlock HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Margin="18"
+                                               Foreground="{DynamicResource MutedTextBrush}"
+                                               Text="{Binding PluginListState}"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Visibility="{Binding HasNoVisiblePlugins, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                               automation:AutomationProperties.Name="Plugin list state" />
+                                </Grid>
+                                <TextBlock Margin="0,9,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="{Binding SelectedCount, StringFormat={}{0} selected}"
+                                           automation:AutomationProperties.Name="Selected plugin count" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel x:Name="ReviewPanel" Grid.Column="2">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14" Background="#111E2B">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="REVIEW" />
+                        <TextBlock Margin="0,5,0,4" FontSize="21" FontWeight="SemiBold"
+                                   Text="Establish trusted inputs" />
+                        <TextBlock Margin="0,0,0,18" Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Nothing is written. The accepted result is hash-bound and becomes stale as soon as an input changes." />
+                        <Button Style="{StaticResource PrimaryButton}" Content="Review copied workspace"
+                                IsEnabled="{Binding CanReview}" IsDefault="True" Click="ReviewClick"
+                                automation:AutomationProperties.Name="Review copied Skyrim workspace" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource QuietButton}" Content="Cancel review"
+                                Command="{Binding CancelCommand}"
+                                automation:AutomationProperties.Name="Cancel copied workspace review" />
+                        <ProgressBar Margin="0,18,0,0" Height="6"
+                                     Minimum="0" Maximum="100"
+                                     Value="{Binding ProgressPercent, Mode=OneWay}"
+                                     IsIndeterminate="{Binding IsProgressIndeterminate, Mode=OneWay}"
+                                     automation:AutomationProperties.Name="Copied workspace review progress" />
+                        <TextBlock Margin="0,10,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding Status}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Copied workspace review status"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="VERDICT" />
+                        <TextBlock Margin="0,5,0,14" FontSize="20" FontWeight="SemiBold" Text="{Binding Verdict}"
+                                   automation:AutomationProperties.Name="Workspace review verdict"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                        <UniformGrid Columns="2">
+                            <StackPanel Margin="0,0,8,12">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Plugins" />
+                                <TextBlock FontSize="21" FontWeight="SemiBold" Text="{Binding SelectedCount}"
+                                           automation:AutomationProperties.Name="Reviewed plugin total" />
+                            </StackPanel>
+                            <StackPanel Margin="8,0,0,12">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Asset providers" />
+                                <TextBlock FontSize="21" FontWeight="SemiBold" Text="{Binding AssetProviderCount}"
+                                           automation:AutomationProperties.Name="Reviewed asset provider total" />
+                            </StackPanel>
+                            <StackPanel Margin="0,0,8,0">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Generated plugins" />
+                                <TextBlock FontSize="21" FontWeight="SemiBold" Text="{Binding GeneratedPluginCount}"
+                                           automation:AutomationProperties.Name="Generated plugin total" />
+                            </StackPanel>
+                            <StackPanel Margin="8,0,0,0">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Body sidecars" />
+                                <TextBlock FontSize="21" FontWeight="SemiBold" Text="{Binding SidecarCount}"
+                                           automation:AutomationProperties.Name="Reviewed BodyGen sidecar total" />
+                            </StackPanel>
+                        </UniformGrid>
+                        <TextBlock Margin="0,16,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="Manifest SHA-256" />
+                        <TextBlock FontFamily="Consolas" FontSize="11" Text="{Binding ManifestHash}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Load-order manifest SHA-256" />
+                        <TextBlock Margin="0,12,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="Intake fingerprint" />
+                        <TextBlock FontFamily="Consolas" FontSize="11" Text="{Binding IntakeFingerprint}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Reviewed intake fingerprint" />
+                        <Border Margin="0,16,0,0" Padding="10" Background="{DynamicResource AccentDarkBrush}" CornerRadius="7">
+                            <TextBlock Foreground="{DynamicResource AccentBrush}" Text="{Binding RuntimeAuthority}" TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="Runtime authority status" />
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="FINDINGS" />
+                        <ListBox x:Name="DiagnosticsList" Margin="0,10,0,0" MaxHeight="220" ItemsSource="{Binding Diagnostics}"
+                                 automation:AutomationProperties.Name="Copied workspace review diagnostics">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Margin="0,8,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="No finding means no actionable refusal." />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

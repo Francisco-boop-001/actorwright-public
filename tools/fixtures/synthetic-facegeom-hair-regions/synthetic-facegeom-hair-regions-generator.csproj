@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>synthetic-facegeom-hair-regions-generator</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\NpcManager.Infrastructure\NpcManager.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+NpcManagerReimplementation is licensed under GPL-3.0-only; see `LICENSE`.
+
+The feature baseline is MANOLOV02/FO4_NPC_Manager at commit
+2f765c5dc09277f48321eb8cf80ad7925d4699a4. That upstream repository carries
+a GPL version 3 license. Its exact license text is retained at
+`licenses/upstream-fo4-npc-manager-LICENSE`; the file SHA-256 is
+`5335ab01352c0208eb48c866d55513231cff8e1af8833d698a56f580b36965c8`.
+
+The hash-bound emitter source provenance is recorded in
+`docs/migration/fo4-emitter-provenance.json`. The Actorwright source blob is
+identical to `FO4_NPC_Manager/NPC/NpcApplyScriptEmitter.vb` at the pinned
+upstream commit. Historical migration hashes remain in that record.
+
+No third-party implementation dependency is approved without a version,
+source URL, hash, license expression, attribution, and compatibility record.
+
+The versioned dependency inventory and open distribution conditions are recorded in docs/licenses.md and docs/third-party-licenses.md. These records are not a clearance statement for any package that omits required source, notices, or redistribution qualification.

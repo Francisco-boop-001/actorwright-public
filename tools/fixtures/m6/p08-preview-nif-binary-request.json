@@ -1,0 +1,11 @@
+{
+  "root": "K:\\ExampleWorkspace",
+  "output": "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work\\m6-preview-nif-binary-spike\\skyrimse.nif",
+  "targetGame": "SKYRIMSE",
+  "assets": [
+    {
+      "path": "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m6-preview-assets\\sse\\hair.nif",
+      "sha256": "3D33BCC7A0EB04D88C30AB4A4E5120FDB7ACDC8B5646AF7728825BBDEAFE0A83"
+    }
+  ]
+}

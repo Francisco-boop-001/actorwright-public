@@ -1,0 +1,289 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "schema export",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "fallout4",
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Write the versioned schema and exit-code contract for one command or all commands.",
+    "limitations": [
+      "Protocol v2 schema export refuses to overwrite an existing output file."
+    ],
+    "options": [
+      {
+        "cliName": "command",
+        "jsonName": "command",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<command-name>",
+        "description": "Optional exact command name; omission exports all commands.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "output",
+        "jsonName": "output",
+        "valueKind": "path",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<new-json-file>",
+        "description": "Optional fresh K-local schema contract output; omission returns the contract inline.",
+        "aliasFor": null
+      }
+    ],
+    "inputArtifactKinds": [],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:schema-export-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "writeNewArtifact",
+        "condition": "When --output is supplied.",
+        "scope": "The admitted K-local --output path.",
+        "trigger": null
+      },
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "requiresFreshOutput",
+    "determinism": "deterministic",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "Command options are admitted before schema projection or output."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "notApplicable",
+        "reason": "This command does not consume source-provider artifacts."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "established",
+        "reason": "The schema result is deterministically materialized in the response."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "notApplicable",
+        "reason": "This command does not verify a produced game artifact."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "notApplicable",
+        "reason": "This command does not produce an off-engine preview."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "notApplicable",
+        "reason": "This command does not request visual acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "notApplicable",
+        "reason": "This command does not make a game-runtime claim."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "notApplicable",
+        "reason": "This command does not promote an artifact."
+      }
+    ],
+    "transitions": [],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [],
+    "inputArtifacts": [],
+    "outputArtifacts": [
+      {
+        "kind": "schema-export-output",
+        "schemaIds": [],
+        "description": "Optional fresh K-local output; no grounded schema identifier is published.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "output",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      }
+    ],
+    "resultShape": "object",
+    "resultDescription": "Typed schema export outcome and diagnostics; no grounded result schema identifier is published."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:schema-export-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:schema-export-result:v1",
+        "title": "Actorwright protocol v2 schema export result",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaId",
+          "protocolVersion",
+          "scopedHelpResultSchema",
+          "pathConventions"
+        ],
+        "properties": {
+          "schemaId": {
+            "const": "urn:actorwright:protocol-v2:schema-export-result:v1"
+          },
+          "protocolVersion": {
+            "const": "2"
+          },
+          "scopedHelpResultSchema": {
+            "$ref": "#/$defs/schemaDefinition"
+          },
+          "pathConventions": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "cli",
+              "documents",
+              "assets"
+            ],
+            "properties": {
+              "cli": {
+                "type": "string"
+              },
+              "documents": {
+                "type": "string"
+              },
+              "assets": {
+                "type": "string"
+              }
+            }
+          },
+          "commands": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contract",
+                "resultSchemas",
+                "documentSchemas"
+              ],
+              "properties": {
+                "contract": {
+                  "type": "object"
+                },
+                "resultSchemas": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/schemaDefinition"
+                  }
+                },
+                "documentSchemas": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "contract": {
+            "type": "object"
+          },
+          "resultSchemas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/schemaDefinition"
+            }
+          },
+          "documentSchemas": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "commands"
+            ]
+          },
+          {
+            "required": [
+              "contract",
+              "resultSchemas",
+              "documentSchemas"
+            ]
+          }
+        ],
+        "$defs": {
+          "schemaDefinition": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schemaIdentifier",
+              "jsonSchema"
+            ],
+            "properties": {
+              "schemaIdentifier": {
+                "type": "string",
+                "minLength": 1
+              },
+              "jsonSchema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "documentSchemas": []
+}

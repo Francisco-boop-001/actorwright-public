@@ -1,0 +1,23 @@
+diff --git a/Caprica/papyrus/PapyrusFunction.cpp b/Caprica/papyrus/PapyrusFunction.cpp
+index 44f3ded..4e8c715 100644
+--- a/Caprica/papyrus/PapyrusFunction.cpp
++++ b/Caprica/papyrus/PapyrusFunction.cpp
+@@ -85,17 +85,17 @@ void PapyrusFunction::semantic(PapyrusResolutionContext* ctx) {
+ 
+   for (auto p : parameters)
+     p->semantic(ctx);
+ }
+ 
+ void PapyrusFunction::semantic2(PapyrusResolutionContext* ctx) {
+   if (isGlobal() && ctx->state && ctx->state->name != "")
+     ctx->reportingContext.error(location, "Global functions are only allowed in the empty state.");
+-  if (isNative() && !ctx->object->isNative())
++  if (conf::Papyrus::game != GameID::Skyrim && isNative() && !ctx->object->isNative())
+     ctx->reportingContext.error(location, "You can only define Native functions in a script marked Native.");
+ 
+   ctx->ensureNamesAreUnique(parameters, "parameter");
+ 
+   ctx->function = this;
+   ctx->pushLocalVariableScope();
+   // skyrim first pass
+   if (conf::Papyrus::game == GameID::Skyrim)

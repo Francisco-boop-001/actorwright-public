@@ -1,0 +1,23 @@
+Historical compile evidence (sanitized; not a fresh build)
+
+The recovered session transcript is dated 2026-09-07. It reports:
+
+  Importing files...
+  Imported 14386 files.
+  Compiling 1 files...
+  Compiling ActorwrightFollowerDialogue.psc
+
+The original shell piped compiler output through a text-filtering process and
+then printed `exit=0` for that shell pipeline. It did not separately capture
+the compiler process exit code, so this is not reliable proof of a successful
+compile. User and temporary-directory identifiers from the original transcript
+have been removed from this public copy.
+
+At the time of this recovered session, no fresh compile result was available;
+the shell's printed xit=0 was not a separately captured compiler exit.
+The former v1 PEX included personal build metadata and was later replaced by
+asset identity v2. Current build evidence is
+`runtime/skyrimse/evidence/followerdialogue-verified-build.json`; it records a
+separate Caprica exit code 0, valid PEX inspection, and API/behavior
+comparisons with zero differences. The current manifest binds v2 to unchanged
+PSC source bytes. This is static validation; runtime authority remains false.

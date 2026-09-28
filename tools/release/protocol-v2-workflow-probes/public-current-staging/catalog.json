@@ -1,0 +1,571 @@
+{
+  "schemaVersion": 2,
+  "probes": [
+    {
+      "command": "npc assembly preflight",
+      "validator": "current-staging-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:npc-assembly-preflight-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:npc-assembly-preflight-result:v1"
+      ],
+      "fixtures": [
+        {
+          "source": "assembly-preflight/invalid-contract.json",
+          "destination": "assembly-preflight/invalid-contract.json",
+          "encoding": "raw",
+          "size": 3,
+          "sha256": "CA3D163BAB055381827226140568F3BEF7EAAC187CEBD76878E0B63E9E442356"
+        }
+      ],
+      "arguments": [
+        "npc",
+        "assembly",
+        "preflight",
+        "--protocol",
+        "2",
+        "--json",
+        "--contract",
+        "{path:assembly-preflight/invalid-contract.json}",
+        "--contract-sha256",
+        "{sha256:assembly-preflight/invalid-contract.json}",
+        "--output",
+        "{path:evidence/assembly.json}"
+      ],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {}
+    },
+    {
+      "command": "workspace preflight",
+      "validator": "current-staging-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:workspace-preflight-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:workspace-preflight-result:v1"
+      ],
+      "fixtures": [
+        {
+          "source": "inputs/46165DEDA4A3A122F52587F31BF03AB5F7EBEBEC78B7CC717B24ADF0427677A1.bin",
+          "destination": "Data/ActorwrightBlankNpcProvider.esp",
+          "encoding": "raw",
+          "size": 994,
+          "sha256": "46165DEDA4A3A122F52587F31BF03AB5F7EBEBEC78B7CC717B24ADF0427677A1"
+        },
+        {
+          "source": "inputs/EFB8E4788F7DD2E137CF31174248090000B5A19B7DF70B65D69FF7D8684799BD.bin",
+          "destination": "Data/Probe.esp",
+          "encoding": "raw",
+          "size": 42,
+          "sha256": "EFB8E4788F7DD2E137CF31174248090000B5A19B7DF70B65D69FF7D8684799BD"
+        },
+        {
+          "source": "inputs/A3921E8E17ACEA1BE3141E7F4B2FEA09E9A33444555D2150D00157C84D336979.bin",
+          "destination": "Data/Skyrim.esm",
+          "encoding": "raw",
+          "size": 2259,
+          "sha256": "A3921E8E17ACEA1BE3141E7F4B2FEA09E9A33444555D2150D00157C84D336979"
+        },
+        {
+          "source": "inputs/1C3BCFE053FCD0F28928BCECBDB63E63CE8602D2A0DDEF3BE76F889E958749EC.bin",
+          "destination": "Data/meshes/Actors/Character/Actorwright/Head.nif",
+          "encoding": "raw",
+          "size": 322300,
+          "sha256": "1C3BCFE053FCD0F28928BCECBDB63E63CE8602D2A0DDEF3BE76F889E958749EC"
+        },
+        {
+          "source": "inputs/98D7AE4407A43E52B845910796E7EB4B1816A601A95A4D8E2FD4C76044C832B4.bin",
+          "destination": "Data/meshes/Actors/Character/Actorwright/Head.tri",
+          "encoding": "raw",
+          "size": 46048,
+          "sha256": "98D7AE4407A43E52B845910796E7EB4B1816A601A95A4D8E2FD4C76044C832B4"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actors/Character/Actorwright/Head.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actors/Character/Actorwright/Head_msn.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actors/Character/Actorwright/Head_s.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actors/Character/Actorwright/Head_sk.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actors/Character/Male/BlankDetailmap.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actors/Character/character assets/tintmasks/femalehead.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/body_d.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/body_n.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/body_s.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/body_sk.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/feet_d.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/feet_n.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/feet_s.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/feet_sk.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/hands_d.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/hands_n.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/hands_s.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "Data/textures/Actorwright/Skin/hands_sk.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/B4D7FA0E295A63A4772AAA23E00AA780B68E3327ED8B959838BA442300118E35.bin",
+          "destination": "load-order.json",
+          "encoding": "raw",
+          "size": 213,
+          "sha256": "B4D7FA0E295A63A4772AAA23E00AA780B68E3327ED8B959838BA442300118E35"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "npc-preflight/face.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/0C85D8FF6D0817487BE726861A25A2492D928F28AF1F7247A7799DE7F789312D.bin",
+          "destination": "npc-preflight/face.nif",
+          "encoding": "raw",
+          "size": 2252813,
+          "sha256": "0C85D8FF6D0817487BE726861A25A2492D928F28AF1F7247A7799DE7F789312D"
+        },
+        {
+          "source": "inputs/F3CC1C2296A62E4B812EF1C566D3C1232B66E48368273DA45EC19269B0256E69.bin",
+          "destination": "npc-preflight/fixture.jslot",
+          "encoding": "raw",
+          "size": 507,
+          "sha256": "F3CC1C2296A62E4B812EF1C566D3C1232B66E48368273DA45EC19269B0256E69"
+        },
+        {
+          "source": "inputs/D44EA0EB4CAE5E2ACA89502DB551664F94E11F5B3DAB13889C5F76FA9D65AF54.bin",
+          "destination": "npc-preflight/preset-bundle.json",
+          "encoding": "raw",
+          "size": 1262,
+          "sha256": "D44EA0EB4CAE5E2ACA89502DB551664F94E11F5B3DAB13889C5F76FA9D65AF54"
+        },
+        {
+          "source": "inputs/4100A1850092C9B10C03D698E00AC57FE7CE80C2A26608F35F30A3E289478333.bin",
+          "destination": "npc-preflight/record-authority.json",
+          "encoding": "raw",
+          "size": 1529,
+          "sha256": "4100A1850092C9B10C03D698E00AC57FE7CE80C2A26608F35F30A3E289478333"
+        },
+        {
+          "source": "inputs/DAEDFA149F3C56A691A7D013B107B96EC0B8641631C225DB00C210D1345A170E.bin",
+          "destination": "npc-preflight/request.json",
+          "encoding": "raw",
+          "size": 3154,
+          "sha256": "DAEDFA149F3C56A691A7D013B107B96EC0B8641631C225DB00C210D1345A170E"
+        },
+        {
+          "source": "inputs/0E2EFBBBA7425617513428B400832CCCFDE5874B4FDD6389507871AE72DD958D.bin",
+          "destination": "npc-preflight/runtime-routes.json",
+          "encoding": "raw",
+          "size": 109,
+          "sha256": "0E2EFBBBA7425617513428B400832CCCFDE5874B4FDD6389507871AE72DD958D"
+        },
+        {
+          "source": "inputs/F0B92DD941CFEB15AE8B6D1E4F8ADBE18C1BAD712EE4C83AEE870FF90EC5B5BC.bin",
+          "destination": "npc-preflight/standalone-assets.json",
+          "encoding": "raw",
+          "size": 805,
+          "sha256": "F0B92DD941CFEB15AE8B6D1E4F8ADBE18C1BAD712EE4C83AEE870FF90EC5B5BC"
+        },
+        {
+          "source": "inputs/17057AEDC2B5202B2D66DCAD4259D2E9AC28467EE28458C31AEEE97AD8E171F2.bin",
+          "destination": "npc-preflight/workspace-provider/Data/ActorwrightBlankNpcProvider.esp",
+          "encoding": "raw",
+          "size": 360,
+          "sha256": "17057AEDC2B5202B2D66DCAD4259D2E9AC28467EE28458C31AEEE97AD8E171F2"
+        },
+        {
+          "source": "inputs/DC18C2454658DCF3506931F6BA247F5FFE93F633D1E11F7E4A3DCD6FF190B2CD.bin",
+          "destination": "npc-preflight/workspace-provider/Data/meshes/actors/character/FaceGenData/FaceGeom/ActorwrightBlankNpcProvider.esp/00000800.nif",
+          "encoding": "raw",
+          "size": 1814128,
+          "sha256": "DC18C2454658DCF3506931F6BA247F5FFE93F633D1E11F7E4A3DCD6FF190B2CD"
+        },
+        {
+          "source": "inputs/8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A.bin",
+          "destination": "npc-preflight/workspace-provider/Data/textures/actors/character/FaceGenData/FaceTint/ActorwrightBlankNpcProvider.esp/00000800.dds",
+          "encoding": "raw",
+          "size": 4194432,
+          "sha256": "8FC023CE81CB10855095826884B9502740E6F2370B738C276F2CCC4994BD502A"
+        },
+        {
+          "source": "inputs/2E0DAC3FE052A0A6E328EE5D8BFA6C8260D53EFDE9C75CCEE06B1AA975A3D822.bin",
+          "destination": "npc-preflight/workspace-provider/dependency-manifest.json",
+          "encoding": "raw",
+          "size": 124,
+          "sha256": "2E0DAC3FE052A0A6E328EE5D8BFA6C8260D53EFDE9C75CCEE06B1AA975A3D822"
+        },
+        {
+          "source": "inputs/B4D0F856572A02C059553183C8D0CC3C4921F57A0905FBC46D932083E4B2D0BB.bin",
+          "destination": "npc-preflight/workspace-provider/facetint-manifest.json",
+          "encoding": "raw",
+          "size": 667,
+          "sha256": "B4D0F856572A02C059553183C8D0CC3C4921F57A0905FBC46D932083E4B2D0BB"
+        },
+        {
+          "source": "inputs/2F0429BA5E4BD9539E27E55CA1DD07E953D15637A934FA252FE6A2956DE699E8.bin",
+          "destination": "npc-preflight/workspace-provider/provenance.json",
+          "encoding": "raw",
+          "size": 484,
+          "sha256": "2F0429BA5E4BD9539E27E55CA1DD07E953D15637A934FA252FE6A2956DE699E8"
+        },
+        {
+          "source": "inputs/18FBF3837A1C673ED38F039DF914615FE5AE12CCA2AFCDE48114821478632F69.bin",
+          "destination": "npc-preflight/workspace-provider/provider-manifest.json",
+          "encoding": "raw",
+          "size": 1715,
+          "sha256": "18FBF3837A1C673ED38F039DF914615FE5AE12CCA2AFCDE48114821478632F69"
+        },
+        {
+          "source": "inputs/A396154513C2C3E9CBC221A1E073DF4B9B02448A4BB6471B18F047481489C815.bin",
+          "destination": "npc-preflight/workspace-provider/registry.json",
+          "encoding": "raw",
+          "size": 1740,
+          "sha256": "A396154513C2C3E9CBC221A1E073DF4B9B02448A4BB6471B18F047481489C815"
+        }
+      ],
+      "arguments": [
+        "workspace",
+        "preflight",
+        "--protocol",
+        "2",
+        "--json",
+        "--game",
+        "skyrimse",
+        "--workspace-root",
+        "{workspace}",
+        "--data-root",
+        "{path:Data}",
+        "--output-root",
+        "{path:reserved-output}",
+        "--load-order",
+        "{path:load-order.json}",
+        "--intake-output",
+        "{path:evidence/intake.json}",
+        "--npc-editor-id",
+        "ActorwrightResumptionNpc",
+        "--workflow-output",
+        "{path:workflow/workspace.json}"
+      ],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {
+        "phase": "analyze"
+      }
+    },
+    {
+      "command": "preset inspect",
+      "validator": "current-staging-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:preset-inspect-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:preset-inspect-result:v1"
+      ],
+      "fixtures": [],
+      "arguments": [
+        "preset",
+        "inspect",
+        "--protocol",
+        "2",
+        "--json",
+        "--format",
+        "racemenu-jslot",
+        "--edition",
+        "skyrimse",
+        "--input",
+        "{path:npc-preflight/fixture.jslot}",
+        "--input-sha256",
+        "{sha256:npc-preflight/fixture.jslot}",
+        "--inspection-output",
+        "{path:evidence/inspection.json}",
+        "--workflow-bundle",
+        "{path:workflow/workspace.json}",
+        "--workflow-bundle-sha256",
+        "{sha256:workflow/workspace.json}",
+        "--workflow-output",
+        "{path:workflow/inspected.json}"
+      ],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {
+        "phase": "analyze"
+      }
+    },
+    {
+      "command": "npc create-from-jslot",
+      "validator": "current-staging-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:npc-create-preflight-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:npc-create-preflight-result:v1",
+        "urn:actorwright:protocol-v2:npc-create-from-jslot-build-result:v1"
+      ],
+      "fixtures": [],
+      "arguments": [
+        "npc",
+        "create-from-jslot",
+        "--protocol",
+        "2",
+        "--json",
+        "--request",
+        "{path:npc-preflight/request.json}",
+        "--request-sha256",
+        "{sha256:npc-preflight/request.json}",
+        "--preset",
+        "{path:npc-preflight/fixture.jslot}",
+        "--preset-sha256",
+        "{sha256:npc-preflight/fixture.jslot}",
+        "--data-root",
+        "{path:Data}",
+        "--plugins",
+        "Skyrim.esm,ActorwrightBlankNpcProvider.esp",
+        "--companion-root",
+        "{path:companion}",
+        "--preflight-output",
+        "{path:evidence/preflight.json}",
+        "--workflow-bundle",
+        "{path:workflow/inspected.json}",
+        "--workflow-bundle-sha256",
+        "{sha256:workflow/inspected.json}",
+        "--workflow-output",
+        "{path:workflow/preflight.json}"
+      ],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {
+        "phase": "apply"
+      }
+    },
+    {
+      "command": "npc finish analyze",
+      "validator": "current-staging-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:finish-analyze-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:finish-analyze-result:v1"
+      ],
+      "fixtures": [],
+      "arguments": [
+        "npc",
+        "finish",
+        "analyze",
+        "--protocol",
+        "2",
+        "--json",
+        "--request",
+        "{path:finish-request.json}",
+        "--request-sha256",
+        "{sha256:finish-request.json}",
+        "--proposal",
+        "{path:finish-proposal.json}",
+        "--workflow-bundle",
+        "{path:workflow/created.json}",
+        "--workflow-bundle-sha256",
+        "{sha256:workflow/created.json}",
+        "--workflow-output",
+        "{path:workflow/finish-analyzed.json}"
+      ],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {
+        "phase": "review-required"
+      }
+    },
+    {
+      "command": "npc finish apply",
+      "validator": "current-staging-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:finish-apply-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:finish-apply-result:v1"
+      ],
+      "fixtures": [],
+      "arguments": [
+        "npc",
+        "finish",
+        "apply",
+        "--protocol",
+        "2",
+        "--json",
+        "--request",
+        "{path:finish-request.json}",
+        "--request-sha256",
+        "{sha256:finish-request.json}",
+        "--proposal",
+        "{path:finish-proposal.json}",
+        "--proposal-sha256",
+        "{sha256:finish-proposal.json}",
+        "--workflow-bundle",
+        "{path:workflow/finish-analyzed.json}",
+        "--workflow-bundle-sha256",
+        "{sha256:workflow/finish-analyzed.json}",
+        "--workflow-output",
+        "{path:workflow/finish-applied.json}"
+      ],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {
+        "phase": "review-required"
+      }
+    },
+    {
+      "command": "npc finish verify",
+      "validator": "current-staging-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:finish-verify-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:finish-verify-result:v1"
+      ],
+      "fixtures": [],
+      "arguments": [
+        "npc",
+        "finish",
+        "verify",
+        "--protocol",
+        "2",
+        "--json",
+        "--manifest",
+        "{path:finished/NPCManager/Evidence/finish-core-manifest.json}",
+        "--manifest-sha256",
+        "{sha256:finished/NPCManager/Evidence/finish-core-manifest.json}",
+        "--verification-output",
+        "{path:finish-verification.json}",
+        "--workflow-bundle",
+        "{path:workflow/finish-applied.json}",
+        "--workflow-bundle-sha256",
+        "{sha256:workflow/finish-applied.json}",
+        "--workflow-output",
+        "{path:workflow/finish-verified.json}"
+      ],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {
+        "phase": "review-required"
+      }
+    },
+    {
+      "command": "preview npc",
+      "validator": "current-staging-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:npc-visual-preview-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:npc-visual-preview-result:v1"
+      ],
+      "fixtures": [],
+      "arguments": [],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {}
+    }
+  ]
+}

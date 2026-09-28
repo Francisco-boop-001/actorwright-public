@@ -1,0 +1,362 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0-windows7.0": {
+      "BCnEncoder.Net": {
+        "type": "Transitive",
+        "resolved": "2.3.0",
+        "contentHash": "DJhHJiBJKXUXxlkkrv74ckzJb3wYxqIAZHjXD9G76kpsD0YyJOmqtNufHWEuJe0eH0tB1tCZn80/3JV2UVP7yQ==",
+        "dependencies": {
+          "CommunityToolkit.HighPerformance": "8.4.0"
+        }
+      },
+      "CommunityToolkit.HighPerformance": {
+        "type": "Transitive",
+        "resolved": "8.4.0",
+        "contentHash": "flxspiBs0G/0GMp7IK2J2ijV9bTG6hEwFc/z6ekHqB6nwRJ4Ry2yLdx+TkbCUYFCl4XhABkAwomeKbT6zM2Zlg=="
+      },
+      "DynamicData": {
+        "type": "Transitive",
+        "resolved": "9.4.1",
+        "contentHash": "+SoDTbuzY9j0K+sZfRbbVpGjjylkVMhUQnw6qiPhxzYLBJlwxFpmunXSaNBtTxwC2C9d/XIp0kO7VhMAVuUt7w==",
+        "dependencies": {
+          "System.Reactive": "6.0.1"
+        }
+      },
+      "FluentResults": {
+        "type": "Transitive",
+        "resolved": "3.15.2",
+        "contentHash": "yR3PD1SWKirYNpQ/t9TjJrsp1adazMmozLDPeamvSIljLAIjS0EQyyGvoupWsbZEryqW9SHbKXVL8YaJwURk8w==",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1"
+        }
+      },
+      "GameFinder.Common": {
+        "type": "Transitive",
+        "resolved": "4.4.0",
+        "contentHash": "EtFrqjxJEqW+qe8YyEH6l5dv1NFL3hHfSiU1hu37sXFmM1B2o9fQZE/78EjU8IrFcMQEW624alARtbYyooTXKQ==",
+        "dependencies": {
+          "FluentResults": "3.15.2",
+          "NexusMods.Paths": "0.10.0",
+          "OneOf": "3.0.271"
+        }
+      },
+      "GameFinder.RegistryUtils": {
+        "type": "Transitive",
+        "resolved": "4.4.0",
+        "contentHash": "Ee1tvQQz/tOnBjkuYbkHAmEx+Atk1v9t8TzhPOomZGKAwkBEvB45AxR3jG/g8kvqxU7l4FQmI48KE2Xel0/usQ=="
+      },
+      "GameFinder.StoreHandlers.GOG": {
+        "type": "Transitive",
+        "resolved": "4.4.0",
+        "contentHash": "CMLhj2VjxTqr+xzWYM72bC2hxrSaZLOUWyCTXORMecZDY7ChPsxr/UXkv4mlgfGx22Glla3ICoT7YE+NkSvZcQ==",
+        "dependencies": {
+          "GameFinder.Common": "4.4.0",
+          "GameFinder.RegistryUtils": "4.4.0"
+        }
+      },
+      "GameFinder.StoreHandlers.Steam": {
+        "type": "Transitive",
+        "resolved": "4.4.0",
+        "contentHash": "2G82q9O161spLM5A2fLnn/mi8yy+H1uGxep30a58vcHs8hoDuLrhc/s4Fnt2SqxIxhrLSbzJ5Fb6zFvny0PGdw==",
+        "dependencies": {
+          "GameFinder.Common": "4.4.0",
+          "GameFinder.RegistryUtils": "4.4.0",
+          "GameFinder.Wine": "4.4.0",
+          "ValveKeyValue": "0.10.0.360"
+        }
+      },
+      "GameFinder.StoreHandlers.Xbox": {
+        "type": "Transitive",
+        "resolved": "4.4.0",
+        "contentHash": "mgaPtUSjT6NWQy7Eh6EsSxZaElEflvINLDCCKJCM4sFc2DU2rGbRNkAWNI5UzMppZkhwKOTVwPUMVHAzG5HtKw==",
+        "dependencies": {
+          "GameFinder.Common": "4.4.0"
+        }
+      },
+      "GameFinder.Wine": {
+        "type": "Transitive",
+        "resolved": "4.4.0",
+        "contentHash": "TJLXs9blC+h4LPJLl5s111WY56BevpRmIAdA3C1emzvpuCmqSPGWEdHWjW12e1j5vFjYF7RJW5h8GQVuKIElOg==",
+        "dependencies": {
+          "GameFinder.Common": "4.4.0",
+          "GameFinder.RegistryUtils": "4.4.0"
+        }
+      },
+      "ini-parser-netstandard": {
+        "type": "Transitive",
+        "resolved": "2.5.3",
+        "contentHash": "Ht3UqRCqizBPbB5pvQ/yCNZIChY6Cy5nLn7TKIlJzWnf4pbqGKqDO+AY6MDTD+fXgEzzMb64Qzl4/Hy7vEqfLA=="
+      },
+      "K4os.Compression.LZ4": {
+        "type": "Transitive",
+        "resolved": "1.3.8",
+        "contentHash": "LhwlPa7c1zs1OV2XadMtAWdImjLIsqFJPoRcIWAadSRn0Ri1DepK65UbWLPmt4riLqx2d40xjXRk0ogpqNtK7g=="
+      },
+      "K4os.Compression.LZ4.Streams": {
+        "type": "Transitive",
+        "resolved": "1.3.8",
+        "contentHash": "P15qr8dZAeo9GvYbUIPEYFQ0MEJ0i5iqr37wsYeRC3la2uCldOoeCa6to0CZ1taiwxIV+Mk8NGuZi+4iWivK9w==",
+        "dependencies": {
+          "K4os.Compression.LZ4": "1.3.8",
+          "K4os.Hash.xxHash": "1.0.8"
+        }
+      },
+      "K4os.Hash.xxHash": {
+        "type": "Transitive",
+        "resolved": "1.0.8",
+        "contentHash": "Wp2F7BamQ2Q/7Hk834nV9vRQapgcr8kgv9Jvfm8J3D0IhDqZMMl+a2yxUq5ltJitvXvQfB8W6K4F4fCbw/P6YQ=="
+      },
+      "Loqui": {
+        "type": "Transitive",
+        "resolved": "3.2.0",
+        "contentHash": "jiwP+Lfp1OqLSowxxK7Vb47aK3cRIbtiKVtqEyRIDMiGg6ULq2L9E6xtsmRF2Kp0mTxwKHjk6MvIpVGbc6xWTw==",
+        "dependencies": {
+          "Noggog.CSharpExt": "3.1.0"
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions": {
+        "type": "Transitive",
+        "resolved": "8.0.1",
+        "contentHash": "fGLiCRLMYd00JYpClraLjJTNKLmMJPnqxMaiRzEBIIvevlzxz33mXy39Lkd48hu1G+N21S7QpaO5ZzKsI6FRuA=="
+      },
+      "Microsoft.Extensions.Logging.Abstractions": {
+        "type": "Transitive",
+        "resolved": "6.0.1",
+        "contentHash": "dzB2Cgg+JmrouhjkcQGzSFjjvpwlq353i8oBQO2GWNjCXSzhbtBRUf28HSauWe7eib3wYOdb3tItdjRwAdwCSg=="
+      },
+      "Mutagen.Bethesda.Core": {
+        "type": "Transitive",
+        "resolved": "0.52.0",
+        "contentHash": "laY92VCw0TauB1sV3umXGYpCr8ScIkCv298Y2Qr/qCYCXj5vivD5sqBJ+Smi880rdBBJ1wShVPaGT81Ho5qIbw==",
+        "dependencies": {
+          "GameFinder.StoreHandlers.GOG": "4.4.0",
+          "GameFinder.StoreHandlers.Steam": "4.4.0",
+          "GameFinder.StoreHandlers.Xbox": "4.4.0",
+          "K4os.Compression.LZ4.Streams": "1.3.8",
+          "Loqui": "3.2.0",
+          "Mutagen.Bethesda.Kernel": "0.52.0",
+          "Noggog.CSharpExt": "3.1.0",
+          "SharpZipLib": "1.4.2",
+          "StrongInject": "1.4.4",
+          "ini-parser-netstandard": "2.5.3"
+        }
+      },
+      "Mutagen.Bethesda.Fallout4": {
+        "type": "Transitive",
+        "resolved": "0.52.0",
+        "contentHash": "KCMBzEjw1jAA0ynIr/8byRgsXTnYzQyKBzHZolwqVABVCoCipqnT+JafbTSzPV1jfp7sHVqPZtFWDGRKwiV+Zw==",
+        "dependencies": {
+          "Loqui": "3.2.0",
+          "Mutagen.Bethesda.Core": "0.52.0",
+          "Noggog.CSharpExt": "3.1.0"
+        }
+      },
+      "Mutagen.Bethesda.Kernel": {
+        "type": "Transitive",
+        "resolved": "0.52.0",
+        "contentHash": "b2fLKefoTx8OZIFUrDNeBjv7+XfJZAxwmq6zmK4B4VKhBXF3G2El97e/81HiWOunLVG+HCqRalWIrHzQeGj8bQ==",
+        "dependencies": {
+          "Noggog.CSharpExt": "3.1.0"
+        }
+      },
+      "Mutagen.Bethesda.Skyrim": {
+        "type": "Transitive",
+        "resolved": "0.52.0",
+        "contentHash": "jO2TvrePI8qs4aaiszeoES0VRCpS3hJTlsIwXAjQdsAFmWrcH08TxqkVQMr0oZi0727E2eAZl+pL2dMlpN/EPg==",
+        "dependencies": {
+          "Loqui": "3.2.0",
+          "Mutagen.Bethesda.Core": "0.52.0",
+          "Noggog.CSharpExt": "3.1.0"
+        }
+      },
+      "NexusMods.Paths": {
+        "type": "Transitive",
+        "resolved": "0.10.0",
+        "contentHash": "5pv6XROhpTAMcSNdJncAZmY9q7xuevKLPO1wMOw0vWQBEB2Po9vcwAnxUkNzv4LFzprlXAHa+hKVa+rXoq5P7g==",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1",
+          "Reloaded.Memory": "9.4.1"
+        }
+      },
+      "Noggog.CSharpExt": {
+        "type": "Transitive",
+        "resolved": "3.1.0",
+        "contentHash": "Ms4PmNnS3qAVmtgpX+5x4pOlVXmA1rs9TdVtsMkuROCA/14u44W9Bv3ITYkOtyZxbwv8UnTJZHqQUsfsoupWPQ==",
+        "dependencies": {
+          "DynamicData": "9.4.1",
+          "System.IO.Abstractions": "22.0.16"
+        }
+      },
+      "OneOf": {
+        "type": "Transitive",
+        "resolved": "3.0.271",
+        "contentHash": "pqpqeK8xQGggExhr4tesVgJkjdn+9HQAO0QgrYV2hFjE3y90okzk1kQMntMiUOGfV7FrCUfKPaVvPBD4IANqKg=="
+      },
+      "Reloaded.Memory": {
+        "type": "Transitive",
+        "resolved": "9.4.1",
+        "contentHash": "wld6juhxdyvC5e5Bls39M6kb/cFYgNy3zD88f+PEedp6Tx1ASc4eZxff45fyp5H91zqDDnVNerC/FFjUK74inQ=="
+      },
+      "SharpZipLib": {
+        "type": "Transitive",
+        "resolved": "1.4.2",
+        "contentHash": "yjj+3zgz8zgXpiiC3ZdF/iyTBbz2fFvMxZFEBPUcwZjIvXOf37Ylm+K58hqMfIBt5JgU/Z2uoUS67JmTLe973A=="
+      },
+      "SkiaSharp": {
+        "type": "Transitive",
+        "resolved": "3.119.4",
+        "contentHash": "53NOSUZ1Us+91Sm0uCkIivh/k7jOowRErZT2sIWwPFN9mLUvdxnE6rS4sWo4255+Rd2MWUSF+j0NMZHD6Cke+Q==",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "3.119.4",
+          "SkiaSharp.NativeAssets.macOS": "3.119.4"
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS": {
+        "type": "Transitive",
+        "resolved": "3.119.4",
+        "contentHash": "fgBOWEqbY012x7gMfJU4ezgz6dfhJb30Z6YdW35h85Zoe39+a8YNbAAwL29ihPfWoppg5AjvyKNzD1oCvlqWwA=="
+      },
+      "SkiaSharp.NativeAssets.Win32": {
+        "type": "Transitive",
+        "resolved": "3.119.4",
+        "contentHash": "XOpbx/4CReO2wYsq2s6rbvdauc6dntG4Zv499sHGTJ87bwZaFXszFkwql3+FIZMc8kUPeaj3Mx2ezIJmo8a1Kg=="
+      },
+      "StrongInject": {
+        "type": "Transitive",
+        "resolved": "1.4.4",
+        "contentHash": "apRGISKI+xWW0WYQJHXckQpE9fECP//X5PUaY7jA5R6+m59hTIcr0shySR9Bb7cInDG+0fAG6PLjd1SxlLqe6g=="
+      },
+      "System.IO.Abstractions": {
+        "type": "Transitive",
+        "resolved": "22.0.16",
+        "contentHash": "qDB595QEPyyguFNzKDIiy8MqMBuag4GeU/nJOiRDopwUtc40lLA8acW+/pxNny7s9kEQ3YSKbAOR8xJcjujHFg==",
+        "dependencies": {
+          "TestableIO.System.IO.Abstractions": "22.0.16",
+          "TestableIO.System.IO.Abstractions.Wrappers": "22.0.16"
+        }
+      },
+      "System.Reactive": {
+        "type": "Transitive",
+        "resolved": "6.0.1",
+        "contentHash": "rHaWtKDwCi9qJ3ObKo8LHPMuuwv33YbmQi7TcUK1C264V3MFnOr5Im7QgCTdLniztP3GJyeiSg5x8NqYJFqRmg=="
+      },
+      "TestableIO.System.IO.Abstractions": {
+        "type": "Transitive",
+        "resolved": "22.0.16",
+        "contentHash": "ZYDFchhWab1FELpnJUJI3gHX/jAEKLiENnnKmUWyGjR6BklGhItxU2rCmwzwMXsd6C2CUpMU+YSXlKdpxNPkBQ==",
+        "dependencies": {
+          "Testably.Abstractions.FileSystem.Interface": "9.0.0"
+        }
+      },
+      "TestableIO.System.IO.Abstractions.Wrappers": {
+        "type": "Transitive",
+        "resolved": "22.0.16",
+        "contentHash": "QUX0TLMvnRLEgvuMRotrZKN9eCdX4yzK7HJCaPj17T4jvUf+G4XifdLpB5wmRct2zKlscYzpWMOmHjKabse3yw==",
+        "dependencies": {
+          "Testably.Abstractions.FileSystem.Interface": "9.0.0"
+        }
+      },
+      "Testably.Abstractions.FileSystem.Interface": {
+        "type": "Transitive",
+        "resolved": "9.0.0",
+        "contentHash": "uksk86YlnzAdyfVNu3wICU0X5iXVe9LF7Q3UkngNliHWEvM5gvAlOUr+jmd9JwmbJWISH5+i1vyXE02lEVz7WQ=="
+      },
+      "ValveKeyValue": {
+        "type": "Transitive",
+        "resolved": "0.10.0.360",
+        "contentHash": "APiKxT2Qyg/Kpgylpd/Oylta9xL076qj5cWkN+bpDPrpVhsM6FKQG5nELBao2eGXeqIeGI8LUQQ9Q4Sppix6Cw=="
+      },
+      "npcmanager.application": {
+        "type": "Project",
+        "dependencies": {
+          "NpcManager.Domain": "[1.0.0, )"
+        }
+      },
+      "npcmanager.assets": {
+        "type": "Project",
+        "dependencies": {
+          "Mutagen.Bethesda.Skyrim": "[0.52.0, )",
+          "NpcManager.Application": "[1.0.0, )",
+          "NpcManager.Domain": "[1.0.0, )"
+        }
+      },
+      "npcmanager.bodygen": {
+        "type": "Project",
+        "dependencies": {
+          "NpcManager.Application": "[1.0.0, )",
+          "NpcManager.Domain": "[1.0.0, )"
+        }
+      },
+      "npcmanager.domain": {
+        "type": "Project"
+      },
+      "npcmanager.facegen": {
+        "type": "Project",
+        "dependencies": {
+          "BCnEncoder.Net": "[2.3.0, )",
+          "NpcManager.Application": "[1.0.0, )",
+          "NpcManager.Domain": "[1.0.0, )"
+        }
+      },
+      "npcmanager.formats.bethesda": {
+        "type": "Project",
+        "dependencies": {
+          "Mutagen.Bethesda.Fallout4": "[0.52.0, )",
+          "Mutagen.Bethesda.Skyrim": "[0.52.0, )",
+          "NpcManager.Application": "[1.0.0, )",
+          "NpcManager.Domain": "[1.0.0, )"
+        }
+      },
+      "npcmanager.infrastructure": {
+        "type": "Project",
+        "dependencies": {
+          "NpcManager.Application": "[1.0.0, )",
+          "NpcManager.Domain": "[1.0.0, )",
+          "NpcManager.Formats.Bethesda": "[1.0.0, )",
+          "NpcManager.Rendering": "[1.0.0, )",
+          "SkiaSharp": "[3.119.4, )",
+          "SkiaSharp.NativeAssets.Win32": "[3.119.4, )"
+        }
+      },
+      "npcmanager.pipeline": {
+        "type": "Project",
+        "dependencies": {
+          "NpcManager.Application": "[1.0.0, )",
+          "NpcManager.Assets": "[1.0.0, )",
+          "NpcManager.Domain": "[1.0.0, )",
+          "NpcManager.Formats.Bethesda": "[1.0.0, )",
+          "NpcManager.Infrastructure": "[1.0.0, )"
+        }
+      },
+      "npcmanager.presets": {
+        "type": "Project",
+        "dependencies": {
+          "NpcManager.Application": "[1.0.0, )",
+          "NpcManager.Domain": "[1.0.0, )"
+        }
+      },
+      "npcmanager.rendering": {
+        "type": "Project",
+        "dependencies": {
+          "NpcManager.Application": "[1.0.0, )",
+          "NpcManager.Domain": "[1.0.0, )",
+          "SkiaSharp": "[3.119.4, )",
+          "SkiaSharp.NativeAssets.Win32": "[3.119.4, )"
+        }
+      }
+    },
+    "net10.0-windows7.0/win-x64": {
+      "SkiaSharp.NativeAssets.macOS": {
+        "type": "Transitive",
+        "resolved": "3.119.4",
+        "contentHash": "fgBOWEqbY012x7gMfJU4ezgz6dfhJb30Z6YdW35h85Zoe39+a8YNbAAwL29ihPfWoppg5AjvyKNzD1oCvlqWwA=="
+      },
+      "SkiaSharp.NativeAssets.Win32": {
+        "type": "Transitive",
+        "resolved": "3.119.4",
+        "contentHash": "XOpbx/4CReO2wYsq2s6rbvdauc6dntG4Zv499sHGTJ87bwZaFXszFkwql3+FIZMc8kUPeaj3Mx2ezIJmo8a1Kg=="
+      }
+    }
+  }
+}

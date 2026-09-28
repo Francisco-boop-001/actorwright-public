@@ -1,0 +1,356 @@
+<Window x:Class="NpcManager.Desktop.SkyrimFaceEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="{Binding Title}"
+        Width="1180" Height="790" MinWidth="960" MinHeight="680"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        ResizeMode="CanResizeWithGrip"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        automation:AutomationProperties.Name="Skyrim face editor">
+    <Grid Margin="26,22,26,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="18" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Style="{StaticResource EyebrowText}" Text="SKYRIM APPEARANCE  /  TYPED TRANSACTION" />
+                <TextBlock Margin="0,5,0,0" FontSize="29" FontWeight="SemiBold"
+                           Text="Shape the face without losing the baseline" />
+                <TextBlock Margin="0,7,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                           Text="{Binding Context}" />
+            </StackPanel>
+            <Border Grid.Column="1" MaxWidth="390" Padding="13" CornerRadius="9"
+                    Background="#171D24" BorderBrush="{DynamicResource WarningBrush}"
+                    BorderThickness="1">
+                <TextBlock FontSize="11" Foreground="{DynamicResource WarningBrush}"
+                           Text="{Binding AuthorityNotice}" TextWrapping="Wrap"
+                           automation:AutomationProperties.Name="Face editor authority notice" />
+            </Border>
+        </Grid>
+
+        <TabControl x:Name="FaceTabs" Grid.Row="2"
+                    SelectionChanged="Tabs_OnSelectionChanged"
+                    automation:AutomationProperties.Name="Skyrim face editor sections">
+            <TabItem Header="Face parts">
+                <Grid Margin="14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.25*" />
+                        <ColumnDefinition Width="16" />
+                        <ColumnDefinition Width="0.9*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Style="{StaticResource CardBorder}" Padding="12">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock FontWeight="SemiBold" Text="NPC-owned head parts" />
+                            <ListView Grid.Row="1" Margin="0,10,0,10"
+                                      ItemsSource="{Binding Parts.HeadParts}"
+                                      SelectedItem="{Binding Parts.SelectedHeadPart}"
+                                      KeyDown="HeadParts_KeyDown"
+                                      automation:AutomationProperties.Name="Selected NPC head parts">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Type" Width="125" DisplayMemberBinding="{Binding TypeText}" />
+                                        <GridViewColumn Header="Plugin" Width="220" DisplayMemberBinding="{Binding PluginText}" />
+                                        <GridViewColumn Header="FormID" Width="125" DisplayMemberBinding="{Binding FormIdText}" />
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                <ComboBox ItemsSource="{Binding Parts.TypeOptions}"
+                                          SelectedItem="{Binding Parts.SelectedAddType}"
+                                          DisplayMemberPath="Label"
+                                          automation:AutomationProperties.Name="Head-part type to choose" />
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10,0,0,0">
+                                    <Button Style="{StaticResource QuietButton}" Content="Choose..."
+                                            Click="ChooseHeadPart_Click"
+                                            automation:AutomationProperties.Name="Choose typed head part" />
+                                    <Button Margin="8,0,0,0" Style="{StaticResource QuietButton}" Content="Remove"
+                                            IsEnabled="{Binding Parts.CanRemove}"
+                                            Click="RemoveHeadPart_Click"
+                                            automation:AutomationProperties.Name="Remove selected NPC head part" />
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Grid.Column="2">
+                        <Border Style="{StaticResource CardBorder}" Margin="0,0,0,12">
+                            <StackPanel>
+                                <TextBlock FontWeight="SemiBold" Text="Hair color (HCLF)" />
+                                <TextBlock Margin="0,7,0,10" Text="{Binding Parts.HairColorText}"
+                                           TextWrapping="Wrap" Foreground="{DynamicResource AccentBrush}" />
+                                <WrapPanel>
+                                    <Button Style="{StaticResource QuietButton}" Content="Choose..."
+                                            Click="ChooseHairColor_Click" />
+                                    <Button Margin="8,0,0,0" Style="{StaticResource QuietButton}"
+                                            Content="Preserve source" Click="PreserveHairColor_Click" />
+                                </WrapPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource CardBorder}" Margin="0,0,0,12">
+                            <StackPanel>
+                                <TextBlock FontWeight="SemiBold" Text="Head texture (FTST)" />
+                                <TextBlock Margin="0,7,0,10" Text="{Binding Parts.HeadTextureText}"
+                                           TextWrapping="Wrap" Foreground="{DynamicResource AccentBrush}" />
+                                <Button HorizontalAlignment="Left" Style="{StaticResource QuietButton}"
+                                        Content="Choose or use default..." Click="ChooseHeadTexture_Click" />
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource CardBorder}">
+                            <CheckBox IsChecked="{Binding Parts.IsCharGenFacePreset}"
+                                      Content="Is CharGen face preset"
+                                      automation:AutomationProperties.HelpText="Edits the Skyrim NPC ACBS CharGen face-preset flag" />
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Native morphs">
+                <Grid Margin="14">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="1.5*" /><ColumnDefinition Width="16" /><ColumnDefinition /></Grid.ColumnDefinitions>
+                    <Border Style="{StaticResource CardBorder}" Padding="12">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding NativeMorphs.Sliders}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0,4">
+                                            <Grid.ColumnDefinitions><ColumnDefinition Width="190" /><ColumnDefinition /><ColumnDefinition Width="70" /></Grid.ColumnDefinitions>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                                            <Slider Grid.Column="1" Minimum="-1" Maximum="1" TickFrequency="0.01"
+                                                    Value="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    automation:AutomationProperties.Name="{Binding Name}" />
+                                            <TextBox Grid.Column="2" Margin="9,0,0,0"
+                                                     Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat=F3}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="14">
+                        <StackPanel>
+                            <TextBlock FontWeight="SemiBold" Text="Native type families" />
+                            <TextBlock Margin="0,5,0,14" Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="Unset remains distinct from explicit type zero." TextWrapping="Wrap" />
+                            <ItemsControl ItemsSource="{Binding NativeMorphs.Families}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,0,11">
+                                            <TextBlock Margin="0,0,0,5" Text="{Binding Name}" />
+                                             <ComboBox ItemsSource="{Binding Options}"
+                                                       SelectedItem="{Binding Selected, Mode=TwoWay}"
+                                                       DisplayMemberPath="Label"
+                                                       automation:AutomationProperties.Name="{Binding Name}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <TextBlock Margin="0,10,0,0" FontFamily="Cascadia Mono, Consolas" FontSize="11"
+                                       Foreground="{DynamicResource AccentBrush}"
+                                       Text="{Binding NativeMorphs.TrailingAuthority}" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="RaceMenu sliders">
+                <Grid Margin="14">
+                    <Border Style="{StaticResource CardBorder}" Padding="12">
+                        <Grid>
+                            <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="{Binding CustomMorphs.CatalogStatus}" />
+                            <ScrollViewer Grid.Row="1" Margin="0,12,0,0" VerticalScrollBarVisibility="Auto">
+                                <ItemsControl ItemsSource="{Binding CustomMorphs.Rows}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0,5">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="230" /><ColumnDefinition Width="130" /><ColumnDefinition /><ColumnDefinition Width="76" /></Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Name}" />
+                                                    <TextBlock FontSize="10" Foreground="{DynamicResource MutedTextBrush}" Text="{Binding Authority}" />
+                                                </StackPanel>
+                                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Category}" />
+                                                <Grid Grid.Column="2">
+                                                     <Slider Minimum="{Binding Minimum}" Maximum="{Binding Maximum}"
+                                                             Value="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             automation:AutomationProperties.Name="{Binding Name}"
+                                                             Visibility="{Binding IsSlider, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                                     <ComboBox ItemsSource="{Binding PresetOptions}"
+                                                               SelectedItem="{Binding SelectedPreset, Mode=TwoWay}"
+                                                               DisplayMemberPath="Label"
+                                                               automation:AutomationProperties.Name="{Binding Name}"
+                                                               Visibility="{Binding IsPreset, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                                </Grid>
+                                                <TextBox Grid.Column="3" Margin="9,0,0,0"
+                                                         IsReadOnly="{Binding IsPreset}"
+                                                         Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat=F3}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                       Text="{Binding CustomMorphs.EmptyState}"
+                                       Visibility="{Binding CustomMorphs.HasNoRows, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Tints">
+                <Grid Margin="14">
+                    <Border Style="{StaticResource CardBorder}" Padding="10">
+                        <Grid>
+                            <DataGrid ItemsSource="{Binding Tints.Rows}" AutoGenerateColumns="False"
+                                      CanUserAddRows="False" CanUserDeleteRows="False"
+                                      HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+                                      automation:AutomationProperties.Name="Skyrim face tint layers">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Layer" Binding="{Binding Label}" IsReadOnly="True" Width="90" />
+                                    <DataGridCheckBoxColumn Header="Authored" Binding="{Binding IsAuthored, Mode=TwoWay}" Width="85" />
+                                    <DataGridTextColumn Header="R" Binding="{Binding Red, Mode=TwoWay}" Width="55" />
+                                    <DataGridTextColumn Header="G" Binding="{Binding Green, Mode=TwoWay}" Width="55" />
+                                    <DataGridTextColumn Header="B" Binding="{Binding Blue, Mode=TwoWay}" Width="55" />
+                                    <DataGridTextColumn Header="A" Binding="{Binding Alpha, Mode=TwoWay}" Width="55" />
+                                    <DataGridTextColumn Header="Coverage %" Binding="{Binding Coverage, Mode=TwoWay}" Width="90" />
+                                    <DataGridTextColumn Header="Mask" Binding="{Binding MaskPath}" IsReadOnly="True" Width="*" />
+                                    <DataGridTemplateColumn Header="" Width="105">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Style="{StaticResource QuietButton}" Content="Choose mask..."
+                                                        Click="ChooseTintMask_Click" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                       Text="{Binding Tints.EmptyState}"
+                                       Visibility="{Binding Tints.HasNoRows, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="RaceMenu sculpt">
+                <Grid Margin="14">
+                    <Border Style="{StaticResource CardBorder}" Padding="12">
+                        <Grid>
+                            <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                            <TextBlock Foreground="{DynamicResource WarningBrush}"
+                                       Text="{Binding Sculpt.AuthorityNotice}" TextWrapping="Wrap" />
+                            <Grid Grid.Row="1" Margin="0,12,0,0">
+                                <DataGrid ItemsSource="{Binding Sculpt.Rows}"
+                                          AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False"
+                                          automation:AutomationProperties.Name="RaceMenu sculpt metadata">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Host shape" Binding="{Binding Host}" Width="*" />
+                                        <DataGridTextColumn Header="Declared vertices" Binding="{Binding VertexCount}" Width="150" />
+                                        <DataGridTextColumn Header="Stored deltas" Binding="{Binding DeltaCount}" Width="130" />
+                                        <DataGridCheckBoxColumn Header="Count present" Binding="{Binding HasVertexCount}" Width="110" />
+                                        <DataGridCheckBoxColumn Header="Data present" Binding="{Binding HasData}" Width="100" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                           Text="{Binding Sculpt.EmptyState}"
+                                           Visibility="{Binding Sculpt.HasNoRows, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="RaceMenu face paint">
+                <Grid Margin="14">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="1.05*" /><ColumnDefinition Width="16" /><ColumnDefinition /></Grid.ColumnDefinitions>
+                    <Border Style="{StaticResource CardBorder}" Padding="12">
+                        <Grid>
+                            <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                            <TextBlock FontWeight="SemiBold" Text="Applied face overlays (topmost first)" />
+                            <Grid Grid.Row="1" Margin="0,10">
+                                <ListBox ItemsSource="{Binding FaceOverlays.Rows}"
+                                         SelectedItem="{Binding FaceOverlays.SelectedRow}"
+                                         DisplayMemberPath="Label"
+                                         KeyDown="FaceOverlays_KeyDown"
+                                         automation:AutomationProperties.Name="Applied RaceMenu face overlays" />
+                                <TextBlock Margin="18" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                           Text="{Binding FaceOverlays.EmptyState}"
+                                           Visibility="{Binding FaceOverlays.HasNoRows, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="{Binding FaceOverlays.SlotStatus}" />
+                                <WrapPanel Grid.Column="1">
+                                    <Button Style="{StaticResource QuietButton}" Content="Add paint..." Click="AddFacePaint_Click" />
+                                    <Button Margin="7,0,0,0" Style="{StaticResource QuietButton}" Content="Remove"
+                                            IsEnabled="{Binding FaceOverlays.CanRemove}" Click="RemoveFacePaint_Click" />
+                                    <Button Margin="7,0,0,0" Style="{StaticResource QuietButton}" Content="Up"
+                                            IsEnabled="{Binding FaceOverlays.CanMoveUp}" Click="MoveFacePaintUp_Click" />
+                                    <Button Margin="7,0,0,0" Style="{StaticResource QuietButton}" Content="Down"
+                                            IsEnabled="{Binding FaceOverlays.CanMoveDown}" Click="MoveFacePaintDown_Click" />
+                                </WrapPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="14"
+                            DataContext="{Binding FaceOverlays.SelectedRow}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource EyebrowText}" Text="SELECTED PAINT" />
+                            <TextBlock Margin="0,7,0,0" FontSize="20" FontWeight="SemiBold" Text="{Binding Node, TargetNullValue=No paint selected}" />
+                            <TextBlock Margin="0,12,0,3" Foreground="{DynamicResource MutedTextBrush}" Text="Diffuse" />
+                            <TextBlock FontFamily="Cascadia Mono, Consolas" FontSize="11" Text="{Binding Diffuse}" TextWrapping="Wrap" />
+                            <TextBlock Margin="0,10,0,3" Foreground="{DynamicResource MutedTextBrush}" Text="Normal" />
+                            <TextBlock FontFamily="Cascadia Mono, Consolas" FontSize="11" Text="{Binding Normal}" TextWrapping="Wrap" />
+                            <CheckBox Margin="0,16,0,8" Content="Enable tint" IsChecked="{Binding TintEnabled}" />
+                            <TextBlock Text="Red" /><Slider Minimum="0" Maximum="1" Value="{Binding Red}" IsEnabled="{Binding TintEnabled}" automation:AutomationProperties.Name="Face-paint red tint" />
+                            <TextBlock Text="Green" /><Slider Minimum="0" Maximum="1" Value="{Binding Green}" IsEnabled="{Binding TintEnabled}" automation:AutomationProperties.Name="Face-paint green tint" />
+                            <TextBlock Text="Blue" /><Slider Minimum="0" Maximum="1" Value="{Binding Blue}" IsEnabled="{Binding TintEnabled}" automation:AutomationProperties.Name="Face-paint blue tint" />
+                            <TextBlock Margin="0,9,0,0" Text="Opacity" /><Slider Minimum="0" Maximum="1" Value="{Binding Opacity}" automation:AutomationProperties.Name="Face-paint opacity" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="{Binding Status}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Polite" />
+                <TextBlock Margin="0,3,0,0" Foreground="{DynamicResource DangerBrush}"
+                           Text="{Binding ValidationMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Assertive" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button MinWidth="125" Style="{StaticResource QuietButton}" Content="Reset section"
+                        Click="ResetSection_Click" />
+                <Button MinWidth="105" Margin="9,0,0,0" Style="{StaticResource QuietButton}"
+                        Content="Cancel" IsCancel="True" Click="Cancel_Click" />
+                <Button MinWidth="145" Margin="9,0,0,0" Style="{StaticResource PrimaryButton}"
+                        Content="Save face" IsDefault="True" Click="Accept_Click" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

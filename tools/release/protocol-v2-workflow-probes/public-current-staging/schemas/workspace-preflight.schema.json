@@ -1,0 +1,1173 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "workspace preflight",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "fallout4",
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Validate K-local roots or build a reviewed copied-Data intake before any NPC task.",
+    "limitations": [
+      "Read-only; --load-order binds the selected Skyrim plugin/master closure, sidecars, generated artifacts, and asset providers into a non-runtime intake fingerprint."
+    ],
+    "options": [
+      {
+        "cliName": "edition",
+        "jsonName": "edition",
+        "valueKind": "enum",
+        "required": false,
+        "allowedValues": [
+          "fallout4",
+          "skyrimse"
+        ],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "fallout4|skyrimse",
+        "description": "Selects an archive, reviewed-intake, or game-root branch; canonical --edition wins over --game.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "game",
+        "jsonName": "game",
+        "valueKind": "enum",
+        "required": false,
+        "allowedValues": [
+          "fallout4",
+          "skyrimse"
+        ],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "fallout4|skyrimse",
+        "description": "Selects an archive, reviewed-intake, or game-root branch when --edition is absent.",
+        "aliasFor": "edition"
+      },
+      {
+        "cliName": "workspace-root",
+        "jsonName": "workspace-root",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-root>",
+        "description": "Required with --output-root only in the basic branch; otherwise defaults to the configured workspace where supported.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "data-root",
+        "jsonName": "data-root",
+        "valueKind": "path",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-data-root>",
+        "description": "Required in game-root and reviewed-intake branches.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "output-root",
+        "jsonName": "output-root",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-output-root>",
+        "description": "Required in basic, game-root, and reviewed-intake branches.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "plugin",
+        "jsonName": "plugin",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-plugin>",
+        "description": "Selects archive consistency and must be supplied with --asset-index.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "asset-index",
+        "jsonName": "asset-index",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<asset-index.json>",
+        "description": "Selects archive consistency and must be supplied with --plugin.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "load-order",
+        "jsonName": "load-order",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<load-order.json>",
+        "description": "Selects reviewed intake; canonical --load-order wins over --loadorder.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "loadorder",
+        "jsonName": "loadorder",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<load-order.json>",
+        "description": "Alias for --load-order used only when canonical --load-order is absent.",
+        "aliasFor": "load-order"
+      },
+      {
+        "cliName": "selected",
+        "jsonName": "selected",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<plugin,...>",
+        "description": "Optional comma- or semicolon-separated selected plugins in reviewed intake.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "intake-output",
+        "jsonName": "intake-output",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<new-reviewed-intake.json>",
+        "description": "Required by protocol-2 reviewed-intake mode; fresh reviewed-intake output.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "npc-editor-id",
+        "jsonName": "npc-editor-id",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<editor-id>",
+        "description": "Required by protocol-2 reviewed-intake mode; workflow NPC identity.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "workflow-output",
+        "jsonName": "workflow-output",
+        "valueKind": "string",
+        "required": false,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<new-workflow.json>",
+        "description": "Required by protocol-2 reviewed-intake mode; fresh workflow state output.",
+        "aliasFor": null
+      }
+    ],
+    "inputArtifactKinds": [
+      "workspace-preflight-data-root",
+      "workspace-preflight-plugin",
+      "workspace-preflight-load-order",
+      "workspace-preflight-loadorder"
+    ],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:workspace-preflight-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "readWorkspace",
+        "condition": "When reviewed copied-workspace inputs are inspected.",
+        "scope": "The exact --workspace-root, --data-root, and bound input files.",
+        "trigger": null
+      },
+      {
+        "kind": "writeNewArtifact",
+        "condition": "Only after reviewed intake acceptance.",
+        "scope": "The fresh exact --intake-output file.",
+        "trigger": null
+      },
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "requiresFreshOutput",
+    "determinism": "deterministic",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "Exact K-local copied-workspace inputs are admitted."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "established",
+        "reason": "The plugin closure and provider inventory are hash-bound."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "established",
+        "reason": "Reviewed-intake schema 2 is canonically materialized."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "established",
+        "reason": "Promoted bytes are read back and strictly parsed."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "notApplicable",
+        "reason": "Workspace preflight does not render a preview."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "notApplicable",
+        "reason": "Workspace preflight does not request visual acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "required",
+        "reason": "Game-runtime verification remains required."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "notApplicable",
+        "reason": "Workspace preflight performs no promotion."
+      }
+    ],
+    "transitions": [
+      {
+        "from": "discover",
+        "to": "analyze",
+        "requiredBindings": [
+          "reviewed-workspace-intake"
+        ]
+      }
+    ],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [
+      {
+        "kind": "requiredWhen",
+        "options": [
+          "workspace-root",
+          "output-root"
+        ],
+        "referencedOptions": [
+          "edition",
+          "game",
+          "plugin",
+          "asset-index",
+          "load-order",
+          "loadorder"
+        ],
+        "condition": "Basic mode is selected when no game, archive, or reviewed-intake selector is present.",
+        "trigger": {
+          "operator": "all",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "edition",
+              "match": "anyOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": true
+            },
+            {
+              "source": "optionValue",
+              "subject": "game",
+              "match": "anyOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": true
+            },
+            {
+              "source": "optionValue",
+              "subject": "plugin",
+              "match": "anyOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": true
+            },
+            {
+              "source": "optionValue",
+              "subject": "asset-index",
+              "match": "anyOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": true
+            },
+            {
+              "source": "optionValue",
+              "subject": "load-order",
+              "match": "anyOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": true
+            },
+            {
+              "source": "optionValue",
+              "subject": "loadorder",
+              "match": "anyOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": true
+            }
+          ]
+        }
+      },
+      {
+        "kind": "requiredWhen",
+        "options": [
+          "data-root",
+          "output-root"
+        ],
+        "referencedOptions": [
+          "edition",
+          "game"
+        ],
+        "condition": "Game-root mode is selected by --edition or --game.",
+        "trigger": {
+          "operator": "any",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "edition",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            },
+            {
+              "source": "optionValue",
+              "subject": "game",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      },
+      {
+        "kind": "requiresTogether",
+        "options": [
+          "plugin",
+          "asset-index"
+        ],
+        "referencedOptions": [],
+        "condition": "--plugin and --asset-index must be supplied together.",
+        "trigger": null
+      },
+      {
+        "kind": "requiredWhen",
+        "options": [
+          "data-root",
+          "output-root"
+        ],
+        "referencedOptions": [
+          "load-order",
+          "loadorder"
+        ],
+        "condition": "Reviewed-intake mode is selected by either load-order spelling.",
+        "trigger": {
+          "operator": "any",
+          "predicates": [
+            {
+              "source": "optionValue",
+              "subject": "load-order",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            },
+            {
+              "source": "optionValue",
+              "subject": "loadorder",
+              "match": "noneOf",
+              "values": [
+                "__absent__"
+              ],
+              "matchesWhenAbsent": false
+            }
+          ]
+        }
+      }
+    ],
+    "inputArtifacts": [
+      {
+        "kind": "workspace-preflight-data-root",
+        "schemaIds": [],
+        "description": "Existing input selected by --data-root; no grounded schema identifier is published.",
+        "trigger": null
+      },
+      {
+        "kind": "workspace-preflight-plugin",
+        "schemaIds": [],
+        "description": "Existing input selected by --plugin; no grounded schema identifier is published.",
+        "trigger": null
+      },
+      {
+        "kind": "workspace-preflight-load-order",
+        "schemaIds": [],
+        "description": "Existing input selected by --load-order; no grounded schema identifier is published.",
+        "trigger": null
+      },
+      {
+        "kind": "workspace-preflight-loadorder",
+        "schemaIds": [],
+        "description": "Existing input selected by --loadorder; no grounded schema identifier is published.",
+        "trigger": null
+      }
+    ],
+    "outputArtifacts": [],
+    "resultShape": "object",
+    "resultDescription": "Typed workspace preflight outcome and diagnostics; no grounded result schema identifier is published."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:workspace-preflight-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:workspace-preflight-result:v1",
+        "title": "Actorwright protocol v2 reviewed workspace preflight result",
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schemaVersion",
+              "isAccepted"
+            ],
+            "properties": {
+              "schemaVersion": {
+                "const": "2"
+              },
+              "isAccepted": {
+                "const": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schemaVersion",
+              "edition",
+              "isAccepted",
+              "workspaceRoot",
+              "dataRoot",
+              "loadOrderPath",
+              "outputRoot",
+              "loadOrderHash",
+              "assetIndexFingerprint",
+              "intakeFingerprint",
+              "plugins",
+              "bodySidecarCount",
+              "generatedPluginCount",
+              "generatedSidecarCount",
+              "bodySidecars",
+              "generatedPlugins",
+              "generatedSidecars",
+              "assetProviderCount",
+              "runtimeAuthority",
+              "diagnostics"
+            ],
+            "properties": {
+              "schemaVersion": {
+                "const": "2"
+              },
+              "edition": {
+                "const": "skyrimse"
+              },
+              "isAccepted": {
+                "type": "boolean"
+              },
+              "workspaceRoot": {
+                "type": "string",
+                "minLength": 1
+              },
+              "dataRoot": {
+                "type": "string",
+                "minLength": 1
+              },
+              "loadOrderPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "outputRoot": {
+                "type": "string",
+                "minLength": 1
+              },
+              "loadOrderHash": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "assetIndexFingerprint": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "intakeFingerprint": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "plugins": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/plugin"
+                }
+              },
+              "bodySidecarCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "generatedPluginCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "generatedSidecarCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "bodySidecars": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/bodySidecar"
+                }
+              },
+              "generatedPlugins": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/generatedPlugin"
+                }
+              },
+              "generatedSidecars": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/generatedSidecar"
+                }
+              },
+              "assetProviderCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "runtimeAuthority": {
+                "const": false
+              },
+              "diagnostics": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/diagnostic"
+                }
+              }
+            }
+          }
+        ],
+        "$defs": {
+          "nullableSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "plugin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "order",
+              "active",
+              "requested",
+              "requiredMaster",
+              "sourceHash",
+              "masters"
+            ],
+            "properties": {
+              "plugin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "order": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "requested": {
+                "type": "boolean"
+              },
+              "requiredMaster": {
+                "type": "boolean"
+              },
+              "sourceHash": {
+                "type": "string"
+              },
+              "masters": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "bodySidecar": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "path",
+              "sourceHash",
+              "canonicalHash",
+              "npcCount"
+            ],
+            "properties": {
+              "plugin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceHash": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "canonicalHash": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              },
+              "npcCount": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          "generatedPlugin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "path",
+              "author",
+              "sha256",
+              "readSucceeded",
+              "npcFormIds"
+            ],
+            "properties": {
+              "plugin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "author": {
+                "type": "string"
+              },
+              "sha256": {
+                "$ref": "#/$defs/nullableSha256"
+              },
+              "readSucceeded": {
+                "type": "boolean"
+              },
+              "npcFormIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "generatedSidecar": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "originPlugin",
+              "kind",
+              "variant",
+              "relativePath",
+              "path",
+              "formId",
+              "size",
+              "sha256"
+            ],
+            "properties": {
+              "originPlugin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "variant": {
+                "type": "string",
+                "minLength": 1
+              },
+              "relativePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "formId": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "size": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9A-F]{64}$"
+              }
+            }
+          },
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1,
+                  2
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "documentSchemas": [
+    {
+      "name": "reviewed-intake",
+      "direction": "output",
+      "schemaIdentifier": "npcmanager-reviewed-game-intake/2",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:schema:npcmanager-reviewed-game-intake:2",
+        "title": "Actorwright reviewed game intake schema 2",
+        "description": "Canonical persisted reviewed-intake document. Filesystem containment, exact file hashes, count equality, plugin/FormID ordering, path derivation, and the intake fingerprint remain codec-enforced constraints.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "edition",
+          "isAccepted",
+          "workspaceRoot",
+          "dataRoot",
+          "loadOrderPath",
+          "outputRoot",
+          "loadOrderHash",
+          "assetIndexFingerprint",
+          "intakeFingerprint",
+          "plugins",
+          "bodySidecarCount",
+          "generatedPluginCount",
+          "generatedSidecarCount",
+          "bodySidecars",
+          "generatedPlugins",
+          "generatedSidecars",
+          "assetProviderCount",
+          "runtimeAuthority",
+          "diagnostics"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": "2"
+          },
+          "edition": {
+            "const": "skyrimse"
+          },
+          "isAccepted": {
+            "const": true
+          },
+          "workspaceRoot": {
+            "$ref": "#/$defs/workspacePath"
+          },
+          "dataRoot": {
+            "$ref": "#/$defs/workspacePath"
+          },
+          "loadOrderPath": {
+            "$ref": "#/$defs/workspacePath"
+          },
+          "outputRoot": {
+            "$ref": "#/$defs/workspacePath"
+          },
+          "loadOrderHash": {
+            "$ref": "#/$defs/sha256"
+          },
+          "assetIndexFingerprint": {
+            "$ref": "#/$defs/sha256"
+          },
+          "intakeFingerprint": {
+            "$ref": "#/$defs/sha256"
+          },
+          "plugins": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 512,
+            "items": {
+              "$ref": "#/$defs/plugin"
+            },
+            "description": "Codec requires unique plugin names and strictly ascending global order indexes."
+          },
+          "bodySidecarCount": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 512,
+            "description": "Codec requires equality with bodySidecars length."
+          },
+          "generatedPluginCount": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 512,
+            "description": "Codec requires equality with generatedPlugins length."
+          },
+          "generatedSidecarCount": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16384,
+            "description": "Codec requires equality with generatedSidecars length."
+          },
+          "bodySidecars": {
+            "type": "array",
+            "maxItems": 512,
+            "items": {
+              "$ref": "#/$defs/bodySidecar"
+            }
+          },
+          "generatedPlugins": {
+            "type": "array",
+            "maxItems": 512,
+            "items": {
+              "$ref": "#/$defs/generatedPlugin"
+            }
+          },
+          "generatedSidecars": {
+            "type": "array",
+            "maxItems": 16384,
+            "items": {
+              "$ref": "#/$defs/generatedSidecar"
+            }
+          },
+          "assetProviderCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "runtimeAuthority": {
+            "const": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          }
+        },
+        "$defs": {
+          "nonWhitespaceString": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "pluginName": {
+            "type": "string",
+            "pattern": "^(?=.{1,255}$)(?=.*\\S)(?!.*[\\u0000-\\u001F\\u007F-\\u009F/\\\\:]).*\\.(?:[eE][sS][pP]|[eE][sS][mM]|[eE][sS][lL])$"
+          },
+          "workspacePath": {
+            "type": "string",
+            "pattern": "^(?=.*\\S)(?!.*\\u0000)(?:[A-Za-z]:[\\\\/]|\\\\\\\\[^\\\\/]+[\\\\/][^\\\\/]+(?:[\\\\/]|$))[\\s\\S]*$",
+            "description": "Fully-qualified no-NUL path. Codec additionally canonicalizes and validates K-local containment, ordinary-file/directory status, and exact derived paths."
+          },
+          "assetPath": {
+            "type": "string",
+            "pattern": "^(?=.*\\S)(?!.*\\u0000)(?!\\s*[\\\\/])(?!.*:)(?!\\s*\\.{1,2}(?:[\\\\/]|\\s*$))(?!.*[\\\\/]\\.{1,2}(?:[\\\\/]|\\s*$))(?!.*[\\\\/]{2})(?!.*[\\\\/]\\s*$)[\\s\\S]+$",
+            "description": "Trim-normalizable relative AssetPath with slash normalization and no empty, dot, dot-dot, rooted, or colon-bearing segment."
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^\\s*[0-9A-Fa-f]{64}\\s*$"
+          },
+          "formId": {
+            "type": "string",
+            "pattern": "^\\s*(?:0[xX])?0*[0-9A-Fa-f]{1,8}\\s*$"
+          },
+          "plugin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "order",
+              "active",
+              "requested",
+              "requiredMaster",
+              "sourceHash",
+              "masters"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/pluginName"
+              },
+              "order": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "requested": {
+                "type": "boolean"
+              },
+              "requiredMaster": {
+                "type": "boolean"
+              },
+              "sourceHash": {
+                "$ref": "#/$defs/sha256"
+              },
+              "masters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/pluginName"
+                }
+              }
+            }
+          },
+          "bodySidecar": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "path",
+              "sourceHash",
+              "canonicalHash",
+              "npcCount"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/pluginName"
+              },
+              "path": {
+                "$ref": "#/$defs/workspacePath"
+              },
+              "sourceHash": {
+                "$ref": "#/$defs/sha256"
+              },
+              "canonicalHash": {
+                "$ref": "#/$defs/sha256"
+              },
+              "npcCount": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          "generatedPlugin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "path",
+              "author",
+              "sha256",
+              "readSucceeded",
+              "npcFormIds"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/pluginName"
+              },
+              "path": {
+                "$ref": "#/$defs/workspacePath"
+              },
+              "author": {
+                "$ref": "#/$defs/nonWhitespaceString"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^\\s*[0-9A-Fa-f]{64}\\s*$"
+              },
+              "readSucceeded": {
+                "const": true
+              },
+              "npcFormIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "#/$defs/formId"
+                },
+                "description": "Codec additionally requires strictly ascending numeric FormIDs."
+              }
+            }
+          },
+          "generatedSidecar": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "originPlugin",
+              "kind",
+              "variant",
+              "relativePath",
+              "path",
+              "formId",
+              "size",
+              "sha256"
+            ],
+            "properties": {
+              "originPlugin": {
+                "$ref": "#/$defs/pluginName"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "faceGeom",
+                  "faceCustomizationDiffuse",
+                  "faceCustomizationNormal",
+                  "faceCustomizationSpecular",
+                  "faceTint",
+                  "faceDiffuse",
+                  "faceNormal",
+                  "faceDetailNeutral"
+                ]
+              },
+              "variant": {
+                "type": "string",
+                "enum": [
+                  "canonical",
+                  "debugSandbox"
+                ]
+              },
+              "relativePath": {
+                "$ref": "#/$defs/assetPath"
+              },
+              "path": {
+                "$ref": "#/$defs/workspacePath"
+              },
+              "formId": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/formId"
+                  }
+                ]
+              },
+              "size": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 536870912
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            },
+            "description": "Codec additionally validates origin-plugin membership, unique relative paths, derived materialized paths, exact size/hash bytes, and canonical kind-specific naming."
+          },
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "$ref": "#/$defs/nonWhitespaceString"
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning"
+                ]
+              },
+              "message": {
+                "$ref": "#/$defs/nonWhitespaceString"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

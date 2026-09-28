@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "edition": "skyrimse",
+  "npcFormId": "0x00000800",
+  "assets": [
+    {
+      "category": "hair",
+      "path": "hair.nif",
+      "provider": "fixture:hair.nif",
+      "sha256": "3D33BCC7A0EB04D88C30AB4A4E5120FDB7ACDC8B5646AF7728825BBDEAFE0A83"
+    }
+  ],
+  "morphs": []
+}

@@ -1,0 +1,745 @@
+{
+  "schema": "actorwright.mediapipe-target-notices.v1",
+  "status": "Conservative target source notice copies; archive membership is not proof of emitted code.",
+  "candidateSha256": "6B4C7503B1324CA5D1D2579DAC8D5E842DE6538A7483E778729E113063ACEC31",
+  "rootCopies": 25,
+  "nestedArchiveCopies": 47,
+  "textBytes": 939004,
+  "files": [
+    {
+      "bytes": 1157,
+      "sha256": "17E4F539024BE2749EE729D1E2F01D24CEF12ECE8C9BF18E91A4349BE29C80BF",
+      "sourceArchiveSha256": "D973501A40C55126B31ACCC2D9F08D931EC3CC190C0430309A5E341D3C0CE32A",
+      "archiveMember": "FP16-4dfe081cf6bcd15db339cf2680b9281b8451eeb3/LICENSE",
+      "path": "target-dependencies/FP16/FP16-LICENSE",
+      "kind": "reviewed header or Ooura permission notice"
+    },
+    {
+      "bytes": 1117,
+      "sha256": "7CAC00006125B1486A27E4801ED66357236E984C540BD323945AB7B66B078EC3",
+      "sourceArchiveSha256": "3D7B0E9C4C658A84376A1086126BE02F9B7F753CAA95E009D9AC38D11DA444DB",
+      "archiveMember": "FXdiv-63058eff77e11aa15bf531df5dd34395ec3017c8/LICENSE",
+      "path": "target-dependencies/FXdiv/LICENSE",
+      "kind": "reviewed target-root notice"
+    },
+    {
+      "bytes": 11361,
+      "sha256": "C79A7FEA0E3CAC04CD43F20E7B648E5A0FF8FA5344E644B0EE09CA1162B62747",
+      "sourceArchiveSha256": "F841F78243F179326F2A80B719F2887C38FE226D288ECDC46E2AA091E6AA43BC",
+      "archiveMember": "abseil-cpp-9687a8ea750bfcddf790372093245a1d041b21a3/LICENSE",
+      "path": "target-dependencies/abseil/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 1662,
+      "sha256": "7022F51B439A5915E933ECC270C83E24CA0CB2CCEEB08B0132DCD4DBB03ED2DC",
+      "sourceArchiveSha256": "019FBC7EC25860070A1D90E12686FC160CFB33E22AA063C80F52B363F1361E9D",
+      "archiveMember": "ARM_NEON_2_x86_SSE-a15b489e1222b2087007546b4912e21293ea86ff/LICENSE",
+      "path": "target-dependencies/arm_neon_2_x86_sse/arm_neon_2_x86_sse-LICENSE",
+      "kind": "reviewed header or Ooura permission notice"
+    },
+    {
+      "bytes": 1424,
+      "sha256": "8E7E60636C3AA0CB03571A1A841CE5697F9551FF92B3C426C2561613D15ADE70",
+      "sourceArchiveSha256": "C0254CE97F7ABC778DD2DF0AACA1E0506DBA1CD514FDB9FE88C07849393F8EF4",
+      "archiveMember": "cpuinfo-8a9210069b5a37dd89ed118a783945502a30a4ae/LICENSE",
+      "path": "target-dependencies/cpuinfo/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 11362,
+      "sha256": "03379001A7B12A2EC997A25554247D985270B353C10D5BAFEE9AC8D6519820B7",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.APACHE",
+      "path": "target-dependencies/eigen/COPYING.APACHE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 1517,
+      "sha256": "51928DCE36213C5333BA3172E847D735D4C6E9B7FF2722A326C49067155B82EB",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.BSD",
+      "path": "target-dependencies/eigen/COPYING.BSD",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 2193,
+      "sha256": "C87B7F8EE88F6195E91743820C00354833583AEF091B72E2D4A49C8E28E798A0",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.MINPACK",
+      "path": "target-dependencies/eigen/COPYING.MINPACK",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 16727,
+      "sha256": "66A3107D5AD6A058AAB753EAAC2047CCB2ED0E39465DD0FE5844DA3E300D5172",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.MPL2",
+      "path": "target-dependencies/eigen/COPYING.MPL2",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 264,
+      "sha256": "DB640FF2BD90C6ABD6A4D3FBB351E0EE4D555417CF840492054D1CBB2EA85644",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.README",
+      "path": "target-dependencies/eigen/COPYING.README",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 16725,
+      "sha256": "1F256ECAD192880510E84AD60474EAB7589218784B9A50BC7CEEE34C2B91F1D5",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/LICENSE",
+      "path": "target-dependencies/eigen/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 1110,
+      "sha256": "4162DD091CAAE234F72D3B57E138174F733E736B2430A4C51B098B17D866FCB6",
+      "sourceArchiveSha256": "18392CF0736E1D62ECBB8D695C31496B6507859E8C75541D7AD0BA092DC52115",
+      "archiveMember": "farmhash-0d859a811870d10f53a594927d0d0b97573ad06d/COPYING",
+      "path": "target-dependencies/farmhash_archive/COPYING",
+      "kind": "reviewed target-root notice"
+    },
+    {
+      "bytes": 7183,
+      "sha256": "5B5E610DA10394132A42D82ED6501FE1B83A1D19E1BB160C8ACE10ED61708765",
+      "sourceArchiveSha256": "5F4DABC2AE21E1F537425D58A49CDCA1C49EA11DB0D6271E2A4B27E9697548EB",
+      "archiveMember": "OouraFFT-1.0/readme.txt",
+      "path": "target-dependencies/fft2d/fft2d-readme.txt",
+      "kind": "reviewed header or Ooura permission notice"
+    },
+    {
+      "bytes": 3212,
+      "sha256": "0B2A2082537735A2A576DBEC2E8F9C1A09812EAC6DF6A389502A6BA860072906",
+      "sourceArchiveSha256": "5F4DABC2AE21E1F537425D58A49CDCA1C49EA11DB0D6271E2A4B27E9697548EB",
+      "archiveMember": "OouraFFT-1.0/readme2d.txt",
+      "path": "target-dependencies/fft2d/fft2d-readme2d.txt",
+      "kind": "reviewed header or Ooura permission notice"
+    },
+    {
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+      "sourceArchiveSha256": "C9C6B8653597ED7EE5C62243979010BD0F09B29A46BE414505BC5B58A874BB17",
+      "archiveMember": "flatbuffers-e6463926479bd6b330cbcf673f7e917803fd5831/LICENSE",
+      "path": "target-dependencies/flatbuffers/LICENSE",
+      "kind": "reviewed target-root notice"
+    },
+    {
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+      "sourceArchiveSha256": "7DC418717C8456473FAC4FF2288B71057E3DCB72894524C734A4362CDB51FA8B",
+      "archiveMember": "gemmlowp-16e8662c34917be0065110bfcd9cc27d30f52fdf/LICENSE",
+      "path": "target-dependencies/gemmlowp/gemmlowp-LICENSE",
+      "kind": "reviewed header or Ooura permission notice"
+    },
+    {
+      "bytes": 1479,
+      "sha256": "90D1F3701813C3CD65EEE2DC736746FE46B465918F3F7D6D31463A2018B33FA5",
+      "sourceArchiveSha256": "19713A36C9F32B33DF59D1C79B4958434CB005B5B47DC5400A7A4B078111D9B5",
+      "archiveMember": "gflags-2.2.2/COPYING.txt",
+      "path": "target-dependencies/gflags/COPYING.txt",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 3215,
+      "sha256": "0FC497129C5C69FF6F22DA6933C7E4AAEF082FDE8437FD57680C2780100772A4",
+      "sourceArchiveSha256": "170D08F80210B82D95563F4723A15095EFF1AAD1863000E8EEB569C96A98FEFB",
+      "archiveMember": "glog-3a0d4d22c5ae0b9a2216988411cfa6bf860cc372/COPYING",
+      "path": "target-dependencies/glog/COPYING",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 1732,
+      "sha256": "6E5E117324AFD944DCF67F36CF329843BC1A92229A8CD9BB573D7A83130FEA7D",
+      "sourceArchiveSha256": "F645E6E42745CE922CA5388B1883CA583BAFE4366CC74CF35C3C9299005136E2",
+      "archiveMember": "protobuf-5.28.3/LICENSE",
+      "path": "target-dependencies/protobuf/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 1378,
+      "sha256": "57814A606B4D0FB087D9A534919084B6C11B58A4174CB5A4AEF200187780DC3A",
+      "sourceArchiveSha256": "D5A78B017839EE0474E6AEF6E21742B03F641B260F29FAF9538A0A6B8FAE0704",
+      "archiveMember": "pthreadpool-995229919303dd98c0f1b3b585b54527067ef893/LICENSE",
+      "path": "target-dependencies/pthreadpool/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+      "sourceArchiveSha256": "A22C42E80C7BB450DB8492728E4742EE66F46D5458C45FE67CE2C9B61240630C",
+      "archiveMember": "ruy-3286a34cc8de6149ac6844107dfdffac91531e72/LICENSE",
+      "path": "target-dependencies/ruy/LICENSE",
+      "kind": "reviewed target-root notice"
+    },
+    {
+      "bytes": 2510,
+      "sha256": "BEBFE904B14301657E4E5D655C811D51FD31B97C455B9CC2D8600D6BAC6CFF63",
+      "sourceArchiveSha256": "13A99AD430E930907F5611325EC384168A958BF7610E63E60E2FD8E7B7379610",
+      "archiveMember": "stb-b42009b3b9d4ca35bc703f5310eedc74f584be58/LICENSE",
+      "path": "target-dependencies/stb_image/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 13575,
+      "sha256": "71C6915D04265772A0339BED47276942C678B45CC01534210EBE6984FD1AEC65",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/LICENSE",
+      "path": "target-dependencies/tensorflow/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 1560,
+      "sha256": "63F519E15726F4C4F830BD958F694C84FECB4E0A4CACC527D2696BB71EF95ADA",
+      "sourceArchiveSha256": "7235B2B55FBF11B64F38DB130EFAE0F293D2D6D6FD90613221B598A8847F41C5",
+      "archiveMember": "XNNPACK-68167d1fefa50296f0588ec280f48c58357ca898/LICENSE",
+      "path": "target-dependencies/xnnpack/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 1002,
+      "sha256": "845EFC77857D485D91FB3E0B884AAA929368C717AE8186B66FE1ED2495753243",
+      "sourceArchiveSha256": "B3A24DE97A8FDBC835B9833169501030B8977031BCB54B3B3AC13740F846AB30",
+      "archiveMember": "zlib-1.2.13/LICENSE",
+      "path": "target-dependencies/zlib/LICENSE",
+      "kind": "reviewed root or file-specific notice"
+    },
+    {
+      "bytes": 1157,
+      "sha256": "17E4F539024BE2749EE729D1E2F01D24CEF12ECE8C9BF18E91A4349BE29C80BF",
+      "sourceArchiveSha256": "D973501A40C55126B31ACCC2D9F08D931EC3CC190C0430309A5E341D3C0CE32A",
+      "archiveMember": "FP16-4dfe081cf6bcd15db339cf2680b9281b8451eeb3/LICENSE",
+      "path": "from-source-archives/FP16/LICENSE",
+      "repositoryRoots": [
+        "FP16"
+      ],
+      "disposition": "nested notice included in full FP16 source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1117,
+      "sha256": "7CAC00006125B1486A27E4801ED66357236E984C540BD323945AB7B66B078EC3",
+      "sourceArchiveSha256": "3D7B0E9C4C658A84376A1086126BE02F9B7F753CAA95E009D9AC38D11DA444DB",
+      "archiveMember": "FXdiv-63058eff77e11aa15bf531df5dd34395ec3017c8/LICENSE",
+      "path": "from-source-archives/FXdiv/LICENSE",
+      "repositoryRoots": [
+        "FXdiv"
+      ],
+      "disposition": "nested notice included in full FXdiv source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1560,
+      "sha256": "63F519E15726F4C4F830BD958F694C84FECB4E0A4CACC527D2696BB71EF95ADA",
+      "sourceArchiveSha256": "7235B2B55FBF11B64F38DB130EFAE0F293D2D6D6FD90613221B598A8847F41C5",
+      "archiveMember": "XNNPACK-68167d1fefa50296f0588ec280f48c58357ca898/LICENSE",
+      "path": "from-source-archives/XNNPACK/LICENSE",
+      "repositoryRoots": [
+        "XNNPACK"
+      ],
+      "disposition": "nested notice included in full XNNPACK source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1662,
+      "sha256": "7022F51B439A5915E933ECC270C83E24CA0CB2CCEEB08B0132DCD4DBB03ED2DC",
+      "sourceArchiveSha256": "019FBC7EC25860070A1D90E12686FC160CFB33E22AA063C80F52B363F1361E9D",
+      "archiveMember": "ARM_NEON_2_x86_SSE-a15b489e1222b2087007546b4912e21293ea86ff/LICENSE",
+      "path": "from-source-archives/arm_neon_2_x86_sse/LICENSE",
+      "repositoryRoots": [
+        "arm_neon_2_x86_sse"
+      ],
+      "disposition": "nested notice included in full arm_neon_2_x86_sse source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1479,
+      "sha256": "90D1F3701813C3CD65EEE2DC736746FE46B465918F3F7D6D31463A2018B33FA5",
+      "sourceArchiveSha256": "19713A36C9F32B33DF59D1C79B4958434CB005B5B47DC5400A7A4B078111D9B5",
+      "archiveMember": "gflags-2.2.2/COPYING.txt",
+      "path": "from-source-archives/com_github_gflags_gflags/COPYING.txt",
+      "repositoryRoots": [
+        "com_github_gflags_gflags"
+      ],
+      "disposition": "nested notice included in full com_github_gflags_gflags source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 3215,
+      "sha256": "0FC497129C5C69FF6F22DA6933C7E4AAEF082FDE8437FD57680C2780100772A4",
+      "sourceArchiveSha256": "170D08F80210B82D95563F4723A15095EFF1AAD1863000E8EEB569C96A98FEFB",
+      "archiveMember": "glog-3a0d4d22c5ae0b9a2216988411cfa6bf860cc372/COPYING",
+      "path": "from-source-archives/com_github_glog_glog_windows/COPYING",
+      "repositoryRoots": [
+        "com_github_glog_glog_windows"
+      ],
+      "disposition": "nested notice included in full com_github_glog_glog_windows source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11361,
+      "sha256": "C79A7FEA0E3CAC04CD43F20E7B648E5A0FF8FA5344E644B0EE09CA1162B62747",
+      "sourceArchiveSha256": "F841F78243F179326F2A80B719F2887C38FE226D288ECDC46E2AA091E6AA43BC",
+      "archiveMember": "abseil-cpp-9687a8ea750bfcddf790372093245a1d041b21a3/LICENSE",
+      "path": "from-source-archives/com_google_absl/LICENSE",
+      "repositoryRoots": [
+        "com_google_absl"
+      ],
+      "disposition": "nested notice included in full com_google_absl source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1732,
+      "sha256": "6E5E117324AFD944DCF67F36CF329843BC1A92229A8CD9BB573D7A83130FEA7D",
+      "sourceArchiveSha256": "F645E6E42745CE922CA5388B1883CA583BAFE4366CC74CF35C3C9299005136E2",
+      "archiveMember": "protobuf-5.28.3/LICENSE",
+      "path": "from-source-archives/com_google_protobuf/LICENSE",
+      "repositoryRoots": [
+        "com_google_protobuf"
+      ],
+      "disposition": "nested notice included in full com_google_protobuf source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1381,
+      "sha256": "3FCFCD6010D73BC2B22505B6A91779022A82661809A3E4E0A0BDD7B3463DEF8F",
+      "sourceArchiveSha256": "F645E6E42745CE922CA5388B1883CA583BAFE4366CC74CF35C3C9299005136E2",
+      "archiveMember": "protobuf-5.28.3/third_party/lunit/LICENSE",
+      "path": "from-source-archives/com_google_protobuf/third_party/lunit/LICENSE",
+      "repositoryRoots": [
+        "com_google_protobuf"
+      ],
+      "disposition": "nested notice included in full com_google_protobuf source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1091,
+      "sha256": "02DE69B64FC36D9E938F418E52723E42F0B2B226D58A9CB3C8DCBDF7059F5074",
+      "sourceArchiveSha256": "F645E6E42745CE922CA5388B1883CA583BAFE4366CC74CF35C3C9299005136E2",
+      "archiveMember": "protobuf-5.28.3/third_party/utf8_range/LICENSE",
+      "path": "from-source-archives/com_google_protobuf/third_party/utf8_range/LICENSE",
+      "repositoryRoots": [
+        "com_google_protobuf"
+      ],
+      "disposition": "nested notice included in full com_google_protobuf source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1424,
+      "sha256": "8E7E60636C3AA0CB03571A1A841CE5697F9551FF92B3C426C2561613D15ADE70",
+      "sourceArchiveSha256": "C0254CE97F7ABC778DD2DF0AACA1E0506DBA1CD514FDB9FE88C07849393F8EF4",
+      "archiveMember": "cpuinfo-8a9210069b5a37dd89ed118a783945502a30a4ae/LICENSE",
+      "path": "from-source-archives/cpuinfo/LICENSE",
+      "repositoryRoots": [
+        "cpuinfo"
+      ],
+      "disposition": "nested notice included in full cpuinfo source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1384,
+      "sha256": "68A14C3E79ADD023EECD83D611E73F05B8BF1D16852EFEB7EB4033A96736DA9E",
+      "sourceArchiveSha256": "C0254CE97F7ABC778DD2DF0AACA1E0506DBA1CD514FDB9FE88C07849393F8EF4",
+      "archiveMember": "cpuinfo-8a9210069b5a37dd89ed118a783945502a30a4ae/deps/clog/LICENSE",
+      "path": "from-source-archives/cpuinfo/deps/clog/LICENSE",
+      "repositoryRoots": [
+        "cpuinfo"
+      ],
+      "disposition": "nested notice included in full cpuinfo source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11362,
+      "sha256": "03379001A7B12A2EC997A25554247D985270B353C10D5BAFEE9AC8D6519820B7",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.APACHE",
+      "path": "from-source-archives/eigen/COPYING.APACHE",
+      "repositoryRoots": [
+        "eigen",
+        "eigen_archive"
+      ],
+      "disposition": "Eigen source-root license set; declared input artifacts span Eigen modules but do not prove every file emitted code"
+    },
+    {
+      "bytes": 1517,
+      "sha256": "51928DCE36213C5333BA3172E847D735D4C6E9B7FF2722A326C49067155B82EB",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.BSD",
+      "path": "from-source-archives/eigen/COPYING.BSD",
+      "repositoryRoots": [
+        "eigen",
+        "eigen_archive"
+      ],
+      "disposition": "Eigen source-root license set; declared input artifacts span Eigen modules but do not prove every file emitted code"
+    },
+    {
+      "bytes": 2193,
+      "sha256": "C87B7F8EE88F6195E91743820C00354833583AEF091B72E2D4A49C8E28E798A0",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.MINPACK",
+      "path": "from-source-archives/eigen/COPYING.MINPACK",
+      "repositoryRoots": [
+        "eigen",
+        "eigen_archive"
+      ],
+      "disposition": "file-specific terms retained; declared inputs include NonLinearOptimization, LevenbergMarquardt, and NumericalDiff headers"
+    },
+    {
+      "bytes": 16727,
+      "sha256": "66A3107D5AD6A058AAB753EAAC2047CCB2ED0E39465DD0FE5844DA3E300D5172",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.MPL2",
+      "path": "from-source-archives/eigen/COPYING.MPL2",
+      "repositoryRoots": [
+        "eigen",
+        "eigen_archive"
+      ],
+      "disposition": "Eigen source-root license set; declared input artifacts span Eigen modules but do not prove every file emitted code"
+    },
+    {
+      "bytes": 264,
+      "sha256": "DB640FF2BD90C6ABD6A4D3FBB351E0EE4D555417CF840492054D1CBB2EA85644",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/COPYING.README",
+      "path": "from-source-archives/eigen/COPYING.README",
+      "repositoryRoots": [
+        "eigen",
+        "eigen_archive"
+      ],
+      "disposition": "Eigen source-root license set; declared input artifacts span Eigen modules but do not prove every file emitted code"
+    },
+    {
+      "bytes": 16725,
+      "sha256": "1F256ECAD192880510E84AD60474EAB7589218784B9A50BC7CEEE34C2B91F1D5",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/LICENSE",
+      "path": "from-source-archives/eigen/LICENSE",
+      "repositoryRoots": [
+        "eigen",
+        "eigen_archive"
+      ],
+      "disposition": "Eigen source-root license set; declared input artifacts span Eigen modules but do not prove every file emitted code"
+    },
+    {
+      "bytes": 18109,
+      "sha256": "B8D0E2BCBF36F6AF3CDBF94055AD2EA675D5A19FC623EB0EC82FEBB2B08E719B",
+      "sourceArchiveSha256": "1A432CCBD597EA7B9FAA1557B1752328D6ADC1A3DB8969F6FE793FF704BE3BF0",
+      "archiveMember": "eigen-4c38131a16803130b66266a912029504f2cf23cd/bench/btl/COPYING",
+      "path": "from-source-archives/eigen/bench/btl/COPYING",
+      "repositoryRoots": [
+        "eigen",
+        "eigen_archive"
+      ],
+      "disposition": "retained from full Eigen source; no target input under bench/btl was identified"
+    },
+    {
+      "bytes": 1110,
+      "sha256": "4162DD091CAAE234F72D3B57E138174F733E736B2430A4C51B098B17D866FCB6",
+      "sourceArchiveSha256": "18392CF0736E1D62ECBB8D695C31496B6507859E8C75541D7AD0BA092DC52115",
+      "archiveMember": "farmhash-0d859a811870d10f53a594927d0d0b97573ad06d/COPYING",
+      "path": "from-source-archives/farmhash_archive/COPYING",
+      "repositoryRoots": [
+        "farmhash_archive"
+      ],
+      "disposition": "nested notice included in full farmhash_archive source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+      "sourceArchiveSha256": "C9C6B8653597ED7EE5C62243979010BD0F09B29A46BE414505BC5B58A874BB17",
+      "archiveMember": "flatbuffers-e6463926479bd6b330cbcf673f7e917803fd5831/LICENSE",
+      "path": "from-source-archives/flatbuffers/LICENSE",
+      "repositoryRoots": [
+        "flatbuffers"
+      ],
+      "disposition": "nested notice included in full flatbuffers source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11341,
+      "sha256": "EDD9B3459BEE4C79B549A5EF66D06D12BD144DDB8D08E0B448FB421267F43DD5",
+      "sourceArchiveSha256": "C9C6B8653597ED7EE5C62243979010BD0F09B29A46BE414505BC5B58A874BB17",
+      "archiveMember": "flatbuffers-e6463926479bd6b330cbcf673f7e917803fd5831/dart/LICENSE",
+      "path": "from-source-archives/flatbuffers/dart/LICENSE",
+      "repositoryRoots": [
+        "flatbuffers"
+      ],
+      "disposition": "nested notice included in full flatbuffers source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+      "sourceArchiveSha256": "C9C6B8653597ED7EE5C62243979010BD0F09B29A46BE414505BC5B58A874BB17",
+      "archiveMember": "flatbuffers-e6463926479bd6b330cbcf673f7e917803fd5831/swift/LICENSE",
+      "path": "from-source-archives/flatbuffers/swift/LICENSE",
+      "repositoryRoots": [
+        "flatbuffers"
+      ],
+      "disposition": "nested notice included in full flatbuffers source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+      "sourceArchiveSha256": "7DC418717C8456473FAC4FF2288B71057E3DCB72894524C734A4362CDB51FA8B",
+      "archiveMember": "gemmlowp-16e8662c34917be0065110bfcd9cc27d30f52fdf/LICENSE",
+      "path": "from-source-archives/gemmlowp/LICENSE",
+      "repositoryRoots": [
+        "gemmlowp"
+      ],
+      "disposition": "nested notice included in full gemmlowp source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1378,
+      "sha256": "57814A606B4D0FB087D9A534919084B6C11B58A4174CB5A4AEF200187780DC3A",
+      "sourceArchiveSha256": "D5A78B017839EE0474E6AEF6E21742B03F641B260F29FAF9538A0A6B8FAE0704",
+      "archiveMember": "pthreadpool-995229919303dd98c0f1b3b585b54527067ef893/LICENSE",
+      "path": "from-source-archives/pthreadpool/LICENSE",
+      "repositoryRoots": [
+        "pthreadpool"
+      ],
+      "disposition": "nested notice included in full pthreadpool source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+      "sourceArchiveSha256": "A22C42E80C7BB450DB8492728E4742EE66F46D5458C45FE67CE2C9B61240630C",
+      "archiveMember": "ruy-3286a34cc8de6149ac6844107dfdffac91531e72/LICENSE",
+      "path": "from-source-archives/ruy/LICENSE",
+      "repositoryRoots": [
+        "ruy"
+      ],
+      "disposition": "nested notice included in full ruy source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 2510,
+      "sha256": "BEBFE904B14301657E4E5D655C811D51FD31B97C455B9CC2D8600D6BAC6CFF63",
+      "sourceArchiveSha256": "13A99AD430E930907F5611325EC384168A958BF7610E63E60E2FD8E7B7379610",
+      "archiveMember": "stb-b42009b3b9d4ca35bc703f5310eedc74f584be58/LICENSE",
+      "path": "from-source-archives/stblib/LICENSE",
+      "repositoryRoots": [
+        "stblib"
+      ],
+      "disposition": "nested notice included in full stblib source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 200,
+      "sha256": "100868556BE0B9E6DF6593886E9E1F7746CAC63E1AD6B3A655E36BD23AD4F4FD",
+      "sourceArchiveSha256": "13A99AD430E930907F5611325EC384168A958BF7610E63E60E2FD8E7B7379610",
+      "archiveMember": "stb-b42009b3b9d4ca35bc703f5310eedc74f584be58/data/herringbone/license.txt",
+      "path": "from-source-archives/stblib/data/herringbone/license.txt",
+      "repositoryRoots": [
+        "stblib"
+      ],
+      "disposition": "nested notice included in full stblib source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 13575,
+      "sha256": "71C6915D04265772A0339BED47276942C678B45CC01534210EBE6984FD1AEC65",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/LICENSE",
+      "path": "from-source-archives/tensorflow/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "TensorFlow root source license for target source"
+    },
+    {
+      "bytes": 242,
+      "sha256": "A16F05BFA8134C8800F5AD3C9B9F60BCA4010FBF148B192F40A41DA253778C2F",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/tensorflow/lite/tools/pip_package/debian/copyright",
+      "path": "from-source-archives/tensorflow/tensorflow/lite/tools/pip_package/debian/copyright",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 466978,
+      "sha256": "B9CC03566B8E0E074F718E64F96F49B6FE070E3F777C41B3D4BB0DF7113EA634",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/tensorflow/tools/pip_package/THIRD_PARTY_NOTICES.txt",
+      "path": "from-source-archives/tensorflow/tensorflow/tools/pip_package/THIRD_PARTY_NOTICES.txt",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "upstream package-wide notice retained; may include optional components outside the selected target"
+    },
+    {
+      "bytes": 185,
+      "sha256": "64A68EBD98D10064BFD8F6C8DC4FA094747BD33AF191F694183CE163CBA5C9B5",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/fft2d/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/fft2d/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "Ooura notice; fft2d is independently a final-link source root"
+    },
+    {
+      "bytes": 21000,
+      "sha256": "4EAC19453DDF356478DB3BE6B101A6D872D0046CDC8222DF1FF5C997DD4B9FBE",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/icu/data/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/icu/data/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11358,
+      "sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/py/non_hermetic/ml_dtypes/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/py/non_hermetic/ml_dtypes/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 2321,
+      "sha256": "6B5086F61FE0C71564A79304ECBAA60F11FA3F3DEBF82F73D16A611CAB102ADC",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/py/numpy/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/py/numpy/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11356,
+      "sha256": "43070E2D4E532684DE521B885F385D0841030EFA2B1A20BAFB76133A5E1379C1",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "vendored XLA subtree; declared local_xla inputs include four xla/tsl headers"
+    },
+    {
+      "bytes": 42047,
+      "sha256": "5FB9751A87DA6EBCB2D492D8787F62430A921EF56475B924B065D7FC0E7A7586",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/eigen3/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/eigen3/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11416,
+      "sha256": "F086F362C12F3A0295BA186C8CAA1D2778BEB6B9A7651C499791F202C2429C0D",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/gpus/crosstool/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/gpus/crosstool/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11416,
+      "sha256": "F086F362C12F3A0295BA186C8CAA1D2778BEB6B9A7651C499791F202C2429C0D",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/gpus/cuda/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/gpus/cuda/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11357,
+      "sha256": "B40930BBCF80744C86C46A12BC9DA056641D722716C378F5659B9E555EF833E1",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/mkl_dnn/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/mkl_dnn/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1734,
+      "sha256": "9A5A2EBD47CD3CD8E89E4265E44F116EB52C58162644A364797C82EB4C84FB4B",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/nccl/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/nccl/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 239,
+      "sha256": "62C641E33F3E0B00076CDDBFFD5694EA4CE8EAA87BF8060B5EA101FE583208C1",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/nvtx/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/nvtx/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 2321,
+      "sha256": "6B5086F61FE0C71564A79304ECBAA60F11FA3F3DEBF82F73D16A611CAB102ADC",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/py/numpy/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/py/numpy/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11416,
+      "sha256": "95296CDABA4B30D0D10FB334B611E638C6E216E7DA626B5EB4F3241DD85946EA",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/tensorrt/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/tensorrt/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested notice included in full tensorflow source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 11356,
+      "sha256": "43070E2D4E532684DE521B885F385D0841030EFA2B1A20BAFB76133A5E1379C1",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/third_party/tsl/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/third_party/tsl/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested XLA/TSL notice retained; exact covered-file scope is not resolved by the bounded query"
+    },
+    {
+      "bytes": 11356,
+      "sha256": "C5ACCBBD8546E94C34AED24AFE689A617627D18EED5A6C48277E48DB57C23851",
+      "sourceArchiveSha256": "2B5028C480EA8029701056F8DDB80CE12BA31C9CF402183107CBB34D2DB899E8",
+      "archiveMember": "tensorflow-fad6b3cf5a7d51a437bd01ee929853bc8554b618/third_party/xla/xla/tsl/mkl/LICENSE",
+      "path": "from-source-archives/tensorflow/third_party/xla/xla/tsl/mkl/LICENSE",
+      "repositoryRoots": [
+        "org_tensorflow"
+      ],
+      "disposition": "nested XLA/TSL notice retained; exact covered-file scope is not resolved by the bounded query"
+    },
+    {
+      "bytes": 1002,
+      "sha256": "845EFC77857D485D91FB3E0B884AAA929368C717AE8186B66FE1ED2495753243",
+      "sourceArchiveSha256": "B3A24DE97A8FDBC835B9833169501030B8977031BCB54B3B3AC13740F846AB30",
+      "archiveMember": "zlib-1.2.13/LICENSE",
+      "path": "from-source-archives/zlib/LICENSE",
+      "repositoryRoots": [
+        "zlib"
+      ],
+      "disposition": "nested notice included in full zlib source archive; exact subcomponent linkage is not established by the bounded link/input record"
+    },
+    {
+      "bytes": 1359,
+      "sha256": "36266A8FD073568394CB81CDB2B124F7FDAE2C64C1A7ED09DB34B4D22EFA2951",
+      "sourceArchiveSha256": "B3A24DE97A8FDBC835B9833169501030B8977031BCB54B3B3AC13740F846AB30",
+      "archiveMember": "zlib-1.2.13/contrib/dotzlib/LICENSE_1_0.txt",
+      "path": "from-source-archives/zlib/contrib/dotzlib/LICENSE_1_0.txt",
+      "repositoryRoots": [
+        "zlib"
+      ],
+      "disposition": "nested zlib contribution notice retained from full source archive; bounded target inputs do not establish dotzlib is used"
+    }
+  ]
+}

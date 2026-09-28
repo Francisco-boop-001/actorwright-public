@@ -1,0 +1,9 @@
+{
+  "root": "K:\\ExampleWorkspace",
+  "output": "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\03-builds\\work\\preview-pixels\\sse-hair.png",
+  "width": 256,
+  "height": 256,
+  "assets": [
+    "K:\\ExampleWorkspace\\projects\\NpcManagerReimplementation\\01-source-copies\\m6-preview-assets\\sse\\hair.nif"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:compatibility:v1:consumer-stage-report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "formatVersion",
+    "generatedAtUtc",
+    "stage",
+    "candidateBundleManifestSha256",
+    "packageLength",
+    "packageSha256",
+    "contractSchemaSha256",
+    "producerReportSha256",
+    "status",
+    "gates",
+    "evidence"
+  ],
+  "properties": {
+    "$schema": {"const": "urn:actorwright:compatibility:v1:consumer-stage-report"},
+    "formatVersion": {"const": 1},
+    "generatedAtUtc": {"type": "string", "format": "date-time"},
+    "stage": {"enum": ["Admission", "Activation"]},
+    "candidateBundleManifestSha256": {"$ref": "#/$defs/sha256"},
+    "packageLength": {"type": "integer", "minimum": 0},
+    "packageSha256": {"$ref": "#/$defs/sha256"},
+    "contractSchemaSha256": {"$ref": "#/$defs/sha256"},
+    "producerReportSha256": {"$ref": "#/$defs/sha256"},
+    "status": {"enum": ["PASS", "FAIL", "BLOCKED", "NOT_APPLICABLE"]},
+    "gates": {"type": "array", "items": {"$ref": "#/$defs/gate"}},
+    "evidence": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gateId", "required", "status", "evidence"],
+      "properties": {
+        "gateId": {"type": "string", "minLength": 1},
+        "required": {"type": "boolean"},
+        "status": {"enum": ["PASS", "FAIL", "BLOCKED", "NOT_APPLICABLE"]},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

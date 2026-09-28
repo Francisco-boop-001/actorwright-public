@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 2,
+  "probes": [
+    {
+      "command": "preview npc",
+      "validator": "preview-consumer-required-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:npc-visual-preview-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:npc-visual-preview-result:v1"
+      ],
+      "fixtures": [],
+      "arguments": [],
+      "expectedEffects": [],
+      "expectedArtifact": {},
+      "expectedAuthority": {},
+      "expectedNextAction": {},
+      "expectedWorkflow": {}
+    },
+    {
+      "command": "npc finish verify",
+      "validator": "finish-verify-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:finish-verify-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:finish-verify-result:v1"
+      ],
+      "fixtures": [
+        {
+          "source": "finish-verify/output.zip.base64",
+          "destination": "output.zip",
+          "encoding": "base64",
+          "size": 11220,
+          "sha256": "F35E17648DA41019EF9A866238FC8FE25AEF72DEB350F33BBFEE0D63EFD04DD2"
+        },
+        {
+          "source": "finish-verify/source-plugin.esp.base64",
+          "destination": "source/Data/BrigitteBardotNpcManager.esp",
+          "encoding": "base64",
+          "size": 456,
+          "sha256": "72221C2B4872A71672FD9958100E49609F3995A453D11364644BA66F1C7A5BF1"
+        },
+        {
+          "source": "finish-verify/Skyrim.esm.base64",
+          "destination": "source/Skyrim.esm",
+          "encoding": "base64",
+          "size": 598,
+          "sha256": "C2083D32592242A0FAF6AA6E1CCF72CB42875CCD316A54800FA9335B2C95CDDA"
+        },
+        {
+          "source": "finish-verify/face.nif.base64",
+          "destination": "source/Data/meshes/actors/character/FaceGenData/FaceGeom/BrigitteBardotNpcManager.esp/00000800.nif",
+          "encoding": "base64",
+          "size": 3,
+          "sha256": "CCBEC60334F45E5F12EFE01D4973B17E1610CCE4C7CAC1EE745578A544638357"
+        },
+        {
+          "source": "finish-verify/face.dds.base64",
+          "destination": "source/Data/textures/actors/character/FaceGenData/FaceTint/BrigitteBardotNpcManager.esp/00000800.dds",
+          "encoding": "base64",
+          "size": 3,
+          "sha256": "327FBA27231BB5F107133384C615316B490D8DA95872D606EA7A23BF64340162"
+        },
+        {
+          "source": "finish-verify/npcmanager-package.json.base64",
+          "destination": "source/npcmanager-package.json",
+          "encoding": "base64",
+          "size": 34,
+          "sha256": "C6C2D538200B7288DEDB991391AA4C542B6C463198954EF165FC930BDEB7DF25"
+        },
+        {
+          "source": "finish-verify/output-plugin.esp.base64",
+          "destination": "output/Data/BrigitteBardotNpcManager.esp",
+          "encoding": "base64",
+          "size": 1442,
+          "sha256": "DACD392164D879BF74F013A17981B7B1C2F2483DF4AC69BE9FB9287068CFBAF5"
+        },
+        {
+          "source": "finish-verify/face.nif.base64",
+          "destination": "output/Data/meshes/actors/character/FaceGenData/FaceGeom/BrigitteBardotNpcManager.esp/00000800.nif",
+          "encoding": "base64",
+          "size": 3,
+          "sha256": "CCBEC60334F45E5F12EFE01D4973B17E1610CCE4C7CAC1EE745578A544638357"
+        },
+        {
+          "source": "finish-verify/face.dds.base64",
+          "destination": "output/Data/textures/actors/character/FaceGenData/FaceTint/BrigitteBardotNpcManager.esp/00000800.dds",
+          "encoding": "base64",
+          "size": 3,
+          "sha256": "327FBA27231BB5F107133384C615316B490D8DA95872D606EA7A23BF64340162"
+        },
+        {
+          "source": "finish-verify/Skyrim.esm.base64",
+          "destination": "output/Skyrim.esm",
+          "encoding": "base64",
+          "size": 598,
+          "sha256": "C2083D32592242A0FAF6AA6E1CCF72CB42875CCD316A54800FA9335B2C95CDDA"
+        },
+        {
+          "source": "finish-verify/npcmanager-package.json.base64",
+          "destination": "output/npcmanager-package.json",
+          "encoding": "base64",
+          "size": 34,
+          "sha256": "C6C2D538200B7288DEDB991391AA4C542B6C463198954EF165FC930BDEB7DF25"
+        },
+        {
+          "source": "finish-verify/finish-core-request.json.base64",
+          "destination": "output/NPCManager/Evidence/finish-core-request.json",
+          "encoding": "base64",
+          "size": 1541,
+          "sha256": "EFDAEC941DDA7B7E29F0FF7D6E85661D64C4267FE1F1CFB42D504828FE59B3F4"
+        },
+        {
+          "source": "finish-verify/finish-core-proposal.json.base64",
+          "destination": "output/NPCManager/Evidence/finish-core-proposal.json",
+          "encoding": "base64",
+          "size": 2690,
+          "sha256": "0ED015D517A90EADC1A395F26ABACFFF1C35F45F76263652DD7BCD8A4FF4151A"
+        },
+        {
+          "source": "finish-verify/finish-core-manifest.json.base64",
+          "destination": "output/NPCManager/Evidence/finish-core-manifest.json",
+          "encoding": "base64",
+          "size": 1633,
+          "sha256": "7F5A2DF6C7967AE9B0B4E7945A9F691D761A82C6C1E764310B7C4CB45EF6087F"
+        },
+        {
+          "source": "finish-verify/finish-core-verification.json.base64",
+          "destination": "output/NPCManager/Evidence/finish-core-verification.json",
+          "encoding": "base64",
+          "size": 876,
+          "sha256": "62DE1E8E332FEB0739D12EA96433543813AF823C959A11CE1BF3EB7307179A88"
+        },
+        {
+          "source": "finish-verify/runtime-identities.json.base64",
+          "destination": "output/NPCManager/Evidence/runtime-identities.json",
+          "encoding": "base64",
+          "size": 103,
+          "sha256": "7CAD8BBDACBA41B6075C22495641CBB8918AE4A71F4267BFE15E6472F18BBF25"
+        },
+        {
+          "source": "finish-verify/diag.txt.base64",
+          "destination": "output/NPCManager/Evidence/diag-BrigitteBardotNpcManager.txt",
+          "encoding": "base64",
+          "size": 35,
+          "sha256": "EB188ECD7D6C53F38A839A55950CD4FC26E7B757C2D2D66268D7D533498B0E78"
+        },
+        {
+          "source": "finish-verify/README-Finish-Core.txt.base64",
+          "destination": "output/README-Finish-Core.txt",
+          "encoding": "base64",
+          "size": 176,
+          "sha256": "480760BD9C3A4F3C72AEE8BD73E391BF99168020E47AF07BB4CAAEC048968CA7"
+        }
+      ],
+      "arguments": [
+        "npc", "finish", "verify", "--protocol", "2", "--json",
+        "--manifest", "{finishManifest}",
+        "--manifest-sha256", "{finishManifestSha256}",
+        "--verification-output", "{finishVerificationOutput}",
+        "--workflow-bundle", "{finishManifestWorkflow}",
+        "--workflow-bundle-sha256", "{finishManifestWorkflowSha256}",
+        "--workflow-output", "{finishRuntimeWorkflow}"
+      ],
+      "expectedEffects": [
+        "readWorkspace|completed|workspace",
+        "writeNewArtifact|completed|k-local-output",
+        "appendLocalOperationJournal|attempted|workspace-local-journal",
+        "appendLocalOperationJournal|completed|workspace-local-journal"
+      ],
+      "expectedArtifact": {
+        "kind": "npc-finish-core-verification",
+        "schemaOrMediaType": "npc.finish-core.verification.v1",
+        "producerCommand": "npc finish verify",
+        "state": "independentlyVerified"
+      },
+      "expectedAuthority": {
+        "inputAdmission": "established",
+        "sourceProviderIdentity": "established",
+        "deterministicMaterialization": "established",
+        "independentStaticVerification": "established",
+        "offEnginePreview": "notApplicable",
+        "humanVisualAcceptance": "required",
+        "gameRuntimeVerification": "required",
+        "promotionApproval": "required"
+      },
+      "expectedNextAction": {
+        "command": "runtime smoke verify",
+        "requiredBindings": [
+          { "option": "--edition", "value": "skyrimse" }
+        ],
+        "missingPrerequisites": [
+          "--runtime-report", "--package-acceptance"
+        ],
+        "requiresHumanAction": true
+      },
+      "expectedWorkflow": {
+        "phase": "runtimeAcceptance",
+        "artifactKinds": [
+          "npc-finish-core-verification",
+          "package-archive"
+        ],
+        "nextAction": "runtime smoke verify"
+      }
+    },
+    {
+      "command": "npc create-from-jslot",
+      "validator": "npc-create-preflight-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:npc-create-preflight-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:npc-create-preflight-result:v1",
+        "urn:actorwright:protocol-v2:npc-create-from-jslot-build-result:v1"
+      ],
+      "fixtures": [
+        {
+          "source": "preset-inspect/fixture.jslot",
+          "destination": "npc-preflight/fixture.jslot",
+          "encoding": "raw",
+          "size": 124,
+          "sha256": "D7B7274263FA120B1C92D896F4AB8ED2582F562A7C5B39224F86B3645AAAFE58"
+        },
+        {
+          "source": "npc-create-preflight/Skyrim.esm.base64",
+          "destination": "Data/Skyrim.esm",
+          "encoding": "base64",
+          "size": 66,
+          "sha256": "5F871B7220E6F3894B3148C04F70B0416AFE86D39DB4C529795C54352D95388F"
+        },
+        {
+          "source": "npc-create-preflight/face.nif.base64",
+          "destination": "npc-preflight/face.nif",
+          "encoding": "base64",
+          "size": 39,
+          "sha256": "89478637C5F31E673CB955622DA9A30ECFDC39E90EB41B97017C7E9F1EFB3692"
+        },
+        {
+          "source": "npc-create-preflight/face.dds.base64",
+          "destination": "npc-preflight/face.dds",
+          "encoding": "base64",
+          "size": 128,
+          "sha256": "0C6865E50494702944D8B5F519D79912B04DCC623225E4893B5111BE810B16FE"
+        },
+        {
+          "source": "npc-create-preflight/record-authority.json",
+          "destination": "npc-preflight/record-authority.json",
+          "encoding": "raw",
+          "size": 471,
+          "sha256": "557B412CC6A0A38BA597EE1E7B2E6B985E175BD434E219730E686447F3CE25BE"
+        },
+        {
+          "source": "npc-create-preflight/runtime-routes.json",
+          "destination": "npc-preflight/runtime-routes.json",
+          "encoding": "raw",
+          "size": 109,
+          "sha256": "0E2EFBBBA7425617513428B400832CCCFDE5874B4FDD6389507871AE72DD958D"
+        },
+        {
+          "source": "npc-create-preflight/standalone-assets.json",
+          "destination": "npc-preflight/standalone-assets.json",
+          "encoding": "raw",
+          "size": 784,
+          "sha256": "E242BAEB9DD7970DE703C91FFAF27068D3DA942B3099C565E8E56DC1A902D19D"
+        },
+        {
+          "source": "npc-create-preflight/preset-bundle.json",
+          "destination": "npc-preflight/preset-bundle.json",
+          "encoding": "raw",
+          "size": 939,
+          "sha256": "BB631408D53ED75B2D28CC90B32876EF89013E5914AF74BE2D9DEFB631F9E0DA"
+        },
+        {
+          "source": "npc-create-preflight/request.json",
+          "destination": "npc-preflight/request.json",
+          "encoding": "raw",
+          "size": 2095,
+          "sha256": "47F0AF3485732295B90F0EA0A1A2DE138F8B4B148E95F9E19CF7D4EC41B27C6D"
+        }
+      ],
+      "arguments": [
+        "npc",
+        "create-from-jslot",
+        "--protocol",
+        "2",
+        "--json",
+        "--request",
+        "{request}",
+        "--request-sha256",
+        "{requestSha256}",
+        "--preset",
+        "{preset}",
+        "--preset-sha256",
+        "{presetSha256}",
+        "--data-root",
+        "{dataRoot}",
+        "--plugins",
+        "Skyrim.esm",
+        "--companion-root",
+        "{companionRoot}",
+        "--preflight-output",
+        "{preflightOutput}",
+        "--workflow-bundle", "{presetWorkflow}",
+        "--workflow-bundle-sha256", "{presetWorkflowSha256}",
+        "--workflow-output", "{preflightWorkflow}"
+      ],
+      "expectedEffects": [
+        "readWorkspace|completed|workspace",
+        "writeNewArtifact|completed|k-local-output",
+        "appendLocalOperationJournal|attempted|workspace-local-journal",
+        "appendLocalOperationJournal|completed|workspace-local-journal"
+      ],
+      "expectedArtifact": {
+        "kind": "npc-build-preflight",
+        "schemaOrMediaType": "actorwright-npc-build-preflight/1",
+        "producerCommand": "npc create-from-jslot",
+        "state": "independentlyVerified"
+      },
+      "expectedAuthority": {
+        "inputAdmission": "established",
+        "sourceProviderIdentity": "established",
+        "deterministicMaterialization": "established",
+        "independentStaticVerification": "established",
+        "offEnginePreview": "notApplicable",
+        "humanVisualAcceptance": "notApplicable",
+        "gameRuntimeVerification": "required",
+        "promotionApproval": "notApplicable"
+      },
+      "expectedNextAction": {
+        "command": "npc create-from-jslot",
+        "missingPrerequisites": [
+          "--request",
+          "--request-sha256",
+          "--data-root",
+          "--plugins",
+          "--companion-root",
+          "--workflow-output"
+        ],
+        "requiresHumanAction": false
+      },
+      "expectedWorkflow": {
+        "phase": "apply",
+        "artifactKinds": [
+          "npc-build-preflight",
+          "racemenu-jslot",
+          "reviewed-workspace-intake"
+        ],
+        "nextAction": "npc create-from-jslot"
+      }
+    },
+    {
+      "command": "preset inspect",
+      "validator": "preset-inspect-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:preset-inspect-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:preset-inspect-result:v1"
+      ],
+      "fixtures": [
+        {
+          "source": "preset-inspect/fixture.jslot",
+          "destination": "npc-preflight/fixture.jslot",
+          "encoding": "raw",
+          "size": 124,
+          "sha256": "D7B7274263FA120B1C92D896F4AB8ED2582F562A7C5B39224F86B3645AAAFE58"
+        }
+      ],
+      "arguments": [
+        "preset",
+        "inspect",
+        "--protocol",
+        "2",
+        "--json",
+        "--format",
+        "racemenu-jslot",
+        "--edition",
+        "skyrimse",
+        "--input",
+        "{presetInput}",
+        "--input-sha256",
+        "{presetSha256}",
+        "--inspection-output",
+        "{inspectionOutput}",
+        "--workflow-bundle", "{workspaceWorkflow}",
+        "--workflow-bundle-sha256", "{workspaceWorkflowSha256}",
+        "--workflow-output", "{presetWorkflow}"
+      ],
+      "expectedEffects": [
+        "readWorkspace|completed|workspace",
+        "writeNewArtifact|completed|k-local-output",
+        "appendLocalOperationJournal|attempted|workspace-local-journal",
+        "appendLocalOperationJournal|completed|workspace-local-journal"
+      ],
+      "expectedArtifact": {
+        "kind": "preset-inspection",
+        "schemaOrMediaType": "actorwright-preset-inspection/1",
+        "producerCommand": "preset inspect",
+        "state": "independentlyVerified"
+      },
+      "expectedAuthority": {
+        "inputAdmission": "established",
+        "sourceProviderIdentity": "required",
+        "deterministicMaterialization": "established",
+        "independentStaticVerification": "established",
+        "offEnginePreview": "notApplicable",
+        "humanVisualAcceptance": "notApplicable",
+        "gameRuntimeVerification": "required",
+        "promotionApproval": "notApplicable"
+      },
+      "expectedNextAction": {
+        "command": "npc create-from-jslot",
+        "missingPrerequisites": [
+          "--request",
+          "--request-sha256",
+          "--data-root",
+          "--plugins",
+          "--companion-root",
+          "--preflight-output",
+          "--workflow-output"
+        ],
+        "requiresHumanAction": false
+      },
+      "expectedWorkflow": {
+        "phase": "analyze",
+        "artifactKinds": [
+          "racemenu-jslot",
+          "reviewed-workspace-intake"
+        ],
+        "nextAction": "npc create-from-jslot"
+      }
+    },
+    {
+      "command": "workspace preflight",
+      "validator": "workspace-preflight-v1",
+      "resultSchemaId": "urn:actorwright:protocol-v2:workspace-preflight-result:v1",
+      "resultSchemaIds": [
+        "urn:actorwright:protocol-v2:workspace-preflight-result:v1"
+      ],
+      "fixtures": [
+        {
+          "source": "workspace-preflight/Probe.esp.base64",
+          "destination": "Data/Probe.esp",
+          "encoding": "base64",
+          "size": 42,
+          "sha256": "EFB8E4788F7DD2E137CF31174248090000B5A19B7DF70B65D69FF7D8684799BD"
+        },
+        {
+          "source": "workspace-preflight/load-order.json",
+          "destination": "load-order.json",
+          "encoding": "raw",
+          "size": 99,
+          "sha256": "69FDFC5868A5FB1652B1F5CE2E4C238E009507DA33FAC9098271EADDCFB4ED65"
+        }
+      ],
+      "arguments": [
+        "workspace",
+        "preflight",
+        "--protocol",
+        "2",
+        "--json",
+        "--game",
+        "skyrimse",
+        "--workspace-root",
+        "{workspace}",
+        "--data-root",
+        "{dataRoot}",
+        "--output-root",
+        "{outputRoot}",
+        "--load-order",
+        "{loadOrder}",
+        "--intake-output",
+        "{intakeOutput}",
+        "--npc-editor-id", "ActorwrightPackagedNpc",
+        "--workflow-output", "{workspaceWorkflow}"
+      ],
+      "expectedEffects": [
+        "readWorkspace|completed|workspace",
+        "writeNewArtifact|completed|k-local-output",
+        "appendLocalOperationJournal|attempted|workspace-local-journal",
+        "appendLocalOperationJournal|completed|workspace-local-journal"
+      ],
+      "expectedArtifact": {
+        "kind": "reviewed-workspace-intake",
+        "schemaOrMediaType": "npcmanager-reviewed-game-intake/2",
+        "producerCommand": "workspace preflight",
+        "state": "independentlyVerified"
+      },
+      "expectedAuthority": {
+        "inputAdmission": "established",
+        "sourceProviderIdentity": "established",
+        "deterministicMaterialization": "established",
+        "independentStaticVerification": "established",
+        "offEnginePreview": "notApplicable",
+        "humanVisualAcceptance": "notApplicable",
+        "gameRuntimeVerification": "required",
+        "promotionApproval": "notApplicable"
+      },
+      "expectedNextAction": {
+        "command": "preset inspect",
+        "missingPrerequisites": [
+          "--input",
+          "--input-sha256",
+          "--inspection-output",
+          "--workflow-output"
+        ],
+        "requiresHumanAction": false
+      },
+      "expectedWorkflow": {
+        "phase": "analyze",
+        "artifactKinds": [
+          "reviewed-workspace-intake"
+        ],
+        "nextAction": "preset inspect"
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1",
+  "edition": "skyrimse",
+  "perLayerResolution": false,
+  "diffuseResolution": "inherit",
+  "normalResolution": "inherit",
+  "specularResolution": "inherit",
+  "diffuseCompression": "bc3",
+  "normalCompression": "uncompressed",
+  "specularCompression": "bc5",
+  "generateTga": false,
+  "applyGhoulHeadRearFix": false,
+  "applyEyebrowsFixedColor": false,
+  "applyMouthVanillaFix": false,
+  "bakeSseRaceMenuOverlays": true,
+  "convention": {
+    "diffuse": {
+      "workingSpace": "linear",
+      "compositeSpace": "linear",
+      "sourceSpace": "linear",
+      "outputSpace": "linear",
+      "maskConversion": "raw",
+      "framework": "overPrev",
+      "softLight": "gimp",
+      "maskChannel": "r"
+    },
+    "normalSpecular": {
+      "workingSpace": "linear",
+      "compositeSpace": "linear",
+      "sourceSpace": "linear",
+      "outputSpace": "linear",
+      "maskConversion": "raw",
+      "framework": "overPrev",
+      "softLight": "gimp",
+      "maskChannel": "r"
+    },
+    "swap": {
+      "workingSpace": "linear",
+      "compositeSpace": "linear",
+      "sourceSpace": "linear",
+      "outputSpace": "linear",
+      "maskConversion": "raw",
+      "framework": "overPrev",
+      "softLight": "gimp",
+      "maskChannel": "r"
+    },
+    "diffuseWorkingSpaceByBlend": {
+      "replace": "linear",
+      "multiply": "linear",
+      "overlay": "linear",
+      "softLight": "g22",
+      "hardLight": "linear"
+    },
+    "diffuseTextureSourceSpace": "linear",
+    "seedDiffuseG22": false,
+    "seedMode": "constant",
+    "seedConstant": [0.5, 0.5, 0.5]
+  },
+  "tintSort": {
+    "tintRules": [
+      {"key": 0, "descending": false}
+    ],
+    "swapRules": [
+      {"key": 0, "descending": false}
+    ],
+    "skinTonePlacement": "positional"
+  }
+}

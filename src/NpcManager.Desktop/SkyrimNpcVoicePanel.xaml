@@ -1,0 +1,198 @@
+<UserControl x:Class="NpcManager.Desktop.SkyrimNpcVoicePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             MinWidth="760" MinHeight="560"
+             Loaded="VoicePanelLoaded"
+             automation:AutomationProperties.Name="Skyrim NPC voice sample workspace">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="0,16,10,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" MinWidth="480" />
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="2*" MinWidth="340" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel IsEnabled="{Binding IsNotBusy}">
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="XTTS SERVER" />
+                        <TextBlock Margin="0,5,0,8" FontSize="19" FontWeight="SemiBold"
+                                   Text="Choose this workspace's local server" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                   Text="Check contacts the server without generating audio. Check and save remembers these settings for this workspace without changing the server." />
+                        <Grid Margin="0,14,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="16" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Server address" />
+                                <TextBox x:Name="ServerEndpointTextBox"
+                                         Text="{Binding ServerEndpoint, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="XTTS loopback server address" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Platform" />
+                                <ComboBox x:Name="ServerPlatformComboBox"
+                                          ItemsSource="{Binding ServerPlatforms}"
+                                          SelectedItem="{Binding ServerPlatform, UpdateSourceTrigger=PropertyChanged}"
+                                          automation:AutomationProperties.Name="XTTS server platform" />
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Margin="0,12,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Server working folder (Windows)" />
+                        <TextBox x:Name="ServerFolderTextBox"
+                                 IsEnabled="{Binding AreServerFoldersEnabled}"
+                                 Text="{Binding ServerFolder, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="XTTS server working folder" />
+                        <TextBlock Margin="0,12,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Expected server output folder (Windows)" />
+                        <TextBox x:Name="ServerOutputFolderTextBox"
+                                 IsEnabled="{Binding AreServerFoldersEnabled}"
+                                 Text="{Binding ServerOutputFolder, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Expected XTTS server output folder" />
+                        <TextBlock Margin="0,8,0,0" Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                   Text="Windows requires both folders. WSL leaves them empty and requires access to its distribution storage." />
+                        <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                            <Button x:Name="CheckServerSetupButton"
+                                    Style="{StaticResource QuietButton}"
+                                    Content="_Check"
+                                    Command="{Binding CheckServerSetupCommand}"
+                                    automation:AutomationProperties.Name="Check XTTS server setup" />
+                            <Button x:Name="SaveServerSetupButton"
+                                    Margin="10,0,0,0"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Content="Check and _save"
+                                    Command="{Binding SaveServerSetupCommand}"
+                                    automation:AutomationProperties.Name="Check and save XTTS server setup" />
+                        </StackPanel>
+                        <TextBlock Margin="0,12,0,0"
+                                   Text="{Binding ServerSetupStatus}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="XTTS server setup status"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel IsEnabled="{Binding IsNotBusy}">
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="1  NPC IDENTITY" />
+                        <TextBlock Margin="0,5,0,14" FontSize="19" FontWeight="SemiBold"
+                                   Text="Bind the reference voice to one NPC" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="16" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel>
+                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Owner plugin" />
+                                <TextBox Text="{Binding Plugin, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Voice sample NPC owner plugin" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Local FormID" />
+                                <TextBox Text="{Binding FormId, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Voice sample NPC FormID" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Margin="0,12,0,0">
+                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="EditorID (optional)" />
+                                <TextBox Text="{Binding EditorId, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Voice sample NPC EditorID" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,12,0,0">
+                                <TextBlock Margin="0,0,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Voice record prefix" />
+                                <TextBox Text="{Binding VoicePrefix, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Voice record prefix" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="VoiceSampleDropZone"
+                        Style="{StaticResource CardBorder}"
+                        AllowDrop="True"
+                        DragOver="VoiceSampleDragOver"
+                        Drop="VoiceSampleDrop"
+                        automation:AutomationProperties.Name="Drop one WAV voice sample">
+                    <StackPanel IsEnabled="{Binding IsNotBusy}">
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="2  REFERENCE WAV" />
+                        <TextBlock Margin="0,5,0,8" FontSize="20" FontWeight="SemiBold"
+                                   Text="Drop one WAV here" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap"
+                                   Text="The original remains untouched. Actorwright validates and writes a fresh hash-bound normalized copy." />
+                        <Button x:Name="BrowseVoiceSampleButton"
+                                Margin="0,14,0,0"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource QuietButton}"
+                                Content="_Browse WAV…"
+                                Click="BrowseVoiceSampleClick"
+                                automation:AutomationProperties.Name="Browse for one WAV voice sample" />
+                        <TextBlock Margin="0,14,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Selected WAV" />
+                        <TextBox Text="{Binding SamplePath, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Selected WAV path" />
+                        <TextBlock Margin="0,12,0,5" Foreground="{DynamicResource MutedTextBrush}" Text="Fresh authority directory" />
+                        <TextBox Text="{Binding OutputRoot, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Fresh voice sample authority directory" />
+                        <Button Margin="0,14,0,0"
+                                Style="{StaticResource PrimaryButton}"
+                                Content="_Import selected WAV"
+                                Command="{Binding ImportCommand}"
+                                automation:AutomationProperties.Name="Import selected WAV voice sample" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14" Background="#111E2B">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="IMPORT STATUS" />
+                        <TextBlock x:Name="VoiceAuthorityStatus"
+                                   Margin="0,6,0,12"
+                                   Text="{Binding Status}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.LiveSetting="Polite" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Authority path" />
+                        <TextBlock Margin="0,4,0,10" Text="{Binding AuthorityPath}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Voice sample authority path" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Authority SHA-256" />
+                        <TextBlock Margin="0,4,0,0" Text="{Binding AuthoritySha256}" TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Voice sample authority SHA-256" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="POWERSHELL CLI EQUIVALENT AND FOLLOW-UPS" />
+                        <TextBlock Margin="0,8,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="Completed import" />
+                        <TextBox Text="{Binding ImportCommandLine, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,12,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="Create dialogue manifest" />
+                        <TextBox Text="{Binding TemplateCommand, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,12,0,4" Foreground="{DynamicResource MutedTextBrush}" Text="Synthesize manifest" />
+                        <TextBox Text="{Binding SynthesisCommand, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,12,0,0"
+                                   Foreground="{DynamicResource WarningBrush}"
+                                   Text="{Binding FollowUpRequirements}"
+                                   TextWrapping="Wrap"
+                                   automation:AutomationProperties.Name="Voice command missing prerequisites" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="DIAGNOSTICS" />
+                        <ListBox Margin="0,8,0,0" MaxHeight="180"
+                                 ItemsSource="{Binding Diagnostics}"
+                                 automation:AutomationProperties.Name="Voice sample diagnostics" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

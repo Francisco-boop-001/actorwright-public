@@ -1,0 +1,494 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:schema:actorwright-preset-inspection:1",
+  "title": "Actorwright preset inspection receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "sourcePath", "sourceSha256", "format", "edition",
+    "isValid", "appearance", "diagnostics"
+  ],
+  "properties": {
+    "schema": { "const": "actorwright-preset-inspection/1" },
+    "sourcePath": { "type": "string", "minLength": 1 },
+    "sourceSha256": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "format": { "const": "racemenu-jslot" },
+    "edition": { "const": "skyrimse" },
+    "isValid": { "type": "boolean" },
+    "appearance": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "gender", "headParts", "hairColor", "weight", "morphs",
+    "bodyMorphs", "customMorphs", "sliderMorphs", "tints",
+    "overlays", "skin", "presence", "unknownFields",
+    "fallout4BodyMorphs", "chargenFaceMorphs", "faceBoneRegions",
+    "facialMorphIntensity", "raceMenu", "orderedCustomMorphs"
+  ],
+  "properties": {
+    "gender": { "type": ["integer", "null"] },
+    "headParts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/headPart" }
+    },
+    "hairColor": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/hairColor" }
+      ]
+    },
+    "weight": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/weight" }
+      ]
+    },
+    "morphs": { "$ref": "#/$defs/floatMap" },
+    "bodyMorphs": { "$ref": "#/$defs/floatMap" },
+    "customMorphs": { "$ref": "#/$defs/floatMap" },
+    "sliderMorphs": {
+      "type": "array",
+      "items": { "type": "number" }
+    },
+    "tints": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/tint" }
+    },
+    "overlays": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/overlay" }
+    },
+    "skin": { "type": ["string", "null"] },
+    "presence": { "$ref": "#/$defs/presence" },
+    "unknownFields": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/unknownField" }
+    },
+    "fallout4BodyMorphs": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/fallout4BodyMorphs" }
+      ]
+    },
+    "chargenFaceMorphs": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/floatMap" }
+      ]
+    },
+    "faceBoneRegions": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "number" }
+          }
+        }
+      ]
+    },
+    "facialMorphIntensity": { "type": "number" },
+    "raceMenu": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/raceMenu" }
+      ]
+    },
+    "orderedCustomMorphs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/customMorph" }
+    }
+  }
+},
+    "diagnostics": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/diagnostic" }
+    }
+  },
+  "$defs": {
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "severity": {
+          "type": "string",
+          "enum": ["info", "warning", "error"]
+        },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    },
+    "floatMap": {
+  "type": "object",
+  "additionalProperties": { "type": "number" }
+},
+"pluginName": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["value"],
+  "properties": { "value": { "type": "string", "minLength": 1 } }
+},
+"formId": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["value"],
+  "properties": {
+    "value": { "type": "integer", "minimum": 0, "maximum": 4294967295 }
+  }
+},
+"identifier": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["raw", "plugin", "formId"],
+  "properties": {
+    "raw": { "type": "string", "minLength": 1 },
+    "plugin": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/pluginName" }
+      ]
+    },
+    "formId": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/formId" }
+      ]
+    }
+  }
+},
+"headPart": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["identifier", "type"],
+  "properties": {
+    "identifier": { "$ref": "#/$defs/identifier" },
+    "type": { "type": "integer" }
+  }
+},
+"hairColor": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["formIdentifier", "packedRgb"],
+  "properties": {
+    "formIdentifier": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/identifier" }
+      ]
+    },
+    "packedRgb": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 4294967295
+    }
+  }
+},
+"weight": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["value", "thin", "muscular", "fat"],
+  "properties": {
+    "value": { "type": "number" },
+    "thin": { "type": ["number", "null"] },
+    "muscular": { "type": ["number", "null"] },
+    "fat": { "type": ["number", "null"] }
+  }
+},
+"tint": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["index", "color", "texture", "type", "percent", "colorId"],
+  "properties": {
+    "index": { "type": "integer" },
+    "color": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+    "texture": { "type": "string" },
+    "type": { "type": "integer" },
+    "percent": { "type": "integer" },
+    "colorId": { "type": ["integer", "null"] }
+  }
+},
+"overlay": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["template", "priority", "tint", "offsetUv", "scaleUv"],
+  "properties": {
+    "template": { "type": "string" },
+    "priority": { "type": "integer" },
+    "tint": { "type": "array", "items": { "type": "number" } },
+    "offsetUv": { "type": "array", "items": { "type": "number" } },
+    "scaleUv": { "type": "array", "items": { "type": "number" } }
+  }
+},
+"presence": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "gender", "headParts", "hairColor", "weight", "morphs",
+    "bodyMorphs", "tints", "overlays", "skin",
+    "fallout4BodyMorphs", "chargenFaceMorphs", "faceBoneRegions",
+    "facialMorphIntensity"
+  ],
+  "properties": {
+    "gender": { "type": "boolean" },
+    "headParts": { "type": "boolean" },
+    "hairColor": { "type": "boolean" },
+    "weight": { "type": "boolean" },
+    "morphs": { "type": "boolean" },
+    "bodyMorphs": { "type": "boolean" },
+    "tints": { "type": "boolean" },
+    "overlays": { "type": "boolean" },
+    "skin": { "type": "boolean" },
+    "fallout4BodyMorphs": { "type": "boolean" },
+    "chargenFaceMorphs": { "type": "boolean" },
+    "faceBoneRegions": { "type": "boolean" },
+    "facialMorphIntensity": { "type": "boolean" }
+  }
+},
+"unknownField": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["path", "jsonKind"],
+  "properties": {
+    "path": { "type": "string", "minLength": 1 },
+    "jsonKind": { "type": "string", "minLength": 1 }
+  }
+},
+"fallout4BodyMorphs": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["head", "upperTorso", "arms", "lowerTorso", "legs"],
+  "properties": {
+    "head": { "type": "number" },
+    "upperTorso": { "type": "number" },
+    "arms": { "type": "number" },
+    "lowerTorso": { "type": "number" },
+    "legs": { "type": "number" }
+  }
+},
+"customMorph": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "value"],
+  "properties": {
+    "name": { "type": "string" },
+    "value": { "type": "number" }
+  }
+},
+"raceMenu": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "headTexture", "faceMorphPresets", "sculptDivisor", "sculptParts",
+    "bodyMorphsKeyed", "bodyOverlays", "nodeTransforms", "skinOverrides",
+    "faceTextures", "modNames", "mods", "version"
+  ],
+  "properties": {
+    "headTexture": { "type": ["string", "null"] },
+    "faceMorphPresets": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 0, "maximum": 4294967295 }
+    },
+    "sculptDivisor": { "type": "integer" },
+    "sculptParts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sculptPart" }
+    },
+    "bodyMorphsKeyed": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/floatMap" }
+    },
+    "bodyOverlays": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/bodyOverlay" }
+    },
+    "nodeTransforms": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/nodeTransform" }
+    },
+    "skinOverrides": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/skinOverride" }
+    },
+    "faceTextures": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/faceTexture" }
+    },
+    "modNames": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/pluginName" }
+    },
+    "mods": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/modEntry" }
+    },
+    "version": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/raceMenuVersion" }
+      ]
+    }
+  }
+},
+"sculptPart": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["host", "vertexCount", "vertices", "hasVertexCount", "hasData"],
+  "properties": {
+    "host": { "type": "string" },
+    "vertexCount": { "type": "integer" },
+    "vertices": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sculptVertex" }
+    },
+    "hasVertexCount": { "type": "boolean" },
+    "hasData": { "type": "boolean" }
+  }
+},
+"sculptVertex": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["index", "dx", "dy", "dz"],
+  "properties": {
+    "index": { "type": "integer" },
+    "dx": { "type": "number" },
+    "dy": { "type": "number" },
+    "dz": { "type": "number" }
+  }
+},
+"bodyOverlay": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["node", "diffuse", "normal", "tint", "alpha", "values"],
+  "properties": {
+    "node": { "type": "string" },
+    "diffuse": { "type": ["string", "null"] },
+    "normal": { "type": ["string", "null"] },
+    "tint": { "type": "array", "items": { "type": "number" } },
+    "alpha": { "type": ["number", "null"] },
+    "values": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/raceMenuValue" }
+    }
+  }
+},
+"raceMenuValue": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["key", "type", "index", "data"],
+  "properties": {
+    "key": { "type": "integer" },
+    "type": { "type": "integer" },
+    "index": { "type": "integer" },
+    "data": { "$ref": "#/$defs/raceMenuScalar" }
+  }
+},
+"raceMenuScalar": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kind", "integerValue", "numberValue", "stringValue", "booleanValue"
+  ],
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "signedInteger", "floatingPoint", "text", "boolean", "null"
+      ]
+    },
+    "integerValue": { "type": "integer" },
+    "numberValue": { "type": "number" },
+    "stringValue": { "type": ["string", "null"] },
+    "booleanValue": { "type": "boolean" }
+  }
+},
+"nodeTransform": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "node", "firstPerson", "keySets", "scale", "scaleMode",
+    "position", "rotationMatrix", "values"
+  ],
+  "properties": {
+    "node": { "type": "string" },
+    "firstPerson": { "type": "boolean" },
+    "keySets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/transformKeySet" }
+    },
+    "scale": { "type": ["number", "null"] },
+    "scaleMode": { "type": ["integer", "null"] },
+    "position": { "type": "array", "items": { "type": "number" } },
+    "rotationMatrix": { "type": "array", "items": { "type": "number" } },
+    "values": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/raceMenuValue" }
+    }
+  }
+},
+"transformKeySet": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "values"],
+  "properties": {
+    "name": { "type": "string" },
+    "values": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/raceMenuValue" }
+    }
+  }
+},
+"skinOverride": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["slotMask", "firstPerson", "values", "textures", "tint", "alpha"],
+  "properties": {
+    "slotMask": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+    "firstPerson": { "type": "boolean" },
+    "values": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/raceMenuValue" }
+    },
+    "textures": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "tint": { "type": "array", "items": { "type": "number" } },
+    "alpha": { "type": ["number", "null"] }
+  }
+},
+"faceTexture": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["index", "texture"],
+  "properties": {
+    "index": { "type": "integer" },
+    "texture": { "type": "string" }
+  }
+},
+"modEntry": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["index", "name"],
+  "properties": {
+    "index": { "type": "integer", "minimum": 0, "maximum": 255 },
+    "name": { "$ref": "#/$defs/pluginName" }
+  }
+},
+"raceMenuVersion": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["formatVersion", "runtimeVersion", "signature", "skseVersion"],
+  "properties": {
+    "formatVersion": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+    "runtimeVersion": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+    "signature": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+    "skseVersion": { "type": "integer", "minimum": 0, "maximum": 4294967295 }
+  }
+}
+  }
+}

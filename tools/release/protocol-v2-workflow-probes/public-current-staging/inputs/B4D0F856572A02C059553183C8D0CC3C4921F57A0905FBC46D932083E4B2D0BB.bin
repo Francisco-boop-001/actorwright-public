@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1",
+  "npcFormId": "0x00000800",
+  "width": 1024,
+  "height": 1024,
+  "format": "bgra8",
+  "mipCount": 1,
+  "alphaMode": "preserve",
+  "baseColor": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "layers": [
+    {
+      "name": "product-facetint",
+      "source": "textures/actors/character/FaceGenData/FaceTint/ActorwrightBlankNpcProvider.esp/00000800.dds",
+      "provider": "Actorwright",
+      "blend": "over",
+      "opacity": 1,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "probes": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1023,
+      "y": 1023
+    }
+  ]
+}

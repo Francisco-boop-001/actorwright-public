@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>actorwright</AssemblyName>
+    <RootNamespace>NpcManager.Cli</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\NpcManager.Assets\NpcManager.Assets.csproj" />
+    <ProjectReference Include="..\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <ProjectReference Include="..\NpcManager.Infrastructure\NpcManager.Infrastructure.csproj" />
+    <ProjectReference Include="..\NpcManager.Formats.Bethesda\NpcManager.Formats.Bethesda.csproj" />
+    <ProjectReference Include="..\NpcManager.Presets\NpcManager.Presets.csproj" />
+    <ProjectReference Include="..\NpcManager.FaceGen\NpcManager.FaceGen.csproj" />
+    <ProjectReference Include="..\NpcManager.BodyGen\NpcManager.BodyGen.csproj" />
+    <ProjectReference Include="..\NpcManager.Pipeline\NpcManager.Pipeline.csproj" />
+    <ProjectReference Include="..\NpcManager.Rendering\NpcManager.Rendering.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\runtime\reference-preset\**\*"
+             Link="runtime\reference-preset\%(RecursiveDir)%(Filename)%(Extension)"
+             CopyToOutputDirectory="PreserveNewest"
+             CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\runtime\rendering\npc-preview-profile-manifest.json"
+             Link="runtime\rendering\npc-preview-profile-manifest.json"
+             CopyToOutputDirectory="PreserveNewest"
+             CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "productAssetId": "skyrimse-actorwright-follower-dialogue-v2",
+  "edition": "skyrimse",
+  "scriptName": "ActorwrightFollowerDialogue",
+  "dataRelativeDestination": "Scripts/ActorwrightFollowerDialogue.pex",
+  "pex": {
+    "sha256": "CDE13383F9DB288733CEA255C82E7B70747FFE4A39126CB6DBE992B0CEA8AD56",
+    "size": 1721
+  },
+  "source": {
+    "pscSha256": "7AFCAADA56C1EFB75076936170E9211EC3F5926A112D01810D701DDD990EAF69"
+  },
+  "compiler": {
+    "identity": "Orvid/Caprica e4dee086 source build with Actorwright patches",
+    "evidence": "evidence/followerdialogue-verified-build.json",
+    "historicalEvidence": "evidence/followerdialogue-compile-output.txt",
+    "provenance": "Fresh Release compile from unchanged PSC using Orvid/Caprica commit e4dee0860914d75e770d3f9ab374f7aba474b701 and the three patches listed in the public Caprica source packet, followed by tools/compilers/caprica/sanitize_pex_metadata.py. Caprica's --anonymize flag alone does not clear the Skyrim user and computer header fields; the sanitizer sets a repository-relative source identity, clears those two fields, and preserves the executable suffix byte-for-byte. Independent inspection and API/behavior comparisons against the previously shipped PEX passed with zero differences. The final PEX has no detected personal or private staging path markers."
+  },
+  "runtimeAuthority": false
+}

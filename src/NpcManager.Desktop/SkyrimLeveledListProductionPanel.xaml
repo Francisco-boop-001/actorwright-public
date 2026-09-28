@@ -1,0 +1,173 @@
+<UserControl x:Class="NpcManager.Desktop.SkyrimLeveledListProductionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             automation:AutomationProperties.Name="Create and verify a Skyrim leveled list task">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="0,16,10,8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" MinWidth="620" />
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="2*" MinWidth="350" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        Background="#13252C" BorderBrush="#2F665E">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}"
+                                   Text="LEVELED-LIST AUTHORITY  /  LVLI TRANSACTION" />
+                        <TextBlock Margin="0,5,0,7" FontSize="23" FontWeight="SemiBold"
+                                   Text="Create, write, and reopen a leveled list" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Text="Loads typed ARMO and LVLI candidates from the reviewed copied closure. Owner-modal editors return an immutable header and ordered rows; Review writes JSON only." />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="1  REVIEWED CATALOG" />
+                        <TextBlock Margin="0,8,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Deterministic catalog seed" />
+                        <TextBox Text="{Binding PreviewSeed, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Leveled-list catalog seed" />
+                        <Button Margin="0,14,0,0" HorizontalAlignment="Left"
+                                Style="{StaticResource QuietButton}"
+                                Content="_Load typed entry catalog"
+                                Command="{Binding LoadCommand}"
+                                automation:AutomationProperties.Name="Load reviewed leveled-list entry catalog" />
+                        <TextBlock Margin="0,10,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding CatalogSummary}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="2  AUTHOR HEADER AND ROWS" />
+                        <TextBlock Margin="0,8,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Reviewed typed entry" />
+                        <ComboBox ItemsSource="{Binding Candidates}"
+                                  SelectedItem="{Binding SelectedCandidate}"
+                                  DisplayMemberPath="Label"
+                                  automation:AutomationProperties.Name="Leveled-list entry candidate" />
+                        <Grid Margin="0,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="New local LVLI FormID" />
+                                <TextBox Margin="0,5,0,0"
+                                         Text="{Binding TargetFormId, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="New leveled-list local FormID" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Fresh output plugin" />
+                                <TextBox Margin="0,5,0,0"
+                                         Text="{Binding OutputPlugin, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="New leveled-list output plugin" />
+                            </StackPanel>
+                        </Grid>
+                        <Button Margin="0,14,0,0" HorizontalAlignment="Left"
+                                Style="{StaticResource PrimaryButton}"
+                                Content="_Open header and entry editors"
+                                IsEnabled="{Binding CanOpenEditor}"
+                                Click="OpenEditors_Click"
+                                automation:AutomationProperties.Name="Open leveled-list header and entry editors" />
+                        <TextBlock Margin="0,12,0,0" Foreground="{DynamicResource AccentBrush}"
+                                   Text="{Binding DocumentSummary}" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,14,0,5" FontWeight="SemiBold"
+                                   Text="Ordered authored rows" />
+                        <ListBox MinHeight="86" MaxHeight="150"
+                                 ItemsSource="{Binding AuthoredEntries}"
+                                 SelectedItem="{Binding SelectedAuthoredEntry, Mode=TwoWay}"
+                                 DisplayMemberPath="Label"
+                                 automation:AutomationProperties.Name="Ordered authored leveled-list rows" />
+                        <WrapPanel Margin="0,10,0,0">
+                            <Button Style="{StaticResource QuietButton}"
+                                    Content="_Add row" IsEnabled="{Binding CanAddEntry}"
+                                    Click="AddEntry_Click"
+                                    automation:AutomationProperties.Name="Add leveled-list row" />
+                            <Button Margin="8,0,0,0" Style="{StaticResource QuietButton}"
+                                    Content="_Edit row" IsEnabled="{Binding CanEditEntry}"
+                                    Click="EditEntry_Click"
+                                    automation:AutomationProperties.Name="Edit selected leveled-list row" />
+                            <Button Margin="8,0,0,0" Style="{StaticResource QuietButton}"
+                                    Content="_Remove row" IsEnabled="{Binding CanRemoveEntry}"
+                                    Click="RemoveEntry_Click"
+                                    automation:AutomationProperties.Name="Remove selected leveled-list row" />
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14"
+                        IsEnabled="{Binding IsNotBusy}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="HASH-BOUND REVIEW" />
+                        <TextBlock Margin="0,8,0,4" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="Fresh proposal JSON" />
+                        <TextBox Text="{Binding ProposalPath, UpdateSourceTrigger=PropertyChanged}"
+                                 automation:AutomationProperties.Name="Leveled-list production proposal path" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="3  REVIEW, WRITE, REOPEN" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource PrimaryButton}"
+                                Content="_Review LVLI proposal" Command="{Binding ReviewCommand}"
+                                automation:AutomationProperties.Name="Review leveled-list proposal" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource PrimaryButton}"
+                                Content="_Write and verify leveled list" Command="{Binding ExecuteCommand}"
+                                automation:AutomationProperties.Name="Write and verify leveled-list output" />
+                        <Button Margin="0,10,0,0" Style="{StaticResource QuietButton}"
+                                Content="_Cancel operation" Command="{Binding CancelCommand}"
+                                automation:AutomationProperties.Name="Cancel leveled-list operation" />
+                        <ProgressBar Margin="0,18,0,0" Minimum="0" Maximum="100"
+                                     Value="{Binding ProgressPercent, Mode=OneWay}"
+                                     automation:AutomationProperties.Name="Leveled-list transaction progress" />
+                        <TextBlock Margin="0,8,0,0" Foreground="{DynamicResource MutedTextBrush}"
+                                   Text="{Binding Status}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="RESULT" />
+                        <TextBlock Margin="0,5,0,12" FontSize="19" FontWeight="SemiBold"
+                                   Text="{Binding Verdict}" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Proposal SHA-256" />
+                        <TextBlock Margin="0,4,0,10" Text="{Binding ProposalSha256}" TextWrapping="Wrap" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Output plugin" />
+                        <TextBlock Margin="0,4,0,10" Text="{Binding ResultPlugin}" TextWrapping="Wrap" />
+                        <TextBlock Foreground="{DynamicResource MutedTextBrush}" Text="Output SHA-256" />
+                        <TextBlock Margin="0,4,0,0" Text="{Binding ResultSha256}" TextWrapping="Wrap" />
+                        <Border Margin="0,14,0,0" Padding="10"
+                                Background="{DynamicResource AccentDarkBrush}" CornerRadius="7">
+                            <TextBlock Foreground="{DynamicResource AccentBrush}" TextWrapping="Wrap"
+                                       Text="Two static LVLI readbacks are not equipment, runtime, or visual proof." />
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource EyebrowText}" Text="DIAGNOSTICS" />
+                        <ListBox Margin="0,10,0,0" MaxHeight="190"
+                                 ItemsSource="{Binding Diagnostics}"
+                                 automation:AutomationProperties.Name="Leveled-list transaction diagnostics" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Actorwright.Desktop</AssemblyName>
+    <RootNamespace>NpcManager.Desktop</RootNamespace>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting>false</EnableWindowsTargeting>
+    <!-- WPF asks XmlLanguage for specific cultures during binding/layout; the
+         invariant globalization setting used by headless modules is invalid
+         for the desktop shell. -->
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NpcManager.Application\NpcManager.Application.csproj" />
+    <ProjectReference Include="..\NpcManager.Assets\NpcManager.Assets.csproj" />
+    <ProjectReference Include="..\NpcManager.Domain\NpcManager.Domain.csproj" />
+    <ProjectReference Include="..\NpcManager.Infrastructure\NpcManager.Infrastructure.csproj" />
+    <ProjectReference Include="..\NpcManager.Formats.Bethesda\NpcManager.Formats.Bethesda.csproj" />
+    <ProjectReference Include="..\NpcManager.Presets\NpcManager.Presets.csproj" />
+    <ProjectReference Include="..\NpcManager.FaceGen\NpcManager.FaceGen.csproj" />
+    <ProjectReference Include="..\NpcManager.BodyGen\NpcManager.BodyGen.csproj" />
+    <ProjectReference Include="..\NpcManager.Pipeline\NpcManager.Pipeline.csproj" />
+    <ProjectReference Include="..\NpcManager.Rendering\NpcManager.Rendering.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\runtime\reference-preset\**\*"
+             Link="runtime\reference-preset\%(RecursiveDir)%(Filename)%(Extension)"
+             CopyToOutputDirectory="PreserveNewest"
+             CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\runtime\rendering\npc-preview-profile-manifest.json"
+             Link="runtime\rendering\npc-preview-profile-manifest.json"
+             CopyToOutputDirectory="PreserveNewest"
+             CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

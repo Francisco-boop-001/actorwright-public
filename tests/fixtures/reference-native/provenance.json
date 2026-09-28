@@ -1,0 +1,11 @@
+{
+  "purpose": "Product-owned positive input for the native reference workflow regression; not original Yuna source or likeness authority",
+  "file": "fictional-adult-front.jpg",
+  "length": 208938,
+  "sha256": "0408CF550BE91CE02E89E8C93CE7BD470C5BAEBD5984D1947BE702F5C99E33FC",
+  "source": "OpenAI built-in image generation tool",
+  "generationDate": "2026-09-03",
+  "promptSummary": "Front-facing studio portrait of one entirely fictional adult, generated from scratch for face-landmark testing; no real-person resemblance, logos, text, or watermark.",
+  "rights": "Product-owned generated test fixture",
+  "verification": "Pending native inference in the canonical Actorwright test gate"
+}

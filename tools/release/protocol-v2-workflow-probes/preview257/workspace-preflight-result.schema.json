@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:protocol-v2:workspace-preflight-result:v1",
+  "title": "Actorwright protocol v2 reviewed workspace preflight result",
+  "type": "object",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "isAccepted"],
+      "properties": {
+        "schemaVersion": {"const": "2"},
+        "isAccepted": {"const": false}
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "edition",
+        "isAccepted",
+        "workspaceRoot",
+        "dataRoot",
+        "loadOrderPath",
+        "outputRoot",
+        "loadOrderHash",
+        "assetIndexFingerprint",
+        "intakeFingerprint",
+        "plugins",
+        "bodySidecarCount",
+        "generatedPluginCount",
+        "generatedSidecarCount",
+        "bodySidecars",
+        "generatedPlugins",
+        "generatedSidecars",
+        "assetProviderCount",
+        "runtimeAuthority",
+        "diagnostics"
+      ],
+      "properties": {
+        "schemaVersion": {"const": "2"},
+        "edition": {"const": "skyrimse"},
+        "isAccepted": {"type": "boolean"},
+        "workspaceRoot": {"type": "string", "minLength": 1},
+        "dataRoot": {"type": "string", "minLength": 1},
+        "loadOrderPath": {"type": "string", "minLength": 1},
+        "outputRoot": {"type": "string", "minLength": 1},
+        "loadOrderHash": {"$ref": "#/$defs/nullableSha256"},
+        "assetIndexFingerprint": {"$ref": "#/$defs/nullableSha256"},
+        "intakeFingerprint": {"$ref": "#/$defs/nullableSha256"},
+        "plugins": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/plugin"}
+        },
+        "bodySidecarCount": {"type": "integer", "minimum": 0},
+        "generatedPluginCount": {"type": "integer", "minimum": 0},
+        "generatedSidecarCount": {"type": "integer", "minimum": 0},
+        "bodySidecars": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/bodySidecar"}
+        },
+        "generatedPlugins": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/generatedPlugin"}
+        },
+        "generatedSidecars": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/generatedSidecar"}
+        },
+        "assetProviderCount": {"type": "integer", "minimum": 0},
+        "runtimeAuthority": {"const": false},
+        "diagnostics": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/diagnostic"}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nullableSha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "plugin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plugin",
+        "order",
+        "active",
+        "requested",
+        "requiredMaster",
+        "sourceHash",
+        "masters"
+      ],
+      "properties": {
+        "plugin": {"type": "string", "minLength": 1},
+        "order": {"type": "integer", "minimum": 0},
+        "active": {"type": "boolean"},
+        "requested": {"type": "boolean"},
+        "requiredMaster": {"type": "boolean"},
+        "sourceHash": {"type": "string"},
+        "masters": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "bodySidecar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plugin", "path", "sourceHash", "canonicalHash", "npcCount"],
+      "properties": {
+        "plugin": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "sourceHash": {"type": "string", "pattern": "^[0-9A-F]{64}$"},
+        "canonicalHash": {"type": "string", "pattern": "^[0-9A-F]{64}$"},
+        "npcCount": {"type": "integer", "minimum": 0}
+      }
+    },
+    "generatedPlugin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plugin", "path", "author", "sha256", "readSucceeded", "npcFormIds"],
+      "properties": {
+        "plugin": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "author": {"type": "string"},
+        "sha256": {"$ref": "#/$defs/nullableSha256"},
+        "readSucceeded": {"type": "boolean"},
+        "npcFormIds": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "generatedSidecar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "originPlugin",
+        "kind",
+        "variant",
+        "relativePath",
+        "path",
+        "formId",
+        "size",
+        "sha256"
+      ],
+      "properties": {
+        "originPlugin": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1},
+        "variant": {"type": "string", "minLength": 1},
+        "relativePath": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "formId": {"type": ["string", "null"]},
+        "size": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[0-9A-F]{64}$"}
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code": {"type": "string", "minLength": 1},
+        "severity": {"type": "integer", "enum": [0, 1, 2]},
+        "message": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

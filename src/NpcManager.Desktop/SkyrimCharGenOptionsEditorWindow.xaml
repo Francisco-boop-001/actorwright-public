@@ -1,0 +1,346 @@
+<Window x:Class="NpcManager.Desktop.SkyrimCharGenOptionsEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="Skyrim CharGen options"
+        Width="1080" Height="790" MinWidth="860" MinHeight="620"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        ResizeMode="CanResizeWithGrip"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        automation:AutomationProperties.Name="Edit Skyrim CharGen options">
+    <Grid Margin="26,22,26,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Style="{StaticResource EyebrowText}"
+                       Text="SKYRIM FACEGEN PIPELINE" />
+            <TextBlock Margin="0,5,0,0" FontSize="28"
+                       FontWeight="SemiBold" Text="CharGen options" />
+            <TextBlock Margin="0,7,0,0"
+                       Foreground="{DynamicResource MutedTextBrush}"
+                       Text="Edit one complete Skyrim settings document. Each reset is limited to its own tab."
+                       TextWrapping="Wrap" />
+        </StackPanel>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="_Texture output">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="16">
+                        <Border Style="{StaticResource CardBorder}" Padding="18">
+                            <StackPanel>
+                                <TextBlock FontSize="18" FontWeight="SemiBold"
+                                           Text="Texture output" />
+                                <CheckBox Margin="0,12,0,0"
+                                          Content="Use _per-layer resolution and compression"
+                                          IsChecked="{Binding Texture.PerLayerResolution}"
+                                          automation:AutomationProperties.Name="Use per-layer Skyrim FaceGen texture settings" />
+                                <TextBlock Margin="0,6,0,14" FontSize="11"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="When off, Normal follows Diffuse resolution and remains uncompressed for Skyrim model-space normals. Skyrim Specular is not baked."
+                                           TextWrapping="Wrap" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="18" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <Label Padding="0" Content="_Diffuse resolution" />
+                                        <ComboBox ItemsSource="{Binding Texture.Resolutions}"
+                                                  SelectedItem="{Binding Texture.DiffuseResolution}"
+                                                  automation:AutomationProperties.Name="Diffuse output resolution" />
+                                        <Label Margin="0,10,0,0" Padding="0"
+                                               Content="Diffuse _compression" />
+                                        <ComboBox ItemsSource="{Binding Texture.DiffuseCompressions}"
+                                                  SelectedItem="{Binding Texture.DiffuseCompression}"
+                                                  automation:AutomationProperties.Name="Diffuse output compression" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <Label Padding="0" Content="_Normal resolution" />
+                                        <ComboBox ItemsSource="{Binding Texture.Resolutions}"
+                                                  SelectedItem="{Binding Texture.NormalResolution}"
+                                                  IsEnabled="{Binding Texture.PerLayerResolution}"
+                                                  automation:AutomationProperties.Name="Normal output resolution" />
+                                        <Label Margin="0,10,0,0" Padding="0"
+                                               Content="Normal c_ompression" />
+                                        <ComboBox ItemsSource="{Binding Texture.NormalCompressions}"
+                                                  SelectedItem="{Binding Texture.NormalCompression}"
+                                                  IsEnabled="{Binding Texture.PerLayerResolution}"
+                                                  automation:AutomationProperties.Name="Normal output compression" />
+                                    </StackPanel>
+                                </Grid>
+                                <CheckBox Margin="0,16,0,0" Content="Generate optional _TGA files"
+                                          IsChecked="{Binding Texture.GenerateTga}"
+                                          automation:AutomationProperties.Name="Generate TGA beside FaceGen DDS" />
+                                <CheckBox Margin="0,8,0,0"
+                                          Content="_Bake RaceMenu face overlays into the diffuse"
+                                          IsChecked="{Binding Texture.BakeSseRaceMenuOverlays}"
+                                          automation:AutomationProperties.Name="Bake Skyrim RaceMenu face overlays" />
+                                <Button Margin="0,18,0,0" HorizontalAlignment="Left"
+                                        Content="_Reset texture output"
+                                        Click="ResetTexture_OnClick"
+                                        automation:AutomationProperties.Name="Reset texture output to Skyrim defaults" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="_FaceTint conventions">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="16">
+                        <Border Style="{StaticResource CardBorder}" Padding="18">
+                            <StackPanel>
+                                <TextBlock FontSize="18" FontWeight="SemiBold"
+                                           Text="FaceTint conventions" />
+                                <TextBlock Margin="0,5,0,14" FontSize="11"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Skyrim diffuse facegen-tint uses the red mask channel. Fallout-only convention buckets are preserved but not exposed."
+                                           TextWrapping="Wrap" />
+                                <UniformGrid Columns="2">
+                                    <StackPanel Margin="0,0,9,10">
+                                        <Label Padding="0" Content="_Working space" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.WorkingSpace}"
+                                                  automation:AutomationProperties.Name="Diffuse working space" />
+                                    </StackPanel>
+                                    <StackPanel Margin="9,0,0,10">
+                                        <Label Padding="0" Content="_Composite space" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.CompositeSpace}"
+                                                  automation:AutomationProperties.Name="Diffuse composite space" />
+                                    </StackPanel>
+                                    <StackPanel Margin="0,0,9,10">
+                                        <Label Padding="0" Content="_Source space" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.SourceSpace}"
+                                                  automation:AutomationProperties.Name="Diffuse source space" />
+                                    </StackPanel>
+                                    <StackPanel Margin="9,0,0,10">
+                                        <Label Padding="0" Content="_Output space" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.OutputSpace}"
+                                                  automation:AutomationProperties.Name="Diffuse output space" />
+                                    </StackPanel>
+                                    <StackPanel Margin="0,0,9,10">
+                                        <Label Padding="0" Content="_Mask conversion" />
+                                        <ComboBox ItemsSource="{Binding Convention.MaskConversions}"
+                                                  SelectedItem="{Binding Convention.MaskConversion}"
+                                                  automation:AutomationProperties.Name="Diffuse mask conversion" />
+                                    </StackPanel>
+                                    <StackPanel Margin="9,0,0,10">
+                                        <Label Padding="0" Content="_Framework" />
+                                        <ComboBox ItemsSource="{Binding Convention.Frameworks}"
+                                                  SelectedItem="{Binding Convention.Framework}"
+                                                  automation:AutomationProperties.Name="Diffuse composition framework" />
+                                    </StackPanel>
+                                    <StackPanel Margin="0,0,9,10">
+                                        <Label Padding="0" Content="S_oft-light model" />
+                                        <ComboBox ItemsSource="{Binding Convention.SoftLightModels}"
+                                                  SelectedItem="{Binding Convention.SoftLight}"
+                                                  automation:AutomationProperties.Name="Diffuse soft light model" />
+                                    </StackPanel>
+                                    <StackPanel Margin="9,0,0,10">
+                                        <Label Padding="0" Content="Texture source s_pace" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.DiffuseTextureSourceSpace}"
+                                                  automation:AutomationProperties.Name="Diffuse texture source space" />
+                                    </StackPanel>
+                                </UniformGrid>
+                                <CheckBox Margin="0,4,0,14"
+                                          Content="Seed diffuse in _gamma 2.2"
+                                          IsChecked="{Binding Convention.SeedDiffuseG22}"
+                                          automation:AutomationProperties.Name="Seed diffuse in gamma 2.2" />
+                                <TextBlock FontWeight="SemiBold"
+                                           Text="Working space by blend operation" />
+                                <UniformGrid Margin="0,8,0,0" Columns="5">
+                                    <StackPanel Margin="0,0,6,0">
+                                        <Label Padding="0" Content="_Replace" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.ReplaceSpace}"
+                                                  automation:AutomationProperties.Name="Replace blend working space" />
+                                    </StackPanel>
+                                    <StackPanel Margin="3,0">
+                                        <Label Padding="0" Content="_Multiply" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.MultiplySpace}"
+                                                  automation:AutomationProperties.Name="Multiply blend working space" />
+                                    </StackPanel>
+                                    <StackPanel Margin="3,0">
+                                        <Label Padding="0" Content="_Overlay" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.OverlaySpace}"
+                                                  automation:AutomationProperties.Name="Overlay blend working space" />
+                                    </StackPanel>
+                                    <StackPanel Margin="3,0">
+                                        <Label Padding="0" Content="_SoftLight" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.SoftLightSpace}"
+                                                  automation:AutomationProperties.Name="SoftLight blend working space" />
+                                    </StackPanel>
+                                    <StackPanel Margin="6,0,0,0">
+                                        <Label Padding="0" Content="_HardLight" />
+                                        <ComboBox ItemsSource="{Binding Convention.WorkingSpaces}"
+                                                  SelectedItem="{Binding Convention.HardLightSpace}"
+                                                  automation:AutomationProperties.Name="HardLight blend working space" />
+                                    </StackPanel>
+                                </UniformGrid>
+                                <Button Margin="0,18,0,0" HorizontalAlignment="Left"
+                                        Content="Reset _conventions"
+                                        Click="ResetConvention_OnClick"
+                                        automation:AutomationProperties.Name="Reset FaceTint conventions to Skyrim defaults" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="Tint _order">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="16">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="16" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource CardBorder}" Padding="16">
+                                <StackPanel>
+                                    <TextBlock FontSize="17" FontWeight="SemiBold"
+                                               Text="Tint rules" />
+                                    <ListBox Height="190" Margin="0,10,0,10"
+                                             ItemsSource="{Binding Sort.TintRules}"
+                                             SelectedIndex="{Binding Sort.SelectedTintIndex}"
+                                             automation:AutomationProperties.Name="Ordered Skyrim tint rules">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <DockPanel>
+                                                    <TextBlock Text="{Binding Direction}"
+                                                               Foreground="{DynamicResource MutedTextBrush}"
+                                                               DockPanel.Dock="Right" />
+                                                    <TextBlock Text="{Binding KeyName}" />
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                    <ComboBox ItemsSource="{Binding Sort.TintKeys}"
+                                              SelectedItem="{Binding Sort.TintCandidateKey}"
+                                              automation:AutomationProperties.Name="Tint rule key" />
+                                    <CheckBox Margin="0,7,0,0" Content="_Descending"
+                                              IsChecked="{Binding Sort.TintCandidateDescending}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button Content="_Add" Click="AddTintRule_OnClick" />
+                                        <Button Margin="6,0,0,0" Content="_Remove" Click="RemoveTintRule_OnClick" />
+                                        <Button Margin="6,0,0,0" Content="Move _up" Click="MoveTintRuleUp_OnClick" />
+                                        <Button Margin="6,0,0,0" Content="Move _down" Click="MoveTintRuleDown_OnClick" />
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="16">
+                                <StackPanel>
+                                    <TextBlock FontSize="17" FontWeight="SemiBold"
+                                               Text="RaceMenu overlay rules" />
+                                    <ListBox Height="190" Margin="0,10,0,10"
+                                             ItemsSource="{Binding Sort.OverlayRules}"
+                                             SelectedIndex="{Binding Sort.SelectedOverlayIndex}"
+                                             automation:AutomationProperties.Name="Ordered Skyrim overlay rules">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <DockPanel>
+                                                    <TextBlock Text="{Binding Direction}"
+                                                               Foreground="{DynamicResource MutedTextBrush}"
+                                                               DockPanel.Dock="Right" />
+                                                    <TextBlock Text="{Binding KeyName}" />
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                    <ComboBox ItemsSource="{Binding Sort.OverlayKeys}"
+                                              SelectedItem="{Binding Sort.OverlayCandidateKey}"
+                                              automation:AutomationProperties.Name="Overlay rule key" />
+                                    <CheckBox Margin="0,7,0,0" Content="D_escending"
+                                              IsChecked="{Binding Sort.OverlayCandidateDescending}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button Content="A_dd" Click="AddOverlayRule_OnClick" />
+                                        <Button Margin="6,0,0,0" Content="Re_move" Click="RemoveOverlayRule_OnClick" />
+                                        <Button Margin="6,0,0,0" Content="Move u_p" Click="MoveOverlayRuleUp_OnClick" />
+                                        <Button Margin="6,0,0,0" Content="Move do_wn" Click="MoveOverlayRuleDown_OnClick" />
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                        <Border Margin="0,14,0,0" Style="{StaticResource CardBorder}" Padding="16">
+                            <StackPanel>
+                                <Label Padding="0" Content="_Skin-tone placement" />
+                                <ComboBox Width="260" HorizontalAlignment="Left"
+                                          ItemsSource="{Binding Sort.SkinTonePlacements}"
+                                          SelectedItem="{Binding Sort.SkinTonePlacement}"
+                                          automation:AutomationProperties.Name="Skin tone placement" />
+                                <Button Margin="0,14,0,0" HorizontalAlignment="Left"
+                                        Content="Reset _ordering"
+                                        Click="ResetSort_OnClick"
+                                        automation:AutomationProperties.Name="Reset tint and overlay order to Skyrim defaults" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="_Authority">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Border Margin="16" Style="{StaticResource CardBorder}" Padding="18">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold"
+                                       Text="Authority" />
+                            <TextBlock Margin="0,10,0,0"
+                                       Foreground="{DynamicResource WarningBrush}"
+                                       Text="{Binding AuthorityNotice}"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="{Binding AuthorityNotice, StringFormat=CharGen options authority limitation: {0}}" />
+                            <TextBlock Margin="0,14,0,0"
+                                       Text="Fallout-only fixes, Specular baking, Normal/Specular convention, and Swap convention are intentionally absent from this Skyrim surface. Hidden complete values are preserved unless a deliberate convention reset loads Skyrim defaults."
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <Border Grid.Row="2" Margin="0,14,0,0" Padding="12"
+                Background="{DynamicResource SurfaceRaisedBrush}"
+                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+                CornerRadius="8">
+            <StackPanel>
+                <TextBlock Foreground="{DynamicResource DangerBrush}"
+                           Text="{Binding ValidationMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.Name="{Binding ValidationMessage, StringFormat=CharGen options validation: {0}}" />
+                <TextBlock Margin="0,4,0,0"
+                           Foreground="{DynamicResource MutedTextBrush}"
+                           Text="{Binding StatusMessage}" TextWrapping="Wrap"
+                           automation:AutomationProperties.LiveSetting="Polite" />
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="3" Margin="0,14,0,0"
+                    HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button MinWidth="110" Style="{StaticResource QuietButton}"
+                    Content="_Cancel" IsCancel="True"
+                    Click="Cancel_OnClick"
+                    automation:AutomationProperties.Name="Cancel CharGen options" />
+            <Button MinWidth="150" Margin="10,0,0,0"
+                    Style="{StaticResource PrimaryButton}"
+                    Content="_Save options" IsDefault="True"
+                    IsEnabled="{Binding CanSave}" Click="Save_OnClick"
+                    automation:AutomationProperties.Name="Accept complete Skyrim CharGen options" />
+        </StackPanel>
+    </Grid>
+</Window>

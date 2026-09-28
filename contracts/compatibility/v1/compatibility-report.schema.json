@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:actorwright:compatibility:v1:report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "formatVersion",
+    "generatedAtUtc",
+    "tier",
+    "baselineId",
+    "compatible",
+    "verdict",
+    "fixtureBacked",
+    "realInstallation",
+    "gates",
+    "differences",
+    "pinRows"
+  ],
+  "properties": {
+    "$schema": {"const": "urn:actorwright:compatibility:v1:report"},
+    "formatVersion": {"const": 1},
+    "generatedAtUtc": {"type": "string", "format": "date-time"},
+    "tier": {"enum": ["Source", "Full", "Package", "Candidate", "Admission", "Activation"]},
+    "baselineId": {"type": "string", "minLength": 1},
+    "compatible": {"type": "boolean"},
+    "verdict": {"type": "string", "minLength": 1},
+    "fixtureBacked": {"type": "boolean"},
+    "realInstallation": {"const": false},
+    "gates": {"type": "array", "items": {"$ref": "#/$defs/gate"}},
+    "differences": {"type": "array", "items": {"$ref": "#/$defs/difference"}},
+    "pinRows": {"type": "array", "items": {"$ref": "#/$defs/pinRow"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"fixtureBacked": {"const": true}}},
+      "then": {"properties": {"realInstallation": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"tier": {"not": {"const": "Activation"}}}},
+      "then": {"properties": {"realInstallation": {"const": false}}}
+    }
+  ],
+  "$defs": {
+    "stringArray": {"type": "array", "items": {"type": "string"}},
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gateId", "required", "status", "evidence", "differences"],
+      "properties": {
+        "gateId": {"type": "string", "minLength": 1},
+        "required": {"type": "boolean"},
+        "status": {"enum": ["PASS", "FAIL", "BLOCKED", "NOT_APPLICABLE"]},
+        "evidence": {"$ref": "#/$defs/stringArray"},
+        "differences": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/difference"}
+        }
+      }
+    },
+    "difference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject", "layer", "pointer", "expected", "actual", "gateId"],
+      "properties": {
+        "subject": {"type": "string", "minLength": 1},
+        "layer": {"type": "string", "minLength": 1},
+        "pointer": {"type": "string", "minLength": 1},
+        "expected": {},
+        "actual": {},
+        "gateId": {"type": "string", "minLength": 1}
+      }
+    },
+    "pinRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pinId",
+        "stage",
+        "producer",
+        "consumer",
+        "producerValue",
+        "consumerValue",
+        "identityClass",
+        "producerEvidencePath",
+        "consumerEvidencePath",
+        "status"
+      ],
+      "properties": {
+        "pinId": {"type": "string", "minLength": 1},
+        "stage": {"type": "string", "minLength": 1},
+        "producer": {"type": "string", "minLength": 1},
+        "consumer": {"type": "string", "minLength": 1},
+        "producerValue": {"type": "string"},
+        "consumerValue": {"type": "string"},
+        "identityClass": {"type": "string", "minLength": 1},
+        "producerEvidencePath": {"type": "string", "minLength": 1},
+        "consumerEvidencePath": {"type": "string", "minLength": 1},
+        "status": {"enum": ["PASS", "FAIL"]}
+      }
+    }
+  }
+}

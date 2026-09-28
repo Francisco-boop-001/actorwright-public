@@ -1,0 +1,204 @@
+<UserControl x:Class="NpcManager.Desktop.DesktopWorkflowReviewPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             automation:AutomationProperties.Name="Agent workflow review handoff"
+             automation:AutomationProperties.HelpText="Review exact bundle evidence and create an operator-attested receipt without granting runtime or promotion authority.">
+    <ScrollViewer Padding="0,16,10,8"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel KeyboardNavigation.TabNavigation="Continue">
+            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource EyebrowText}" Text="AGENT HANDOFF / HUMAN REVIEW" />
+                    <TextBlock Margin="0,6,0,0" FontSize="24" FontWeight="SemiBold"
+                               Text="Exact workflow evidence" />
+                    <TextBlock Margin="0,7,0,0" TextWrapping="Wrap"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               Text="The receipt records an operator decision. It does not establish human visual, Skyrim runtime, or promotion authority." />
+                    <TextBlock Margin="0,10,0,0" TextWrapping="Wrap"
+                               Text="{Binding Status}"
+                               automation:AutomationProperties.Name="Workflow review status"
+                               automation:AutomationProperties.LiveSetting="Polite" />
+                    <TextBlock Margin="0,5,0,0" TextWrapping="Wrap"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               Text="{Binding ReceiptOutcome}"
+                               automation:AutomationProperties.Name="Recorded review outcome" />
+                </StackPanel>
+            </Border>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" MinWidth="520" />
+                    <ColumnDefinition Width="18" />
+                    <ColumnDefinition Width="2*" MinWidth="340" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold" Text="Bundle identity" />
+                            <TextBlock Margin="0,6,0,0" Text="{Binding Snapshot.NpcEditorId, StringFormat=NPC: {0}}" />
+                            <TextBlock Text="{Binding Snapshot.NpcDisplayName, StringFormat=Name: {0}}" />
+                            <TextBlock Text="{Binding Snapshot.Game, StringFormat=Game: {0}}" />
+                            <TextBlock Text="{Binding Snapshot.Phase, StringFormat=Phase: {0}}" />
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Snapshot.BundleSha256, StringFormat=Bundle SHA-256: {0}}" />
+                            <ItemsControl Margin="0,9,0,0" ItemsSource="{Binding Artifacts}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,0,8">
+                                            <TextBlock FontWeight="SemiBold" Text="{Binding Kind}" />
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding Path.Value}" />
+                                            <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MutedTextBrush}"
+                                                       Text="{Binding Sha256}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold" Text="Verified preview" />
+                            <Image Margin="0,10,0,8" MaxHeight="420" Stretch="Uniform"
+                                   Source="{Binding PreviewImage}"
+                                   automation:AutomationProperties.Name="Verified NPC preview contact sheet" />
+                            <TextBlock TextWrapping="Wrap"
+                                       Text="{Binding Snapshot.Preview.ContactSheetSha256, StringFormat=Contact sheet SHA-256: {0}}" />
+                            <ItemsControl ItemsSource="{Binding PreviewViews}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Margin="0,4,0,0" TextWrapping="Wrap">
+                                            <Run Text="{Binding Id}" /><Run Text=" — image " />
+                                            <Run Text="{Binding ImageSha256}" /><Run Text="; role mask " />
+                                            <Run Text="{Binding RoleMaskSha256}" />
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold" Text="Exact proposal changes" />
+                            <TextBlock Margin="0,5,0,0" TextWrapping="Wrap"
+                                       Text="{Binding Snapshot.Proposal.Sha256, StringFormat=Proposal SHA-256: {0}}" />
+                            <ItemsControl Margin="0,7,0,0" ItemsSource="{Binding ProposalChanges}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate><TextBlock TextWrapping="Wrap" Text="{Binding StringFormat=• {0}}" /></DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold" Text="Authority" />
+                            <ItemsControl Margin="0,7,0,0" ItemsSource="{Binding Authority}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,0,8">
+                                            <TextBlock FontWeight="SemiBold">
+                                                <Run Text="{Binding Kind}" /><Run Text=" — " /><Run Text="{Binding State}" />
+                                            </TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MutedTextBrush}"
+                                                       Text="{Binding Reason}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold" Text="Diagnostics and recovery" />
+                            <ItemsControl Margin="0,7,0,0" ItemsSource="{Binding Diagnostics}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,0,8">
+                                            <TextBlock FontWeight="SemiBold" Text="{Binding Code}" />
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding Message}" />
+                                            <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MutedTextBrush}"
+                                                       Text="{Binding Recovery.Constraint, StringFormat=Recovery: {0}}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold" Text="Exact next action" />
+                            <ItemsControl Margin="0,7,0,0" ItemsSource="{Binding NextActions}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,0,8">
+                                            <TextBlock FontWeight="SemiBold" Text="{Binding Command}" />
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding Reason}" />
+                                            <ItemsControl ItemsSource="{Binding RequiredBindings}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Margin="0,3,0,0">
+                                                            <TextBlock TextWrapping="Wrap"
+                                                                       Text="{Binding Option, StringFormat=Required binding: {0}}" />
+                                                            <TextBlock TextWrapping="Wrap"
+                                                                       Foreground="{DynamicResource MutedTextBrush}"
+                                                                       Text="{Binding Value, StringFormat=Value: {0}}" />
+                                                            <TextBlock TextWrapping="Wrap"
+                                                                       Foreground="{DynamicResource MutedTextBrush}"
+                                                                       Text="{Binding ArtifactSha256, StringFormat=Artifact SHA-256: {0}}" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                            <ItemsControl ItemsSource="{Binding MissingPrerequisites}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate><TextBlock Text="{Binding StringFormat=Missing: {0}}" /></DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}">
+                        <StackPanel>
+                            <TextBlock FontSize="18" FontWeight="SemiBold" Text="Operator receipt" />
+                            <TextBlock Margin="0,5,0,0" TextWrapping="Wrap"
+                                       Text="{Binding Snapshot.AuthorityNotice}" />
+                            <Label Margin="0,9,0,3" Padding="0"
+                                   Target="{Binding ElementName=ReceiptOutputBox}">Fresh K-local receipt _path:</Label>
+                            <TextBox x:Name="ReceiptOutputBox" TabIndex="1"
+                                     Text="{Binding ReceiptOutput, UpdateSourceTrigger=PropertyChanged}"
+                                     automation:AutomationProperties.Name="Fresh receipt output path"
+                                     automation:AutomationProperties.HelpText="Enter a new absolute K-local JSON path. Existing outputs are refused." />
+                            <Label Margin="0,9,0,3" Padding="0"
+                                   Target="{Binding ElementName=ReviewerNoteBox}">Optional reviewer _note:</Label>
+                            <TextBox x:Name="ReviewerNoteBox" TabIndex="2"
+                                     MinHeight="64" AcceptsReturn="True" TextWrapping="Wrap"
+                                     Text="{Binding ReviewerNote, UpdateSourceTrigger=PropertyChanged}"
+                                     automation:AutomationProperties.Name="Optional reviewer note" />
+                            <WrapPanel Margin="0,12,0,0">
+                                <Button Margin="0,0,8,8" Content="_Accept" TabIndex="3"
+                                        Command="{Binding AcceptCommand}"
+                                        IsDefault="False"
+                                        automation:AutomationProperties.Name="Accept exact review evidence"
+                                        automation:AutomationProperties.HelpText="Creates an operator-attested Accepted receipt only after exact evidence is revalidated." />
+                                <Button Margin="0,0,8,8" Content="Re_ject" TabIndex="4"
+                                        Command="{Binding RejectCommand}"
+                                        IsDefault="False"
+                                        automation:AutomationProperties.Name="Reject exact review evidence" />
+                                <Button Margin="0,0,8,8" Content="Request _revision" TabIndex="5"
+                                        Command="{Binding RequestRevisionCommand}"
+                                        IsDefault="False"
+                                        automation:AutomationProperties.Name="Request revision of exact review evidence" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

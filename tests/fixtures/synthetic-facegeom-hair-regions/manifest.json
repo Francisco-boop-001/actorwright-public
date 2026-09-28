@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "synthetic-facegeom-hair-regions-v1",
+  "purpose": "Owned, non-visual test input for FaceGeom HairTint analysis and byte-exact mutation checks.",
+  "runtimeAuthority": false,
+  "visualAuthority": false,
+  "generator": "tools/fixtures/synthetic-facegeom-hair-regions",
+  "assembly": "NpcManager.Infrastructure.SseFaceGeomCarrierAssembler",
+  "baseFixture": {
+    "path": "tests/fixtures/sse-packed-normals/dynamic-16.nif",
+    "sha256": "F7FE2D182D410DB48E5346AA28410D591B2F170C5577334D30A8FE413ED5FE5E"
+  },
+  "nif": {
+    "path": "tests/fixtures/synthetic-facegeom-hair-regions/facegeom.nif",
+    "byteLength": 1555043,
+    "sha256": "4B67591A7CF6C2AF712305D4E27412EED79C6285B21C9686CD0CB700954EE248"
+  },
+  "shapes": [
+    {
+      "name": "FemaleHead",
+      "role": "face",
+      "usesFaceTint": true,
+      "hairTint": null
+    },
+    {
+      "name": "SyntheticMainHair",
+      "role": "primary",
+      "usesFaceTint": false,
+      "hairTint": "#222222"
+    },
+    {
+      "name": "SyntheticHairline",
+      "role": "primary",
+      "usesFaceTint": false,
+      "hairTint": "#222222"
+    },
+    {
+      "name": "SyntheticBrow",
+      "role": "preserve",
+      "usesFaceTint": false,
+      "hairTint": "#303030"
+    },
+    {
+      "name": "SyntheticHairHighlight",
+      "role": "accent",
+      "usesFaceTint": false,
+      "hairTint": "#303030"
+    },
+    {
+      "name": "SyntheticLashes",
+      "role": "preserve",
+      "usesFaceTint": false,
+      "hairTint": "#222222"
+    }
+  ],
+  "skin": {
+    "skeletonAuthority": "identity-facegen-bones",
+    "boneNames": [
+      "NPC Head [Head]",
+      "NPC Spine2 [Spn2]"
+    ],
+    "runtimeAuthority": false
+  }
+}

@@ -1,0 +1,6 @@
+<Project>
+  <Target Name="CheckReleaseConfiguration" BeforeTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Error Condition="'$(Deterministic)' != 'true'" Text="Release builds must be deterministic." />
+    <Error Condition="'$(TreatWarningsAsErrors)' != 'true'" Text="Release builds must treat warnings as errors." />
+  </Target>
+</Project>

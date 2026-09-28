@@ -1,0 +1,9 @@
+diff --git a/bazel/glog.bzl b/bazel/glog.bzl
+--- a/bazel/glog.bzl
++++ b/bazel/glog.bzl
+@@ -112,5 +112,3 @@
+     windows_only_copts = [
+-        # Override -DGLOG_EXPORT= from the cc_library's defines.
+-        "-DGLOG_EXPORT=__declspec(dllexport)",
+         "-DGLOG_NO_ABBREVIATED_SEVERITIES",
+         "-DHAVE_SNPRINTF",

@@ -1,0 +1,636 @@
+<UserControl x:Class="NpcManager.Desktop.ReferencePresetAuthoringPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+             automation:AutomationProperties.Name="Reference preset authoring workspace">
+    <Grid Margin="0,14,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Style="{StaticResource CardBorder}"
+                Margin="0,0,0,12" Padding="18" Background="#112A2C"
+                BorderBrush="#347E72">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource EyebrowText}"
+                               Text="REFERENCE / DESCRIPTION TO RACEMENU" />
+                    <TextBlock Margin="0,5,20,0" FontSize="23"
+                               FontWeight="SemiBold"
+                               Text="Create a reviewed, deterministic preset"
+                               TextWrapping="Wrap" />
+                    <TextBlock Margin="0,6,20,0"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               Text="Images stay local. Every machine proposal requires review; every output is hash-bound and reopened."
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <Border Grid.Column="1" Padding="12,7"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource AccentDarkBrush}"
+                        BorderBrush="{DynamicResource AccentStrongBrush}"
+                        BorderThickness="1" CornerRadius="16">
+                    <TextBlock Foreground="{DynamicResource AccentBrush}"
+                               FontWeight="SemiBold"
+                               Text="{Binding StepNumber, StringFormat=Step {0} of 6}" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <TabControl x:Name="AuthoringSteps"
+                    Grid.Row="1"
+                    SelectedIndex="{Binding VisibleStepIndex, Mode=OneWay}"
+                    SelectionChanged="AuthoringStepsSelectionChanged"
+                    automation:AutomationProperties.Name="Reference preset six step workflow">
+            <TabItem Header="1 Define target">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="8,14,14,8">
+                        <Border Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}"
+                                           Text="1  DEFINE TARGET" />
+                                <TextBlock Margin="0,5,0,14" FontSize="19"
+                                           FontWeight="SemiBold"
+                                           Text="Identity, baseline, and source evidence" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="16" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock Text="Project ID" />
+                                        <TextBox Margin="0,5,0,12"
+                                                 Text="{Binding ProjectId, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Reference project ID" />
+                                        <TextBlock Text="Target name" />
+                                        <TextBox Margin="0,5,0,12"
+                                                 Text="{Binding TargetName, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Reference target name" />
+                                        <TextBlock Text="Race (Plugin|0xFormID)" />
+                                        <TextBox Margin="0,5,0,12"
+                                                 Text="{Binding RaceReference, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Reference target race" />
+                                        <TextBlock Text="Head system" />
+                                        <TextBox Margin="0,5,0,0"
+                                                 Text="{Binding HeadSystemId, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Reference head system" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock Text="Sex" />
+                                        <ComboBox Margin="0,5,0,12"
+                                                  ItemsSource="{Binding SexOptions}"
+                                                  SelectedItem="{Binding TargetSex}"
+                                                  automation:AutomationProperties.Name="Reference target sex" />
+                                        <TextBlock Text="Weight (0–100)" />
+                                        <TextBox Margin="0,5,0,12"
+                                                 Text="{Binding TargetWeight, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Reference target weight" />
+                                        <TextBlock Text="Baseline JSlot" />
+                                        <Grid Margin="0,5,0,12">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Text="{Binding BaselineJslotPath, UpdateSourceTrigger=PropertyChanged}"
+                                                     automation:AutomationProperties.Name="Baseline RaceMenu JSlot" />
+                                            <Button Grid.Column="1" Margin="8,0,0,0"
+                                                    Style="{StaticResource QuietButton}"
+                                                    Content="_Choose"
+                                                    Click="ChooseBaselineClick"
+                                                    automation:AutomationProperties.Name="Choose baseline RaceMenu JSlot" />
+                                        </Grid>
+                                        <TextBlock Text="Description" />
+                                        <TextBox Margin="0,5,0,0" MinHeight="82"
+                                                 AcceptsReturn="True"
+                                                 TextWrapping="Wrap"
+                                                 VerticalContentAlignment="Top"
+                                                 Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                                                 automation:AutomationProperties.Name="Reference appearance description" />
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Margin="0,12,0,0" Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}"
+                                           Text="REFERENCE IMAGES" />
+                                <TextBlock Margin="0,5,0,10"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Add one to four K-local PNG, JPEG, or WebP images. Each view role may be used once."
+                                           TextWrapping="Wrap" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="220" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox x:Name="ImageRolePicker"
+                                              ItemsSource="{Binding ImageViewRoles}"
+                                              SelectedItem="{Binding NewImageViewRole, Mode=TwoWay}"
+                                              automation:AutomationProperties.Name="New reference image view role" />
+                                    <Button Grid.Column="1" Margin="8,0,0,0"
+                                            Content="_Add image"
+                                            Click="AddImageClick"
+                                            automation:AutomationProperties.Name="Add reference image" />
+                                    <Button Grid.Column="2" Margin="8,0,0,0"
+                                            Style="{StaticResource QuietButton}"
+                                            Content="_Remove selected"
+                                            Click="RemoveImageClick"
+                                            automation:AutomationProperties.Name="Remove selected reference image" />
+                                </Grid>
+                                <ListBox x:Name="ReferenceImageList" Margin="0,10,0,0"
+                                         MaxHeight="170"
+                                         ItemsSource="{Binding ReferenceImages}"
+                                         automation:AutomationProperties.Name="Reference image list">
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="automation:AutomationProperties.ItemStatus" Value="{Binding SourcePath.Value}" />
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="150" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Text="{Binding ViewRole}" />
+                                                <TextBlock Grid.Column="1"
+                                                           Text="{Binding SourcePath.Value}"
+                                                           TextWrapping="Wrap" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <StackPanel Margin="0,14,0,0"
+                                            Orientation="Horizontal"
+                                            HorizontalAlignment="Right">
+                                    <Button Margin="0,0,8,0"
+                                            Content="_Save definition"
+                                            Command="{Binding DefineCommand}"
+                                            automation:AutomationProperties.Name="Save reference target definition" />
+                                    <Button Style="{StaticResource PrimaryButton}"
+                                            Content="_Analyze locally"
+                                            Command="{Binding AnalyzeCommand}"
+                                            automation:AutomationProperties.Name="Analyze reference images locally" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="2 Analyze">
+                <Grid Margin="14">
+                    <Border Style="{StaticResource CardBorder}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            MaxWidth="720">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource EyebrowText}"
+                                       Text="2  ANALYZE" />
+                            <TextBlock Margin="0,6,0,10" FontSize="22"
+                                       FontWeight="SemiBold"
+                                       Text="Local face and description analysis" />
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="NPC Manager decodes the images, runs the packaged CPU model, and projects 31 semantic review anchors. This is a proposal, not accepted authority."
+                                       TextWrapping="Wrap" />
+                            <ProgressBar Margin="0,22,0,10" Height="8"
+                                         Minimum="0" Maximum="100"
+                                         Value="{Binding ProgressPercent, Mode=OneWay}"
+                                         automation:AutomationProperties.Name="Reference analysis progress" />
+                            <TextBlock Text="{Binding ProgressText}"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="Reference analysis status"
+                                       automation:AutomationProperties.ItemStatus="{Binding ProgressText}"
+                                       automation:AutomationProperties.LiveSetting="Polite" />
+                            <Button Margin="0,20,0,0"
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource QuietButton}"
+                                    Content="_Cancel"
+                                    Command="{Binding CancelCommand}"
+                                    automation:AutomationProperties.Name="Cancel reference analysis" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="3 Review">
+                <Grid Margin="8,14,14,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" MinWidth="450" />
+                        <ColumnDefinition Width="14" />
+                        <ColumnDefinition Width="*" MinWidth="300" />
+                    </Grid.ColumnDefinitions>
+                    <Border Style="{StaticResource CardBorder}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}"
+                                           Text="3  REVIEW" />
+                                <TextBlock Margin="0,5,0,12" FontSize="19"
+                                           FontWeight="SemiBold"
+                                           Text="Correct semantic anchors" />
+                                <ListBox ItemsSource="{Binding ReviewViews}"
+                                         SelectedItem="{Binding SelectedReviewView}"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                         automation:AutomationProperties.Name="Reference image review tabs">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ViewRole}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                            <Grid Grid.Row="1" Margin="0,12,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="220" />
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#0E1924" CornerRadius="8"
+                                        ClipToBounds="True">
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                                  VerticalScrollBarVisibility="Auto">
+                                        <Image x:Name="ReferenceReviewImage"
+                                               Width="680" Height="680"
+                                               Stretch="Uniform"
+                                               Source="{Binding SelectedReferenceImagePath, Converter={StaticResource PathToImageSource}}"
+                                               MouseLeftButtonDown="ReferenceImageMouseDown"
+                                               automation:AutomationProperties.Name="Reference image anchor correction canvas" />
+                                    </ScrollViewer>
+                                </Border>
+                                <ListBox x:Name="AnchorReviewList"
+                                         Grid.Column="1" Margin="10,0,0,0"
+                                         ItemsSource="{Binding SelectedReviewView.Anchors}"
+                                         SelectedItem="{Binding SelectedReviewAnchor}"
+                                         VirtualizingPanel.IsVirtualizing="False"
+                                         PreviewKeyDown="AnchorReviewKeyDown"
+                                         automation:AutomationProperties.Name="Semantic anchor review grid">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock FontWeight="SemiBold"
+                                                           Text="{Binding Anchor.Anchor}" />
+                                                <TextBlock FontSize="11"
+                                                           Foreground="{DynamicResource MutedTextBrush}"
+                                                           Text="{Binding Anchor.ReviewState}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Grid.Column="2">
+                        <Border Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}"
+                                           Text="EXPLICIT DECISIONS" />
+                                <Button Margin="0,10,0,0"
+                                        Content="Accept proposed _anchors"
+                                        Click="AcceptAnchorsClick"
+                                        automation:AutomationProperties.Name="Accept all proposed semantic anchors" />
+                                <Button Margin="0,8,0,0"
+                                        Content="Accept reviewed _views"
+                                        Click="AcceptViewsClick"
+                                        automation:AutomationProperties.Name="Accept all reviewed image views" />
+                                <Button Margin="0,8,0,0"
+                                        Content="Accept description _traits"
+                                        Click="AcceptTraitsClick"
+                                        automation:AutomationProperties.Name="Accept all proposed description traits" />
+                                <Button Margin="0,8,0,0"
+                                        Content="Acknowledge _unknowns"
+                                        Click="AcknowledgeUnknownsClick"
+                                        automation:AutomationProperties.Name="Acknowledge all unresolved description tokens" />
+                                <TextBlock Margin="0,12,0,0"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Select an anchor and click its true position in the image. Arrow keys nudge by 0.1%."
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="0,12,0,0"
+                                Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}"
+                                           Text="REVIEW COUNTS" />
+                                <TextBlock Margin="0,8,0,0"
+                                           Text="{Binding ReviewTraits.Length, StringFormat=Description traits: {0}}" />
+                                <TextBlock Margin="0,5,0,0"
+                                           Text="{Binding ReviewUnknowns.Length, StringFormat=Unknown phrases: {0}}" />
+                                <Button Margin="0,16,0,0"
+                                        Style="{StaticResource PrimaryButton}"
+                                        Content="Continue to _resources"
+                                        Command="{Binding AdvanceCommand}"
+                                        automation:AutomationProperties.Name="Continue reviewed design to resource selection" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="4 Choose resources">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled"
+                              automation:AutomationProperties.Name="Reference resource selection scroll region">
+                    <Grid Margin="8,14,14,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" MinWidth="390" />
+                            <ColumnDefinition Width="14" />
+                            <ColumnDefinition Width="*" MinWidth="390" />
+                        </Grid.ColumnDefinitions>
+                        <Border Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}"
+                                           Text="4  CHOOSE RESOURCES" />
+                                <TextBlock Margin="0,5,0,12" FontSize="19"
+                                           FontWeight="SemiBold"
+                                           Text="Exact compatible head records" />
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="Enter reviewed winning FormIDs from the copied load order. NPC Manager reopens each RACE/HDPT/tint/provider before use."
+                                           TextWrapping="Wrap" />
+                                <TextBlock Margin="0,14,0,5" Text="Face" />
+                                <TextBox Text="{Binding FaceReference, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selected face headpart reference" />
+                                <TextBlock Margin="0,10,0,5" Text="Mouth" />
+                                <TextBox Text="{Binding MouthReference, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selected mouth headpart reference" />
+                                <TextBlock Margin="0,10,0,5" Text="Eyes" />
+                                <TextBox Text="{Binding EyesReference, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selected eyes headpart reference" />
+                                <TextBlock Margin="0,10,0,5" Text="Brows" />
+                                <TextBox Text="{Binding BrowsReference, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selected brows headpart reference" />
+                                <TextBlock Margin="0,10,0,5" Text="Hair" />
+                                <TextBox Text="{Binding HairReference, UpdateSourceTrigger=PropertyChanged}"
+                                         automation:AutomationProperties.Name="Selected hair headpart reference" />
+                                <Button Margin="0,16,0,0"
+                                        Content="_Review resource selection"
+                                        Click="CommitResourcesClick"
+                                        automation:AutomationProperties.Name="Review selected reference preset resources" />
+                                <Button Margin="0,8,0,0"
+                                        Style="{StaticResource PrimaryButton}"
+                                        Content="_Close providers / Compare"
+                                        Command="{Binding AdvanceCommand}"
+                                        automation:AutomationProperties.Name="Close selected resources or create comparison" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="2" Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}"
+                                           Text="BASELINE MESH BINDING" />
+                                <TextBlock Margin="0,5,0,10" FontSize="19"
+                                           FontWeight="SemiBold"
+                                           Text="Pair reviewed anchors to Skyrim geometry" />
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="After provider closure, select an accepted anchor and click the corresponding point on the exact baseline head. Scroll bars pan; the zoom slider scales."
+                                           TextWrapping="Wrap" />
+                                <TextBlock Margin="0,8,0,0"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="{Binding BaselineBindingProgressText}"
+                                           automation:AutomationProperties.Name="Baseline mesh binding progress"
+                                           automation:AutomationProperties.ItemStatus="{Binding BaselineBindingProgressText}" />
+                                <Slider x:Name="BaselineZoom" Margin="0,12,0,8"
+                                        Minimum="0.5" Maximum="2.5" Value="1"
+                                        TickFrequency="0.25"
+                                        automation:AutomationProperties.Name="Baseline render zoom" />
+                                <Border Height="430" Background="#0E1924"
+                                        CornerRadius="8" ClipToBounds="True">
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                                  VerticalScrollBarVisibility="Auto">
+                                        <Image x:Name="BaselineBindingImage"
+                                               Width="700" Height="700"
+                                               Stretch="Uniform"
+                                               Source="{Binding SelectedBaselinePreviewPath, Converter={StaticResource PathToImageSource}}"
+                                               MouseLeftButtonDown="BaselineImageMouseDown"
+                                               RenderOptions.BitmapScalingMode="HighQuality"
+                                               automation:AutomationProperties.Name="Baseline head mesh binding canvas">
+                                            <Image.LayoutTransform>
+                                                <ScaleTransform ScaleX="{Binding ElementName=BaselineZoom, Path=Value}"
+                                                                ScaleY="{Binding ElementName=BaselineZoom, Path=Value}" />
+                                            </Image.LayoutTransform>
+                                        </Image>
+                                    </ScrollViewer>
+                                </Border>
+                                <ListBox Margin="0,10,0,0" MaxHeight="150"
+                                         ItemsSource="{Binding SelectedReviewView.Anchors}"
+                                         SelectedItem="{Binding SelectedReviewAnchor}"
+                                         VirtualizingPanel.IsVirtualizing="False"
+                                         automation:AutomationProperties.Name="Baseline binding anchor list">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Anchor.Anchor}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="5 Compare">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="8,14,14,8"
+                                automation:AutomationProperties.Name="Reference comparison region">
+                        <Border Style="{StaticResource CardBorder}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource EyebrowText}"
+                                           Text="5  COMPARE" />
+                                <TextBlock Margin="0,5,0,5" FontSize="19"
+                                           FontWeight="SemiBold"
+                                           Text="Reference, render, residuals, and losses" />
+                                <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="{Binding ComparisonSummary}"
+                                           TextWrapping="Wrap" />
+                                <ItemsControl Margin="0,14,0,0"
+                                              ItemsSource="{Binding ComparisonViews}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Width="340" Margin="0,0,12,12"
+                                                    Padding="10" Background="#0E1924"
+                                                    CornerRadius="8">
+                                                <StackPanel>
+                                                    <TextBlock FontWeight="SemiBold"
+                                                               Text="{Binding Label}" />
+                                                    <Image Margin="0,8,0,0" Height="300"
+                                                           Stretch="Uniform"
+                                                           Source="{Binding ImagePath.Value, Converter={StaticResource PathToImageSource}}" />
+                                                    <TextBlock Margin="0,6,0,0"
+                                                               FontFamily="Consolas" FontSize="10"
+                                                               Foreground="{DynamicResource MutedTextBrush}"
+                                                               Text="{Binding ContentSha256.Value}"
+                                                               TextWrapping="Wrap" />
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                        <Grid Margin="0,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="12" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource CardBorder}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}"
+                                               Text="RESIDUALS" />
+                                    <DataGrid Margin="0,8,0,0" MaxHeight="230"
+                                              AutoGenerateColumns="True"
+                                              IsReadOnly="True"
+                                              ItemsSource="{Binding AuthoringProposal.SolverResult.Residuals}"
+                                              automation:AutomationProperties.Name="Reference residual table" />
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="2" Style="{StaticResource CardBorder}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EyebrowText}"
+                                               Text="EXPLICIT LOSSES" />
+                                    <DataGrid Margin="0,8,0,0" MaxHeight="230"
+                                              AutoGenerateColumns="True"
+                                              IsReadOnly="True"
+                                              ItemsSource="{Binding AuthoringProposal.Losses}"
+                                              automation:AutomationProperties.Name="Reference loss table" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                        <Button Margin="0,14,0,0"
+                                HorizontalAlignment="Right"
+                                Style="{StaticResource PrimaryButton}"
+                                Content="_Accept proposal and write"
+                                Command="{Binding ApplyCommand}"
+                                automation:AutomationProperties.Name="Apply accepted reference preset proposal" />
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="6 Accept and write">
+                <Grid Margin="14">
+                    <Border Style="{StaticResource CardBorder}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            MaxWidth="780">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource EyebrowText}"
+                                       Text="6  ACCEPT AND WRITE" />
+                            <TextBlock Margin="0,6,0,10" FontSize="22"
+                                       FontWeight="SemiBold"
+                                       Text="Verified RaceMenu preset" />
+                            <TextBlock Text="{Binding ProgressText}"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="Reference preset write status"
+                                       automation:AutomationProperties.ItemStatus="{Binding ProgressText}"
+                                       automation:AutomationProperties.LiveSetting="Polite" />
+                            <ProgressBar Margin="0,16,0,12" Height="7"
+                                         Minimum="0" Maximum="100"
+                                         Value="{Binding ProgressPercent, Mode=OneWay}"
+                                         automation:AutomationProperties.Name="Reference preset write progress" />
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="JSlot path" />
+                            <TextBlock Margin="0,4,0,10"
+                                       Text="{Binding VerifiedPresetPath}"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="Verified reference preset path"
+                                       automation:AutomationProperties.ItemStatus="{Binding VerifiedPresetPath}" />
+                            <TextBlock Foreground="{DynamicResource MutedTextBrush}"
+                                       Text="SHA-256" />
+                            <TextBlock Margin="0,4,0,12"
+                                       FontFamily="Consolas" FontSize="11"
+                                       Text="{Binding VerifiedPresetHash}"
+                                       TextWrapping="Wrap"
+                                       automation:AutomationProperties.Name="Verified reference preset SHA-256"
+                                       automation:AutomationProperties.ItemStatus="{Binding VerifiedPresetHash}" />
+                            <Border Padding="10"
+                                    Background="{DynamicResource AccentDarkBrush}"
+                                    CornerRadius="7">
+                                <TextBlock Foreground="{DynamicResource AccentBrush}"
+                                           Text="Static authority only. Skyrim likeness, neck seam, equipment, behavior, and runtime rendering still require an in-game test."
+                                           TextWrapping="Wrap"
+                                           automation:AutomationProperties.Name="Reference preset runtime authority statement" />
+                            </Border>
+                            <StackPanel Margin="0,18,0,0"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                <Button Margin="0,0,8,0"
+                                        Content="_Apply"
+                                        Command="{Binding ApplyCommand}"
+                                        automation:AutomationProperties.Name="Apply reference preset write" />
+                                <Button Style="{StaticResource PrimaryButton}"
+                                        Content="Continue to NPC"
+                                        Click="ContinueToNpcClick"
+                                        automation:AutomationProperties.Name="Continue verified reference preset to NPC" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Border Grid.Row="2" Margin="0,12,0,0"
+                Padding="12" Background="{DynamicResource SurfaceBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="9">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="{Binding ProgressText}"
+                               TextWrapping="Wrap"
+                               automation:AutomationProperties.Name="Reference preset workflow status"
+                               automation:AutomationProperties.ItemStatus="{Binding ProgressText}"
+                               automation:AutomationProperties.LiveSetting="Polite" />
+                    <ItemsControl Margin="0,5,12,0" MaxHeight="55"
+                                  ItemsSource="{Binding Diagnostics}"
+                                  automation:AutomationProperties.Name="Reference preset technical details">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="11"
+                                           Foreground="{DynamicResource MutedTextBrush}"
+                                           Text="{Binding}" TextWrapping="Wrap" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                    <Button Margin="0,0,8,0"
+                            Style="{StaticResource QuietButton}"
+                            Content="_Back"
+                            Command="{Binding BackCommand}"
+                            automation:AutomationProperties.Name="Back one reference preset step" />
+                    <Button Style="{StaticResource QuietButton}"
+                            Content="_Cancel"
+                            Command="{Binding CancelCommand}"
+                            automation:AutomationProperties.Name="Cancel active reference preset operation" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

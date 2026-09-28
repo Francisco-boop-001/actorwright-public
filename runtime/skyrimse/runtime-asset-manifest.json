@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "productAssetId": "skyrimse-npcm-manolov-apply-sse-v1",
+  "edition": "skyrimse",
+  "scriptName": "NPCM_Manolov_ApplySSE",
+  "dataRelativeDestination": "Scripts/NPCM_Manolov_ApplySSE.pex",
+  "pex": {
+    "sha256": "993D994391357233AED8E7EDC8E3C1DD2BD7A06616A0E209BB9B3169BDF61332",
+    "size": 10426
+  },
+  "source": {
+    "pscSha256": "5D4550FA23476D9089675CC56B0616C9541B52EF00195072C084776E5BB612D4"
+  },
+  "inspection": {
+    "sha256": "D7E083714E668B74456304168EDBE4726C3BF3C057B7BB3B939D89E3A7F55B9C",
+    "totalPropertyCount": 43,
+    "writablePropertyCount": 36,
+    "readOnlyPropertyCount": 7
+  },
+  "runtimeAuthority": false
+}

@@ -1,0 +1,65 @@
+<Window x:Class="NpcManager.Desktop.RaceMenuNpcBuildProgressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automation="clr-namespace:System.Windows.Automation;assembly=PresentationCore"
+        Title="Build progress"
+        Width="480"
+        Height="238"
+        MinWidth="480"
+        MinHeight="238"
+        MaxWidth="480"
+        MaxHeight="238"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent"
+        AllowsTransparency="True"
+        automation:AutomationProperties.Name="NPC build progress dialog">
+    <Border Margin="12"
+            Padding="24"
+            Background="{DynamicResource SurfaceRaisedBrush}"
+            BorderBrush="{DynamicResource AccentDarkBrush}"
+            BorderThickness="1"
+            CornerRadius="14">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Style="{StaticResource EyebrowText}"
+                       Text="BUILDING NPC PACKAGE" />
+            <TextBlock Grid.Row="1"
+                       Margin="0,7,0,18"
+                       FontSize="15"
+                       Foreground="{DynamicResource MutedTextBrush}"
+                       Text="{Binding Status}"
+                       TextWrapping="Wrap"
+                       automation:AutomationProperties.LiveSetting="Assertive" />
+            <Grid Grid.Row="2">
+                <ProgressBar Minimum="0"
+                             Maximum="100"
+                             Value="{Binding ProgressPercent, Mode=OneWay}"
+                             automation:AutomationProperties.Name="Modal NPC build progress" />
+                <TextBlock Margin="0,14,0,0"
+                           HorizontalAlignment="Right"
+                           Foreground="{DynamicResource AccentBrush}"
+                           FontWeight="SemiBold"
+                           Text="{Binding ProgressPercent, StringFormat={}{0}%}" />
+            </Grid>
+            <Button x:Name="CancelButton"
+                    Grid.Row="3"
+                    Width="132"
+                    Margin="0,28,0,0"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource QuietButton}"
+                    Content="{Binding CancelActionContent}"
+                    Command="{Binding CancelCommand}"
+                    automation:AutomationProperties.Name="{Binding CancelActionName}" />
+        </Grid>
+    </Border>
+</Window>

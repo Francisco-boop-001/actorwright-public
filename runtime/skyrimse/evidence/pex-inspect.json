@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "game": "Skyrim",
+  "pexVersion": {
+    "major": 3,
+    "minor": 2
+  },
+  "sourceFile": "runtime/skyrimse/Source/Scripts/NPCM_Manolov_ApplySSE.psc",
+  "debugInfoPresent": true,
+  "dependencyScope": "declared PEX types; dynamic string lookups and native runtime providers are not inferred",
+  "apiDependencies": [
+    "Actor",
+    "objectReference"
+  ],
+  "metrics": {
+    "objectCount": 1,
+    "propertyCount": 43,
+    "variableCount": 37,
+    "stateCount": 1,
+    "functionCount": 16,
+    "instructionCount": 378
+  },
+  "objects": [
+    {
+      "name": "NPCM_Manolov_ApplySSE",
+      "parent": "Actor",
+      "const": false,
+      "properties": [
+        {
+          "name": "KEY_TINT",
+          "type": "Int",
+          "auto": false,
+          "readable": true,
+          "writable": false
+        },
+        {
+          "name": "KEY_ALPHA",
+          "type": "Int",
+          "auto": false,
+          "readable": true,
+          "writable": false
+        },
+        {
+          "name": "KEY_TEXTURE",
+          "type": "Int",
+          "auto": false,
+          "readable": true,
+          "writable": false
+        },
+        {
+          "name": "IDX_DIFFUSE",
+          "type": "Int",
+          "auto": false,
+          "readable": true,
+          "writable": false
+        },
+        {
+          "name": "IDX_NORMAL",
+          "type": "Int",
+          "auto": false,
+          "readable": true,
+          "writable": false
+        },
+        {
+          "name": "KEY_EMISSIVE_COLOR",
+          "type": "Int",
+          "auto": false,
+          "readable": true,
+          "writable": false
+        },
+        {
+          "name": "KEY_EMISSIVE_MULTIPLE",
+          "type": "Int",
+          "auto": false,
+          "readable": true,
+          "writable": false
+        },
+        {
+          "name": "IsFemale",
+          "type": "Bool",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "SchemaVersion",
+          "type": "Int",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlNode",
+          "type": "String[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlDiffuse",
+          "type": "String[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlNormal",
+          "type": "String[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlHasEmissiveColor",
+          "type": "Bool[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlEmissiveColor",
+          "type": "Int[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlHasEmissiveMultiple",
+          "type": "Bool[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlEmissiveMultiple",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlHasTint",
+          "type": "Bool[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlTint",
+          "type": "Int[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlHasAlpha",
+          "type": "Bool[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "OvlAlpha",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "SkinSlot",
+          "type": "Int[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "SkinDiffuse",
+          "type": "String[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "SkinNormal",
+          "type": "String[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "SkinHasTint",
+          "type": "Bool[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "SkinTint",
+          "type": "Int[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeName",
+          "type": "String[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeHasScale",
+          "type": "Bool[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeScale",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeHasPos",
+          "type": "Bool[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodePosX",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodePosY",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodePosZ",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeHasRot",
+          "type": "Bool[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM0",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM1",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM2",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM3",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM4",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM5",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM6",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM7",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeRotM8",
+          "type": "Float[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        },
+        {
+          "name": "NodeScaleMode",
+          "type": "Int[]",
+          "auto": true,
+          "readable": true,
+          "writable": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "appliedVersion",
+          "type": "Int",
+          "const": false
+        },
+        {
+          "name": "::IsFemale_var",
+          "type": "Bool",
+          "const": false
+        },
+        {
+          "name": "::SchemaVersion_var",
+          "type": "Int",
+          "const": false
+        },
+        {
+          "name": "::OvlNode_var",
+          "type": "String[]",
+          "const": false
+        },
+        {
+          "name": "::OvlDiffuse_var",
+          "type": "String[]",
+          "const": false
+        },
+        {
+          "name": "::OvlNormal_var",
+          "type": "String[]",
+          "const": false
+        },
+        {
+          "name": "::OvlHasEmissiveColor_var",
+          "type": "Bool[]",
+          "const": false
+        },
+        {
+          "name": "::OvlEmissiveColor_var",
+          "type": "Int[]",
+          "const": false
+        },
+        {
+          "name": "::OvlHasEmissiveMultiple_var",
+          "type": "Bool[]",
+          "const": false
+        },
+        {
+          "name": "::OvlEmissiveMultiple_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::OvlHasTint_var",
+          "type": "Bool[]",
+          "const": false
+        },
+        {
+          "name": "::OvlTint_var",
+          "type": "Int[]",
+          "const": false
+        },
+        {
+          "name": "::OvlHasAlpha_var",
+          "type": "Bool[]",
+          "const": false
+        },
+        {
+          "name": "::OvlAlpha_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::SkinSlot_var",
+          "type": "Int[]",
+          "const": false
+        },
+        {
+          "name": "::SkinDiffuse_var",
+          "type": "String[]",
+          "const": false
+        },
+        {
+          "name": "::SkinNormal_var",
+          "type": "String[]",
+          "const": false
+        },
+        {
+          "name": "::SkinHasTint_var",
+          "type": "Bool[]",
+          "const": false
+        },
+        {
+          "name": "::SkinTint_var",
+          "type": "Int[]",
+          "const": false
+        },
+        {
+          "name": "::NodeName_var",
+          "type": "String[]",
+          "const": false
+        },
+        {
+          "name": "::NodeHasScale_var",
+          "type": "Bool[]",
+          "const": false
+        },
+        {
+          "name": "::NodeScale_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeHasPos_var",
+          "type": "Bool[]",
+          "const": false
+        },
+        {
+          "name": "::NodePosX_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodePosY_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodePosZ_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeHasRot_var",
+          "type": "Bool[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM0_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM1_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM2_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM3_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM4_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM5_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM6_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM7_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeRotM8_var",
+          "type": "Float[]",
+          "const": false
+        },
+        {
+          "name": "::NodeScaleMode_var",
+          "type": "Int[]",
+          "const": false
+        }
+      ],
+      "states": [
+        {
+          "name": "<property-getter>",
+          "functions": [
+            {
+              "name": "KEY_TINT",
+              "returnType": "Int",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            }
+          ]
+        },
+        {
+          "name": "<property-getter>",
+          "functions": [
+            {
+              "name": "KEY_ALPHA",
+              "returnType": "Int",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            }
+          ]
+        },
+        {
+          "name": "<property-getter>",
+          "functions": [
+            {
+              "name": "KEY_TEXTURE",
+              "returnType": "Int",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            }
+          ]
+        },
+        {
+          "name": "<property-getter>",
+          "functions": [
+            {
+              "name": "IDX_DIFFUSE",
+              "returnType": "Int",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            }
+          ]
+        },
+        {
+          "name": "<property-getter>",
+          "functions": [
+            {
+              "name": "IDX_NORMAL",
+              "returnType": "Int",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            }
+          ]
+        },
+        {
+          "name": "<property-getter>",
+          "functions": [
+            {
+              "name": "KEY_EMISSIVE_COLOR",
+              "returnType": "Int",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            }
+          ]
+        },
+        {
+          "name": "<property-getter>",
+          "functions": [
+            {
+              "name": "KEY_EMISSIVE_MULTIPLE",
+              "returnType": "Int",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            }
+          ]
+        },
+        {
+          "name": "",
+          "functions": [
+            {
+              "name": "GetState",
+              "returnType": "String",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            },
+            {
+              "name": "GotoState",
+              "returnType": "None",
+              "native": false,
+              "global": false,
+              "parameters": [
+                {
+                  "name": "newState",
+                  "type": "String"
+                }
+              ],
+              "localCount": 1,
+              "instructionCount": 3
+            },
+            {
+              "name": "RemovePrevious",
+              "returnType": "None",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 11,
+              "instructionCount": 53
+            },
+            {
+              "name": "OnLoad",
+              "returnType": "None",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 2,
+              "instructionCount": 9
+            },
+            {
+              "name": "XformKey",
+              "returnType": "String",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 0,
+              "instructionCount": 1
+            },
+            {
+              "name": "ApplyNodeTransforms",
+              "returnType": "None",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 13,
+              "instructionCount": 101
+            },
+            {
+              "name": "ApplyOverlays",
+              "returnType": "None",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 10,
+              "instructionCount": 110
+            },
+            {
+              "name": "ClearOverlayGroup",
+              "returnType": "None",
+              "native": false,
+              "global": false,
+              "parameters": [
+                {
+                  "name": "prefix",
+                  "type": "String"
+                },
+                {
+                  "name": "n",
+                  "type": "Int"
+                }
+              ],
+              "localCount": 8,
+              "instructionCount": 30
+            },
+            {
+              "name": "ApplySkin",
+              "returnType": "None",
+              "native": false,
+              "global": false,
+              "parameters": [],
+              "localCount": 9,
+              "instructionCount": 63
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

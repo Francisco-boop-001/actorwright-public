@@ -1,0 +1,1182 @@
+{
+  "schemaId": "urn:actorwright:protocol-v2:schema-export-result:v1",
+  "protocolVersion": "2",
+  "scopedHelpResultSchema": {
+    "schemaIdentifier": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+    "jsonSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:actorwright:protocol-v2:scoped-help-result:v1",
+      "title": "Actorwright protocol v2 scoped help result",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "contract"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "urn:actorwright:protocol-v2:scoped-help-result:v1"
+        },
+        "contract": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "pathConventions": {
+    "cli": "CLI path options use absolute K-local filesystem paths under the admitted workspace.",
+    "documents": "JSON document paths use workspace-relative or explicitly project-relative forward-slash paths. Follow the base and exceptions declared by each document schema.",
+    "assets": "Asset fields use their declared Data-relative, textures-relative, or meshes-relative paths. Overlay omission comparison and package-destination admission normalize one leading separator, casing and slashes. Rooted active overlays, UNC/device paths, drives and traversal remain refused; immutable source documents and other AssetPath values retain their bytes and casing."
+  },
+  "contract": {
+    "name": "npc assembly preflight",
+    "aliases": [],
+    "commandSchemaVersion": "1",
+    "readiness": "v2",
+    "supportedGames": [
+      "skyrimSpecialEdition"
+    ],
+    "purpose": "Join hash-bound package, actor identity, body-morph ownership, and outfit provenance evidence.",
+    "limitations": [
+      "Read-only static preflight; no BodySlide execution, package write, runtime proof, or visual authority.",
+      "Protocol v2 persists one exact static Actor Assembly preflight result; it does not create a workflow successor or establish visual, runtime, or promotion authority."
+    ],
+    "options": [
+      {
+        "cliName": "contract",
+        "jsonName": "contract",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Exact K-local Actor Assembly contract path.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "contract-sha256",
+        "jsonName": "contract-sha256",
+        "valueKind": "sha256",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<uppercase-64-hex-sha256>",
+        "description": "Physical SHA-256 binding the exact Actor Assembly contract bytes.",
+        "aliasFor": null
+      },
+      {
+        "cliName": "output",
+        "jsonName": "output",
+        "valueKind": "path",
+        "required": true,
+        "allowedValues": [],
+        "conflictsWith": [],
+        "secretLike": false,
+        "valueSyntax": "<K-local-path>",
+        "description": "Fresh K-local persisted result output.",
+        "aliasFor": null
+      }
+    ],
+    "inputArtifactKinds": [
+      "actor-assembly-preflight-contract"
+    ],
+    "resultSchemaIds": [
+      "urn:actorwright:protocol-v2:npc-assembly-preflight-result:v1"
+    ],
+    "effects": [
+      {
+        "kind": "readWorkspace",
+        "condition": "When the exact contract file and uppercase physical SHA-256 are admitted before service execution.",
+        "scope": "The exact K-local --contract file.",
+        "trigger": null
+      },
+      {
+        "kind": "writeNewArtifact",
+        "condition": "Only after a typed preflight outcome is canonically persisted and independently reopened.",
+        "scope": "The fresh exact K-local --output file.",
+        "trigger": null
+      },
+      {
+        "kind": "appendLocalOperationJournal",
+        "condition": "When the operation journal is available.",
+        "scope": "<labRoot>/.actorwright/operations",
+        "trigger": null
+      }
+    ],
+    "retryPolicy": "requiresFreshOutput",
+    "determinism": "deterministic",
+    "supportsDryRun": false,
+    "authority": [
+      {
+        "kind": "inputAdmission",
+        "state": "established",
+        "reason": "The exact Actor Assembly contract and uppercase physical digest are admitted."
+      },
+      {
+        "kind": "sourceProviderIdentity",
+        "state": "established",
+        "reason": "The preflight service evaluates the hash-bound package and actor identity evidence."
+      },
+      {
+        "kind": "deterministicMaterialization",
+        "state": "established",
+        "reason": "The typed Actor Assembly preflight result is canonically materialized."
+      },
+      {
+        "kind": "independentStaticVerification",
+        "state": "established",
+        "reason": "The promoted result is retained-read, pinned-reopened, and strictly validated."
+      },
+      {
+        "kind": "offEnginePreview",
+        "state": "notApplicable",
+        "reason": "Actor Assembly preflight does not render an off-engine preview."
+      },
+      {
+        "kind": "humanVisualAcceptance",
+        "state": "required",
+        "reason": "Static preflight evidence does not establish human visual acceptance."
+      },
+      {
+        "kind": "gameRuntimeVerification",
+        "state": "required",
+        "reason": "Static preflight evidence does not establish Skyrim runtime behavior."
+      },
+      {
+        "kind": "promotionApproval",
+        "state": "required",
+        "reason": "Static preflight does not grant promotion approval."
+      }
+    ],
+    "transitions": [],
+    "contractStatus": "complete",
+    "canonicalCommand": null,
+    "optionRelationships": [],
+    "inputArtifacts": [
+      {
+        "kind": "actor-assembly-preflight-contract",
+        "schemaIds": [
+          "npc.actor-assembly-preflight.contract.v1"
+        ],
+        "description": "Exact hash-bound Actor Assembly contract.",
+        "trigger": null
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "kind": "actor-assembly-preflight",
+        "schemaIds": [
+          "npc.actor-assembly-preflight.result.v1"
+        ],
+        "description": "Fresh canonical typed result persisted at --output; refusal envelopes emit no artifact.",
+        "trigger": null
+      }
+    ],
+    "resultShape": "object",
+    "resultDescription": "Protocol envelope result containing the persisted typed Actor Assembly outcome or refusal, exact physical bindings, static checks, evidence, diagnostics, no-write state, and runtimeAuthority false."
+  },
+  "resultSchemas": [
+    {
+      "schemaIdentifier": "urn:actorwright:protocol-v2:npc-assembly-preflight-result:v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:actorwright:protocol-v2:npc-assembly-preflight-result:v1",
+        "title": "Actorwright protocol v2 Actor Assembly preflight result",
+        "oneOf": [
+          {
+            "$ref": "#/$defs/success"
+          },
+          {
+            "$ref": "#/$defs/error"
+          }
+        ],
+        "$defs": {
+          "success": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schemaVersion",
+              "artifactKind",
+              "admitted",
+              "outcome",
+              "contractSha256",
+              "packageManifestSha256",
+              "baseNpcEvidence",
+              "diagnosticTarget",
+              "checks",
+              "noWrite",
+              "runtimeAuthority"
+            ],
+            "properties": {
+              "schemaVersion": {
+                "const": 1
+              },
+              "artifactKind": {
+                "const": "actor-assembly-preflight-result"
+              },
+              "admitted": {
+                "const": true
+              },
+              "outcome": {
+                "$ref": "#/$defs/outcome"
+              },
+              "contractSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "packageManifestSha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "baseNpcEvidence": {
+                "$ref": "#/$defs/baseNpcEvidence"
+              },
+              "placedReferenceEvidence": {
+                "$ref": "#/$defs/placedReferenceEvidence"
+              },
+              "diagnosticTarget": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "checks": {
+                "type": "array",
+                "maxItems": 4096,
+                "items": {
+                  "$ref": "#/$defs/check"
+                }
+              },
+              "noWrite": {
+                "const": true
+              },
+              "runtimeAuthority": {
+                "const": false
+              }
+            }
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schemaVersion",
+              "artifactKind",
+              "contractAdmitted",
+              "diagnostics"
+            ],
+            "properties": {
+              "schemaVersion": {
+                "const": 1
+              },
+              "artifactKind": {
+                "const": "actor-assembly-preflight-error"
+              },
+              "contractAdmitted": {
+                "type": "boolean"
+              },
+              "diagnostics": {
+                "type": "array",
+                "maxItems": 4096,
+                "items": {
+                  "$ref": "#/$defs/diagnostic"
+                }
+              }
+            }
+          },
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "blocked",
+              "unknown",
+              "notApplicable"
+            ]
+          },
+          "recordObservation": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "signature",
+                  "formId"
+                ],
+                "properties": {
+                  "status": {
+                    "const": "found"
+                  },
+                  "signature": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  },
+                  "formId": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "reason"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "missing",
+                      "unknown"
+                    ]
+                  },
+                  "reason": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  }
+                }
+              }
+            ]
+          },
+          "referenceObservation": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "plugin",
+                  "formId"
+                ],
+                "properties": {
+                  "status": {
+                    "const": "found"
+                  },
+                  "plugin": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  },
+                  "formId": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "reason"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "missing",
+                      "unknown"
+                    ]
+                  },
+                  "reason": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  }
+                }
+              }
+            ]
+          },
+          "baseNpcEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "declaredFormId",
+              "typedRecord",
+              "rawRecord",
+              "outcome"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "declaredFormId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "typedRecord": {
+                "$ref": "#/$defs/recordObservation"
+              },
+              "rawRecord": {
+                "$ref": "#/$defs/recordObservation"
+              },
+              "outcome": {
+                "$ref": "#/$defs/outcome"
+              }
+            }
+          },
+          "placedReferenceEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "declaredFormId",
+              "typedRecord",
+              "rawRecord",
+              "typedBase",
+              "rawNameBase",
+              "outcome"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "declaredFormId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "typedRecord": {
+                "$ref": "#/$defs/recordObservation"
+              },
+              "rawRecord": {
+                "$ref": "#/$defs/recordObservation"
+              },
+              "typedBase": {
+                "$ref": "#/$defs/referenceObservation"
+              },
+              "rawNameBase": {
+                "$ref": "#/$defs/referenceObservation"
+              },
+              "outcome": {
+                "$ref": "#/$defs/outcome"
+              }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "value"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "contract",
+                  "manifest",
+                  "file",
+                  "packageFile",
+                  "record",
+                  "decision"
+                ]
+              },
+              "value": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "check": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "outcome",
+              "message",
+              "evidence"
+            ],
+            "properties": {
+              "code": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "outcome": {
+                "$ref": "#/$defs/outcome"
+              },
+              "message": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 4096,
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                }
+              }
+            }
+          },
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "documentSchemas": [
+    {
+      "name": "contract",
+      "direction": "input",
+      "schemaIdentifier": "npc.actor-assembly-preflight.contract.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "npc.actor-assembly-preflight.contract.v1",
+        "title": "Actorwright Actor Assembly preflight contract v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "operation",
+          "edition",
+          "packageManifest",
+          "baseNpc",
+          "placement",
+          "bodyMorph",
+          "outfitScope"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "operation": {
+            "const": "npc-assembly-preflight"
+          },
+          "edition": {
+            "const": "skyrimse"
+          },
+          "packageManifest": {
+            "$ref": "#/$defs/boundFile"
+          },
+          "baseNpc": {
+            "$ref": "#/$defs/actorIdentity"
+          },
+          "placement": {
+            "$ref": "#/$defs/placement"
+          },
+          "bodyMorph": {
+            "$ref": "#/$defs/bodyMorph"
+          },
+          "outfitScope": {
+            "$ref": "#/$defs/outfitScope"
+          },
+          "reviewedCompositePolicy": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "$defs": {
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{64}$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Absolute ordinary K-local path with no dot segments or alternate data stream."
+          },
+          "formId": {
+            "type": "string",
+            "pattern": "^0x00[0-9A-Fa-f]{6}$"
+          },
+          "boundFile": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "$ref": "#/$defs/path"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "actorIdentity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "formId"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "formId": {
+                "$ref": "#/$defs/formId"
+              }
+            }
+          },
+          "placement": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mode"
+            ],
+            "properties": {
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "persistentReference",
+                  "questAlias",
+                  "dynamicSpawn",
+                  "none"
+                ]
+              },
+              "placedReferenceFormId": {
+                "$ref": "#/$defs/formId"
+              }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "available",
+                  "unavailable",
+                  "notApplicable"
+                ]
+              },
+              "path": {
+                "$ref": "#/$defs/path"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "reason": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "status",
+                  "path",
+                  "sha256"
+                ],
+                "properties": {
+                  "status": {
+                    "const": "available"
+                  }
+                },
+                "not": {
+                  "required": [
+                    "reason"
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "status",
+                  "reason"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "unavailable",
+                      "notApplicable"
+                    ]
+                  }
+                },
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "path"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "sha256"
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "bodyMorph": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "owner",
+              "evidence"
+            ],
+            "properties": {
+              "owner": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "obody",
+                  "bodygen",
+                  "bakedBodySlide",
+                  "runtimeScript",
+                  "reviewedComposite",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "$ref": "#/$defs/evidence"
+              }
+            }
+          },
+          "outfitScope": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "complete",
+                  "unavailable",
+                  "notApplicable"
+                ]
+              },
+              "inventory": {
+                "$ref": "#/$defs/boundFile"
+              },
+              "reason": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "status",
+                  "inventory"
+                ],
+                "properties": {
+                  "status": {
+                    "const": "complete"
+                  }
+                },
+                "not": {
+                  "required": [
+                    "reason"
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "status",
+                  "reason"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "unavailable",
+                      "notApplicable"
+                    ]
+                  }
+                },
+                "not": {
+                  "required": [
+                    "inventory"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "result",
+      "direction": "output",
+      "schemaIdentifier": "npc.actor-assembly-preflight.result.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "npc.actor-assembly-preflight.result.v1",
+        "title": "Actorwright Actor Assembly preflight result v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "artifactKind",
+          "admitted",
+          "outcome",
+          "contractSha256",
+          "packageManifestSha256",
+          "baseNpcEvidence",
+          "diagnosticTarget",
+          "checks",
+          "noWrite",
+          "runtimeAuthority"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "artifactKind": {
+            "const": "actor-assembly-preflight-result"
+          },
+          "admitted": {
+            "const": true
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "blocked",
+              "unknown",
+              "notApplicable"
+            ]
+          },
+          "contractSha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "packageManifestSha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "baseNpcEvidence": {
+            "$ref": "#/$defs/baseNpcEvidence"
+          },
+          "placedReferenceEvidence": {
+            "$ref": "#/$defs/placedReferenceEvidence"
+          },
+          "diagnosticTarget": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "checks": {
+            "type": "array",
+            "maxItems": 4096,
+            "items": {
+              "$ref": "#/$defs/check"
+            }
+          },
+          "noWrite": {
+            "const": true
+          },
+          "runtimeAuthority": {
+            "const": false
+          }
+        },
+        "$defs": {
+          "nonEmptyString": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9A-F]{64}$"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "blocked",
+              "unknown",
+              "notApplicable"
+            ]
+          },
+          "recordObservation": {
+            "type": "object",
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "signature",
+                  "formId"
+                ],
+                "properties": {
+                  "status": {
+                    "const": "found"
+                  },
+                  "signature": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  },
+                  "formId": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  }
+                }
+              },
+              {
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "reason"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "missing",
+                      "unknown"
+                    ]
+                  },
+                  "reason": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  }
+                }
+              }
+            ]
+          },
+          "referenceObservation": {
+            "type": "object",
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "plugin",
+                  "formId"
+                ],
+                "properties": {
+                  "status": {
+                    "const": "found"
+                  },
+                  "plugin": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  },
+                  "formId": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  }
+                }
+              },
+              {
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "reason"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "missing",
+                      "unknown"
+                    ]
+                  },
+                  "reason": {
+                    "$ref": "#/$defs/nonEmptyString"
+                  }
+                }
+              }
+            ]
+          },
+          "baseNpcEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "declaredFormId",
+              "typedRecord",
+              "rawRecord",
+              "outcome"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "declaredFormId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "typedRecord": {
+                "$ref": "#/$defs/recordObservation"
+              },
+              "rawRecord": {
+                "$ref": "#/$defs/recordObservation"
+              },
+              "outcome": {
+                "$ref": "#/$defs/outcome"
+              }
+            }
+          },
+          "placedReferenceEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plugin",
+              "declaredFormId",
+              "typedRecord",
+              "rawRecord",
+              "typedBase",
+              "rawNameBase",
+              "outcome"
+            ],
+            "properties": {
+              "plugin": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "declaredFormId": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "typedRecord": {
+                "$ref": "#/$defs/recordObservation"
+              },
+              "rawRecord": {
+                "$ref": "#/$defs/recordObservation"
+              },
+              "typedBase": {
+                "$ref": "#/$defs/referenceObservation"
+              },
+              "rawNameBase": {
+                "$ref": "#/$defs/referenceObservation"
+              },
+              "outcome": {
+                "$ref": "#/$defs/outcome"
+              }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "value"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "contract",
+                  "manifest",
+                  "file",
+                  "packageFile",
+                  "record",
+                  "decision"
+                ]
+              },
+              "value": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "check": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "outcome",
+              "message",
+              "evidence"
+            ],
+            "properties": {
+              "code": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "outcome": {
+                "$ref": "#/$defs/outcome"
+              },
+              "message": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 4096,
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "error",
+      "direction": "output",
+      "schemaIdentifier": "npc.actor-assembly-preflight.error.v1",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "npc.actor-assembly-preflight.error.v1",
+        "title": "Actorwright Actor Assembly preflight error v1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "artifactKind",
+          "contractAdmitted",
+          "diagnostics"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "artifactKind": {
+            "const": "actor-assembly-preflight-error"
+          },
+          "contractAdmitted": {
+            "type": "boolean"
+          },
+          "diagnostics": {
+            "type": "array",
+            "maxItems": 4096,
+            "items": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          }
+        },
+        "$defs": {
+          "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
