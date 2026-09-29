@@ -52,6 +52,10 @@ A virtual `K:` mapping is not a verified installation route. NTFS reparse/juncti
 
 ## Build and missing runtime inputs
 
+**Put your AI to work here.** Point it at this section and the linked prerequisite documents. Tell it to inspect your setup, identify what is missing, and help you obtain and install the required tools from their official sources, under their licenses. It can save you a great deal of dependency archaeology. This is exactly the sort of tedious work we recruited the machine for.
+
+Have it explain what it will install and where, verify the pinned versions and hashes, and report anything it cannot satisfy. “Installed something with a similar name” is not a successful prerequisite check. Neither is declaring victory over a missing DLL through sheer enthusiasm.
+
 This is source only: no Actorwright executable and no native DLLs are included. A clean clone is not currently a clone-and-run build. The application still expects these six app-local files under `runtime/reference-preset/`, with exact versions, lengths, and SHA-256 values recorded in [runtime-asset-manifest.json](runtime/reference-preset/runtime-asset-manifest.json):
 
 - `libmediapipe.dll`
