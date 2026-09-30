@@ -103,6 +103,8 @@ There is no ready-to-install application release yet. These are the source-build
 
 ## Appearance providers
 
+**Preset compatibility, from my own use:** Vanilla, High Poly Head, and COtR work beautifully. **UBE presets need MDNR installed.** Cheating? Yes. Shut up. You still get to create an NPC tailored to your preferences: skills, perks, location, and all the other details that make them yours.
+
 The private default NPC appearance bundle is not included. Creating an NPC requires a workspace provider manifest plus its template, mesh, texture, and dependency files, obtained under their own licenses. The desktop app checks the selected provider's files and hashes at selection and build time. A request that assumes the absent bundled provider is refused. Synthetic test meshes are test inputs, not game-ready heads.
 
 ## License and attribution
